@@ -1,0 +1,32 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+
+/** Pointer depth and scroll depth use CSS variables, avoiding React renders on scroll. */
+export function useInvitationMotion(active:boolean){
+ const root=useRef<HTMLDivElement>(null);
+ useEffect(()=>{
+  const el=root.current;if(!active||!el)return;
+  const media=matchMedia('(prefers-reduced-motion: reduce)');let frame=0;
+  const update=()=>{frame=0;if(!media.matches)el.style.setProperty('--scroll-depth',`${Math.min(window.scrollY,1400)}px`);};
+  const scroll=()=>{if(!frame)frame=requestAnimationFrame(update);};
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-revealed');observer.unobserve(e.target);}}),{threshold:.12});
+  el.querySelectorAll('[data-reveal]').forEach(n=>observer.observe(n));
+  window.addEventListener('scroll',scroll,{passive:true});update();
+  return()=>{window.removeEventListener('scroll',scroll);cancelAnimationFrame(frame);observer.disconnect();el.style.removeProperty('--scroll-depth');};
+ },[active]);
+ return root;
+}
+
+export default function Envelope({names,guest,onOpen}:{names:string;guest?:string;onOpen:()=>void}){
+ const [opening,setOpening]=useState(false);const surface=useRef<HTMLDivElement>(null);const timer=useRef<ReturnType<typeof setTimeout>|null>(null);
+ useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current);},[]);
+ function open(){if(opening)return;setOpening(true);timer.current=setTimeout(onOpen,matchMedia('(prefers-reduced-motion: reduce)').matches?0:1700);}
+ return <section className={'envelope-entry '+(opening?'is-opening':'')} aria-label="Una invitación para ti">
+  <div className="entry-top"><span>UNA FECHA. TODA UNA HISTORIA.</span><span>16 · 09 · 2027</span></div>
+  <div className="entry-title"><span>Con todo nuestro cariño</span><h1>Hay algo que queremos<br/>celebrar contigo.</h1></div>
+  <div ref={surface} className="envelope-perspective" onPointerMove={e=>{if(e.pointerType!=='mouse'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const r=e.currentTarget.getBoundingClientRect();e.currentTarget.style.setProperty('--tilt-x',`${((e.clientY-r.top)/r.height-.5)*-7}deg`);e.currentTarget.style.setProperty('--tilt-y',`${((e.clientX-r.left)/r.width-.5)*9}deg`);}} onPointerLeave={()=>{surface.current?.style.setProperty('--tilt-x','0deg');surface.current?.style.setProperty('--tilt-y','0deg');}}>
+   <div className="envelope-object"><div className="envelope-back"/><div className="letter-peek"><span>NOS CASAMOS</span><strong>{names.replace('+','&')}</strong><small>16 de septiembre de 2027</small></div><div className="envelope-front"/><div className="envelope-fold"/><div className="envelope-flap"/><div className="envelope-address"><span>PARA</span><strong>{guest||'ti, que formas parte de nuestra vida'}</strong></div><button className="wax-seal" onClick={open} disabled={opening} aria-label="Abrir el sobre de Andrea y Alberto"><span>A<span>&</span>A</span></button><span className="envelope-postmark">CON AMOR<br/>A + A · 2027</span></div>
+  </div>
+  <div className="entry-bottom"><button onClick={open} disabled={opening}>{opening?'Abriendo vuestra invitación…':'Toca el sello para abrir'}<span aria-hidden="true">↗</span></button><p>{names} · Nos casamos</p></div>
+ </section>;
+}

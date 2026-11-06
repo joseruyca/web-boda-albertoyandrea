@@ -60,3 +60,7 @@ Con la vinculación y las variables verificadas, aplicar `supabase/schema.sql` c
 ## Previsualización personal
 
 El código de prueba de Jose se verifica mediante hash en el servidor y abre una sesión separada, sin acceso a datos reales. Las respuestas y archivos de esa vista solo se simulan en el navegador. El QR de prueba abre la galería de esa misma previsualización. El código no se incluye en el repositorio. Sin configurar el backend, la portada y la previsualización siguen disponibles, pero las operaciones reales permanecen desactivadas.
+
+## Entrada del sobre
+
+La invitación comienza con un sobre en relieve, sello interactivo y apertura de la tarjeta. El recorrido interior añade profundidad al desplazarse, apariciones por sección y una composición editorial de nombres y fotografía. El sobre se muestra una vez por sesión y puede repetirse desde «El sobre». Los accesos directos al álbum mediante QR omiten la apertura. Se respeta la preferencia de movimiento reducido del dispositivo y todos los controles funcionan con teclado.
