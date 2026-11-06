@@ -1,10 +1,10 @@
 # Andrea + Alberto · 16 de septiembre de 2027
 
-Versión 2 del proyecto: Next.js para Vercel, Postgres y Storage privados en Supabase. Incluye la fotografía provisional real facilitada por el usuario. La publicación anterior de Sites es un prototipo distinto; este proyecto no depende de Cloudflare, D1, R2 ni de un inicio de sesión con ChatGPT.
+Versión 3 del proyecto: Next.js para Vercel, Postgres y Storage privados en Supabase. Incluye la fotografía provisional real facilitada por el usuario. La publicación anterior de Sites es un prototipo distinto; este proyecto no depende de Cloudflare, D1, R2 ni de un inicio de sesión con ChatGPT.
 
 ## Experiencia
 
-Cartel a pantalla completa, tipografía editorial animada, foto auténtica en una composición de papel, navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación y la mesa se abren con la invitación personal. La galería admite fotos y vídeos con subida directa y reintentos mediante TUS.
+Invitación en marfil y burdeos, nombres caligráficos, ilustraciones vectoriales originales, cuenta atrás y fotografía auténtica. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación y la mesa se abren con la invitación personal. La galería admite fotos y vídeos con subida directa y reintentos mediante TUS.
 
 ## Invitaciones sin crear cuentas
 
@@ -34,15 +34,15 @@ El QR común permite entrar al álbum, pero no confirmar ni consultar mesas ajen
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Trece pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, medios pendientes y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
+Compilación de producción y TypeScript comprobados. Dieciocho pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, medios pendientes y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
 
-El proyecto Supabase está creado. La configuración de tablas, Storage y la Edge Function queda preparada en este código, pendiente del enlace y los secretos de Vercel. Vercel ha rechazado la creación del proyecto por falta de autorización para el equipo `joseruycas-projects`; no se han publicado estos cambios allí.
+El proyecto Supabase está creado. La configuración de tablas, Storage y la Edge Function queda preparada en este código, pendiente del enlace y los secretos de Vercel. El proyecto de Vercel existe y el usuario gestiona su conexión con GitHub. La integración no permite consultar su configuración por falta de permisos del equipo.
 
 Faltan lugar y dirección, horarios definitivos, fecha límite de confirmación, lista de invitados y futura fotografía de portada. Los horarios de partida están marcados como provisionales. No se ha inventado una fecha límite para confirmar.
 
 ## Puesta en marcha
 
-Node >=22.13. Primero autorizar el equipo de Vercel y crear/enlazar el proyecto correcto. Después configurar sus variables y verificar las claves antes de ejecutar migraciones o desarrollo.
+Node >=22.13. Primero enlazar el repositorio con el proyecto de Vercel correcto. Después configurar sus variables y verificar las claves antes de ejecutar migraciones o desarrollo.
 
 ```sh
 npm ci
@@ -56,3 +56,7 @@ npm run build
 Variables exclusivamente del servidor: `WEDDING_API_URL`, `WEDDING_BACKEND_SECRET`, `ADMIN_KEY` e `INVITATION_ENCRYPTION_KEY`. Los secretos se generan en `.env.local`, que está ignorado y no se incluye en esta entrega. No deben ponerse bajo el prefijo `NEXT_PUBLIC_` ni compartirse con invitados. En proyectos ya desplegados, conservar la clave de cifrado de producción para poder recuperar sus enlaces.
 
 Con la vinculación y las variables verificadas, aplicar `supabase/schema.sql` como migración, desplegar `supabase/functions/wedding-api/` con `verify_jwt=false` (su propio control autentica al backend), y desplegar el proyecto Next.js a Vercel. Comprobar el recorrido completo contra los servicios reales antes de repartir invitaciones.
+
+## Previsualización personal
+
+El código de prueba de Jose se verifica mediante hash en el servidor y abre una sesión separada, sin acceso a datos reales. Las respuestas y archivos de esa vista solo se simulan en el navegador. El QR de prueba abre la galería de esa misma previsualización. El código no se incluye en el repositorio. Sin configurar el backend, la portada y la previsualización siguen disponibles, pero las operaciones reales permanecen desactivadas.

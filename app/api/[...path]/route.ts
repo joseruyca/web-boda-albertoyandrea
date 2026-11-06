@@ -1,3 +1,5 @@
+import { defaults } from '../../config';
+import { previewResponse } from '../../../lib/preview.mjs';
 import { adminSession, decryptToken, digest, encryptToken, equal, randomToken } from '../../../lib/security';
 export const runtime='nodejs';
 export const dynamic='force-dynamic';
@@ -11,9 +13,15 @@ async function handle(req:Request):Promise<Response>{
  try {
   const url=new URL(req.url);const path=url.pathname.replace(/^\/api\/?/,'');const method=req.method;
   if(method!=='GET'&&req.headers.get('origin')&&req.headers.get('origin')!==url.origin)return json({error:'Origen no permitido.'},403);
-  if(!process.env.WEDDING_API_URL||!process.env.WEDDING_BACKEND_SECRET)return json({error:'La conexión de la boda aún no está preparada.'},503);
-  const organizer=!!cookie(req,'w_admin')&&equal(cookie(req,'w_admin'),adminSession());
   const body=method==='GET'?{}:await read(req);
+  const preview=previewResponse(req,path,method,body);if(preview)return preview;
+  if(!process.env.WEDDING_API_URL||!process.env.WEDDING_BACKEND_SECRET){
+   if(path==='config'&&method==='GET')return json({...defaults,setupPending:true});
+   if(path==='me'&&method==='GET')return json({invitation:null,albumAccess:false,admin:false,setupPending:true});
+   if(path==='media'&&method==='GET')return json({items:[],locked:true,setupPending:true});
+   return json({error:'La organización todavía no ha activado las confirmaciones y subidas reales.'},503);
+  }
+  const organizer=!!cookie(req,'w_admin')&&equal(cookie(req,'w_admin'),adminSession());
   if(path==='admin/session'&&method==='POST'){
    if(!process.env.ADMIN_KEY||!equal(String(body.key||''),process.env.ADMIN_KEY))return json({error:'La clave no es correcta.'},401);
    const res=json({ok:true});res.headers.set('Set-Cookie',setCookie(req,'w_admin',adminSession()));return res;
@@ -41,7 +49,7 @@ async function handle(req:Request):Promise<Response>{
    return new Response(null,{status:307,headers:{...headers,Location:data.url}});
   }
   const res=json(data,response.status);
-  if(response.ok&&['session','album-session'].includes(path)&&method==='POST'){res.headers.append('Set-Cookie',setCookie(req,path==='session'?'w_invite':'w_album',String(body.token||'')));if(path==='album-session'&&!cookie(req,'w_uploader'))res.headers.append('Set-Cookie',setCookie(req,'w_uploader',randomToken()));}
+  if(response.ok&&['session','album-session'].includes(path)&&method==='POST'){res.headers.append('Set-Cookie',setCookie(req,'w_preview',''));res.headers.append('Set-Cookie',setCookie(req,path==='session'?'w_invite':'w_album',String(body.token||'')));if(path==='album-session'&&!cookie(req,'w_uploader'))res.headers.append('Set-Cookie',setCookie(req,'w_uploader',randomToken()));}
   return res;
  }catch{return json({error:'No se ha podido completar la operación. Inténtalo de nuevo.'},500);}
 }

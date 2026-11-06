@@ -1,0 +1,10 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';
+const code='TEST-PREVIEW-ONLY';const hash=createHash('sha256').update(code).digest('hex');
+const source=fs.readFileSync(new URL('../lib/preview.mjs',import.meta.url),'utf8').replace(/const PREVIEW_CODE_HASH='[^']*'/,"const PREVIEW_CODE_HASH='"+hash+"'");
+const {previewResponse,isPreviewCode}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const req=(cookie='')=>new Request('https://boda.example/api/me',{headers:cookie?{Cookie:cookie}:{}});
+test('El código de previsualización admite minúsculas y espacios sin abrir acceso real',()=>{assert.equal(isPreviewCode(' test-preview-only '),true);assert.equal(isPreviewCode('incorrecto'),false);assert.equal(isPreviewCode(hash),false);});
+test('Abrir la prueba establece una cookie HttpOnly y descarta la invitación real',async()=>{const r=previewResponse(req(),'session','POST',{token:code});assert.equal((await r.json()).preview,true);assert.match(r.headers.get('set-cookie'),/HttpOnly/);assert.match(r.headers.get('set-cookie'),/w_invite=;/);});
+test('La previsualización identifica a Jose sin conceder permisos de organización',async()=>{const r=previewResponse(req('w_preview='+code),'me','GET');const me=await r.json();assert.equal(me.invitation.label,'Jose');assert.equal(me.invitation.guests.length,1);assert.equal(me.admin,false);assert.equal(me.preview,true);});
+test('La prueba no puede guardar respuestas ni subir o descargar archivos reales',async()=>{for(const [path,method]of [['rsvp','POST'],['media/prepare','POST'],['file/private','GET'],['admin/invitations','GET']])assert.equal(previewResponse(req('w_preview='+code),path,method,{}).status,403);});
+test('Sin código válido no se crea una sesión de prueba',()=>{assert.equal(previewResponse(req('w_preview=incorrecto'),'me','GET'),null);assert.equal(previewResponse(req(),'session','POST',{token:'incorrecto'}),null);});
