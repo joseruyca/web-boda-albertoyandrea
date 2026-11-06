@@ -1,0 +1,58 @@
+# Andrea + Alberto · 16 de septiembre de 2027
+
+Versión 2 del proyecto: Next.js para Vercel, Postgres y Storage privados en Supabase. Incluye la fotografía provisional real facilitada por el usuario. La publicación anterior de Sites es un prototipo distinto; este proyecto no depende de Cloudflare, D1, R2 ni de un inicio de sesión con ChatGPT.
+
+## Experiencia
+
+Cartel a pantalla completa, tipografía editorial animada, foto auténtica en una composición de papel, navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación y la mesa se abren con la invitación personal. La galería admite fotos y vídeos con subida directa y reintentos mediante TUS.
+
+## Invitaciones sin crear cuentas
+
+Se crea una invitación por persona, pareja o familia. Se añaden los nombres autorizados y, opcionalmente, un teléfono. El servidor genera un enlace aleatorio. Los enlaces se conservan cifrados para poder copiarlos después; la identificación se comprueba mediante su hash. El teléfono solo sirve para preparar el enlace de WhatsApp: no se utiliza para identificar automáticamente a nadie.
+
+El panel permite importar hasta 300 invitaciones por tanda, recuperar enlaces, preparar el texto de WhatsApp, descargar QR individuales y marcar manualmente qué se ha enviado. «Enlace abierto» indica que el enlace se usó en la web; no es una confirmación de lectura de WhatsApp. El envío del mensaje lo realiza la persona que abre WhatsApp. Reenviar una invitación permite a su destinatario utilizarla, por lo que debe compartirse solo con esa familia.
+
+CSV de importación, con nombres separados por `|`:
+
+```csv
+invitacion;personas;telefono
+Ana y Luis;Ana García|Luis Pérez;+34612345678
+Familia López;María López|Pedro López|
+```
+
+El QR común permite entrar al álbum, pero no confirmar ni consultar mesas ajenas. Los nombres indicados desde ese acceso no están verificados. Las subidas pendientes se aíslan por invitación o por navegador en el acceso común, hasta que los novios las publican.
+
+## Backend
+
+- Nuevo proyecto Supabase: `rxnzbrgkqmujpyvlvsum`, organización elegida por el usuario, región UE.
+- RLS habilitado y sin acceso directo a las tablas para `anon` y `authenticated`.
+- Una Edge Function autenticada por el backend de Vercel aplica las autorizaciones. Las claves privilegiadas de Supabase se leen únicamente dentro de esa función; no se exportan al navegador ni a Vercel.
+- Vercel mantiene cookies HttpOnly y la clave de organización. Los enlaces se cifran con AES-256-GCM.
+- Los archivos viajan directamente a Storage, mediante una autorización limitada a un objeto. La API de Vercel nunca recibe el contenido del vídeo.
+- Límite inicial: 50 MB por archivo y 1 GB / 200 archivos por invitación o navegador del QR. El bucket también aplica el límite de 50 MB.
+- La finalización comprueba existencia y tamaño del archivo antes de publicarlo como pendiente de revisión.
+
+## Estado de esta entrega
+
+Compilación de producción y TypeScript comprobados. Trece pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, medios pendientes y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
+
+El proyecto Supabase está creado. La configuración de tablas, Storage y la Edge Function queda preparada en este código, pendiente del enlace y los secretos de Vercel. Vercel ha rechazado la creación del proyecto por falta de autorización para el equipo `joseruycas-projects`; no se han publicado estos cambios allí.
+
+Faltan lugar y dirección, horarios definitivos, fecha límite de confirmación, lista de invitados y futura fotografía de portada. Los horarios de partida están marcados como provisionales. No se ha inventado una fecha límite para confirmar.
+
+## Puesta en marcha
+
+Node >=22.13. Primero autorizar el equipo de Vercel y crear/enlazar el proyecto correcto. Después configurar sus variables y verificar las claves antes de ejecutar migraciones o desarrollo.
+
+```sh
+npm ci
+# Solo para preparar el primer despliegue; no sobrescribe secretos locales existentes:
+node scripts/prepare-deployment.mjs
+npm run typecheck
+npm test
+npm run build
+```
+
+Variables exclusivamente del servidor: `WEDDING_API_URL`, `WEDDING_BACKEND_SECRET`, `ADMIN_KEY` e `INVITATION_ENCRYPTION_KEY`. Los secretos se generan en `.env.local`, que está ignorado y no se incluye en esta entrega. No deben ponerse bajo el prefijo `NEXT_PUBLIC_` ni compartirse con invitados. En proyectos ya desplegados, conservar la clave de cifrado de producción para poder recuperar sus enlaces.
+
+Con la vinculación y las variables verificadas, aplicar `supabase/schema.sql` como migración, desplegar `supabase/functions/wedding-api/` con `verify_jwt=false` (su propio control autentica al backend), y desplegar el proyecto Next.js a Vercel. Comprobar el recorrido completo contra los servicios reales antes de repartir invitaciones.
