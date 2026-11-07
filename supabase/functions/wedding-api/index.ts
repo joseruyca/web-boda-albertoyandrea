@@ -1,5 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.119.0';
-import { defaults, validIban, normalizeIban } from './config.ts';
+import { defaults, validIban, normalizeIban, safePhoto } from './config.ts';
 const BACKEND_HASH='0dd70cd52e9a3945ca6b0369be764f06a5be64e8d3bd9ca73da168723de86584';
 const MAX=50*1024*1024;
 const BUCKET='wedding-memories';
@@ -39,7 +39,7 @@ Deno.serve(async(req:Request)=>{
    requireOK(await db.from('invitations').update({response,updated_at:new Date().toISOString()}).eq('id',inv.id));return json({ok:true,response});
   }
   if(path==='media'&&method==='GET'){
-   let q=db.from('wedding_media').select('id,name,mime,size,author,approved,created_at').eq('status','ready').order('created_at',{ascending:false}).order('id',{ascending:false}).range(Math.max(0,Math.floor(Number(b.offset)||0)),Math.max(0,Math.floor(Number(b.offset)||0))+60);
+   let q=db.from('wedding_media').select('id,name,mime,size,author,caption,approved,created_at').eq('status','ready').order('created_at',{ascending:false}).order('id',{ascending:false}).range(Math.max(0,Math.floor(Number(b.offset)||0)),Math.max(0,Math.floor(Number(b.offset)||0))+60);
    const rows=requireOK(await q);return json({items:rows.slice(0,60).map((r:any)=>({...r,created:r.created_at,approved:1})),hasMore:rows.length>60});
   }
   if(path==='media/prepare'&&method==='POST'){
@@ -51,7 +51,7 @@ Deno.serve(async(req:Request)=>{
    const quota=requireOK(await db.from('wedding_media').select('size').eq('upload_owner',uploadOwner).in('status',['reserved','ready']));
    if(quota.length>=200||quota.reduce((n:number,r:any)=>n+Number(r.size),0)+size>1024*1024*1024)return json({error:'Has alcanzado el límite de esta invitación. Contacta con los novios.'},429);
    const id=crypto.randomUUID();const key=`album/${inv?.id||'compartido'}/${id}`;
-   const row={id,invitation_id:inv?.id||null,upload_owner:uploadOwner,object_key:key,name:name||'recuerdo',mime,size,author};
+   const row={id,invitation_id:inv?.id||null,upload_owner:uploadOwner,object_key:key,name:name||'recuerdo',mime,size,author,caption:text(b.caption,300)};
    requireOK(await db.from('wedding_media').insert(row));
    const signed=requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(key,{upsert:false}));
    return json({ok:true,id,bucket:BUCKET,path:key,token:signed.token,endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
@@ -99,7 +99,7 @@ Deno.serve(async(req:Request)=>{
     if(!/^\d{4}-\d{2}-\d{2}$/.test(b.date)||(b.deadline&&!/^\d{4}-\d{2}-\d{2}$/.test(b.deadline)))return json({error:'Revisa las fechas.'},400);
     if(!Array.isArray(b.tables)||!b.tables.length||b.tables.length>30||new Set(b.tables.map((t:any)=>Number(t.n))).size!==b.tables.length)return json({error:'El plano debe tener entre 1 y 30 mesas, sin números repetidos.'},400);
     if(b.giftEnabled===true&&(!text(b.giftHolder,120)||!validIban(text(b.giftIban,50))))return json({error:'Revisa el titular y el IBAN antes de activar los regalos.'},400);
-    const next={giftEnabled:b.giftEnabled===true,giftHolder:text(b.giftHolder,120),giftIban:normalizeIban(text(b.giftIban,50)),names:text(b.names,80),date:b.date,deadline:text(b.deadline,10),venue:text(b.venue,200),address:text(b.address,300),mapUrl:/^https:\/\//.test(b.mapUrl)?text(b.mapUrl,1000):'',tablesPublished:b.tablesPublished===true,scheduleConfirmed:b.scheduleConfirmed===true,example:b.example===true,timeline:(b.timeline||defaults.timeline).slice(0,8).map((t:any)=>({time:text(t.time,20),title:text(t.title,80),detail:text(t.detail,200)})),tables:b.tables.map((t:any)=>({n:Math.max(1,Math.min(99,Math.floor(Number(t.n)||1))),name:text(t.name,80),x:Math.max(8,Math.min(92,Number(t.x)||50)),y:Math.max(12,Math.min(88,Number(t.y)||50))}))};
+    const next={phase:['auto','before','during','after'].includes(b.phase)?b.phase:'auto',thankYou:text(b.thankYou,1000)||defaults.thankYou,story:(Array.isArray(b.story)?b.story:[]).slice(0,12).filter((m:any)=>safePhoto(text(m.photo,2000))).map((m:any)=>({photo:text(m.photo,2000),caption:text(m.caption,160),text:text(m.text,1000)})),practical:Object.fromEntries(['bus','accommodation','dressCode','contact'].map(k=>[k,text(b.practical?.[k],1000)])),faq:(Array.isArray(b.faq)?b.faq:[]).slice(0,15).map((f:any)=>({question:text(f.question,200),answer:text(f.answer,1000)})).filter((f:any)=>f.question&&f.answer),giftEnabled:b.giftEnabled===true,giftHolder:text(b.giftHolder,120),giftIban:normalizeIban(text(b.giftIban,50)),names:text(b.names,80),date:b.date,deadline:text(b.deadline,10),venue:text(b.venue,200),address:text(b.address,300),mapUrl:/^https:\/\//.test(b.mapUrl)?text(b.mapUrl,1000):'',tablesPublished:b.tablesPublished===true,scheduleConfirmed:b.scheduleConfirmed===true,example:b.example===true,timeline:(b.timeline||defaults.timeline).slice(0,8).map((t:any)=>({time:text(t.time,20),title:text(t.title,80),detail:text(t.detail,200)})),tables:b.tables.map((t:any)=>({n:Math.max(1,Math.min(99,Math.floor(Number(t.n)||1))),name:text(t.name,80),x:Math.max(8,Math.min(92,Number(t.x)||50)),y:Math.max(12,Math.min(88,Number(t.y)||50))}))};
     requireOK(await db.from('wedding_settings').upsert({key:'wedding',value:next}));return json({ok:true,config:next});
    }
    if(path==='admin/album-pass'&&method==='GET'){const row=await settings('album');return row?json({token_ciphertext:row.ciphertext}):json({error:'Todavía no se ha creado el QR del álbum.'},404);}

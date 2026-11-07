@@ -34,7 +34,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Veintitrés pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
+Compilación de producción y TypeScript comprobados. Treinta pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
 
 El proyecto Supabase está creado. La configuración de tablas, Storage y la Edge Function queda preparada en este código, pendiente del enlace y los secretos de Vercel. El proyecto de Vercel existe y el usuario gestiona su conexión con GitHub. La integración no permite consultar su configuración por falta de permisos del equipo.
 
@@ -68,3 +68,15 @@ La invitación comienza con un sobre en relieve, sello interactivo y apertura de
 ## Regalo opcional
 
 La sección puede activarse desde los ajustes de los novios, con titular e IBAN. Se valida el checksum del IBAN; esto no verifica el titular ni la existencia de la cuenta. Los datos bancarios no se incluyen en la configuración enviada a visitas generales del álbum. No hay pasarela de pago ni seguimiento de transferencias. No se ha añadido ninguna cuenta bancaria real.
+
+## Recorrido completo
+
+- El sobre usa el nombre de la invitación y descubre la tarjeta mediante una transición continua.
+- Portada en tres etapas: antes, durante y después. El modo automático sigue la fecha en Europe/Madrid; los novios también pueden elegir la etapa manualmente.
+- Historia editable, con hasta 12 fotografías y textos propios. Se pueden seleccionar fotos del álbum o usar una URL HTTPS/ruta local. No se publican historias vacías ni se han inventado anécdotas.
+- Información editable de autobuses, alojamiento, vestimenta, contacto y hasta 15 preguntas frecuentes.
+- La mesa aparece como una tarjeta personal y descubre el plano con la asignación destacada.
+- El álbum incorpora dedicatorias opcionales, visor con flechas y gestos, y ZIP de originales (30 archivos / 100 MB por tanda) generado en el navegador, sin volver a comprimir las imágenes o vídeos.
+- Calendario de día completo para guardar la fecha, sin inventar horarios definitivos.
+
+Las nuevas tablas se crean con `supabase/schema.sql`. Si ya se inicializó una versión anterior, ejecutar `supabase/upgrade-experience.sql` antes de desplegar la Edge Function actualizada. Las pruebas de backend siguen usando una base simulada: los servicios reales continúan pendientes de autorización del equipo de Vercel y de su configuración.

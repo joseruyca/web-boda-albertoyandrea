@@ -19,7 +19,7 @@ create table public.wedding_media (
  object_key text not null unique,
  name text not null, mime text not null,
  size bigint not null check (size between 1 and 52428800),
- author text not null,
+ author text not null, caption text not null default '',
  approved boolean not null default false,
  status text not null default 'reserved' check (status in ('reserved','ready','failed','deleted')),
  created_at timestamptz not null default now()
