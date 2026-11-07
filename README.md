@@ -34,7 +34,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Cuarenta y tres pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
+Compilación de producción y TypeScript comprobados. Cuarenta y nueve pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
 Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Las cuatro variables privadas del servidor están configuradas en producción en Vercel. La conexión pública completa se ha verificado el 7 de noviembre de 2026. Vercel publica automáticamente desde GitHub. La conexión de Vercel tiene acceso autorizado al equipo y el despliegue de producción usa Supabase real.
 
@@ -104,3 +104,9 @@ Los avisos se guardan de forma privada y los novios pueden revisar, resolver y o
 El panel permite corregir nombres/contacto conservando el enlace, filtrar respuestas y exportar una copia JSON con enlaces privados, respuestas, ajustes e inventario. La recuperación añade invitaciones ausentes y conserva las existentes; restaurar los ajustes requiere una elección explícita. Los originales se descargan por separado en ZIP: el JSON no sustituye su copia ni configura copias automáticas del proveedor.
 
 Para proyectos existentes se aplica `supabase/upgrade-album-care.sql` antes de desplegar la función actualizada. Las pruebas reales han verificado miniaturas, duplicados, avisos, ocultación reversible, cancelación y exportación. Las pruebas con interfaces móviles se realizan en navegador de escritorio: queda pendiente probar físicamente en iPhone y Android con fotos/vídeos reales de los invitados.
+
+## Identidad y experiencia móvil
+
+La papelería comparte azul tinta, marfil y terracota en `app/identity.css`: portada editorial, sobre, confirmación, mesa y álbum. La fecha del encabezado se deriva de la configuración. El álbum se carga bajo demanda, cancela consultas obsoletas y ofrece reintento visible si falla la conexión. Las peticiones JSON tienen un tiempo máximo sin repetir automáticamente escrituras. La selección de descarga se limita a 30 archivos antes de preparar el ZIP. Si hay subidas pendientes, la navegación interna pide confirmar la salida y el navegador recibe el aviso de cierre; los sistemas móviles pueden omitir este último aviso. Mantener la página abierta hasta finalizar las subidas.
+
+Verificación: 49 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
