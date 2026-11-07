@@ -311,3 +311,57 @@ body { background: var(--paper); }
   .photo-wall { grid-template-columns: repeat(3,1fr); }
   .memory { break-inside: avoid; }
 }
+
+/* Personal access feels like receiving stationery, without a sign-in flow. */
+.personal-pass-trigger { display:flex; align-items:center; gap:7px; min-height:40px; padding:7px 0; font-size:11px; color:var(--ink); }
+.personal-pass-trigger svg { stroke-width:1.4; }
+.invitation-access { text-align:center; }
+.access-emblem { display:grid; place-items:center; margin:0 auto 23px; width:76px; height:76px; border:1px solid var(--rule); border-radius:50%; color:var(--accent); }
+.access-emblem .aa-monogram { width:54px; height:54px; }
+.access-kicker { display:block; color:var(--muted); font-size:8px; letter-spacing:2px; line-height:1.6; }
+.invitation-access>h2 { margin:19px 0!important; }
+.invitation-access>p { color:var(--muted); font-size:13px; line-height:1.85; }
+.invitation-access form { text-align:left; margin-top:28px; }
+.invitation-access form>label { margin:0 0 10px; font-size:12px; }
+.invitation-input-wrap { display:flex; align-items:center; padding-left:12px; background:var(--paper-light); border:1px solid var(--rule); border-radius:2px; }
+.envelope-edition .invitation-input-wrap input { border:0; background:transparent; min-height:52px; }
+.invitation-input-wrap>svg { flex-shrink:0; color:var(--muted); }
+.invitation-input-wrap:focus-within { outline:2px solid var(--ink); outline-offset:3px; }
+.invitation-input-wrap input:focus { outline:none; }
+.invitation-access form .solid-btn { margin-top:16px; justify-content:space-between; width:100%; }
+.access-alternative { font-size:11px; text-decoration:underline; text-underline-offset:4px; min-height:44px; margin:7px 0 0; }
+.invitation-access .access-help { font-size:11px; line-height:1.8; border-top:1px solid var(--rule); margin:16px 0 0; padding-top:17px; }
+.access-error { padding:12px 14px; background:#a64d3f0a; border-left:2px solid var(--accent); color:#8d342c!important; font-size:12px; line-height:1.7; text-align:left; }
+.guest-pass { text-align:center; }
+.personal-pass-paper { border:1px solid var(--rule); padding:24px 20px; background:var(--paper-light); margin-top:23px; position:relative; }
+.personal-pass-paper:before,.personal-pass-paper:after { content:''; position:absolute; width:12px; height:12px; background:var(--paper); border-radius:50%; top:60%; border:1px solid var(--rule); }
+.personal-pass-paper:before { left:-7px; }
+.personal-pass-paper:after { right:-7px; }
+.personal-pass-paper>.aa-monogram { margin:0 auto 16px; width:49px; height:49px; color:var(--accent); }
+.personal-pass-paper>span { font-size:8px; letter-spacing:2px; color:var(--muted); }
+.personal-pass-paper>h2 { font:400 45px/1.05 var(--serif); letter-spacing:-1px; margin:12px 0 22px; overflow-wrap:anywhere; }
+.personal-pass-paper>p { font:400 27px/1.1 var(--serif); border-top:1px solid var(--rule); padding-top:19px; margin:0 0 10px; }
+.personal-pass-paper>p>em { color:var(--accent); }
+.personal-pass-paper>small { font-size:7px; letter-spacing:1.5px; color:var(--muted); }
+.personal-pass-paper>.pass-guests { font:11px/1.8 var(--sans); color:var(--muted); border:0; padding-top:16px; margin:0; }
+.guest-pass .pass-intro { font-size:12px; color:var(--muted); line-height:1.8; margin:24px 0 17px; }
+.pass-actions { display:grid; gap:10px; }
+.guest-pass>.underline-link { margin-top:10px; }
+.pass-backup { text-align:left; margin-top:22px; border-top:1px solid var(--rule); }
+.pass-backup>summary { font-size:11px; padding:18px 0; cursor:pointer; }
+.pass-backup label { font-size:11px; }
+.pass-backup input { font-size:12px!important; overflow-wrap:anywhere; }
+.pass-backup p,.pass-privacy { display:block; color:var(--muted); font-size:10px; line-height:1.8; }
+.pass-privacy { margin-top:16px; }
+@media(max-width:720px){
+ .envelope-edition .top-right { gap:13px; }
+ .personal-pass-trigger { font-size:10px; }
+ .personal-pass-paper>h2 { font-size:40px; }
+ .access-emblem { width:65px; height:65px; margin-bottom:19px; }
+ .invitation-access .access-kicker { letter-spacing:1.4px; }
+}
+@media(max-width:480px){
+ .personal-pass-trigger>span { display:none; }
+ .personal-pass-trigger { min-width:30px; justify-content:center; }
+ .envelope-edition .top-right { gap:8px; }
+}

@@ -1,3 +1,4 @@
+import {invitationPass} from '../../../lib/invitation-access.mjs';
 import {invitationBackup} from '../../../lib/backup.mjs';
 import { defaults } from '../../config';
 import { previewResponse } from '../../../lib/preview.mjs';
@@ -40,9 +41,10 @@ async function handle(req:Request):Promise<Response>{
   const uploaderId=cookie(req,'w_uploader')||randomToken();
   const response=await fetch(process.env.WEDDING_API_URL,{
    method:'POST',cache:'no-store',headers:{'Content-Type':'application/json','X-Wedding-Backend':process.env.WEDDING_BACKEND_SECRET},
-   body:JSON.stringify({path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,networkKey:digest(process.env.WEDDING_BACKEND_SECRET+':'+(req.headers.get('x-forwarded-for')||'unknown').split(',')[0].trim()),thumbnail:url.searchParams.has('thumb'),download:url.searchParams.has('download')})
+   body:JSON.stringify({path:path==='invitation-pass'&&method==='GET'?'me':path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,networkKey:digest(process.env.WEDDING_BACKEND_SECRET+':'+(req.headers.get('x-forwarded-for')||'unknown').split(',')[0].trim()),thumbnail:url.searchParams.has('thumb'),download:url.searchParams.has('download')})
   });
   const data=await response.json();
+  if(path==='invitation-pass'&&method==='GET'){const pass=response.ok?invitationPass(data,cookie(req,'w_invite')):null;return pass?json(pass):json({error:'Abre tu enlace personal para guardar tu invitación.'},401);}
   if(response.ok&&path==='admin/export'&&Array.isArray(data.invitations)){data.invitations=data.invitations.map((i:any)=>{const {token_ciphertext,token_hash,...safe}=i;return {...safe,token:token_ciphertext?decryptToken(token_ciphertext):undefined};});}
   if(response.ok&&(path.startsWith('admin/invitations')||path==='admin/album-pass')){
    if(data.items)data.items=data.items.map((i:any)=>{const {token_ciphertext,...safe}=i;return {...safe,token:token_ciphertext?decryptToken(token_ciphertext):undefined};});
