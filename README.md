@@ -4,7 +4,7 @@ Versión 3 del proyecto: Next.js para Vercel, Postgres y Storage privados en Sup
 
 ## Experiencia
 
-Invitación en marfil y burdeos, nombres caligráficos, ilustraciones vectoriales originales, cuenta atrás y fotografía auténtica. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación y la mesa se abren con la invitación personal. La galería admite fotos y vídeos con subida directa y reintentos mediante TUS.
+Invitación en marfil y burdeos, nombres caligráficos, ilustraciones vectoriales originales, cuenta atrás y fotografía auténtica. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación y la mesa se abren con la invitación personal. La galería admite fotos y vídeos con subida directa firmada, progreso y reintentos.
 
 ## Invitaciones sin crear cuentas
 
@@ -34,9 +34,9 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Treinta pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
+Compilación de producción y TypeScript comprobados. Treinta pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
-El proyecto Supabase está creado. La configuración de tablas, Storage y la Edge Function queda preparada en este código, pendiente del enlace y los secretos de Vercel. El proyecto de Vercel existe y el usuario gestiona su conexión con GitHub. La integración no permite consultar su configuración por falta de permisos del equipo.
+Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Queda pendiente configurar las variables del servidor en Vercel por falta de autorización para el equipo. El proyecto de Vercel existe y el usuario gestiona su conexión con GitHub. La integración no permite consultar su configuración por falta de permisos del equipo.
 
 Faltan lugar y dirección, horarios definitivos, fecha límite de confirmación, lista de invitados y futura fotografía de portada. Los horarios de partida están marcados como provisionales. No se ha inventado una fecha límite para confirmar.
 
@@ -79,4 +79,12 @@ La sección puede activarse desde los ajustes de los novios, con titular e IBAN.
 - El álbum incorpora dedicatorias opcionales, visor con flechas y gestos, y ZIP de originales (30 archivos / 100 MB por tanda) generado en el navegador, sin volver a comprimir las imágenes o vídeos.
 - Calendario de día completo para guardar la fecha, sin inventar horarios definitivos.
 
-Las nuevas tablas se crean con `supabase/schema.sql`. Si ya se inicializó una versión anterior, ejecutar `supabase/upgrade-experience.sql` antes de desplegar la Edge Function actualizada. Las pruebas de backend siguen usando una base simulada: los servicios reales continúan pendientes de autorización del equipo de Vercel y de su configuración.
+Las nuevas tablas se crean con `supabase/schema.sql`. Si ya se inicializó una versión anterior, ejecutar `supabase/upgrade-experience.sql` antes de desplegar la Edge Function actualizada. Las pruebas de backend siguen usando una base simulada: la conexión desde el despliegue público de Vercel sigue pendiente de autorización para configurar las variables del servidor.
+
+## Conexión real con Supabase
+
+Proyecto `rxnzbrgkqmujpyvlvsum`, función `wedding-api`, tablas `invitations`, `wedding_settings` y `wedding_media`, bucket privado `wedding-memories`. La función comprueba la credencial privada del backend antes de atender cualquier operación. Las claves privilegiadas de Supabase permanecen dentro de Supabase.
+
+La prueba real detectó que las subidas TUS con los tokens firmados de este proyecto eran rechazadas. El servidor entrega ahora una URL firmada de subida estándar y el cliente transfiere directamente el archivo con PUT, progreso y reintentos. Si la subida se interrumpe antes de completarse, se reenvía el archivo; no se afirma que continúe desde el último byte. Se mantiene compatibilidad con planes TUS de versiones anteriores.
+
+El asesor de seguridad devuelve solo tres avisos informativos de RLS sin políticas: son intencionados, ya que anon/authenticated no tienen acceso directo y la función aplica las autorizaciones. Referencia: https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy .

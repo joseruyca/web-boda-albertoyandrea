@@ -1,6 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.119.0';
 import { defaults, validIban, normalizeIban, safePhoto } from './config.ts';
-const BACKEND_HASH='0dd70cd52e9a3945ca6b0369be764f06a5be64e8d3bd9ca73da168723de86584';
+const BACKEND_HASH='2f045c4c0ef401ff495ca4f25e9e7f8c25ea60daa4e4daa585abd4297ca2a051';
 const MAX=50*1024*1024;
 const BUCKET='wedding-memories';
 const MIME=new Set(['image/jpeg','image/png','image/webp','image/gif','image/avif','image/heic','image/heif','video/mp4','video/webm','video/quicktime']);
@@ -54,14 +54,14 @@ Deno.serve(async(req:Request)=>{
    const row={id,invitation_id:inv?.id||null,upload_owner:uploadOwner,object_key:key,name:name||'recuerdo',mime,size,author,caption:text(b.caption,300)};
    requireOK(await db.from('wedding_media').insert(row));
    const signed=requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(key,{upsert:false}));
-   return json({ok:true,id,bucket:BUCKET,path:key,token:signed.token,endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
+   return json({ok:true,id,bucket:BUCKET,path:key,token:signed.token,uploadUrl:signed.signedUrl,transport:'signed-put',endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
   }
   if(path==='media/resume'&&method==='POST'){
    if(!uploadOwner)return json({error:'Abre tu invitación para continuar.'},401);
    const row=requireOK(await db.from('wedding_media').select('*').eq('id',text(b.id,80)).eq('upload_owner',uploadOwner).eq('status','reserved').maybeSingle());
    if(!row)return json({error:'Esta subida ya no está disponible.'},404);
    const signed=requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(row.object_key,{upsert:false}));
-   return json({ok:true,id:row.id,bucket:BUCKET,path:row.object_key,token:signed.token,endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
+   return json({ok:true,id:row.id,bucket:BUCKET,path:row.object_key,token:signed.token,uploadUrl:signed.signedUrl,transport:'signed-put',endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
   }
   if(path==='media/complete'&&method==='POST'){
    if(!uploadOwner)return json({error:'Abre tu invitación para completar la subida.'},401);
