@@ -20,7 +20,7 @@ Ana y Luis;Ana García|Luis Pérez;+34612345678
 Familia López;María López|Pedro López|
 ```
 
-El QR común permite entrar al álbum, pero no confirmar ni consultar mesas ajenas. Los nombres indicados desde ese acceso no están verificados. Las subidas pendientes se aíslan por invitación o por navegador en el acceso común, hasta que los novios las publican.
+El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descargar los originales del álbum sin cuenta ni invitación. Cada archivo aparece al finalizar y validar la subida; los novios pueden retirarlo desde el panel. Los nombres indicados al subir no están verificados. El QR no permite confirmar asistencia, consultar mesas personales ni acceder al titular o al IBAN. Las reservas de subida se aíslan por invitación o por navegador, sin restringir la lectura de los archivos terminados.
 
 ## Backend
 
@@ -30,11 +30,11 @@ El QR común permite entrar al álbum, pero no confirmar ni consultar mesas ajen
 - Vercel mantiene cookies HttpOnly y la clave de organización. Los enlaces se cifran con AES-256-GCM.
 - Los archivos viajan directamente a Storage, mediante una autorización limitada a un objeto. La API de Vercel nunca recibe el contenido del vídeo.
 - Límite inicial: 50 MB por archivo y 1 GB / 200 archivos por invitación o navegador del QR. El bucket también aplica el límite de 50 MB.
-- La finalización comprueba existencia y tamaño del archivo antes de publicarlo como pendiente de revisión.
+- La finalización comprueba existencia y tamaño del archivo antes de compartirlo automáticamente.
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Dieciocho pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, medios pendientes y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
+Compilación de producción y TypeScript comprobados. Veintitrés pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas de backend usan una base simulada: la integración con los recursos reales todavía no se ha comprobado.
 
 El proyecto Supabase está creado. La configuración de tablas, Storage y la Edge Function queda preparada en este código, pendiente del enlace y los secretos de Vercel. El proyecto de Vercel existe y el usuario gestiona su conexión con GitHub. La integración no permite consultar su configuración por falta de permisos del equipo.
 
@@ -64,3 +64,7 @@ El código de prueba de Jose se verifica mediante hash en el servidor y abre una
 ## Entrada del sobre
 
 La invitación comienza con un sobre en relieve, sello interactivo y apertura de la tarjeta. El recorrido interior añade profundidad al desplazarse, apariciones por sección y una composición editorial de nombres y fotografía. El sobre se muestra una vez por sesión y puede repetirse desde «El sobre». Los accesos directos al álbum mediante QR omiten la apertura. Se respeta la preferencia de movimiento reducido del dispositivo y todos los controles funcionan con teclado.
+
+## Regalo opcional
+
+La sección puede activarse desde los ajustes de los novios, con titular e IBAN. Se valida el checksum del IBAN; esto no verifica el titular ni la existencia de la cuenta. Los datos bancarios no se incluyen en la configuración enviada a visitas generales del álbum. No hay pasarela de pago ni seguimiento de transferencias. No se ha añadido ninguna cuenta bancaria real.

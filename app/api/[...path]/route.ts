@@ -13,7 +13,7 @@ async function handle(req:Request):Promise<Response>{
  try {
   const url=new URL(req.url);const path=url.pathname.replace(/^\/api\/?/,'');const method=req.method;
   if(method!=='GET'&&req.headers.get('origin')&&req.headers.get('origin')!==url.origin)return json({error:'Origen no permitido.'},403);
-  const body=method==='GET'?{}:await read(req);
+  const body=method==='GET'?{offset:Math.max(0,Math.floor(Number(url.searchParams.get('offset'))||0))}:await read(req);
   const preview=previewResponse(req,path,method,body);if(preview)return preview;
   if(!process.env.WEDDING_API_URL||!process.env.WEDDING_BACKEND_SECRET){
    if(path==='config'&&method==='GET')return json({...defaults,setupPending:true});
@@ -35,9 +35,10 @@ async function handle(req:Request):Promise<Response>{
    body.items=rows.map((i:any)=>{const t=randomToken();return {...i,token_hash:digest(t),token_ciphertext:encryptToken(t)};});
   }
   if((path.startsWith('admin/invitations/')&&method==='PATCH'&&body.rotate)||(path==='admin/album-pass'&&method==='POST')){const t=randomToken();body.token_hash=digest(t);body.token_ciphertext=encryptToken(t);}
+  const uploaderId=cookie(req,'w_uploader')||randomToken();
   const response=await fetch(process.env.WEDDING_API_URL,{
    method:'POST',cache:'no-store',headers:{'Content-Type':'application/json','X-Wedding-Backend':process.env.WEDDING_BACKEND_SECRET},
-   body:JSON.stringify({path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId:cookie(req,'w_uploader'),download:url.searchParams.has('download')})
+   body:JSON.stringify({path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,download:url.searchParams.has('download')})
   });
   const data=await response.json();
   if(response.ok&&(path.startsWith('admin/invitations')||path==='admin/album-pass')){
@@ -49,7 +50,8 @@ async function handle(req:Request):Promise<Response>{
    return new Response(null,{status:307,headers:{...headers,Location:data.url}});
   }
   const res=json(data,response.status);
-  if(response.ok&&['session','album-session'].includes(path)&&method==='POST'){res.headers.append('Set-Cookie',setCookie(req,'w_preview',''));res.headers.append('Set-Cookie',setCookie(req,path==='session'?'w_invite':'w_album',String(body.token||'')));if(path==='album-session'&&!cookie(req,'w_uploader'))res.headers.append('Set-Cookie',setCookie(req,'w_uploader',randomToken()));}
+  if(response.ok&&!cookie(req,'w_uploader'))res.headers.append('Set-Cookie',setCookie(req,'w_uploader',uploaderId));
+  if(response.ok&&['session','album-session'].includes(path)&&method==='POST'){res.headers.append('Set-Cookie',setCookie(req,'w_preview',''));res.headers.append('Set-Cookie',setCookie(req,path==='session'?'w_invite':'w_album',String(body.token||'')));}
   return res;
  }catch{return json({error:'No se ha podido completar la operación. Inténtalo de nuevo.'},500);}
 }

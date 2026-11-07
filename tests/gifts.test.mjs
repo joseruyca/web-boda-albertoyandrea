@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {validIban,normalizeIban} from '../app/config.ts';
+test('El IBAN se normaliza y verifica con su checksum antes de activar los regalos',()=>{assert.equal(normalizeIban('es91 2100 0418 4502 0005 1332'),'ES9121000418450200051332');assert.equal(validIban('es91 2100 0418 4502 0005 1332'),true);for(const value of ['','ES0000000000000000000000','ES9121000418450200051333','un número cualquiera'])assert.equal(validIban(value),false);});
