@@ -1,3 +1,4 @@
+import {invitationBackup} from '../../../lib/backup.mjs';
 import { defaults } from '../../config';
 import { previewResponse } from '../../../lib/preview.mjs';
 import { adminSession, decryptToken, digest, encryptToken, equal, randomToken } from '../../../lib/security';
@@ -29,6 +30,7 @@ async function handle(req:Request):Promise<Response>{
   if(path==='admin/session'&&method==='DELETE'){const res=json({ok:true});res.headers.set('Set-Cookie',setCookie(req,'w_admin',''));return res;}
   if(path.startsWith('admin/')&&!organizer)return json({error:'Acceso reservado a los novios.'},403);
   if(['session','album-session'].includes(path)&&method==='DELETE'){const res=json({ok:true});res.headers.set('Set-Cookie',setCookie(req,path==='session'?'w_invite':'w_album',''));return res;}
+  if(path==='admin/restore'&&method==='POST'){const backup=invitationBackup(body);if(backup.invitations.length>300)return json({error:'Recupera un máximo de 300 invitaciones por tanda.'},400);body.items=backup.invitations.map((i:any)=>{const {token,...row}=i;return {...row,token_hash:digest(token),token_ciphertext:encryptToken(token)};});delete body.invitations;}
   if(path==='admin/invitations'&&method==='POST'){
    const rows=Array.isArray(body.items)?body.items:[body];if(rows.length>300)return json({error:'Importa un máximo de 300 invitaciones por tanda.'},400);
    body.bulk=Array.isArray(body.items);
@@ -38,9 +40,10 @@ async function handle(req:Request):Promise<Response>{
   const uploaderId=cookie(req,'w_uploader')||randomToken();
   const response=await fetch(process.env.WEDDING_API_URL,{
    method:'POST',cache:'no-store',headers:{'Content-Type':'application/json','X-Wedding-Backend':process.env.WEDDING_BACKEND_SECRET},
-   body:JSON.stringify({path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,download:url.searchParams.has('download')})
+   body:JSON.stringify({path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,networkKey:digest(process.env.WEDDING_BACKEND_SECRET+':'+(req.headers.get('x-forwarded-for')||'unknown').split(',')[0].trim()),thumbnail:url.searchParams.has('thumb'),download:url.searchParams.has('download')})
   });
   const data=await response.json();
+  if(response.ok&&path==='admin/export'&&Array.isArray(data.invitations)){data.invitations=data.invitations.map((i:any)=>{const {token_ciphertext,token_hash,...safe}=i;return {...safe,token:token_ciphertext?decryptToken(token_ciphertext):undefined};});}
   if(response.ok&&(path.startsWith('admin/invitations')||path==='admin/album-pass')){
    if(data.items)data.items=data.items.map((i:any)=>{const {token_ciphertext,...safe}=i;return {...safe,token:token_ciphertext?decryptToken(token_ciphertext):undefined};});
    if(data.token_ciphertext){data.token=decryptToken(data.token_ciphertext);delete data.token_ciphertext;}

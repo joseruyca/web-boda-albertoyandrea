@@ -34,7 +34,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Treinta pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
+Compilación de producción y TypeScript comprobados. Cuarenta y tres pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
 Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Las cuatro variables privadas del servidor están configuradas en producción en Vercel. La conexión pública completa se ha verificado el 7 de noviembre de 2026. Vercel publica automáticamente desde GitHub. La conexión de Vercel tiene acceso autorizado al equipo y el despliegue de producción usa Supabase real.
 
@@ -87,6 +87,20 @@ Proyecto `rxnzbrgkqmujpyvlvsum`, función `wedding-api`, tablas `invitations`, `
 
 La prueba real detectó que las subidas TUS con los tokens firmados de este proyecto eran rechazadas. El servidor entrega ahora una URL firmada de subida estándar y el cliente transfiere directamente el archivo con PUT, progreso y reintentos. Si la subida se interrumpe antes de completarse, se reenvía el archivo; no se afirma que continúe desde el último byte. Se mantiene compatibilidad con planes TUS de versiones anteriores.
 
-El asesor de seguridad devuelve solo tres avisos informativos de RLS sin políticas: son intencionados, ya que anon/authenticated no tienen acceso directo y la función aplica las autorizaciones. Referencia: https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy .
+El asesor de seguridad devuelve solo avisos informativos de RLS sin políticas: son intencionados, ya que anon/authenticated no tienen acceso directo y la función aplica las autorizaciones. Referencia: https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy .
 
 Producción: https://web-boda-albertoyandrea.vercel.app . Verificado: sesión del organizador, enlace personal, asistencia persistida, aislamiento de visitantes del álbum, CORS de subida directa, publicación y descarga exacta del original. Los archivos técnicos se retiraron y la invitación técnica quedó desactivada. La invitación real de Jose está creada, sin respuesta ni mesa asignada. Las variables privadas no se incluyen en GitHub.
+
+## Pulido visual y cuidado del álbum
+
+Monograma A&A vectorial en sello, cabecera, icono y tarjetas QR imprimibles. Estilos unificados en azul tinta, marfil y terracota. Acceso al contenido con teclado y explicación de los datos personales y del álbum compartido.
+
+El álbum muestra una cola por archivo: progreso, cancelación y reintento. Calcula SHA-256 para evitar repetir originales ya compartidos. Genera miniaturas WebP de hasta 960 px y 400 KB en el dispositivo, cuando el formato lo permite, sin alterar el original. Los vídeos sin miniatura no se descargan para pintar la cuadrícula. Si HEIC/MOV u otro original no se puede visualizar en el navegador, se ofrece la descarga. No hay conversión universal de formatos ni se garantiza visualización en todos los dispositivos.
+
+La función limita las reservas a 60 por invitación/navegador cada diez minutos y 1800 por red en ese intervalo. La red se representa con un hash privado; no se guarda la dirección IP en la tabla. Los contadores se comprueban de forma atómica mediante una función SECURITY INVOKER solo accesible por service_role. No se afirma que esto sustituya un WAF ni que impida todo abuso.
+
+Los avisos se guardan de forma privada y los novios pueden revisar, resolver y ocultar/mostrar recuerdos sin borrar sus originales. Los enlaces firmados ya emitidos pueden seguir funcionando hasta que caduquen (15 minutos).
+
+El panel permite corregir nombres/contacto conservando el enlace, filtrar respuestas y exportar una copia JSON con enlaces privados, respuestas, ajustes e inventario. La recuperación añade invitaciones ausentes y conserva las existentes; restaurar los ajustes requiere una elección explícita. Los originales se descargan por separado en ZIP: el JSON no sustituye su copia ni configura copias automáticas del proveedor.
+
+Para proyectos existentes se aplica `supabase/upgrade-album-care.sql` antes de desplegar la función actualizada. Las pruebas reales han verificado miniaturas, duplicados, avisos, ocultación reversible, cancelación y exportación. Las pruebas con interfaces móviles se realizan en navegador de escritorio: queda pendiente probar físicamente en iPhone y Android con fotos/vídeos reales de los invitados.
