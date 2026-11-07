@@ -36,7 +36,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 Compilación de producción y TypeScript comprobados. Treinta pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
-Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Queda pendiente configurar las variables del servidor en Vercel por falta de autorización para el equipo. El proyecto de Vercel existe y el usuario gestiona su conexión con GitHub. La integración no permite consultar su configuración por falta de permisos del equipo.
+Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Las cuatro variables privadas del servidor están configuradas en producción en Vercel. La conexión pública completa se ha verificado el 7 de noviembre de 2026. Vercel publica automáticamente desde GitHub. La conexión de Vercel tiene acceso autorizado al equipo y el despliegue de producción usa Supabase real.
 
 Faltan lugar y dirección, horarios definitivos, fecha límite de confirmación, lista de invitados y futura fotografía de portada. Los horarios de partida están marcados como provisionales. No se ha inventado una fecha límite para confirmar.
 
@@ -79,7 +79,7 @@ La sección puede activarse desde los ajustes de los novios, con titular e IBAN.
 - El álbum incorpora dedicatorias opcionales, visor con flechas y gestos, y ZIP de originales (30 archivos / 100 MB por tanda) generado en el navegador, sin volver a comprimir las imágenes o vídeos.
 - Calendario de día completo para guardar la fecha, sin inventar horarios definitivos.
 
-Las nuevas tablas se crean con `supabase/schema.sql`. Si ya se inicializó una versión anterior, ejecutar `supabase/upgrade-experience.sql` antes de desplegar la Edge Function actualizada. Las pruebas de backend siguen usando una base simulada: la conexión desde el despliegue público de Vercel sigue pendiente de autorización para configurar las variables del servidor.
+Las nuevas tablas se crean con `supabase/schema.sql`. Si ya se inicializó una versión anterior, ejecutar `supabase/upgrade-experience.sql` antes de desplegar la Edge Function actualizada. Las pruebas de backend siguen usando una base simulada: se ha verificado también el recorrido completo desde el despliegue público de Vercel hasta Supabase.
 
 ## Conexión real con Supabase
 
@@ -88,3 +88,5 @@ Proyecto `rxnzbrgkqmujpyvlvsum`, función `wedding-api`, tablas `invitations`, `
 La prueba real detectó que las subidas TUS con los tokens firmados de este proyecto eran rechazadas. El servidor entrega ahora una URL firmada de subida estándar y el cliente transfiere directamente el archivo con PUT, progreso y reintentos. Si la subida se interrumpe antes de completarse, se reenvía el archivo; no se afirma que continúe desde el último byte. Se mantiene compatibilidad con planes TUS de versiones anteriores.
 
 El asesor de seguridad devuelve solo tres avisos informativos de RLS sin políticas: son intencionados, ya que anon/authenticated no tienen acceso directo y la función aplica las autorizaciones. Referencia: https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy .
+
+Producción: https://web-boda-albertoyandrea.vercel.app . Verificado: sesión del organizador, enlace personal, asistencia persistida, aislamiento de visitantes del álbum, CORS de subida directa, publicación y descarga exacta del original. Los archivos técnicos se retiraron y la invitación técnica quedó desactivada. La invitación real de Jose está creada, sin respuesta ni mesa asignada. Las variables privadas no se incluyen en GitHub.
