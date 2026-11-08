@@ -1,2 +1,2 @@
-export const monogramPath='M12 78 37 18 62 78M21 57h32M39 78 64 18 89 78M48 57h32';
-export default function Monogram({className=''}:{className?:string}){return <svg className={'aa-monogram '+className} viewBox="0 0 100 100" role="img" aria-label="Andrea y Alberto"><path d={monogramPath} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M24 86c18-10 33-10 52 0" fill="none" stroke="currentColor" strokeWidth="1"/><path d="M41 66c-9 8 9 15 16 3m-12-2c-8-8 6-10 4-3l-6 9m9-9-4 10" fill="none" stroke="currentColor" strokeWidth="1.4"/></svg>;}
+import {brandPath,brandViewBox} from '../lib/brand.mjs';
+export default function Monogram({className=''}:{className?:string}){return <svg className={'aa-monogram '+className} viewBox={brandViewBox} role="img" aria-label="Andrea y Alberto"><path d={brandPath} fill="currentColor"/></svg>;}

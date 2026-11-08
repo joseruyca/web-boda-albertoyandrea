@@ -575,3 +575,178 @@ body { background: var(--paper); }
 .delivery-shortcuts>button>span { font:400 26px var(--serif); min-width:25px; color:var(--accent); }
 .delivery-shortcuts>button>svg { margin-left:auto; }
 @media(max-width:720px){.upload-job .queue-remove{width:44px;height:44px;}}
+
+/* A&A — the couple's own seal and original drawing, carried through the stationery. */
+.aa-monogram { width:100px; height:auto; aspect-ratio:855.7 / 389.49; }
+.envelope-edition .brand .aa-monogram { width:68px; height:31px; margin:0; }
+.brand { gap:18px; }
+.privacy-footer>.aa-monogram { width:59px; height:27px; }
+.journey-footer>.aa-monogram { width:122px; height:56px; margin:0 auto 30px; }
+.access-emblem .aa-monogram { width:54px; height:25px; }
+.personal-pass-paper>.aa-monogram { width:82px; height:38px; }
+.entry-top { border-bottom:1px solid #233e6820; padding-bottom:18px; }
+.envelope-entry { background:radial-gradient(ellipse at 52% 42%,#faf7ef 0%,#ece5d7 85%); }
+.entry-title { margin-top:4svh; }
+.entry-title>span { font-size:31px; color:#a14439; }
+.entry-title h1 { font-size:clamp(36px,3.5vw,54px); line-height:1.08; }
+.envelope-perspective { width:min(670px,82vw); height:clamp(260px,32vw,390px); margin-top:65px; }
+.envelope-object { transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(-4deg); filter:drop-shadow(10px 25px 20px #5c4a3528); }
+.envelope-back { background:#e9dfcb; border-color:#d0c4af; border-radius:1px; }
+.envelope-front { background:linear-gradient(30deg,#eee5d3,#fff9ec); border-color:#d7cbb6; }
+.envelope-fold { background:linear-gradient(0deg,#f8f0df,#e9deca); }
+.envelope-flap { background:linear-gradient(180deg,#fcf5e5,#e5d8c0); }
+.envelope-lining { position:absolute; inset:2%; z-index:0; background:repeating-linear-gradient(45deg,#233e68 0px,#233e68 5px,#314a6d 5px,#314a6d 6px); clip-path:polygon(0 0,100% 0,100% 62%,50% 95%,0 62%); display:grid; place-items:center; }
+.envelope-lining>.aa-monogram { width:130px; color:#fffaf240; }
+.letter-peek { z-index:1; border:1px solid #233e681c; }
+.envelope-entry .wax-seal { left:50%; top:48%; width:128px; height:133px; padding:0; transform:translate(-50%,-50%) rotate(-7deg); background:none; border:0; border-radius:0; box-shadow:none; color:inherit; overflow:visible; }
+.wax-art { display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(1px 4px 3px #4b211532); }
+.envelope-entry .wax-seal:hover { transform:translate(-50%,-50%) rotate(-3deg) scale(1.04); }
+.envelope-entry .wax-seal:disabled { opacity:1; }
+.envelope-entry.is-opening .wax-seal { opacity:0; transform:translate(-50%,-50%) rotate(-8deg) scale(1.15); }
+.envelope-address { bottom:11%; gap:8px; }
+.envelope-address>strong { font-size:25px; }
+.envelope-postmark { right:6%; top:10%; width:103px; height:67px; border:1px solid #9b4b3c50; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; transform:rotate(10deg); color:#9f5548; }
+.envelope-postmark>.aa-monogram { width:50px; height:23px; }
+.envelope-postmark>span { font-size:6px; letter-spacing:1.2px; }
+.entry-edition { display:block; font-size:7px; letter-spacing:2.3px; color:#697282; margin-bottom:10px; }
+.entry-bottom>button { font-size:12px; }
+.entry-bottom>p { font-size:21px; margin-top:16px; }
+
+/* An editorial letter: uneven layers, a postal date and a quieter reading column. */
+.editorial-cover { isolation:isolate; padding-top:34px; padding-bottom:110px; column-gap:9%; }
+.cover-watermark { position:absolute; z-index:-1; top:6%; left:12%; width:88%; transform:rotate(-12deg); opacity:.035; pointer-events:none; }
+.cover-watermark>.aa-monogram { width:100%; height:auto; }
+.journey-meta { border-bottom:1px solid var(--rule); padding-bottom:20px; margin-bottom:65px; color:var(--muted); }
+.letter-edition { position:absolute; left:12px; top:220px; display:flex; align-items:center; gap:16px; writing-mode:vertical-rl; transform:rotate(180deg); color:var(--muted); }
+.letter-edition>span { font-size:7px; letter-spacing:2.5px; }
+.letter-edition>b { font:400 26px var(--serif); color:var(--accent); }
+.letter-edition>i { font:italic 17px var(--serif); }
+.editorial-heading>p { letter-spacing:4.5px; margin-bottom:30px; }
+.editorial-heading h1 { font-size:clamp(95px,10.1vw,145px); line-height:.82; }
+.editorial-heading h1 span:last-child { margin-top:18px; margin-left:28px; }
+.editorial-heading h1 i { top:24%; right:-1%; font-size:.43em; font-family:Parisienne,cursive; }
+.cover-date { border-top:0; border-left:1px solid #a1443960; padding:0 0 0 18px; margin-top:36px; }
+.cover-date>span:first-child { font-size:50px; color:#a14439; }
+.cover-date .cover-date-note { font-family:var(--serif); font-size:18px; font-style:italic; line-height:1.15; }
+.journey-portrait { margin-top:28px; transform:translateY(calc(var(--scroll-depth,0px) * -.025)); }
+.journey-portrait figure { padding:13px 13px 30px; transform:rotate(4deg); background:#fffcf4; box-shadow:0 20px 40px #233e6814,5px 5px 0 #e8dfcf; }
+.journey-portrait figure:before { content:''; position:absolute; width:72px; height:25px; top:-12px; left:42%; z-index:2; background:#d4c4a35c; transform:rotate(-8deg); border-left:1px dashed #b8a88d50; border-right:1px dashed #b8a88d50; }
+.journey-portrait img { height:510px; object-position:50% 35%; }
+.journey-portrait figcaption { text-align:left; font-size:22px; margin:18px 7px 0; color:#5c6b80; }
+.portrait-border { inset:3% -5% 4% 3%; transform:rotate(-5deg); border-color:#9c4b3b60; background:#e5e9e620; }
+.portrait-annotation { position:absolute; top:-30px; right:10%; font:25px Parisienne,cursive; color:#a14439; transform:rotate(3deg); }
+.portrait-date { top:auto; bottom:22%; right:-32px; width:108px; height:128px; border-radius:0; background:#a14439; padding:12px; flex-direction:column; gap:2px; transform:rotate(9deg); outline:1px solid #fff7e766; outline-offset:-8px; font:400 51px/.95 var(--serif); box-shadow:4px 5px 0 #233e680c; }
+.portrait-date:before,.portrait-date:after { content:''; position:absolute; top:0; bottom:0; width:7px; background:radial-gradient(circle at 0 6px,var(--paper) 3px,transparent 3.5px) 0 0 / 7px 12px repeat-y; }
+.portrait-date:before { left:0; }
+.portrait-date:after { right:0; transform:rotate(180deg); }
+.portrait-date>b { font-weight:400; }
+.portrait-date .date-postage-label { font:6px var(--sans); letter-spacing:1.4px; margin-bottom:7px; }
+.portrait-date small { font-size:7px; line-height:1.45; letter-spacing:1.4px; text-align:center; }
+.journey-intro { padding-top:34px; }
+.journey-intro h2 { font-size:46px; }
+.journey-intro .solid-btn { min-width:240px; justify-content:space-between; }
+.story-interlude { overflow:hidden; padding:105px 24px 80px; }
+.interlude-eyebrow { display:block; font-size:8px; letter-spacing:3px; color:#e0b7a3; margin:0 0 35px; }
+.interlude-orbit { top:12%; right:-12%; width:110%; font-size:inherit; transform:rotate(-15deg) translateY(calc(var(--scroll-depth,0px) * .045)); color:#ffffff07; }
+.interlude-orbit>.aa-monogram { width:100%; height:auto; }
+.story-interlude>p { font-size:clamp(43px,5.5vw,76px); line-height:1.08; }
+.story-interlude .botanical-divider { display:none; }
+.story-interlude .countdown { margin-top:40px; padding-top:25px; border-top:1px solid #ffffff2b; }
+
+/* Three inserts, like the contents of the envelope. */
+.journey-chapters { max-width:1190px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; padding:85px 5% 75px; }
+.journey-chapters>.journey-chapter,.journey-chapters>h2 { grid-column:1/-1; }
+.journey-chapters h2 { font-size:65px; line-height:.92; margin:0 0 28px; }
+.journey-chapters>button { min-width:0; min-height:260px; padding:28px 24px; background:#fffcf4; border:1px solid var(--rule); display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; gap:20px; position:relative; box-shadow:0 7px 18px #233e6806; transform:rotate(-2deg); transition:transform .3s,box-shadow .3s; }
+.journey-chapters>button:nth-of-type(2) { transform:rotate(2.5deg) translateY(16px); background:#e8ebea; }
+.journey-chapters>button:nth-of-type(3) { transform:rotate(-1deg) translateY(-6px); background:#eee1d9; }
+.journey-chapters>button:hover { transform:rotate(0deg) translateY(-7px); box-shadow:0 13px 25px #233e6812; }
+.journey-chapters>button>span:first-child { font:400 50px/.9 var(--serif); color:#a14439; }
+.journey-chapters>button>div { flex:0; }
+.journey-chapters strong { font-size:35px; line-height:.95; display:block; }
+.journey-chapters button p { font-size:12px; line-height:1.7; margin-top:11px; }
+.journey-chapters .chapter-open { display:flex; align-items:center; justify-content:space-between; width:100%; border-top:1px solid var(--rule); padding-top:14px; font:8px var(--sans); letter-spacing:1.8px; color:var(--ink); }
+.journey-chapters>button:nth-of-type(4) { grid-column:1/-1; min-height:0; transform:none; flex-direction:row; align-items:center; background:transparent; box-shadow:none; }
+.journey-chapters>button:nth-of-type(4) .chapter-open { width:auto; gap:20px; border:0; padding-top:0; }
+.journey-footer { padding:10px 20px 50px; }
+.journey-footer>p { font:italic 32px var(--serif); margin:20px 0; }
+.journey-footer>span { font-size:8px; letter-spacing:3px; color:var(--muted); }
+
+/* Subtle repeated identity, without adding decoration to forms. */
+.envelope-edition .gallery-heading { position:relative; }
+.envelope-edition .gallery-heading:after { content:''; position:absolute; width:60px; height:1px; background:#a14439; bottom:-10px; left:0; }
+.album-intro { padding-top:15px; }
+.rsvp-redesign .paper-top>svg { stroke-width:1.2; }
+.envelope-edition .scene-nav { border-radius:4px; box-shadow:0 8px 26px #233e6810; }
+.envelope-edition .scene-nav button { border-radius:2px; }
+@media(max-width:900px) and (min-width:721px){
+ .editorial-heading h1 { font-size:90px; }
+ .journey-chapters { gap:14px; }
+ .journey-chapters>button { padding:24px 19px; }
+ .journey-chapters strong { font-size:29px; }
+}
+@media(max-width:720px){
+ .envelope-edition .brand .aa-monogram { width:54px; height:25px; }
+ .brand { gap:12px; }
+ .entry-top { padding-bottom:15px; font-size:6px; letter-spacing:1px; }
+ .entry-title { margin-top:5svh; }
+ .entry-title>span { font-size:26px; }
+ .entry-title h1 { font-size:clamp(31px,8.3vw,39px); max-width:320px; }
+ .envelope-perspective { width:86vw; height:55vw; max-height:300px; margin-top:65px; margin-bottom:45px; }
+ .envelope-entry .wax-seal { width:101px; height:105px; top:48%; }
+ .envelope-address { bottom:9%; }
+ .envelope-address>strong { font-size:20px; }
+ .envelope-address>span { font-size:7px; }
+ .envelope-postmark { width:71px; height:49px; top:8%; right:5%; gap:4px; }
+ .envelope-postmark>.aa-monogram { width:37px; height:17px; }
+ .envelope-postmark>span { font-size:4px; letter-spacing:1px; }
+ .entry-edition { font-size:6px; margin-bottom:6px; }
+ .entry-bottom>p { font-size:19px; }
+ .editorial-cover { padding:24px 8% 65px; }
+ .cover-watermark { width:135%; top:100px; left:-20%; opacity:.04; }
+ .journey-meta { margin-bottom:34px; padding-bottom:15px; font-size:6px; letter-spacing:1px; }
+ .letter-edition { left:8px; top:230px; gap:12px; opacity:.6; }
+ .letter-edition>span { font-size:5px; }
+ .letter-edition>b { font-size:20px; }
+ .letter-edition>i { font-size:12px; }
+ .editorial-heading>p { font-size:8px; letter-spacing:3.8px; margin-bottom:23px; }
+ .editorial-heading h1 { font-size:clamp(76px,23vw,118px); line-height:.83; }
+ .editorial-heading h1 span:last-child { margin-left:22px; margin-top:12px; }
+ .editorial-heading h1 i { font-size:.45em; top:29%; right:-10px; }
+ .cover-date { margin-top:27px; padding-left:13px; gap:10px; }
+ .cover-date>span:first-child { font-size:42px; }
+ .cover-date>div { font-size:23px; }
+ .cover-date .cover-date-note { font-size:17px; max-width:none; }
+ .journey-portrait { width:87%; margin:57px auto 0; }
+ .journey-portrait figure { padding:10px 10px 22px; transform:rotate(-4deg); box-shadow:0 15px 30px #233e6812,4px 4px 0 #e8dfcf; }
+ .journey-portrait img { height:clamp(280px,78vw,390px); }
+ .journey-portrait figure:before { width:56px; height:20px; top:-10px; }
+ .journey-portrait figcaption { font-size:19px; margin:15px 3px 0; }
+ .portrait-annotation { right:5%; top:-36px; font-size:23px; }
+ .portrait-date { width:82px; height:101px; right:-29px; bottom:20%; font-size:39px; padding:9px; outline-offset:-7px; }
+ .portrait-date .date-postage-label { font-size:5px; letter-spacing:1px; margin-bottom:5px; }
+ .portrait-date small { font-size:6px; line-height:1.5; letter-spacing:1px; }
+ .journey-intro { padding-top:48px; }
+ .journey-intro h2 { font-size:43px; }
+ .story-interlude { padding:70px 24px 55px; }
+ .interlude-eyebrow { font-size:6px; letter-spacing:2px; margin-bottom:25px; }
+ .story-interlude>p { font-size:41px; }
+ .interlude-orbit { top:30%; width:160%; right:-35%; }
+ .journey-chapters { grid-template-columns:1fr; gap:17px; padding:60px 9% 55px; }
+ .journey-chapters h2 { font-size:53px; margin:0 0 20px; }
+ .journey-chapters>button { min-height:215px; padding:24px; gap:20px; }
+ .journey-chapters>button:nth-of-type(2) { transform:rotate(2deg); }
+ .journey-chapters>button:nth-of-type(3) { transform:rotate(-1.5deg); }
+ .journey-chapters>button>span:first-child { font-size:43px; }
+ .journey-chapters strong { font-size:34px; }
+ .journey-chapters button p { font-size:12px; }
+ .journey-chapters>button:nth-of-type(4) { gap:15px; flex-wrap:wrap; }
+ .journey-chapters>button:nth-of-type(4)>div { flex:1; }
+ .journey-chapters>button:nth-of-type(4) .chapter-open { margin-left:auto; }
+ .journey-footer>.aa-monogram { width:105px; height:48px; margin-bottom:25px; }
+ .journey-footer { padding-bottom:30px; }
+ .envelope-edition .scene-nav { border-radius:4px; }
+ .envelope-edition .scene-nav button { border-radius:2px; }
+}
+@media(max-width:360px){.cover-date .cover-date-note{font-size:15px;max-width:11ch}.envelope-entry .wax-seal{width:91px;height:95px}.envelope-address>strong{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.journey-chapters>button,.journey-chapters>button:hover{transform:none!important;transition:none!important}.envelope-entry .wax-seal,.envelope-entry .wax-seal:hover{transform:translate(-50%,-50%)!important}.cover-watermark,.interlude-orbit{transform:none!important}}
