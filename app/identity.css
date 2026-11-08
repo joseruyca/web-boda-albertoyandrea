@@ -750,3 +750,6 @@ body { background: var(--paper); }
 }
 @media(max-width:360px){.cover-date .cover-date-note{font-size:15px;max-width:11ch}.envelope-entry .wax-seal{width:91px;height:95px}.envelope-address>strong{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.journey-chapters>button,.journey-chapters>button:hover{transform:none!important;transition:none!important}.envelope-entry .wax-seal,.envelope-entry .wax-seal:hover{transform:translate(-50%,-50%)!important}.cover-watermark,.interlude-orbit{transform:none!important}}
+.journey-chapters>button:nth-of-type(4)>div { flex:1; min-width:0; }
+.journey-chapters>button:nth-of-type(4) strong { font-size:31px; }
+@media(max-width:720px){.journey-chapters>button:nth-of-type(4) strong{font-size:28px}}
