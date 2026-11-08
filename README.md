@@ -4,7 +4,7 @@ Versión 3 del proyecto: Next.js para Vercel, Postgres y Storage privados en Sup
 
 ## Experiencia
 
-Invitación en marfil y burdeos, nombres caligráficos, ilustraciones vectoriales originales, cuenta atrás y fotografía auténtica. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación y la mesa se abren con la invitación personal. La galería admite fotos y vídeos con subida directa firmada, progreso y reintentos.
+Invitación en marfil, azul tinta y terracota, tipografía editorial, cuenta atrás y fotografía auténtica. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación se abre con la invitación personal. La galería admite fotos y vídeos con subida directa firmada, progreso y reintentos.
 
 ## Invitaciones sin crear cuentas
 
@@ -20,7 +20,7 @@ Ana y Luis;Ana García|Luis Pérez;+34612345678
 Familia López;María López|Pedro López|
 ```
 
-El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descargar los originales del álbum sin cuenta ni invitación. Cada archivo aparece al finalizar y validar la subida; los novios pueden retirarlo desde el panel. Los nombres indicados al subir no están verificados. El QR no permite confirmar asistencia, consultar mesas personales ni acceder al titular o al IBAN. Las reservas de subida se aíslan por invitación o por navegador, sin restringir la lectura de los archivos terminados.
+El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descargar los originales del álbum sin cuenta ni invitación. Cada archivo aparece al finalizar y validar la subida; los novios pueden retirarlo desde el panel. Los nombres indicados al subir no están verificados. El QR no permite confirmar asistencia, acceder al titular o al IBAN. Las reservas de subida se aíslan por invitación o por navegador, sin restringir la lectura de los archivos terminados.
 
 ## Backend
 
@@ -34,7 +34,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Cincuenta y seis pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, publicación de mesas, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
+Compilación de producción y TypeScript comprobados. Sesenta y cuatro pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, alimentación individual, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
 Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Las cuatro variables privadas del servidor están configuradas en producción en Vercel. La conexión pública completa se ha verificado el 7 de noviembre de 2026. Vercel publica automáticamente desde GitHub. La conexión de Vercel tiene acceso autorizado al equipo y el despliegue de producción usa Supabase real.
 
@@ -75,7 +75,6 @@ La sección puede activarse desde los ajustes de los novios, con titular e IBAN.
 - Portada en tres etapas: antes, durante y después. El modo automático sigue la fecha en Europe/Madrid; los novios también pueden elegir la etapa manualmente.
 - Historia editable, con hasta 12 fotografías y textos propios. Se pueden seleccionar fotos del álbum o usar una URL HTTPS/ruta local. No se publican historias vacías ni se han inventado anécdotas.
 - Información editable de autobuses, alojamiento, vestimenta, contacto y hasta 15 preguntas frecuentes.
-- La mesa aparece como una tarjeta personal y descubre el plano con la asignación destacada.
 - El álbum incorpora dedicatorias opcionales, visor con flechas y gestos, y ZIP de originales (30 archivos / 100 MB por tanda) generado en el navegador, sin volver a comprimir las imágenes o vídeos.
 - Calendario de día completo para guardar la fecha, sin inventar horarios definitivos.
 
@@ -89,7 +88,7 @@ La prueba real detectó que las subidas TUS con los tokens firmados de este proy
 
 El asesor de seguridad devuelve solo avisos informativos de RLS sin políticas: son intencionados, ya que anon/authenticated no tienen acceso directo y la función aplica las autorizaciones. Referencia: https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy .
 
-Producción: https://web-boda-albertoyandrea.vercel.app . Verificado: sesión del organizador, enlace personal, asistencia persistida, aislamiento de visitantes del álbum, CORS de subida directa, publicación y descarga exacta del original. Los archivos técnicos se retiraron y la invitación técnica quedó desactivada. La invitación real de Jose está creada, sin respuesta ni mesa asignada. Las variables privadas no se incluyen en GitHub.
+Producción: https://web-boda-albertoyandrea.vercel.app . Verificado: sesión del organizador, enlace personal, asistencia persistida, aislamiento de visitantes del álbum, CORS de subida directa, publicación y descarga exacta del original. Los archivos técnicos se retiraron y la invitación técnica quedó desactivada. La invitación real de Jose está creada, con su enlace personal. Las variables privadas no se incluyen en GitHub.
 
 ## Pulido visual y cuidado del álbum
 
@@ -107,12 +106,22 @@ Para proyectos existentes se aplica `supabase/upgrade-album-care.sql` antes de d
 
 ## Identidad y experiencia móvil
 
-La papelería comparte azul tinta, marfil y terracota en `app/identity.css`: portada editorial, sobre, confirmación, mesa y álbum. La fecha del encabezado se deriva de la configuración. El álbum se carga bajo demanda, cancela consultas obsoletas y ofrece reintento visible si falla la conexión. Las peticiones JSON tienen un tiempo máximo sin repetir automáticamente escrituras. La selección de descarga se limita a 30 archivos antes de preparar el ZIP. Si hay subidas pendientes, la navegación interna pide confirmar la salida y el navegador recibe el aviso de cierre; los sistemas móviles pueden omitir este último aviso. Mantener la página abierta hasta finalizar las subidas.
+La papelería comparte azul tinta, marfil y terracota en `app/identity.css`: portada editorial, sobre, confirmación y álbum. La fecha del encabezado se deriva de la configuración. El álbum se carga bajo demanda, cancela consultas obsoletas y ofrece reintento visible si falla la conexión. Las peticiones JSON tienen un tiempo máximo sin repetir automáticamente escrituras. La selección de descarga se limita a 30 archivos antes de preparar el ZIP. Si hay subidas pendientes, la navegación interna pide confirmar la salida y el navegador recibe el aviso de cierre; los sistemas móviles pueden omitir este último aviso. Mantener la página abierta hasta finalizar las subidas.
 
-Verificación: 56 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
+Verificación: 64 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
 
 ## Acceso sin escribir códigos
 
 La vía principal es el enlace personal enviado por WhatsApp: su credencial viaja en el fragmento, se valida en el servidor, pasa a una cookie HttpOnly y se retira de la barra de direcciones. Cada entrada desde un enlace personal vuelve a presentar el sobre. La recuperación permite pegar el enlace y deja el código como alternativa. No se busca a invitados por su nombre ni se expone la lista.
 
 El botón «Mi invitación» obtiene el pase de la sesión actual validando antes la invitación en el backend; solo devuelve su propia credencial y los nombres incluidos. Los pases revocados no se recuperan. El navegador puede guardar/compartir el enlace o mostrar su QR personal, distinto del QR común del álbum. El pase de prueba permanece separado. El mensaje de WhatsApp explica la apertura directa; copiar la invitación copia el mensaje con su enlace, sin enviarlo automáticamente.
+
+## Confirmación y organización (8 de noviembre de 2026)
+
+Se elimina la función de mesas de la navegación, invitación, mensajes, panel y configuración pública. Los campos históricos de base de datos permanecen inactivos para conservar las copias previas; ya no se permite asignar ni publicar mesas. No se solicita ninguna canción.
+
+La confirmación tiene tres pasos: asistencia explícita de cada persona, alimentación de los asistentes y revisión. `response.dietary` conserva, por índice del invitado, menú general/vegetariano/vegano/infantil, alergias, intolerancias y otras indicaciones. No se presupone asistencia. Las respuestas antiguas mantienen su texto conjunto, marcado para revisión, sin atribuirlo a un invitado. Las indicaciones de quienes no asisten se vacían al guardar. La validación se comparte entre cliente, Edge Function y restauración; no se requiere migración porque la respuesta es JSONB.
+
+El panel privado (`/#admin`) abre en Resumen: total de personas, sí/no/pendientes, avance de respuestas, envíos y tareas pendientes. Alimentación muestra solo asistentes confirmados, con filtros y búsqueda. El CSV de catering contiene nombres, menú e indicaciones; excluye enlaces, teléfono y mensajes personales. La exportación completa de invitados sigue siendo privada. La revocación y el cambio de nombres conservan las protecciones previas. El JSON de copia conserva las necesidades individuales.
+
+Se verificó contra producción el guardado de alimentación de una invitación técnica y su recuperación desde invitado, panel y copia privada. La invitación técnica quedó desactivada sin modificar la de Jose.

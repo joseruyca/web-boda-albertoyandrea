@@ -1,3 +1,4 @@
+import { normalizeRsvp } from './rsvp.mjs';
 import { createClient } from 'npm:@supabase/supabase-js@2.119.0';
 import { defaults, validIban, normalizeIban, safePhoto } from './config.ts';
 const BACKEND_HASH='2f045c4c0ef401ff495ca4f25e9e7f8c25ea60daa4e4daa585abd4297ca2a051';
@@ -23,8 +24,9 @@ Deno.serve(async(req:Request)=>{
   const albumAllowed=true; // The shared album is open to every visitor; invitations remain private.
   const uploadOwner=inv?'invite:'+inv.id:albumAllowed&&uploaderId?'album:'+await hash(uploaderId):organizer?'organizer':null;
   const limit=async(key:string,max:number,seconds:number)=>requireOK(await db.rpc('consume_wedding_limit',{p_key:key,p_limit:max,p_seconds:seconds}));
-  const safeInvite=(i:any)=>({id:i.id,label:i.label,guests:i.guests,response:i.response,tableNo:cfg.tablesPublished?i.table_no:null});
-  if(path==='config'&&method==='GET')return json(inv||organizer?cfg:{...cfg,giftHolder:'',giftIban:''});
+  const safeInvite=(i:any)=>({id:i.id,label:i.label,guests:i.guests,response:i.response?normalizeRsvp(i.response,i.guests.length):null});
+  const {tables:_tables,tablesPublished:_published,...siteConfig}=cfg;
+  if(path==='config'&&method==='GET')return json(inv||organizer?siteConfig:{...siteConfig,giftHolder:'',giftIban:''});
   if(path==='session'&&method==='POST'){
    const found=requireOK(await db.from('invitations').select('id,opened_at').eq('token_hash',await hash(text(b.token,100))).eq('revoked',false).maybeSingle());
    if(!found)return json({error:'Esta invitación no es válida. Pide a los novios tu enlace personal.'},401);
@@ -36,7 +38,7 @@ Deno.serve(async(req:Request)=>{
   if(path==='rsvp'&&method==='POST'){
    if(!inv)return json({error:'Abre tu invitación personal para confirmar.'},401);
    if(!Array.isArray(b.attending)||b.attending.length!==inv.guests.length||b.attending.some((v:unknown)=>typeof v!=='boolean'))return json({error:'Indica la asistencia de cada persona de tu invitación.'},400);
-   const response={attending:b.attending,allergies:text(b.allergies,1000),bus:b.attending.some(Boolean)&&b.bus===true,song:text(b.song,200),note:text(b.note,1000)};
+   let response;try{response=normalizeRsvp(b,inv.guests.length);}catch(error){return json({error:(error as Error).message},400);}
    requireOK(await db.from('invitations').update({response,updated_at:new Date().toISOString()}).eq('id',inv.id));return json({ok:true,response});
   }
   if(path==='media'&&method==='GET'){
@@ -93,8 +95,8 @@ Deno.serve(async(req:Request)=>{
    if(path==='admin/reports'&&method==='GET')return json({items:requireOK(await db.from('wedding_media_reports').select('id,media_id,reason,resolved,created_at').order('created_at',{ascending:false}).limit(500))});
    if(path.startsWith('admin/reports/')&&method==='PATCH'){requireOK(await db.from('wedding_media_reports').update({resolved:true}).eq('id',path.split('/')[2]));return json({ok:true});}
    if(path==='admin/export'&&method==='GET')return json({format:'andrea-alberto-backup',version:1,exportedAt:new Date().toISOString(),config:cfg,invitations:requireOK(await db.from('invitations').select('*').order('created_at').limit(5000)),media:requireOK(await db.from('wedding_media').select('*').eq('status','ready').limit(10000)),reports:requireOK(await db.from('wedding_media_reports').select('*').limit(5000))});
-   if(path==='admin/restore'&&method==='POST'){const items=Array.isArray(b.items)?b.items:[];if(!items.length||items.length>300)return json({error:'Copia no válida.'},400);const existing=requireOK(await db.from('invitations').select('id').in('id',items.map((i:any)=>i.id)));const ids=new Set(existing.map((i:any)=>i.id));const rows=items.filter((i:any)=>!ids.has(i.id)).map((i:any)=>({id:i.id,label:text(i.label,120),guests:i.guests,phone:text(i.phone,30),token_hash:i.token_hash,token_ciphertext:i.token_ciphertext,response:i.response?{attending:i.response.attending,allergies:text(i.response.allergies,1000),bus:i.response.bus===true,song:text(i.response.song,200),note:text(i.response.note,1000)}:null,revoked:i.revoked===true,table_no:cfg.tables.some((t:any)=>t.n===i.table_no)?i.table_no:null}));if(rows.length)requireOK(await db.from('invitations').insert(rows));return json({ok:true,restored:rows.length});}
-   if(path==='admin/invitations'&&method==='GET')return json({items:requireOK(await db.from('invitations').select('*').order('created_at',{ascending:false}).limit(2000))});
+   if(path==='admin/restore'&&method==='POST'){const items=Array.isArray(b.items)?b.items:[];if(!items.length||items.length>300)return json({error:'Copia no válida.'},400);const existing=requireOK(await db.from('invitations').select('id').in('id',items.map((i:any)=>i.id)));const ids=new Set(existing.map((i:any)=>i.id));const rows=items.filter((i:any)=>!ids.has(i.id)).map((i:any)=>({id:i.id,label:text(i.label,120),guests:i.guests,phone:text(i.phone,30),token_hash:i.token_hash,token_ciphertext:i.token_ciphertext,response:i.response?normalizeRsvp(i.response,i.guests.length):null,revoked:i.revoked===true,table_no:null}));if(rows.length)requireOK(await db.from('invitations').insert(rows));return json({ok:true,restored:rows.length});}
+   if(path==='admin/invitations'&&method==='GET')return json({items:requireOK(await db.from('invitations').select('*').order('created_at',{ascending:false}).limit(2000)).map((i:any)=>({...i,response:i.response?normalizeRsvp(i.response,i.guests.length):null}))});
    if(path==='admin/invitations'&&method==='POST'){
     const items=Array.isArray(b.items)?b.items:[];if(!items.length||items.length>300)return json({error:'Añade entre 1 y 300 invitaciones.'},400);
     const rows=items.map((i:any)=>{const guests=(Array.isArray(i.guests)?i.guests:[]).map((g:unknown)=>text(g,80)).filter(Boolean).slice(0,15);if(!guests.length||!/^\w{64}$/.test(i.token_hash)||!i.token_ciphertext)throw Error('Invitación no válida');return {label:text(i.label,120)||guests.join(' + '),guests,phone:text(i.phone,30).replace(/[^0-9+]/g,''),token_hash:i.token_hash,token_ciphertext:i.token_ciphertext};});
@@ -103,7 +105,7 @@ Deno.serve(async(req:Request)=>{
    if(path.startsWith('admin/invitations/')&&method==='PATCH'){
     const id=path.split('/')[2];const update:Record<string,unknown>={updated_at:new Date().toISOString()};
     if(b.rotate){if(!b.token_hash||!b.token_ciphertext)return json({error:'Falta el enlace nuevo.'},400);update.token_hash=b.token_hash;update.token_ciphertext=b.token_ciphertext;update.revoked=false;}
-    if('tableNo'in b){if(b.tableNo!==null&&!cfg.tables.some((t:any)=>t.n===Number(b.tableNo)))return json({error:'Elige una mesa del plano.'},400);update.table_no=b.tableNo===null?null:Number(b.tableNo);}
+    if('tableNo'in b)return json({error:'La asignación de mesas ya no forma parte de esta web.'},400);
     if('revoked'in b)update.revoked=!!b.revoked;
     if('sent'in b)update.sent_at=b.sent?new Date().toISOString():null;
     if('label'in b){if(!text(b.label,120))return json({error:'Añade un nombre a la invitación.'},400);update.label=text(b.label,120);}
@@ -113,9 +115,9 @@ Deno.serve(async(req:Request)=>{
    }
    if(path==='admin/config'&&method==='PUT'){
     if(!/^\d{4}-\d{2}-\d{2}$/.test(b.date)||(b.deadline&&!/^\d{4}-\d{2}-\d{2}$/.test(b.deadline)))return json({error:'Revisa las fechas.'},400);
-    if(!Array.isArray(b.tables)||!b.tables.length||b.tables.length>30||new Set(b.tables.map((t:any)=>Number(t.n))).size!==b.tables.length)return json({error:'El plano debe tener entre 1 y 30 mesas, sin números repetidos.'},400);
+
     if(b.giftEnabled===true&&(!text(b.giftHolder,120)||!validIban(text(b.giftIban,50))))return json({error:'Revisa el titular y el IBAN antes de activar los regalos.'},400);
-    const next={phase:['auto','before','during','after'].includes(b.phase)?b.phase:'auto',thankYou:text(b.thankYou,1000)||defaults.thankYou,story:(Array.isArray(b.story)?b.story:[]).slice(0,12).filter((m:any)=>safePhoto(text(m.photo,2000))).map((m:any)=>({photo:text(m.photo,2000),caption:text(m.caption,160),text:text(m.text,1000)})),practical:Object.fromEntries(['bus','accommodation','dressCode','contact'].map(k=>[k,text(b.practical?.[k],1000)])),faq:(Array.isArray(b.faq)?b.faq:[]).slice(0,15).map((f:any)=>({question:text(f.question,200),answer:text(f.answer,1000)})).filter((f:any)=>f.question&&f.answer),giftEnabled:b.giftEnabled===true,giftHolder:text(b.giftHolder,120),giftIban:normalizeIban(text(b.giftIban,50)),names:text(b.names,80),date:b.date,deadline:text(b.deadline,10),venue:text(b.venue,200),address:text(b.address,300),mapUrl:/^https:\/\//.test(b.mapUrl)?text(b.mapUrl,1000):'',tablesPublished:b.tablesPublished===true,scheduleConfirmed:b.scheduleConfirmed===true,example:b.example===true,timeline:(b.timeline||defaults.timeline).slice(0,8).map((t:any)=>({time:text(t.time,20),title:text(t.title,80),detail:text(t.detail,200)})),tables:b.tables.map((t:any)=>({n:Math.max(1,Math.min(99,Math.floor(Number(t.n)||1))),name:text(t.name,80),x:Math.max(8,Math.min(92,Number(t.x)||50)),y:Math.max(12,Math.min(88,Number(t.y)||50))}))};
+    const next={phase:['auto','before','during','after'].includes(b.phase)?b.phase:'auto',thankYou:text(b.thankYou,1000)||defaults.thankYou,story:(Array.isArray(b.story)?b.story:[]).slice(0,12).filter((m:any)=>safePhoto(text(m.photo,2000))).map((m:any)=>({photo:text(m.photo,2000),caption:text(m.caption,160),text:text(m.text,1000)})),practical:Object.fromEntries(['bus','accommodation','dressCode','contact'].map(k=>[k,text(b.practical?.[k],1000)])),faq:(Array.isArray(b.faq)?b.faq:[]).slice(0,15).map((f:any)=>({question:text(f.question,200),answer:text(f.answer,1000)})).filter((f:any)=>f.question&&f.answer),giftEnabled:b.giftEnabled===true,giftHolder:text(b.giftHolder,120),giftIban:normalizeIban(text(b.giftIban,50)),names:text(b.names,80),date:b.date,deadline:text(b.deadline,10),venue:text(b.venue,200),address:text(b.address,300),mapUrl:/^https:\/\//.test(b.mapUrl)?text(b.mapUrl,1000):'',tablesPublished:false,scheduleConfirmed:b.scheduleConfirmed===true,example:b.example===true,timeline:(b.timeline||defaults.timeline).slice(0,8).map((t:any)=>({time:text(t.time,20),title:text(t.title,80),detail:text(t.detail,200)})),tables:cfg.tables||defaults.tables};
     requireOK(await db.from('wedding_settings').upsert({key:'wedding',value:next}));return json({ok:true,config:next});
    }
    if(path==='admin/album-pass'&&method==='GET'){const row=await settings('album');return row?json({token_ciphertext:row.ciphertext}):json({error:'Todavía no se ha creado el QR del álbum.'},404);}
