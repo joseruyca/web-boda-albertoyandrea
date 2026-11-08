@@ -34,7 +34,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Sesenta y cinco pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, alimentación individual, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
+Compilación de producción y TypeScript comprobados. Setenta y tres pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, alimentación individual, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
 Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Las cuatro variables privadas del servidor están configuradas en producción en Vercel. La conexión pública completa se ha verificado el 7 de noviembre de 2026. Vercel publica automáticamente desde GitHub. La conexión de Vercel tiene acceso autorizado al equipo y el despliegue de producción usa Supabase real.
 
@@ -108,7 +108,7 @@ Para proyectos existentes se aplica `supabase/upgrade-album-care.sql` antes de d
 
 La papelería comparte azul tinta, marfil y terracota en `app/identity.css`: portada editorial, sobre, confirmación y álbum. La fecha del encabezado se deriva de la configuración. El álbum se carga bajo demanda, cancela consultas obsoletas y ofrece reintento visible si falla la conexión. Las peticiones JSON tienen un tiempo máximo sin repetir automáticamente escrituras. La selección de descarga se limita a 30 archivos antes de preparar el ZIP. Si hay subidas pendientes, la navegación interna pide confirmar la salida y el navegador recibe el aviso de cierre; los sistemas móviles pueden omitir este último aviso. Mantener la página abierta hasta finalizar las subidas.
 
-Verificación: 65 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
+Verificación: 73 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
 
 ## Acceso sin escribir códigos
 
@@ -125,3 +125,11 @@ La confirmación tiene tres pasos: asistencia explícita de cada persona, alimen
 El panel privado (`/#admin`) abre en Resumen: total de personas, sí/no/pendientes, avance de respuestas, envíos y tareas pendientes. Alimentación muestra solo asistentes confirmados, con filtros y búsqueda. El CSV de catering contiene nombres, menú e indicaciones; excluye enlaces, teléfono y mensajes personales. La exportación completa de invitados sigue siendo privada. La revocación y el cambio de nombres conservan las protecciones previas. El JSON de copia conserva las necesidades individuales.
 
 Se verificó contra producción el guardado de alimentación de una invitación técnica y su recuperación desde invitado, panel y copia privada. La invitación técnica quedó desactivada sin modificar la de Jose.
+
+## Seguimiento de invitaciones y cola de recuerdos
+
+Los filtros del panel distinguen pendientes de enviar (sin marca de envío, apertura ni respuesta), enviadas/abiertas sin respuesta y respondidas, además de los filtros anteriores. La ordenación por actualización toma la fecha más reciente de edición, creación, envío o apertura. La búsqueda por nombres ignora tildes. Los accesos del resumen llevan directamente a cada filtro.
+
+El recordatorio individual abre un borrador editable con el enlace de esa invitación. Se puede copiar o abrir en WhatsApp; nunca se envía ni marca como enviado automáticamente. El teléfono del borrador no modifica el contacto almacenado y requiere prefijo internacional. Si no se indica, WhatsApp permite elegir el contacto.
+
+La cola permite añadir más archivos durante la transferencia, conserva el orden y no espera al refresco del álbum para empezar el siguiente. Cada entrada muestra tamaño, formato y una miniatura local cuando el navegador admite su decodificación; las miniaturas se generan bajo demanda, con un máximo de dos trabajos simultáneos. Sus URL locales se liberan al quitar la entrada o salir. HEIC/HEIF y MOV siguen admitidos, aunque no siempre se pueden previsualizar. El MIME ausente se obtiene de extensiones admitidas; no se cambia un MIME explícito incompatible. Los archivos vacíos, formatos no admitidos y superiores a 50 MB tienen instrucciones específicas y no se reintentan hasta elegir una copia compatible. Quitar una entrada de la cola no borra el recuerdo del álbum.
