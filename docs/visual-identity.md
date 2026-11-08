@@ -2,7 +2,8 @@
 
 Actualización: 8 de noviembre de 2026. Estética de papelería artesanal: papel de algodón, fotografía monocroma con marco, lazo de lino, flores secas y enlaces manuscritos. La invitación, los detalles, la confirmación, el regalo opcional y el álbum comparten colores y controles.
 
-- Papel: `#f7f5ef`; tinta: `#565149`; acento: `#8b7660`; texto secundario: `#756f64`.
+- Papel: `#f7f5ef`; tinta: `#565149`; detalle cálido: `#8b7660`; texto secundario: `#686358`.
+- Verde oliva: `#465640`; oliva profundo: `#34432f`; salvia suave: `#e5e9de`. El oliva destaca acciones, estados elegidos, nombres y la tarjeta de cuenta atrás. El sello real conserva su rojo original.
 - Cormorant para titulares y textos de invitación, Parisienne para notas manuscritas, DM para controles y lectura funcional.
 - `app/natural.css` contiene la composición actual. Se carga después de los estilos estructurales y de los controles existentes.
 - La apertura conserva el sello real facilitado por Jose. El monograma usa la geometría del SVG original, con color adaptado mediante CSS.
@@ -43,3 +44,7 @@ Paralaje suave en foto, lazo y flores, con actualizaciones agrupadas en requestA
 ## Comprobación
 
 TypeScript, 73 pruebas existentes y compilación de producción correctos. Revisión del despliegue real en escritorio y viewport móvil de 390 × 844: sobre, portada, detalles, confirmación, álbum y diálogos de compartir/subir. Sin cambios en respuestas existentes. No se ha vuelto a subir un archivo real en esta pasada visual. La revisión en dispositivos físicos sigue pendiente.
+
+## Contraste y legibilidad
+
+Segunda pasada: oliva profundo en acciones y selección, tarjeta de fecha en verde con texto claro, tipografía secundaria móvil ampliada, estados de foco y carga coherentes, tarjeta de confirmación y regalo con borde de tinta verde. La cuenta atrás incluye acceso a los detalles del día. No se modifican respuestas ni archivos compartidos.

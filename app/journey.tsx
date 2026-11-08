@@ -43,7 +43,7 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
    <Monogram/>
   </section>
   {config.story.length>0&&<div className="photo-narrative" aria-label="Nuestra historia">{config.story.map((moment,i)=><article key={i} className={'story-moment moment-'+i%3}><figure><img src={moment.photo} alt={moment.caption||'Un recuerdo de Andrea y Alberto'} loading="lazy"/><figcaption>{moment.caption}</figcaption></figure><div data-reveal><span>NUESTRA HISTORIA · {String(i+1).padStart(2,'0')}</span><p>{moment.text||moment.caption}</p></div></article>)}</div>}
-  {phase==='before'&&<section className="date-keepsake" data-reveal><span>CUENTA ATRÁS PARA VERNOS</span><p>{fullDate}</p><Countdown date={config.date}/></section>}
+  {phase==='before'&&<section className="date-keepsake" data-reveal><span>CUENTA ATRÁS PARA VERNOS</span><p>{fullDate}</p><Countdown date={config.date}/><button className="date-details-link" onClick={()=>onGo('day')}>Los detalles del día<ArrowUpRight size={16}/></button></section>}
   <footer className="natural-signature"><span>Con todo nuestro cariño,</span><p>{config.names.replace('+','&')}</p><small>{fullDate}</small></footer>
  </section>;
 }
