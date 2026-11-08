@@ -527,3 +527,6 @@ body { background: var(--paper); }
 }
 .rsvp-redesign .rsvp-fields { margin:0; padding:0; border:0; min-width:0; }
 .envelope-edition .rsvp-redesign .attendance-options input[type=radio] { display:inline-block; flex-shrink:0; width:17px; min-width:17px; height:17px; min-height:0; padding:0; margin:0; border:0; background:transparent; box-shadow:none; accent-color:var(--ink); }
+.envelope-edition .rsvp-redesign .attendance-person legend { font:400 28px/1.2 var(--serif); margin-bottom:13px; }
+.envelope-edition .rsvp-redesign .diet-person legend { font:400 30px/1.2 var(--serif); padding:0 8px; }
+.rsvp-step-title { scroll-margin-top:25px; }

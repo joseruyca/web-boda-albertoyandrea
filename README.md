@@ -34,7 +34,7 @@ El QR común apunta a `/#gallery`. Cualquier visitante puede ver, subir y descar
 
 ## Estado de esta entrega
 
-Compilación de producción y TypeScript comprobados. Sesenta y cuatro pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, alimentación individual, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
+Compilación de producción y TypeScript comprobados. Sesenta y cinco pruebas automáticas cubren importación, mensajes, cifrado, autenticación del backend, invitados autorizados, alimentación individual, álbum compartido, separación de datos privados y revocación. Las pruebas automáticas de backend usan una base simulada. Además, el 7 de noviembre de 2026 se verificaron contra Supabase real la apertura de una invitación, el guardado de asistencia, la subida firmada de una imagen, su aparición en el álbum y la descarga exacta del original. Los datos y el archivo de prueba se retiraron al terminar.
 
 Supabase tiene las tablas, el bucket privado y la Edge Function wedding-api desplegados. Las cuatro variables privadas del servidor están configuradas en producción en Vercel. La conexión pública completa se ha verificado el 7 de noviembre de 2026. Vercel publica automáticamente desde GitHub. La conexión de Vercel tiene acceso autorizado al equipo y el despliegue de producción usa Supabase real.
 
@@ -108,7 +108,7 @@ Para proyectos existentes se aplica `supabase/upgrade-album-care.sql` antes de d
 
 La papelería comparte azul tinta, marfil y terracota en `app/identity.css`: portada editorial, sobre, confirmación y álbum. La fecha del encabezado se deriva de la configuración. El álbum se carga bajo demanda, cancela consultas obsoletas y ofrece reintento visible si falla la conexión. Las peticiones JSON tienen un tiempo máximo sin repetir automáticamente escrituras. La selección de descarga se limita a 30 archivos antes de preparar el ZIP. Si hay subidas pendientes, la navegación interna pide confirmar la salida y el navegador recibe el aviso de cierre; los sistemas móviles pueden omitir este último aviso. Mantener la página abierta hasta finalizar las subidas.
 
-Verificación: 64 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
+Verificación: 65 pruebas, TypeScript y build de producción. La revisión en teléfonos físicos sigue pendiente.
 
 ## Acceso sin escribir códigos
 

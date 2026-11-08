@@ -26,7 +26,7 @@ async function handle(req:Request):Promise<Response>{
   const organizer=!!cookie(req,'w_admin')&&equal(cookie(req,'w_admin'),adminSession());
   if(path==='admin/session'&&method==='POST'){
    if(!process.env.ADMIN_KEY||!equal(String(body.key||''),process.env.ADMIN_KEY))return json({error:'La clave no es correcta.'},401);
-   const res=json({ok:true});res.headers.set('Set-Cookie',setCookie(req,'w_admin',adminSession()));return res;
+   const res=json({ok:true});res.headers.append('Set-Cookie',setCookie(req,'w_admin',adminSession()));res.headers.append('Set-Cookie',setCookie(req,'w_preview',''));return res;
   }
   if(path==='admin/session'&&method==='DELETE'){const res=json({ok:true});res.headers.set('Set-Cookie',setCookie(req,'w_admin',''));return res;}
   if(path.startsWith('admin/')&&!organizer)return json({error:'Acceso reservado a los novios.'},403);
