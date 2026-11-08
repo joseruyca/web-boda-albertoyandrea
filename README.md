@@ -4,7 +4,7 @@ Versión 3 del proyecto: Next.js para Vercel, Postgres y Storage privados en Sup
 
 ## Experiencia
 
-Invitación en marfil, azul tinta y terracota, tipografía editorial, cuenta atrás y fotografía auténtica. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación se abre con la invitación personal. La galería admite fotos y vídeos con subida directa firmada, progreso y reintentos.
+Invitación en papel natural, tinta topo, tipografía serif y enlaces manuscritos. Fotografía auténtica, lazo de lino y flores secas. Recursos y criterios de diseño en `docs/visual-identity.md`. Navegación por escenas, adaptación móvil y reducción de movimiento accesible. La confirmación se abre con la invitación personal. La galería admite fotos y vídeos con subida directa firmada, progreso y reintentos.
 
 ## Invitaciones sin crear cuentas
 
@@ -92,7 +92,7 @@ Producción: https://web-boda-albertoyandrea.vercel.app . Verificado: sesión de
 
 ## Pulido visual y cuidado del álbum
 
-Monograma A&A vectorial en sello, cabecera, icono y tarjetas QR imprimibles. Estilos unificados en azul tinta, marfil y terracota. Acceso al contenido con teclado y explicación de los datos personales y del álbum compartido.
+Monograma A&A vectorial en sello, cabecera, icono y tarjetas QR imprimibles. Estilos unificados en papel marfil, tinta topo y detalles naturales. Acceso al contenido con teclado y explicación de los datos personales y del álbum compartido.
 
 El álbum muestra una cola por archivo: progreso, cancelación y reintento. Calcula SHA-256 para evitar repetir originales ya compartidos. Genera miniaturas WebP de hasta 960 px y 400 KB en el dispositivo, cuando el formato lo permite, sin alterar el original. Los vídeos sin miniatura no se descargan para pintar la cuadrícula. Si HEIC/MOV u otro original no se puede visualizar en el navegador, se ofrece la descarga. No hay conversión universal de formatos ni se garantiza visualización en todos los dispositivos.
 

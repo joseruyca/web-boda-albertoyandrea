@@ -24,7 +24,7 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
    <div className="keepsake-stationery">
     <img className="keepsake-bow" src="/assets/linen-bow.webp" alt="" aria-hidden="true" width="640" height="960"/>
     <div className="keepsake-photo-block">
-     <figure className="keepsake-photo"><img src={config.story[0]?.photo||'/assets/andrea-alberto.png'} alt="Andrea y Alberto juntos" fetchPriority="high" width="621" height="878"/><figcaption>{config.story[0]?.caption||'Nosotros. Y todo lo que viene.'}</figcaption></figure>
+     <figure className="keepsake-photo"><img src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos" fetchPriority="high" width="621" height="878"/><figcaption>{config.story[0]?.caption||'Nosotros. Y todo lo que viene.'}</figcaption></figure>
      <div className="keepsake-label"><h1>{a}<span>&</span>{b}</h1><p>{fullDate}</p></div>
     </div>
     <div className="keepsake-links">
