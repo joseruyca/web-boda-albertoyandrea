@@ -1,7 +1,7 @@
 'use client';
 import {useId} from 'react';
 
-// Both faces use the same photograph. The flap is cut out of the shell so it can
+// The flap uses the same photograph. It is cut out of the shell so it can
 // rotate around its actual fold without leaving a second closed flap behind.
 const flap='M28 30 H1072 C1071 88 1055 133 1014 165 L582 520 Q554 540 525 520 L84 165 Q30 126 28 30 Z';
 export default function EnvelopeMaterial({guest}:{guest?:string}){
@@ -11,7 +11,6 @@ export default function EnvelopeMaterial({guest}:{guest?:string}){
   <svg className="envelope-shell" viewBox="0 0 1100 688" aria-hidden="true"><defs><mask id={id+'-body'} maskUnits="userSpaceOnUse" x="0" y="0" width="1100" height="688"><rect width="1100" height="688" fill="white"/><path d={flap} fill="black"/></mask></defs><image href="/assets/cotton-envelope-v2.webp" width="1100" height="688" mask={'url(#'+id+'-body)'}/></svg>
   <div className="envelope-moving-flap" aria-hidden="true">
    <svg className="envelope-flap-face" viewBox="0 0 1100 688"><defs><clipPath id={id+'-flap'}><path d={flap}/></clipPath></defs><image href="/assets/cotton-envelope-v2.webp" width="1100" height="688" clipPath={'url(#'+id+'-flap)'}/></svg>
-   <svg className="envelope-flap-reverse" viewBox="0 0 1100 688"><defs><pattern id={id+'-paper'} width="600" height="600" patternUnits="userSpaceOnUse"><image href="/assets/cotton-paper.webp" width="600" height="600"/></pattern></defs><path d={flap} fill={'url(#'+id+'-paper)'} stroke="#d4c4ac" strokeWidth="2"/></svg>
    <div className="envelope-address"><strong>{guest||'ti, con todo nuestro cariño'}</strong></div>
   </div>
  </>;
