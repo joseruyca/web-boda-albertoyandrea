@@ -23,7 +23,7 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
    <div className="keepsake-stationery">
     <div className="keepsake-label"><h1><span>{a}</span><span className="couple-name-line"><i>&</i>{b}</span></h1><p>{fullDate}</p></div>
     <div className="keepsake-photo-block">
-     <div className="photo-bundle"><figure className="keepsake-photo"><Portrait src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure><span className="bundle-thread" aria-hidden="true"/><img className="bundle-bow" src="/assets/linen-bow.webp" width="640" height="960" alt="" aria-hidden="true"/><img className="bundle-sprig" src="/assets/dried-chamomile.webp" width="500" height="750" alt="" aria-hidden="true"/></div>
+     <div className="photo-bundle"><figure className="keepsake-photo"><Portrait src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure><img className="keepsake-binding" src="/assets/chamomile-twine-v2.webp" width="1000" height="667" alt="" aria-hidden="true"/></div>
     </div>
     <div className="keepsake-links">
      <p className="personal-salutation">{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p>
