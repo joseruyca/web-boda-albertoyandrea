@@ -1,0 +1,118 @@
+/* One material language for the programme, response, album and personal gift. */
+.natural-accent{display:block;position:absolute;height:auto;pointer-events:none;user-select:none;filter:drop-shadow(1px 2px 1px #66513a1a)}
+.day-introduction{position:relative;min-height:190px}
+.day-flowers{width:150px;right:10px;top:100px;transform:rotate(-12deg)}
+.natural-edition .day-introduction>.outline-btn{position:relative;z-index:1;max-width:calc(100% - 140px)}
+.natural-edition .timeline{isolation:isolate;padding:18px 24px 20px;margin-inline:-24px}
+.natural-edition .timeline:before{content:'';position:absolute;inset:-10px -8px -15px;z-index:-1;background:url('/assets/deckled-cotton-v2.webp') center/100% 100% no-repeat;filter:brightness(1.04) drop-shadow(1px 5px 3px #66513a16);pointer-events:none;opacity:.8}
+.natural-edition .timeline-row{padding-block:25px}
+.natural-edition .timeline-row:last-of-type{border-bottom:0}
+.natural-edition .bus-note{margin-top:12px;border-top:1px solid var(--rule)}
+.natural-edition .schedule-note{font-size:10px;margin:0 0 8px}
+.natural-edition .rsvp-intro{position:relative;padding-top:6px}
+.rsvp-flowers{width:105px;right:-7px;top:-25px;transform:rotate(-14deg)}
+.natural-edition .rsvp-personal{display:block;padding-right:95px;min-height:40px}
+.natural-edition .rsvp-intro h1{margin-top:17px}
+.natural-edition .rsvp-paper,.natural-edition .gift-paper{position:relative;isolation:isolate;background:transparent;border:0;box-shadow:none;transform:none;padding:32px 30px}
+.natural-edition .rsvp-paper:before,.natural-edition .gift-paper:before{content:'';position:absolute;inset:-9px -14px -14px;z-index:-1;background:url('/assets/deckled-cotton-v2.webp') center/100% 100% no-repeat;filter:brightness(1.045) drop-shadow(2px 5px 4px #66513a1c);pointer-events:none}
+.natural-edition .confirmation>svg{color:var(--olive);stroke-width:1.2}
+.natural-edition .confirmation h2{color:var(--olive);font:400 38px/1.08 var(--serif)}
+.natural-edition .rsvp-review{border-color:var(--rule)}
+.natural-edition .rsvp-review article{border-color:var(--rule)}
+.natural-edition .rsvp-review strong{font:400 27px/1.1 var(--serif)}
+.natural-edition .rsvp-paper .solid-btn{font:400 22px/1.2 var(--serif);min-height:49px;gap:15px}
+.natural-edition .rsvp-steps{background:none;border:0;border-bottom:1px solid var(--rule);padding-bottom:20px}
+.natural-edition .attendance-person,.natural-edition .diet-person{background:transparent;border-color:var(--rule)}
+.natural-edition .attendance-options label{background:#fcf8ef90}
+.natural-edition .attendance-options label.chosen{background:#e5e7d5;color:var(--olive);border-color:var(--olive)}
+.natural-edition .gallery-heading{display:grid;grid-template-columns:minmax(0,1fr) 100px auto;gap:22px;align-items:center;position:relative}
+.natural-edition .gallery-heading h1{margin:0;grid-column:1}
+.album-flowers{position:relative;width:112px;max-width:none;grid-column:2;transform:rotate(-10deg);justify-self:center}
+.natural-edition .gallery-heading .upload-orbit{grid-column:3;min-width:265px}
+.natural-edition .gallery-heading .upload-orbit>span{font:400 22px/1.2 var(--serif)}
+.natural-edition .album-intro{margin-top:32px;border:0;padding-bottom:8px}
+.natural-edition .album-access-actions{gap:22px}
+.natural-edition .gallery-toolbar{border-top:0;margin-top:12px;padding-top:0}
+.natural-edition .filter-tabs{border-top:1px solid var(--rule)}
+.natural-edition .filter-tabs button{font-size:11px}
+.natural-edition .gallery-toolbar>p{font-size:10px}
+.natural-edition .photo-wall .memory{position:relative;isolation:isolate}
+.natural-edition .photo-wall .memory:before{content:'';position:absolute;inset:-8px -6px -7px;z-index:-1;background:url('/assets/deckled-cotton-v2.webp') center/100% 100% no-repeat;filter:brightness(1.04);pointer-events:none}
+.gift-introduction{position:relative;padding-bottom:100px}
+.gift-flowers{width:160px;left:0;bottom:0;transform:rotate(-12deg)}
+.site-menu{position:relative;isolation:isolate}
+@media(max-width:700px){
+ .day-introduction{min-height:175px}
+ .day-flowers{width:117px;top:81px;right:-3px}
+ .natural-edition .day-introduction>.outline-btn{max-width:calc(100% - 115px);font-size:11px;padding-inline:15px}
+ .natural-edition .day-layout{gap:24px}
+ .natural-edition .timeline{margin-inline:0;padding:22px 15px 16px}
+ .natural-edition .timeline:before{inset:-6px -14px -10px}
+ .natural-edition .timeline-row{grid-template-columns:48px minmax(0,1fr);gap:12px;padding-block:24px}
+ .natural-edition .timeline-row h2{font-size:28px}
+ .natural-edition .timeline-row p{font-size:11px}
+ .natural-edition .timeline-time{font-size:20px}
+ .natural-edition .bus-note{padding-block:20px 5px}
+ .rsvp-flowers{width:94px;right:-7px;top:-16px}
+ .natural-edition .rsvp-personal{font-size:21px;min-height:35px;padding-right:85px}
+ .natural-edition .rsvp-intro h1{font-size:48px;margin-top:13px;margin-bottom:12px}
+ .natural-edition .rsvp-layout{gap:25px}
+ .natural-edition .rsvp-paper{padding:27px 20px 28px;margin-inline:1px}
+ .natural-edition .rsvp-paper:before{inset:-8px -14px -12px}
+ .natural-edition .confirmation h2{font-size:33px}
+ .natural-edition .rsvp-paper .solid-btn{font-size:20px}
+ .natural-edition .gallery-heading{grid-template-columns:minmax(0,1fr) 80px;gap:28px 8px;margin-bottom:27px}
+ .natural-edition .gallery-heading h1{font-size:61px}
+ .album-flowers{width:99px;justify-self:end;margin-right:-4px}
+ .natural-edition .gallery-heading .upload-orbit{grid-column:1/-1;min-width:0;width:100%;min-height:50px}
+ .natural-edition .gallery-heading .upload-orbit>span{font-size:21px}
+ .natural-edition .album-intro{margin-top:0;padding-bottom:8px}
+ .natural-edition .photo-wall{gap:22px}
+ .natural-edition .memory-label>span{font-size:17px}
+ .natural-edition .gift-paper{padding:30px 20px}
+ .gift-introduction{padding-bottom:83px}
+ .gift-flowers{width:133px;left:auto;right:0}
+}
+@media(max-width:360px){
+ .day-flowers{width:96px;top:89px;right:-10px}
+ .natural-edition .day-introduction>.outline-btn{max-width:calc(100% - 90px);padding-inline:12px;font-size:10px}
+ .natural-edition .timeline-row{grid-template-columns:43px minmax(0,1fr);gap:9px}
+ .natural-edition .timeline-row h2{font-size:25px}
+ .natural-edition .timeline-time{font-size:19px}
+ .natural-edition .gallery-heading{grid-template-columns:minmax(0,1fr) 66px}
+ .natural-edition .gallery-heading h1{font-size:53px}
+ .album-flowers{width:85px}
+ .natural-edition .gallery-heading .upload-orbit>span{font-size:19px}
+ .natural-edition .rsvp-intro h1{font-size:43px}
+ .natural-edition .rsvp-paper .solid-btn{font-size:18px}
+}
+/* Break the seal, lift its real flap, then reveal the letter. No competing slides. */
+.envelope-interior{position:absolute;inset:4.5% 2.7% 4%;background:#e8ddca url('/assets/cotton-paper.webp') center/600px auto;border:1px solid #d5c5aa;border-radius:3px;z-index:0}
+.envelope-shell{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:4;overflow:visible;pointer-events:none}
+.envelope-moving-flap{position:absolute;inset:0;z-index:5;transform-origin:50% 4.36%;transform-style:preserve-3d;pointer-events:none}
+.envelope-flap-face,.envelope-flap-reverse{position:absolute;inset:0;width:100%;height:100%;overflow:visible;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:50% 4.36%}
+.envelope-flap-reverse{transform:rotateX(180deg)}
+.envelope-moving-flap .envelope-address{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.envelope-entry .letter-peek{inset:10% 9% 8%;z-index:2;opacity:0;transform:translateY(10%);transition:none;background:#fff9ed url('/assets/cotton-paper.webp') center/500px auto;color:var(--olive);border-color:#d8c9ae;box-shadow:0 3px 10px #66513a25}
+.envelope-entry .letter-peek>strong{font-size:42px}
+.envelope-entry .letter-peek>small{font-size:20px}
+.envelope-entry .wax-seal{z-index:7}
+.envelope-entry.is-opening{animation:envelope-veil 2.15s ease both;pointer-events:none}
+.envelope-entry.is-opening .envelope-perspective{animation:envelope-departure 2.15s cubic-bezier(.22,.61,.36,1) both}
+.envelope-entry.is-opening .envelope-object{transition:none}
+.envelope-entry.is-opening .envelope-moving-flap{animation:paper-flap-open 2.15s cubic-bezier(.35,0,.2,1) both}
+.envelope-entry.is-opening .envelope-address{animation:opening-label-away .2s ease both}
+.envelope-entry.is-opening .wax-seal{animation:seal-lift .35s ease both}
+.envelope-entry.is-opening .letter-peek{animation:paper-letter-rise 2.15s cubic-bezier(.22,.61,.36,1) both}
+.envelope-entry.is-opening .entry-title,.envelope-entry.is-opening .entry-bottom{animation:opening-label-away .3s ease both;transition:none}
+.envelope-entry.is-opening .envelope-flowers{animation:opening-label-away .55s .35s ease both}
+.wedding.is-unfolding{animation:invitation-reveal 2.15s ease both;transform:none;transform-origin:50% 50%}
+@keyframes paper-flap-open{0%,12%{transform:rotateX(0);z-index:5}40%{transform:rotateX(-178deg);z-index:5}41%,100%{transform:rotateX(-178deg);z-index:1}}
+@keyframes seal-lift{0%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}65%{opacity:1;transform:translate(-50%,-40%) rotate(8deg) scale(1.04)}100%{opacity:0;transform:translate(-50%,-20%) rotate(13deg) scale(1.06)}}
+@keyframes paper-letter-rise{0%,28%{opacity:0;transform:translateY(10%)}35%{opacity:1;transform:translateY(0)}68%{opacity:1;transform:translateY(-78%) rotate(1deg)}85%{opacity:1;transform:translateY(-86%) rotate(0)}100%{opacity:0;transform:translateY(-90%)}}
+@keyframes envelope-departure{0%,60%{transform:translateY(0);opacity:1}100%{transform:translateY(15vh);opacity:0}}
+@keyframes envelope-veil{0%,73%{opacity:1}100%{opacity:0}}
+@keyframes opening-label-away{to{opacity:0}}
+@keyframes invitation-reveal{0%,68%{opacity:0;transform:none}100%{opacity:1;transform:none}}
+@media(max-width:700px){.envelope-entry .letter-peek>strong{font-size:29px}.envelope-entry .letter-peek>small{font-size:15px}.envelope-entry .letter-peek{gap:12px}}
+@media(prefers-reduced-motion:reduce){.envelope-entry.is-opening,.envelope-entry.is-opening *,.wedding.is-unfolding{animation:none!important;transition:none!important}.envelope-entry.is-opening .envelope-moving-flap{transform:none}}
