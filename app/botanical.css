@@ -151,3 +151,7 @@ body{background:#e8e2d7}
 .venue-botanical{object-fit:fill}
 @media(max-width:700px){.venue-botanical{width:145px;height:500px;top:145px;right:-25px}}
 @media(max-width:360px){.venue-botanical{width:125px;right:-27px}}
+.natural-edition .invitation-cta{font:400 24px/1.15 var(--serif);letter-spacing:0}
+@media(max-width:700px){.natural-edition .invitation-cta{font-size:21px}}
+@media(max-width:360px){.natural-edition .invitation-cta{font-size:19px}}
+@media(max-width:360px){.keepsake-photo-block{max-width:205px}.keepsake-cover{padding-top:12px}.personal-salutation{margin-bottom:12px}}
