@@ -120,3 +120,9 @@
 }
 @media(max-height:740px) and (max-width:700px){.envelope-entry .entry-title{margin-top:12px}.envelope-entry .entry-title h1{font-size:74px}.envelope-entry .envelope-perspective{margin-top:44px;margin-bottom:66px}.envelope-entry .entry-bottom{padding-bottom:3px}}
 @media(prefers-reduced-motion:reduce){.envelope-skin{transition:none}.natural-edition .photo-wall .memory{transform:none!important}}
+/* Final spacing follows the real asset dimensions, including their feathered edges. */
+.natural-edition .scene-nav{box-shadow:none;background:#f6f1e7f5}
+.natural-edition .invitation-cta{padding-block:11px;min-height:50px}
+.natural-edition .gallery-heading .upload-orbit>span{font:400 23px/1.2 var(--serif)}
+@media(max-width:700px){.keepsake-photo-block{max-width:245px}.keepsake-label{margin-bottom:27px}.venue-scene>.display-title{margin-right:-45px}.natural-edition .gallery-heading .upload-orbit>span{font-size:21px}}
+@media(max-width:360px){.keepsake-photo-block{max-width:200px}.keepsake-label{margin-bottom:22px}.personal-salutation{margin-bottom:12px}.natural-edition .gallery-heading .upload-orbit>span{font-size:19px}}
