@@ -3,10 +3,11 @@ import {useEffect,useState} from 'react';
 import {ArrowRight,ArrowUpRight} from 'lucide-react';
 import {weddingPhase,type WeddingConfig} from './config';
 import Monogram from './monogram';
+import Portrait from './portrait';
 type Destination='day'|'rsvp'|'gallery'|'gift';
 export function Countdown({date}:{date:string}) {
  const [now,setNow]=useState<number|null>(null);
- useEffect(()=>{setNow(Date.now());const timer=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(timer);},[]);
+ useEffect(()=>{let timer:ReturnType<typeof setInterval>|undefined;const update=()=>setNow(Date.now());const visibility=()=>{if(timer)clearInterval(timer);if(document.visibilityState!=='hidden'){update();timer=setInterval(update,1000);}};visibility();document.addEventListener('visibilitychange',visibility);return()=>{if(timer)clearInterval(timer);document.removeEventListener('visibilitychange',visibility);};},[]);
  const left=now===null?null:Math.max(0,Math.floor((new Date(date+'T00:00:00+02:00').getTime()-now)/1000));
  const values=left===null?['—','—','—','—']:[String(Math.floor(left/86400)),String(Math.floor(left/3600)%24).padStart(2,'0'),String(Math.floor(left/60)%60).padStart(2,'0'),String(left%60).padStart(2,'0')];
  return <div className="countdown" aria-label="Cuenta atrás para el día de la boda">{values.map((v,i)=><div key={i}><strong>{v}</strong><span>{['días','horas','minutos','segundos'][i]}</span></div>)}</div>;
@@ -24,7 +25,7 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
    <div className="keepsake-stationery">
     <img className="keepsake-bow" src="/assets/linen-bow.webp" alt="" aria-hidden="true" width="640" height="960"/>
     <div className="keepsake-photo-block">
-     <figure className="keepsake-photo"><img src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos" fetchPriority="high" width="621" height="878"/><figcaption>{config.story[0]?.caption||'Nosotros. Y todo lo que viene.'}</figcaption></figure>
+     <figure className="keepsake-photo"><Portrait src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos"/><figcaption>{config.story[0]?.caption||'Nosotros. Y todo lo que viene.'}</figcaption></figure>
      <div className="keepsake-label"><h1>{a}<span>&</span>{b}</h1><p>{fullDate}</p></div>
     </div>
     <div className="keepsake-links">

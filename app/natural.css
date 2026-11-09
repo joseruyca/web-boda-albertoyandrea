@@ -182,3 +182,49 @@ body{background:#e9e6df;color:var(--ink)}
  .natural-edition .rsvp-intro .hand-note{line-height:1.4}
 }
 @media(prefers-reduced-motion:reduce){.natural-edition button,.natural-edition a,.keepsake-links nav>button>svg{transition:none}.keepsake-links nav>button:hover>svg{transform:none}}
+
+/* A considered movement system: reveal only once, leave content readable by default. */
+@keyframes paper-reveal{from{opacity:.25;translate:0 18px}to{opacity:1;translate:0 0}}
+@keyframes photo-unfold{from{opacity:0;translate:0 20px;rotate:2deg}to{opacity:1;translate:0 0;rotate:0deg}}
+@keyframes ink-arrive{from{opacity:0;translate:0 9px}to{opacity:1;translate:0 0}}
+.natural-edition .scene{animation:ink-arrive .45s cubic-bezier(.2,.7,.25,1) both}
+.natural-edition [data-reveal].is-revealed{animation:paper-reveal .8s cubic-bezier(.2,.7,.25,1) both}
+.natural-edition:not(.invitation-concealed):not(.is-unfolding) .keepsake-photo{animation:photo-unfold .95s cubic-bezier(.2,.7,.25,1) both}
+.natural-edition:not(.invitation-concealed):not(.is-unfolding) .keepsake-label{animation:ink-arrive .8s .12s both}
+.natural-edition:not(.invitation-concealed):not(.is-unfolding) .keepsake-links nav>button{animation:ink-arrive .6s both}
+.natural-edition .keepsake-links nav>button:nth-child(1){animation-delay:.12s!important}
+.natural-edition .keepsake-links nav>button:nth-child(2){animation-delay:.2s!important}
+.natural-edition .keepsake-links nav>button:nth-child(3){animation-delay:.28s!important}
+.natural-edition .keepsake-links nav>button:nth-child(4){animation-delay:.36s!important}
+.keepsake-photo{transition:transform .55s cubic-bezier(.2,.7,.25,1),box-shadow .55s}
+.keepsake-stationery{box-shadow:0 16px 42px #493f2d0e,2px 3px 2px #493f2d14}
+.keepsake-label{border-color:#46564024;background:linear-gradient(110deg,#e5e9de90,#ecebdf50)}
+.personal-salutation{padding-left:17px;border-left:1px solid #46564045}
+.keepsake-links nav>button{border-bottom:1px solid #46564012}
+.keepsake-links small{max-width:26ch}
+.letter-message{position:relative}
+.letter-message:before{content:'';display:block;width:38px;height:1px;background:var(--olive);margin:0 auto 30px}
+.natural-edition .day-scene .timeline-row{border-bottom:1px solid #46564030}
+.natural-edition .wedding-faq details{border-color:#46564030}
+.natural-edition .wedding-faq summary{padding-block:20px;line-height:1.45}
+.natural-edition .wedding-faq details[open]{background:#e5e9de35}
+.natural-edition .attendance-options label{transition:background-color .2s,border-color .2s,box-shadow .2s}
+.natural-edition .attendance-options label.chosen{box-shadow:inset 0 0 0 1px var(--olive)}
+.natural-edition .rsvp-step-title{scroll-margin-top:25px}
+.natural-edition .rsvp-steps{padding-bottom:20px}
+.natural-edition .photo-wall .memory{transition:box-shadow .35s}
+.natural-edition .modal[open]{animation:ink-arrive .25s both}
+.natural-edition .modal::backdrop{animation:ink-arrive .2s both}
+.portrait-unavailable{height:340px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;background:var(--sage);color:var(--olive)}
+.portrait-unavailable>.aa-monogram{width:110px;height:50px}.portrait-unavailable>span{font:italic 27px var(--serif)}
+.startup-notice{display:flex;gap:24px;align-items:center;max-width:1060px;margin:22px auto;padding:20px 26px;border:1px solid #8b766060;background:#f4ecdc;color:#565149}
+.startup-notice>div{flex:1}.startup-notice strong{font-size:13px}.startup-notice p{font-size:12px;line-height:1.6;margin:8px 0 0}.startup-notice button{flex-shrink:0}
+.network-status{position:fixed;z-index:150;top:10px;left:50%;translate:-50% 0;max-width:560px;width:calc(100% - 28px);display:flex;align-items:center;gap:12px;padding:15px 18px;background:#465640;color:#fcfaf3;border:1px solid #fcfaf355;box-shadow:0 5px 25px #34432f30;font:12px/1.6 var(--sans)}
+.network-status>svg{flex-shrink:0}.envelope-retry{max-width:420px;padding:15px 20px;background:#f4ecdc;border:1px solid #8b766060;color:#565149;margin-bottom:16px}
+.envelope-retry p{font:13px/1.6 var(--sans);margin:0 0 8px}.envelope-retry button{font:12px var(--sans);text-decoration:underline;text-underline-offset:4px;min-height:40px}
+.qr-failure{padding:15px;background:#f4ecdc;border:1px solid #8b766060}.qr-failure p{font-size:13px;line-height:1.6}.qr-content>img{aspect-ratio:1;object-fit:contain}
+.recovery-page{min-height:100svh;background:#f7f5ef url('/assets/cotton-paper.webp') center / 750px auto;color:#565149;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:40px 28px;text-align:center}
+.recovery-page>.aa-monogram{width:90px;height:42px;color:#465640;margin-bottom:28px}.recovery-page>span{font:9px var(--sans);letter-spacing:3px}.recovery-page h1{font:400 62px/1 var(--serif);margin:28px 0}.recovery-page h1 em{color:#465640}.recovery-page p{max-width:35ch;font:italic 24px/1.4 var(--serif);margin:0 0 30px}.recovery-page button{background:#465640;color:#fcfaf3;padding:16px 24px;min-height:48px;font-size:13px}.recovery-page>a{font-size:12px;text-decoration:underline;text-underline-offset:5px;margin-top:24px;min-height:44px;display:flex;align-items:center}
+@media(hover:hover) and (pointer:fine){.keepsake-photo:hover{transform:rotate(-1deg);box-shadow:0 15px 30px #403a2d20}.natural-edition .solid-btn:hover>svg{translate:2px 0}.natural-edition .solid-btn>svg{transition:translate .2s}}
+@media(max-width:700px){.personal-salutation{padding-left:13px;margin-left:-13px}.startup-notice{margin:15px 24px;padding:18px;gap:15px;align-items:stretch;flex-direction:column}.startup-notice button{align-self:flex-start}.portrait-unavailable{height:clamp(230px,68vw,330px)}.network-status{font-size:11px}.natural-edition .wedding-faq summary{font-size:17px}.natural-edition .modal-content{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){.natural-edition .scene,.natural-edition [data-reveal].is-revealed,.natural-edition .keepsake-photo,.natural-edition .keepsake-label,.natural-edition .keepsake-links nav>button,.natural-edition .modal[open],.natural-edition .modal::backdrop{animation:none!important;opacity:1}.keepsake-photo,.natural-edition .attendance-options label,.natural-edition .photo-wall .memory,.natural-edition .solid-btn>svg{transition:none!important}.keepsake-photo:hover{transform:rotate(-3deg)}.natural-edition .solid-btn:hover>svg{translate:none}}

@@ -48,3 +48,15 @@ TypeScript, 73 pruebas existentes y compilación de producción correctos. Revis
 ## Contraste y legibilidad
 
 Segunda pasada: oliva profundo en acciones y selección, tarjeta de fecha en verde con texto claro, tipografía secundaria móvil ampliada, estados de foco y carga coherentes, tarjeta de confirmación y regalo con borde de tinta verde. La cuenta atrás incluye acceso a los detalles del día. No se modifican respuestas ni archivos compartidos.
+
+## Movimiento y recuperación · 9 de noviembre de 2026
+
+- Entrada escalonada de fotografía, etiqueta y enlaces; aparición de los momentos del día al desplazarse. No se oculta información si el observador de visibilidad no está disponible.
+- La preferencia de movimiento reducido se escucha también si cambia con la página abierta. La cuenta atrás pausa su temporizador cuando la pestaña está oculta.
+- Si la foto configurada no carga, se intenta la foto provisional; si tampoco está disponible, se muestra el monograma.
+- Si una lectura de configuración falla después de autenticar un enlace personal, se conserva la sesión y se reintenta la lectura. Un fallo de conexión no se presenta como un enlace inválido. Los clics simultáneos de reintento comparten una sola operación.
+- Los QR tienen recuperación visible y protección frente a resultados de otra solicitud anterior; no se ofrece descargar un QR vacío.
+- Aviso del navegador cuando pierde la conexión y pantalla de recuperación para errores de renderizado. No se reenvían respuestas ni archivos automáticamente.
+- 80 pruebas automáticas y compilación local correctas. Flujo de GitHub Actions añadido para comprobar tipos, pruebas y compilación en cada push a main o pull request; es una comprobación independiente del despliegue automático de Vercel.
+
+Estas medidas reducen fallos y facilitan recuperarse; no garantizan disponibilidad de red o de proveedores externos ni sustituyen las pruebas en dispositivos físicos.
