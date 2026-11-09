@@ -123,3 +123,5 @@
 
 /* Flatten the paper layers to prevent coplanar SVGs intersecting on mobile GPUs. */
 .envelope-entry .envelope-object,.envelope-moving-flap{transform-style:flat}
+
+.envelope-open-pocket{inset:45% 2.7% 5%;width:auto;height:auto;z-index:6;background:#f2e8d7 url('/assets/cotton-paper.webp') center/500px auto;clip-path:polygon(0 0,50% 7%,100% 0,100% 100%,0 100%);box-shadow:0 -2px 3px #66513a25;border-bottom:1px solid #d0c0a7}
