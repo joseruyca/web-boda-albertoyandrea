@@ -135,3 +135,19 @@ body{background:#e8e2d7}
 @media(max-width:360px){.keepsake-cover{padding:18px 29px 35px}.keepsake-label h1{font-size:62px}.keepsake-label p{font-size:19px}.keepsake-photo-block{max-width:248px}.personal-salutation{font-size:23px}.invitation-cta{font-size:19px}.natural-edition .scene-nav .nav-short{font-size:12px}.natural-edition .venue-scene{padding-left:25px;padding-right:70px}.venue-scene>.display-title{font-size:57px}.venue-botanical{width:108px;right:-19px}.location-paper h2{font-size:32px}.envelope-entry .entry-title h1{font-size:75px}.envelope-entry .envelope-perspective{margin-top:50px}}
 @media(max-height:720px) and (max-width:700px){.envelope-entry .entry-title{margin-top:10px}.envelope-entry .entry-title h1{font-size:72px}.envelope-entry .envelope-perspective{margin-top:45px;margin-bottom:58px}.envelope-entry .entry-bottom{padding-bottom:0}}
 @media(prefers-reduced-motion:reduce){.keepsake-photo-block{transform:none}.natural-edition .solid-btn:hover{transform:none}.envelope-flowers{transition:none}}
+/* Keep the main action above the mobile navigation on typical phone screens. */
+@media(max-width:700px){
+ .keepsake-cover{padding-top:16px}
+ .keepsake-label{margin-bottom:22px}
+ .keepsake-label h1{font-size:66px}
+ .keepsake-label p{margin-top:15px}
+ .keepsake-photo-block{max-width:245px}
+ .photo-bundle{margin-bottom:28px}
+ .personal-salutation{margin-bottom:16px}
+ .invitation-cta{scroll-margin-block:90px}
+}
+@media(max-width:360px){.keepsake-label h1{font-size:60px}.keepsake-photo-block{max-width:220px}}
+.dinner-paper{background-image:linear-gradient(#d1d4bc88,#d1d4bc88),url('/assets/cotton-paper.webp')}
+.venue-botanical{object-fit:fill}
+@media(max-width:700px){.venue-botanical{width:145px;height:500px;top:145px;right:-25px}}
+@media(max-width:360px){.venue-botanical{width:125px;right:-27px}}
