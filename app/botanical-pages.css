@@ -106,7 +106,7 @@
 .envelope-entry.is-opening .entry-title,.envelope-entry.is-opening .entry-bottom{animation:opening-label-away .3s ease both;transition:none}
 .envelope-entry.is-opening .envelope-flowers{animation:opening-label-away .55s .35s ease both}
 .wedding.is-unfolding{animation:invitation-reveal 2.15s ease both;transform:none;transform-origin:50% 50%}
-@keyframes paper-flap-open{0%,12%{transform:rotateX(0);z-index:5}40%{transform:rotateX(-178deg);z-index:5}41%,100%{transform:rotateX(-178deg);z-index:1}}
+@keyframes paper-flap-open{0%,12%{transform:scaleY(1);z-index:5}30%{transform:scaleY(0);z-index:5}31%{transform:scaleY(-.04);z-index:1}44%,100%{transform:scaleY(-1);z-index:1}}
 @keyframes seal-lift{0%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}65%{opacity:1;transform:translate(-50%,-40%) rotate(8deg) scale(1.04)}100%{opacity:0;transform:translate(-50%,-20%) rotate(13deg) scale(1.06)}}
 @keyframes paper-letter-rise{0%,28%{opacity:0;transform:translateY(10%)}35%{opacity:1;transform:translateY(0)}68%{opacity:1;transform:translateY(-78%) rotate(1deg)}85%{opacity:1;transform:translateY(-86%) rotate(0)}100%{opacity:0;transform:translateY(-90%)}}
 @keyframes envelope-departure{0%,60%{transform:translateY(0);opacity:1}100%{transform:translateY(15vh);opacity:0}}
@@ -120,3 +120,6 @@
 .envelope-open-pocket{position:absolute;inset:0;width:100%;height:100%;z-index:4;opacity:0;pointer-events:none}
 .envelope-entry.is-opening .envelope-open-pocket{animation:pocket-front-reveal 2.15s ease both}
 @keyframes pocket-front-reveal{0%,16%{opacity:0}29%,100%{opacity:1}}
+
+/* Flatten the paper layers to prevent coplanar SVGs intersecting on mobile GPUs. */
+.envelope-entry .envelope-object,.envelope-moving-flap{transform-style:flat}
