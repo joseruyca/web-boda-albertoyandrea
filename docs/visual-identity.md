@@ -62,3 +62,9 @@ Segunda pasada: oliva profundo en acciones y selección, tarjeta de fecha en ver
 Estas medidas reducen fallos y facilitan recuperarse; no garantizan disponibilidad de red o de proveedores externos ni sustituyen las pruebas en dispositivos físicos.
 
 La primera ejecución de GitHub Actions terminó correctamente (run 42597162645). También se verificaron en producción la apertura de la invitación, el rechazo claro de un enlace inválido y la generación del QR común. La revisión a 320 px detectó que la última acción de la cabecera podía quedar fuera del área visible; se corrigieron sus márgenes y espacios para mantenerla accesible.
+
+## Una presentación completa · 9 de noviembre de 2026
+
+La primera pantalla espera a que termine la carga de la sesión y de la configuración. Mientras tanto solo muestra el monograma y un estado de carga; el sobre no se monta con un destinatario provisional. La primera aparición del sobre ya contiene el nombre definitivo. Si falla la conexión se ofrece reintentar en la pantalla de entrada, sin sustituir el nombre por una invitación genérica.
+
+Se retiran del recorrido público el lazo, el celo sobre la foto y las flores flotantes. Los nombres preceden a la fotografía con una jerarquía tipográfica mayor. El índice pasa a títulos serif en cursiva y filas uniformes. Se reduce la introducción de asistencia; cuando existe una respuesta, el título pasa a «Tu respuesta» y se da prioridad a su resumen. Las fotos del álbum se presentan alineadas. La barra inferior identifica la sección activa con un fondo salvia. El sello rojo original se conserva.
