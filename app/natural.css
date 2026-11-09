@@ -379,3 +379,79 @@ body{background:#e9e6df;color:var(--ink)}
 @media(max-width:360px){.keepsake-cover{padding-inline:31px}.keepsake-label h1{font-size:51px}.keepsake-label p{font-size:20px}.natural-edition .content-scene{padding-inline:25px}.natural-edition .rsvp-intro h1{font-size:41px}.natural-edition .gallery-heading h1{font-size:44px}.natural-edition .day-scene .display-title{font-size:55px}}
 @media(hover:hover) and (pointer:fine){.keepsake-photo:hover{transform:rotate(0deg)}}
 @media(prefers-reduced-motion:reduce){.start-progress:after{animation:none;transform:none;opacity:.5}.keepsake-photo:hover{transform:rotate(-1.5deg)}}
+
+/* Natural details belong to the photograph, with a thread tying the paper bundle. */
+.photo-bundle{position:relative;margin-bottom:78px;isolation:isolate}
+.photo-bundle>.keepsake-photo{position:relative;z-index:1}
+.bundle-thread{position:absolute;z-index:2;bottom:3px;left:-5px;right:-5px;height:2px;background:linear-gradient(#cfbb99,#b29c75);box-shadow:0 1px 1px #6b57312b;transform:rotate(-1.5deg);pointer-events:none}
+.bundle-bow{position:absolute;z-index:4;width:95px;height:auto;left:-25px;top:calc(100% - 56px);filter:drop-shadow(1px 2px 1px #6c5c3620);pointer-events:none}
+.bundle-sprig{position:absolute;z-index:3;right:-22px;bottom:-34px;width:85px;height:auto;transform:rotate(-13deg);filter:drop-shadow(1px 2px 1px #6c5c3615);pointer-events:none}
+.keepsake-cover{padding-bottom:38px}
+.keepsake-links{padding-top:0}
+.personal-salutation{font:italic 24px/1.25 var(--serif);margin-bottom:22px}
+.keepsake-links nav{border:0;gap:8px}
+.keepsake-links nav>button{padding:17px 0;border-bottom:1px solid #46564025;justify-content:space-between;min-height:60px;gap:20px}
+.keepsake-links strong{font:400 32px/1.2 Parisienne,cursive;color:var(--olive)}
+.keepsake-links nav>button>svg{width:16px;flex-shrink:0}
+.date-keepsake{padding:27px 35px 29px;max-width:610px;margin-top:0}
+.date-keepsake:after{display:none}
+.date-keepsake>span{font:400 27px/1.3 Parisienne,cursive;text-transform:none;letter-spacing:0;color:var(--on-olive);display:block;margin-bottom:24px}
+.date-keepsake .countdown{border:0;padding:0}
+.date-keepsake .countdown strong{font-size:42px}
+.natural-edition .privacy-footer{display:flex;flex-direction:column;gap:12px;padding-top:38px}
+.footer-botanical{display:block;width:48px;height:auto;transform:rotate(-13deg);pointer-events:none}
+.natural-edition .privacy-footer>.small-link{font-size:10px;color:var(--muted)}
+.natural-edition .view-invitation .privacy-footer{padding-top:35px}
+.natural-edition .day-layout{margin-top:10px}
+.natural-edition .day-scene .display-title{margin:0 0 27px}
+.natural-edition .timeline{margin-top:7px}
+.natural-edition .venue-note{margin-top:0}
+.natural-edition .venue-note h2{font-size:28px}
+.natural-edition .schedule-note{font-size:11px;letter-spacing:0;line-height:1.6;color:var(--muted)}
+.natural-edition .bus-note{padding-block:17px}
+.natural-edition .bus-note p{font-size:12px;line-height:1.65}
+.natural-edition .rsvp-layout{margin-top:0}
+.natural-edition .rsvp-intro h1{margin-top:15px}
+.natural-edition .rsvp-personal{font:italic 22px var(--serif);color:var(--muted)}
+.natural-edition .rsvp-paper{padding-top:23px}
+.natural-edition .confirmation{padding-top:5px}
+.natural-edition .confirmation h2{font-size:35px}
+.natural-edition .rsvp-review{margin-top:20px}
+.natural-edition .rsvp-step-title{font-size:33px}
+.natural-edition .rsvp-steps{margin-top:0}
+.natural-edition .gallery-heading{margin-top:0;align-items:center}
+.natural-edition .gallery-heading h1{font-size:73px}
+.natural-edition .album-intro{padding:0 0 19px;min-height:0;display:flex;justify-content:flex-start}
+.natural-edition .album-access-actions{justify-content:flex-start}
+.natural-edition .gallery-toolbar{margin-top:19px}
+.natural-edition .gift-layout{margin-top:5px}
+@media(max-width:700px){
+ .photo-bundle{margin-bottom:72px}
+ .bundle-bow{width:85px;left:-21px;top:calc(100% - 50px)}
+ .bundle-sprig{width:76px;right:-18px;bottom:-30px}
+ .bundle-thread{left:-2px;right:-2px}
+ .keepsake-cover{padding-bottom:28px}
+ .keepsake-links{margin-top:0;padding-top:0}
+ .personal-salutation{font-size:23px;margin:0 0 15px}
+ .keepsake-links nav{gap:3px}
+ .keepsake-links nav>button{padding:14px 0;min-height:56px}
+ .keepsake-links strong{font-size:30px}
+ .date-keepsake{margin-inline:27px;padding:25px 23px 26px}
+ .date-keepsake>span{font-size:25px;margin-bottom:22px}
+ .date-keepsake .countdown strong{font-size:34px}
+ .date-keepsake .countdown span{font-size:9px}
+ .natural-edition .content-scene{padding-top:29px}
+ .natural-edition .day-scene .display-title{font-size:57px;margin-bottom:28px}
+ .natural-edition .day-layout{margin-top:0;gap:25px}
+ .natural-edition .timeline{margin-top:0}
+ .natural-edition .rsvp-layout{margin-top:0;gap:15px}
+ .natural-edition .rsvp-personal{font-size:21px}
+ .natural-edition .rsvp-intro h1{margin:14px 0 4px;font-size:44px}
+ .natural-edition .rsvp-paper{padding:21px 19px 25px}
+ .natural-edition .confirmation h2{font-size:32px;margin-top:20px}
+ .natural-edition .gallery-heading h1{font-size:61px}
+ .natural-edition .gallery-heading{gap:24px;margin-bottom:22px}
+ .natural-edition .album-intro{padding-bottom:19px}
+ .natural-edition .privacy-footer{padding-top:30px}
+}
+@media(max-width:360px){.keepsake-links strong{font-size:28px}.bundle-bow{width:78px;left:-18px;top:calc(100% - 46px)}.bundle-sprig{width:66px;right:-15px;bottom:-27px}.natural-edition .gallery-heading h1{font-size:55px}.natural-edition .rsvp-intro h1{font-size:40px}}

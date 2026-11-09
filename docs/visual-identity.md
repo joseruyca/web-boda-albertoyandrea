@@ -68,3 +68,11 @@ La primera ejecución de GitHub Actions terminó correctamente (run 42597162645)
 La primera pantalla espera a que termine la carga de la sesión y de la configuración. Mientras tanto solo muestra el monograma y un estado de carga; el sobre no se monta con un destinatario provisional. La primera aparición del sobre ya contiene el nombre definitivo. Si falla la conexión se ofrece reintentar en la pantalla de entrada, sin sustituir el nombre por una invitación genérica.
 
 Se retiran del recorrido público el lazo, el celo sobre la foto y las flores flotantes. Los nombres preceden a la fotografía con una jerarquía tipográfica mayor. El índice pasa a títulos serif en cursiva y filas uniformes. Se reduce la introducción de asistencia; cuando existe una respuesta, el título pasa a «Tu respuesta» y se da prioridad a su resumen. Las fotos del álbum se presentan alineadas. La barra inferior identifica la sección activa con un fondo salvia. El sello rojo original se conserva.
+
+## Natural y breve · 9 de noviembre de 2026
+
+Se recuperan el lazo de lino y las flores secas existentes. El hilo cruza el borde inferior del marco y el lazo se coloca en su unión; la ramita queda junto a ese mismo borde. Ambos elementos pertenecen al conjunto de la fotografía y tienen espacio reservado antes del texto. Cada página termina con un pequeño detalle botánico.
+
+La portada conserva nombres, fecha, fotografía, destinatario y tres accesos. Se eliminan subtítulos del índice, párrafo de bienvenida, llamada duplicada a confirmar y fecha repetida en la cuenta atrás. Se simplifican también los textos introductorios y de confirmación del formulario, los del álbum y los del regalo. Las indicaciones necesarias de alimentación, visibilidad de archivos y privacidad siguen disponibles. La entrada personalizada completa se mantiene.
+
+La clave del organizador se cambia solo en la variable privada del servidor y en el archivo local ignorado; no se guarda en este documento ni en el código público.
