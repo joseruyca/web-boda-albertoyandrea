@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useState} from 'react';
-import {ArrowUpRight} from 'lucide-react';
+import {ArrowUpRight,ArrowRight} from 'lucide-react';
 import {weddingPhase,type WeddingConfig} from './config';
 import Portrait from './portrait';
 type Destination='venue'|'day'|'rsvp'|'gallery'|'gift';
@@ -17,18 +17,18 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
  const [a,b]=config.names.split('+').map(s=>s.trim());
  const date=new Date(config.date+'T12:00:00');
  const fullDate=date.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
- const links=[{title:'El gran día',view:'day'},{title:'Lugar y cena',view:'venue'},{title:'Confirmar asistencia',view:'rsvp'},{title:'Fotos y vídeos',view:'gallery'}] as const;
  return <section className={'natural-invitation phase-'+phase} aria-label="La invitación de Andrea y Alberto">
   <div className="keepsake-cover">
-   <p className="keepsake-eyebrow">{phase==='before'?'NOS CASAMOS':phase==='during'?'HOY ES NUESTRO DÍA':'GRACIAS POR ACOMPAÑARNOS'}</p>
+   {phase!=='before'&&<p className="keepsake-eyebrow">{phase==='during'?'HOY ES NUESTRO DÍA':'GRACIAS POR ACOMPAÑARNOS'}</p>}
    <div className="keepsake-stationery">
+    <div className="keepsake-label"><h1><span>{a}</span><span className="couple-name-line"><i>&</i>{b}</span></h1><p>{fullDate}</p></div>
     <div className="keepsake-photo-block">
-     <div className="keepsake-label"><h1><span>{a}</span><span className="couple-name-line"><i>&</i>{b}</span></h1><p>{fullDate}</p></div>
      <div className="photo-bundle"><figure className="keepsake-photo"><Portrait src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure><span className="bundle-thread" aria-hidden="true"/><img className="bundle-bow" src="/assets/linen-bow.webp" width="640" height="960" alt="" aria-hidden="true"/><img className="bundle-sprig" src="/assets/dried-chamomile.webp" width="500" height="750" alt="" aria-hidden="true"/></div>
     </div>
     <div className="keepsake-links">
-     <p className="personal-salutation">{guest?<>Para {guest}.</>:<>Para ti.</>}</p>
-     <nav aria-label="Dentro de tu invitación">{links.map(link=><button key={link.view} onClick={()=>onGo(link.view)}><strong>{link.title}</strong><ArrowUpRight size={17}/></button>)}{(config.giftEnabled||preview)&&<button onClick={()=>onGo('gift')}><strong>Un regalo</strong><ArrowUpRight size={17}/></button>}</nav>
+     <p className="personal-salutation">{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p>
+     <button className="solid-btn invitation-cta" onClick={()=>onGo(phase==='after'?'gallery':'rsvp')}>{phase==='after'?'Volver a los recuerdos':'Confirmar asistencia'}<ArrowRight size={18}/></button>
+     {(config.giftEnabled||preview)&&<button className="underline-link invitation-gift" onClick={()=>onGo('gift')}>Un regalo<ArrowUpRight size={14}/></button>}
     </div>
    </div>
   </div>
