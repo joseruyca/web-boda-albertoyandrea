@@ -28,3 +28,4 @@ test('Un corte de red o un error del servicio no se presenta como invitación in
  for(const status of [408,429,500,502,503])assert.equal(isRejectedInvitation({status}),false);
  for(const status of [400,401,403,404,410])assert.equal(isRejectedInvitation({status}),true);
 });
+test('Lugar y cena admite un enlace directo sin exigir invitación',()=>{assert.deepEqual(parseEntry('#venue'),{view:'venue',session:null,personal:false});});
