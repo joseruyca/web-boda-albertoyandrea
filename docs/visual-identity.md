@@ -60,3 +60,5 @@ Segunda pasada: oliva profundo en acciones y selección, tarjeta de fecha en ver
 - 80 pruebas automáticas y compilación local correctas. Flujo de GitHub Actions añadido para comprobar tipos, pruebas y compilación en cada push a main o pull request; es una comprobación independiente del despliegue automático de Vercel.
 
 Estas medidas reducen fallos y facilitan recuperarse; no garantizan disponibilidad de red o de proveedores externos ni sustituyen las pruebas en dispositivos físicos.
+
+La primera ejecución de GitHub Actions terminó correctamente (run 42597162645). También se verificaron en producción la apertura de la invitación, el rechazo claro de un enlace inválido y la generación del QR común. La revisión a 320 px detectó que la última acción de la cabecera podía quedar fuera del área visible; se corrigieron sus márgenes y espacios para mantenerla accesible.
