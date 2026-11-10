@@ -28,7 +28,7 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
     <div className="keepsake-links">
      <p className="personal-salutation">{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p>
      <button className="solid-btn invitation-cta" onClick={()=>onGo(phase==='after'?'gallery':'rsvp')}>{phase==='after'?'Volver a los recuerdos':'Confirmar asistencia'}<ArrowRight size={18}/></button>
-     {(config.giftEnabled||preview)&&<button className="underline-link invitation-gift" onClick={()=>onGo('gift')}>Un regalo<ArrowUpRight size={14}/></button>}
+     <button className="underline-link invitation-gift" onClick={()=>onGo('gift')}>Un detalle<ArrowUpRight size={14}/></button>
     </div>
    </div>
   </div>
