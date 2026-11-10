@@ -24,6 +24,16 @@ Deno.serve(async(req:Request)=>{
   const albumSettings=albumToken?await settings('album'):null;
   const albumAllowed=true; // The shared album is open to every visitor; invitations remain private.
   const uploadOwner=inv?'invite:'+inv.id:albumAllowed&&uploaderId?'album:'+await hash(uploaderId):organizer?'organizer':null;
+  const uploadPlan=async(row:any,recover=false)=>{
+   const leaf=row.object_key.split('/').pop(),folder=row.object_key.substring(0,row.object_key.lastIndexOf('/'));
+   const objects=recover?requireOK(await db.storage.from(BUCKET).list(folder,{search:leaf,limit:10})):[];
+   const stored=objects.find((object:any)=>object.name===leaf);
+   if(stored&&(Number(stored.metadata?.size)!==Number(row.size)||!MIME.has(stored.metadata?.mimetype||row.mime)))throw Error('El original guardado no coincide con su reserva.');
+   const signed=stored?null:requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(row.object_key,{upsert:false}));
+   const preview=objects.find((object:any)=>object.name===leaf+'.thumb.webp');let thumb:any=null;
+   if(row.thumbnail_key&&!preview){const result=await db.storage.from(BUCKET).createSignedUploadUrl(row.thumbnail_key,{upsert:false});if(!result.error)thumb=result.data;}
+   return {ok:true,id:row.id,stored:!!stored,thumbnailUploadUrl:thumb?.signedUrl,bucket:BUCKET,path:row.object_key,token:signed?.token,uploadUrl:signed?.signedUrl,transport:'signed-put'};
+  };
   const limit=async(key:string,max:number,seconds:number)=>requireOK(await db.rpc('consume_wedding_limit',{p_key:key,p_limit:max,p_seconds:seconds}));
   const safeInvite=(i:any)=>({id:i.id,label:i.label,guests:i.guests,response:i.response?normalizeRsvp(i.response,i.guests.length):null});
   const {tables:_tables,tablesPublished:_published,...siteConfig}=cfg;
@@ -53,25 +63,21 @@ Deno.serve(async(req:Request)=>{
    if(!MIME.has(mime))return json({error:'Formato no compatible. Usa una foto o un vídeo MP4, MOV o WebM.'},415);
    if(!Number.isSafeInteger(size)||size<1||size>MAX)return json({error:'El archivo supera los 50 MB permitidos.'},413);
    if(!author)return json({error:'Indica tu nombre para acompañar los recuerdos.'},400);
-   if(!await limit('upload:'+uploadOwner,60,600)||networkKey&&!await limit('network:'+networkKey,1800,600))return json({error:'Has compartido muchos archivos seguidos. Espera unos minutos y vuelve a intentarlo.'},429);
+   if(!await limit('upload:'+uploadOwner,60,600)||networkKey&&!await limit('network:'+networkKey,6000,600))return json({error:'Has compartido muchos archivos seguidos. Espera unos minutos y vuelve a intentarlo.'},429);
    const contentHash=/^[a-f0-9]{64}$/.test(b.contentHash)?b.contentHash:null;
-   if(contentHash){const prior=requireOK(await db.from('wedding_media').select('id,status,created_at').eq('content_hash',contentHash).in('status',['reserved','ready']).maybeSingle());if(prior?.status==='ready')return json({ok:true,duplicate:true,id:prior.id});if(prior){if(Date.parse(prior.created_at)<Date.now()-86400000)requireOK(await db.from('wedding_media').update({status:'failed'}).eq('id',prior.id).eq('status','reserved'));else return json({error:'Este archivo ya se está subiendo. Espera a que termine.'},409);}}
+   if(contentHash){const prior=requireOK(await db.from('wedding_media').select('*').eq('content_hash',contentHash).in('status',['reserved','ready']).maybeSingle());if(prior?.status==='ready')return json({ok:true,duplicate:true,id:prior.id});if(prior){if(prior.upload_owner===uploadOwner&&Number(prior.size)===size&&prior.mime===mime)return json(await uploadPlan(prior,true));if(Date.parse(prior.created_at)<Date.now()-86400000)requireOK(await db.from('wedding_media').update({status:'failed'}).eq('id',prior.id).eq('status','reserved'));else return json({error:'Este archivo ya se está subiendo. Espera a que termine.'},409);}}
    const quota=requireOK(await db.from('wedding_media').select('size').eq('upload_owner',uploadOwner).in('status',['reserved','ready']));
    if(quota.length>=200||quota.reduce((n:number,r:any)=>n+Number(r.size),0)+size>1024*1024*1024)return json({error:'Has alcanzado el límite de esta invitación. Contacta con los novios.'},429);
    const id=crypto.randomUUID();const key=`album/${inv?.id||'compartido'}/${id}`;
    const row={id,invitation_id:inv?.id||null,upload_owner:uploadOwner,object_key:key,name:name||'recuerdo',mime,size,author,caption:text(b.caption,300),content_hash:contentHash,thumbnail_key:key+'.thumb.webp'};
    const inserted=await db.from('wedding_media').insert(row);if(inserted.error?.code==='23505')return json({error:'Este archivo ya está compartido o se está subiendo.'},409);requireOK(inserted);
-   const signed=requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(key,{upsert:false}));
-   const thumb=requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(row.thumbnail_key,{upsert:false}));
-   return json({ok:true,id,thumbnailUploadUrl:thumb.signedUrl,bucket:BUCKET,path:key,token:signed.token,uploadUrl:signed.signedUrl,transport:'signed-put',endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
+   return json(await uploadPlan(row));
   }
   if(path==='media/resume'&&method==='POST'){
    if(!uploadOwner)return json({error:'Abre tu invitación para continuar.'},401);
    const row=requireOK(await db.from('wedding_media').select('*').eq('id',text(b.id,80)).eq('upload_owner',uploadOwner).eq('status','reserved').maybeSingle());
    if(!row)return json({error:'Esta subida ya no está disponible.'},404);
-   const signed=requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(row.object_key,{upsert:false}));
-   const thumb=row.thumbnail_key?requireOK(await db.storage.from(BUCKET).createSignedUploadUrl(row.thumbnail_key,{upsert:false})):null;
-   return json({ok:true,id:row.id,thumbnailUploadUrl:thumb?.signedUrl,bucket:BUCKET,path:row.object_key,token:signed.token,uploadUrl:signed.signedUrl,transport:'signed-put',endpoint:Deno.env.get('SUPABASE_URL')!.replace('.supabase.co','.storage.supabase.co')+'/storage/v1/upload/resumable'});
+   return json(await uploadPlan(row,true));
   }
   if(path==='media/complete'&&method==='POST'){
    if(!uploadOwner)return json({error:'Abre tu invitación para completar la subida.'},401);
@@ -95,6 +101,11 @@ Deno.serve(async(req:Request)=>{
    if(!organizer)return json({error:'Acceso reservado a los novios.'},403);
    if(path==='admin/reports'&&method==='GET')return json({items:requireOK(await db.from('wedding_media_reports').select('id,media_id,reason,resolved,created_at').order('created_at',{ascending:false}).limit(500))});
    if(path.startsWith('admin/reports/')&&method==='PATCH'){requireOK(await db.from('wedding_media_reports').update({resolved:true}).eq('id',path.split('/')[2]));return json({ok:true});}
+   if(path==='admin/readiness'&&method==='GET'){
+    const rows=requireOK(await db.from('wedding_media').select('id,name,mime,size,status,hidden,created_at,thumbnail_ready').in('status',['ready','reserved']).order('created_at',{ascending:true}).limit(10001));
+    const sampled=rows.slice(0,10000),ready=sampled.filter((r:any)=>r.status==='ready'),reserved=sampled.filter((r:any)=>r.status==='reserved');
+    return json({checkedAt:new Date().toISOString(),maxFileBytes:MAX,originalBytes:ready.reduce((n:number,r:any)=>n+Number(r.size||0),0),reservedBytes:reserved.reduce((n:number,r:any)=>n+Number(r.size||0),0),readyCount:ready.length,reservedCount:reserved.length,oldReservations:reserved.filter((r:any)=>Date.parse(r.created_at)<Date.now()-86400000).length,truncated:rows.length>10000,files:ready.map((r:any)=>({id:r.id,name:r.name,mime:r.mime,size:Number(r.size||0),hidden:!!r.hidden}))});
+   }
    if(path==='admin/export'&&method==='GET')return json({format:'andrea-alberto-backup',version:1,exportedAt:new Date().toISOString(),config:cfg,invitations:requireOK(await db.from('invitations').select('*').order('created_at').limit(5000)),media:requireOK(await db.from('wedding_media').select('*').eq('status','ready').limit(10000)),reports:requireOK(await db.from('wedding_media_reports').select('*').limit(5000))});
    if(path==='admin/restore'&&method==='POST'){const items=Array.isArray(b.items)?b.items:[];if(!items.length||items.length>300)return json({error:'Copia no válida.'},400);const existing=requireOK(await db.from('invitations').select('id').in('id',items.map((i:any)=>i.id)));const ids=new Set(existing.map((i:any)=>i.id));const rows=items.filter((i:any)=>!ids.has(i.id)).map((i:any)=>({id:i.id,label:text(i.label,120),guests:i.guests,phone:text(i.phone,30),token_hash:i.token_hash,token_ciphertext:i.token_ciphertext,response:i.response?normalizeRsvp(i.response,i.guests.length):null,revoked:i.revoked===true,table_no:null}));if(rows.length)requireOK(await db.from('invitations').insert(rows));return json({ok:true,restored:rows.length});}
    if(path==='admin/invitations'&&method==='GET')return json({items:requireOK(await db.from('invitations').select('*').order('created_at',{ascending:false}).limit(2000)).map((i:any)=>({...i,response:i.response?normalizeRsvp(i.response,i.guests.length):null}))});
