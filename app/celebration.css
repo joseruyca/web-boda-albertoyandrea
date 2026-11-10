@@ -93,3 +93,17 @@
 
 .natural-edition .special-viewer,.special-viewer .viewer-stage{overscroll-behavior:contain}
 .special-viewer .viewer-dedication p,.special-viewer .viewer-dedication small{color:#faf5e9}
+
+/* The pre-wedding is a separate gathering; its date stays pending until confirmed. */
+.prewedding-paper{position:relative;isolation:isolate;padding:34px 30px;margin-top:40px;color:var(--olive)}
+.prewedding-paper:before{content:'';position:absolute;inset:0;z-index:-1;background:url('/assets/deckled-cotton-v2.webp') center/100% 100% no-repeat;filter:drop-shadow(1px 4px 3px #66513a16);opacity:.85;pointer-events:none}
+.prewedding-paper>svg{display:block;margin-bottom:16px;stroke-width:1.2}
+.prewedding-paper h2{font:400 40px/1.1 var(--serif);margin:17px 0 22px}
+.prewedding-paper p{line-height:1.6;margin:8px 0}
+.prewedding-venue{font:400 25px var(--serif)}
+.prewedding-date{font:italic 21px var(--serif);color:var(--burgundy,#8e4147)}
+.prewedding-address,.venue-schedule{font-size:12px!important;line-height:1.7!important}
+.prewedding-paper .underline-link{margin-top:19px}
+.venue-cards>.prewedding-paper{margin-top:25px;grid-column:1/-1;max-width:100%}
+.day-scene>.prewedding-paper{max-width:650px;margin:45px 0 15px}
+@media(max-width:700px){.prewedding-paper{padding:28px 23px}.prewedding-paper h2{font-size:35px}.prewedding-venue{font-size:24px}.prewedding-date{font-size:20px}.natural-edition .timeline-time.time-window{font-size:16px;white-space:normal;line-height:1.5}.venue-cards>.prewedding-paper{margin-right:20px}}
