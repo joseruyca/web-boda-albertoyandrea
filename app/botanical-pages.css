@@ -108,20 +108,13 @@
 .wedding.is-unfolding{animation:invitation-reveal 2.15s ease both;transform:none;transform-origin:50% 50%}
 @keyframes paper-flap-open{0%,12%{transform:scaleY(1);z-index:5}30%{transform:scaleY(0);z-index:5}31%{transform:scaleY(-.04);z-index:1}44%,100%{transform:scaleY(-1);z-index:1}}
 @keyframes seal-lift{0%{opacity:1;transform:translate(-50%,-50%) rotate(0) scale(1)}65%{opacity:1;transform:translate(-50%,-40%) rotate(8deg) scale(1.04)}100%{opacity:0;transform:translate(-50%,-20%) rotate(13deg) scale(1.06)}}
-@keyframes paper-letter-rise{0%,28%{opacity:0;transform:translateY(10%)}35%{opacity:1;transform:translateY(0)}68%{opacity:1;transform:translateY(-78%) rotate(1deg)}85%{opacity:1;transform:translateY(-86%) rotate(0)}100%{opacity:0;transform:translateY(-90%)}}
-@keyframes envelope-departure{0%,60%{transform:translateY(0);opacity:1}100%{transform:translateY(15vh);opacity:0}}
-@keyframes envelope-veil{0%,73%{opacity:1}100%{opacity:0}}
+@keyframes paper-letter-rise{0%,28%{opacity:0;transform:translateY(10%)}35%{opacity:1;transform:translateY(0)}68%{opacity:1;transform:translateY(-78%) rotate(1deg)}85%,100%{opacity:1;transform:translateY(-86%) rotate(0)}}
+@keyframes envelope-departure{0%,68%{transform:translateY(0);opacity:1}100%{transform:translateY(10vh);opacity:1}}
+@keyframes envelope-veil{0%,78%{opacity:1}100%{opacity:0}}
 @keyframes opening-label-away{to{opacity:0}}
-@keyframes invitation-reveal{0%,68%{opacity:0;transform:none}100%{opacity:1;transform:none}}
+@keyframes invitation-reveal{0%,60%{opacity:0;transform:none}82%,100%{opacity:1;transform:none}}
 @media(max-width:700px){.envelope-entry .letter-peek>strong{font-size:29px}.envelope-entry .letter-peek>small{font-size:15px}.envelope-entry .letter-peek{gap:12px}}
 @media(prefers-reduced-motion:reduce){.envelope-entry.is-opening,.envelope-entry.is-opening *,.wedding.is-unfolding{animation:none!important;transition:none!important}.envelope-entry.is-opening .envelope-moving-flap{transform:none}}
 
-/* The pocket closes in front of the letter after the photographed flap lifts. */
-.envelope-open-pocket{position:absolute;inset:0;width:100%;height:100%;z-index:4;opacity:0;pointer-events:none}
-.envelope-entry.is-opening .envelope-open-pocket{animation:pocket-front-reveal 2.15s ease both}
-@keyframes pocket-front-reveal{0%,16%{opacity:0}29%,100%{opacity:1}}
-
 /* Flatten the paper layers to prevent coplanar SVGs intersecting on mobile GPUs. */
 .envelope-entry .envelope-object,.envelope-moving-flap{transform-style:flat}
-
-.envelope-open-pocket{inset:45% 2.7% 5%;width:auto;height:auto;z-index:6;background:#f2e8d7 url('/assets/cotton-paper.webp') center/500px auto;clip-path:polygon(0 0,50% 7%,100% 0,100% 100%,0 100%);box-shadow:0 -2px 3px #66513a25;border-bottom:1px solid #d0c0a7}

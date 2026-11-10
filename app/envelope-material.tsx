@@ -9,7 +9,6 @@ export default function EnvelopeMaterial({guest}:{guest?:string}){
  return <>
   <div className="envelope-interior" aria-hidden="true"/>
   <svg className="envelope-shell" viewBox="0 0 1100 688" aria-hidden="true"><defs><clipPath id={id+'-body'} clipPathUnits="userSpaceOnUse"><path d={'M0 0 H1100 V688 H0 Z '+flap} clipRule="evenodd" fillRule="evenodd"/></clipPath></defs><image href="/assets/cotton-envelope-v2.webp" width="1100" height="688" clipPath={'url(#'+id+'-body)'}/></svg>
-  <div className="envelope-open-pocket" aria-hidden="true"/>
   <div className="envelope-moving-flap" aria-hidden="true">
    <svg className="envelope-flap-face" viewBox="0 0 1100 688"><defs><clipPath id={id+'-flap'}><path d={flap}/></clipPath></defs><image href="/assets/cotton-envelope-v2.webp" width="1100" height="688" clipPath={'url(#'+id+'-flap)'}/></svg>
    <div className="envelope-address"><strong>{guest||'ti, con todo nuestro cariño'}</strong></div>
