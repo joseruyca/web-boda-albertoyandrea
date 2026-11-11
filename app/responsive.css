@@ -10,7 +10,7 @@
  .natural-edition .scene-nav .nav-full{font:12px/1.4 var(--sans)}
  .natural-edition .scene{padding-bottom:45px}
  .natural-edition .content-scene{width:100%;max-width:960px;padding:38px 40px 18px}
- .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-intro h1,.natural-edition .locked h1{font-size:52px;line-height:1.06;letter-spacing:-1.1px}
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-redesign .rsvp-intro .display-title,.natural-edition .locked h1{font-size:52px;line-height:1.06;letter-spacing:-1.1px}
  .natural-edition .stationery-heading{margin-bottom:30px}
  .natural-edition .stationery-heading>.display-title{margin-top:13px}
  .natural-edition .eyebrow{font-size:9px;letter-spacing:1.8px}
@@ -53,7 +53,7 @@
  /* The answer is a readable form, never an oversized poster. */
  .natural-edition .rsvp-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:45px;margin-top:0}
  .natural-edition .rsvp-intro{padding-top:20px}
- .natural-edition .rsvp-intro h1{max-width:10ch;margin:18px 0}
+ .natural-edition .rsvp-redesign .rsvp-intro .display-title{max-width:10ch;margin:18px 0}
  .natural-edition .rsvp-personal{font-size:20px}
  .natural-edition .rsvp-flowers{width:75px;height:155px}
  .natural-edition .rsvp-paper{padding:25px 28px}
@@ -92,7 +92,7 @@
  .envelope-entry .entry-title h1{font-size:76px;line-height:.9;letter-spacing:-2px}
  .envelope-entry .envelope-perspective{width:480px;height:276px;max-width:70vw;margin:40px auto 45px}
  .envelope-entry .envelope-flowers{width:155px;right:-4%;bottom:-50px}
- .envelope-entry .wax-seal{width:100px;height:105px;left:calc(50% - 50px);top:calc(51% - 52px)}
+ .envelope-entry .wax-seal{width:100px;height:105px;left:50%;top:71%}
  .envelope-entry .envelope-address>strong{font-size:28px}
  .envelope-entry .entry-bottom{margin-top:0;padding-bottom:0}
  .envelope-entry .entry-bottom>button{font-size:21px}
@@ -100,7 +100,7 @@
 /* Tablet and small laptop widths should not inherit the large desktop typography. */
 @media (min-width:701px) and (max-width:999px){
  .natural-edition .content-scene{max-width:850px;padding:32px 40px 25px}
- .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-intro h1{font-size:50px}
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-redesign .rsvp-intro .display-title{font-size:50px}
  .natural-edition .keepsake-cover{padding:28px 45px 30px}
  .natural-edition .keepsake-stationery{gap:20px 45px;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
  .natural-edition .keepsake-label h1{font-size:57px;letter-spacing:-1.5px}
