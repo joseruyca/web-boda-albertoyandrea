@@ -219,7 +219,7 @@
  .natural-edition .scene-nav .nav-full{font-size:11px}
 }
 /* Text inputs stay readable on phones; dialogs scroll independently on short screens. */
-.natural-edition .modal{max-height:calc(100svh - 32px);overflow-y:auto;overscroll-behavior:contain;max-width:calc(100vw - 28px)}
+.natural-edition .modal:not(.special-viewer){max-height:calc(100svh - 32px);overflow-y:auto;overscroll-behavior:contain;max-width:calc(100vw - 28px)}
 @media(max-width:700px){
  .natural-edition input:not([type=checkbox]):not([type=radio]),.natural-edition select,.natural-edition textarea{font-size:16px}
  .natural-edition .scene{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
