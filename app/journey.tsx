@@ -3,6 +3,7 @@ import {useEffect,useState} from 'react';
 import {ArrowUpRight,ArrowRight} from 'lucide-react';
 import {weddingPhase,type WeddingConfig} from './config';
 import Portrait from './portrait';
+import BotanicalArrangement from './botanical-arrangement';
 type Destination='venue'|'day'|'rsvp'|'gallery'|'gift';
 export function Countdown({date}:{date:string}) {
  const [now,setNow]=useState<number|null>(null);
@@ -34,7 +35,7 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
   </div>
   {phase==='after'&&<section className="letter-message" data-reveal><p>{config.thankYou}</p></section>}
   {config.story.length>0&&<div className="photo-narrative" aria-label="Nuestra historia">{config.story.map((moment,i)=><article key={i} className={'story-moment moment-'+i%3}><figure><img src={moment.photo} alt={moment.caption||'Un recuerdo de Andrea y Alberto'} loading="lazy"/><figcaption>{moment.caption}</figcaption></figure><div data-reveal><span>NUESTRA HISTORIA · {String(i+1).padStart(2,'0')}</span><p>{moment.text||moment.caption}</p></div></article>)}</div>}
-  {phase==='before'&&<section className="date-keepsake" data-reveal><span>Hasta el sí, quiero.</span><Countdown date={config.date}/></section>}
+  {phase==='before'&&<section className="date-keepsake" data-reveal><span>Hasta el sí, quiero.</span><Countdown date={config.date}/><BotanicalArrangement variant="signature" className="signature-flora"/></section>}
  </section>;
 }
 export function PracticalDetails({config}:{config:WeddingConfig}){

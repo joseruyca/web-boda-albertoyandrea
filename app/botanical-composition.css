@@ -1,0 +1,93 @@
+/* Pressed specimens, composed in pairs rather than repeated as corner stickers. */
+.botanical-arrangement{display:block;position:absolute;pointer-events:none;user-select:none;isolation:isolate;transform:none}
+.botanical-arrangement .arrangement-stem{object-fit:contain;transform-origin:50% 90%;filter:drop-shadow(1px 2px 1px #66513a14)}
+.arrangement-programme .stem-0{width:76px;height:115px;top:0;right:5px;transform:rotate(12deg)}
+.arrangement-programme .stem-1{width:72px;height:38px;bottom:4px;left:0;transform:rotate(-20deg)}
+.arrangement-album .stem-0{width:44px;height:95px;top:0;right:0;transform:rotate(8deg)}
+.arrangement-album .stem-1{width:43px;height:82px;top:18px;left:0;transform:rotate(-17deg)}
+.arrangement-reply .stem-0{width:48px;height:95px;right:8px;top:0;transform:rotate(13deg)}
+.arrangement-reply .stem-1{width:47px;height:38px;left:0;bottom:6px;transform:rotate(-24deg)}
+.arrangement-gift .stem-0{width:34px;height:120px;right:15px;top:0;transform:rotate(8deg)}
+.arrangement-gift .stem-1{width:65px;height:92px;left:0;top:17px;transform:rotate(-12deg)}
+.arrangement-signature .stem-0{width:77px;height:39px;left:0;bottom:0;transform:rotate(-12deg)}
+.arrangement-signature .stem-1{width:34px;height:62px;right:0;bottom:-4px;transform:rotate(19deg)}
+.natural-edition .day-composition .arrangement-programme{width:115px;height:120px;right:8px;top:9px;transform:none;opacity:1}
+.natural-edition .gallery-heading .album-flowers{position:relative;grid-column:2;width:70px;height:105px;transform:none}
+.natural-edition .rsvp-intro .rsvp-flowers{right:0;top:-15px;width:75px;height:95px;transform:none}
+.natural-edition .gift-specimen{width:90px;height:125px;right:14px;top:15px;transform:none;rotate:none}
+.natural-edition .signature-flora{position:relative;width:92px;height:59px;margin:21px auto 0}
+.natural-edition .venue-photo-huerta .venue-photo-flowers{width:65px;height:150px;right:-24px;bottom:-16px;top:auto;transform:rotate(13deg)}
+.natural-edition .venue-photo-huerta .venue-photo-leaf{width:45px;height:98px;left:-20px;bottom:-22px;top:auto;transform:rotate(-23deg)}
+.natural-edition .venue-photo-corral .venue-photo-flowers{width:65px;height:120px;right:-16px;top:-25px;bottom:auto;transform:rotate(15deg)}
+.natural-edition .venue-photo-corral .venue-photo-leaf{width:83px;height:43px;left:-19px;bottom:-15px;transform:rotate(-16deg)}
+.natural-edition .address-note{scroll-margin-top:25px}
+.natural-edition .address-note .underline-link{font:13px/1.5 var(--sans);gap:10px;min-height:44px}
+.natural-edition .address-note .eyebrow{line-height:1.8}
+.natural-edition .content-scene .solid-btn{transition:background .2s,border-color .2s,box-shadow .2s}
+.natural-edition .solid-btn>svg,.natural-edition .underline-link>svg{transition:translate .22s ease}
+.natural-edition .scene-nav button:after{transition:opacity .22s,scale .22s}
+.natural-edition .scene-nav button:not(.active):after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:1px;background:var(--burgundy);opacity:0;scale:.65 1}
+.natural-edition .scene-nav button.active:after{opacity:1;scale:1}
+@media (min-width:1000px){
+ .natural-edition.wedding{max-width:1080px}
+ .natural-edition .content-scene{max-width:900px;padding-inline:34px}
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-redesign .rsvp-intro .display-title,.natural-edition .day-composition h1{font-size:44px;line-height:1.1;letter-spacing:-.8px}
+ .natural-edition .keepsake-cover{max-width:770px;padding:34px 32px 22px}
+ .natural-edition .keepsake-stationery{grid-template-columns:250px minmax(0,1fr);gap:20px 55px}
+ .natural-edition .keepsake-label h1{font-size:54px;line-height:.97;letter-spacing:-1.4px}
+ .natural-edition .keepsake-label p{font-size:20px}
+ .natural-edition .keepsake-photo-block{max-width:235px}
+ .natural-edition .keepsake-photo>img{height:300px}
+ .natural-edition .keepsake-cover .personal-salutation{font-size:21px}
+ .natural-edition .invitation-cta{font:14px/1.5 var(--sans);min-height:46px}
+ .natural-edition .date-keepsake{padding-top:20px;margin-top:0}
+ .natural-edition .directions-scene{max-width:940px!important}
+ .natural-edition .directions-scene .address-note{column-gap:40px}
+ .natural-edition .directions-scene .address-note>h2{font-size:29px;line-height:1.2}
+ .natural-edition .directions-scene .address-note>p{font-size:18px}
+ .natural-edition .directions-scene .address-note>.venue-photo{max-width:335px}
+ .natural-edition .gallery-heading .upload-orbit>span{font:14px/1.5 var(--sans)}
+ .natural-edition .photo-wall{grid-template-columns:repeat(auto-fill,minmax(190px,220px))}
+ .natural-edition .gift-letter>.gift-opening{font-size:29px}
+}
+@media (max-width:700px){
+ .natural-edition .gallery-heading .album-flowers{width:52px;height:85px}
+ .arrangement-album .stem-0{width:34px;height:79px}
+ .arrangement-album .stem-1{width:32px;height:64px;top:18px}
+ .natural-edition .day-composition .arrangement-programme{width:83px;height:100px;right:-10px;top:20px}
+ .arrangement-programme .stem-0{width:61px;height:93px;right:0}
+ .arrangement-programme .stem-1{width:52px;height:30px;bottom:2px;left:-3px}
+ .natural-edition .rsvp-intro .rsvp-flowers{width:67px;height:90px;top:-13px}
+ .natural-edition .venue-photo-huerta .venue-photo-flowers{width:49px;height:119px;right:-18px;bottom:-14px}
+ .natural-edition .venue-photo-huerta .venue-photo-leaf{width:36px;height:78px;left:-17px;bottom:-18px}
+ .natural-edition .venue-photo-corral .venue-photo-flowers{width:51px;height:96px;right:-13px;top:-20px}
+ .natural-edition .venue-photo-corral .venue-photo-leaf{width:64px;height:35px;left:-15px;bottom:-13px}
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-redesign .rsvp-intro .display-title{font-size:48px;line-height:1.07}
+ .natural-edition .keepsake-label h1{font-size:62px}
+}
+@media(max-width:360px){.natural-edition .keepsake-label h1{font-size:55px}.natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-redesign .rsvp-intro .display-title{font-size:43px}}
+@media(max-height:500px) and (orientation:landscape){
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-redesign .rsvp-intro .display-title,.natural-edition .day-composition h1{font-size:34px}
+ .natural-edition .keepsake-label h1{font-size:40px}
+ .natural-edition .keepsake-photo-block{max-width:170px}
+ .natural-edition .keepsake-photo>img{height:210px}
+ .natural-edition .keepsake-cover{padding-top:26px}
+}
+@media(hover:hover) and (pointer:fine){
+ .natural-edition .solid-btn:hover{box-shadow:0 4px 12px #46503a16}
+ .natural-edition .solid-btn:hover>svg,.natural-edition .underline-link:hover>svg{translate:3px 0}
+ .natural-edition .address-note:hover .venue-photo-mount{transform:rotate(0deg)}
+}
+@media(prefers-reduced-motion:no-preference){
+ .natural-edition .venue-photo-mount{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+ .natural-edition .natural-accent{animation:specimen-breeze 9s ease-in-out infinite;transform-origin:50% 90%}
+ .natural-edition .botanical-olive,.natural-edition .botanical-oats{animation-duration:12s;animation-delay:-3s}
+ .natural-edition .botanical-daisy,.natural-edition .botanical-cosmos{animation-duration:10s;animation-delay:-5s}
+ .natural-edition .is-revealed[data-reveal]{animation:stationery-settle .65s ease-out both}
+ .natural-edition .scene{animation:page-soft-arrival .35s ease-out both}
+ .natural-edition button:active{scale:.985}
+}
+@keyframes specimen-breeze{0%,100%{rotate:-.6deg;translate:0 0}50%{rotate:.9deg;translate:0 -2px}}
+@keyframes stationery-settle{from{opacity:.65;translate:0 9px}to{opacity:1;translate:0 0}}
+@keyframes page-soft-arrival{from{opacity:.7;translate:0 5px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){.natural-edition .natural-accent,.natural-edition [data-reveal],.natural-edition .scene{animation:none!important;translate:none}.natural-edition .venue-photo-mount,.natural-edition .solid-btn>svg,.natural-edition .underline-link>svg{transition:none}}

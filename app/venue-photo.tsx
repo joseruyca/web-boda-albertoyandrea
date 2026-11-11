@@ -17,5 +17,5 @@ export default function VenuePhoto({name}:{name:string}){
  const key=normalized.includes('huerta del conde')?'huerta':normalized.includes('corral')&&normalized.includes('ciguen')?'corral':null;
  if(!key)return null;
  const photo=photographs[key];
- return <figure className={'venue-photo venue-photo-'+key}><div className="venue-photo-mount"><PhotographImage key={photo.src} photo={photo}/><NaturalAccent kind={key==='huerta'?'flowers':'cosmos'} className="venue-photo-flowers"/><NaturalAccent kind="olive" className="venue-photo-leaf"/></div></figure>;
+ return <figure className={'venue-photo venue-photo-'+key}><div className="venue-photo-mount"><PhotographImage key={photo.src} photo={photo}/><NaturalAccent kind={key==='huerta'?'leafySage':'cosmos'} className="venue-photo-flowers"/><NaturalAccent kind={key==='huerta'?'daisy':'olive'} className="venue-photo-leaf"/></div></figure>;
 }
