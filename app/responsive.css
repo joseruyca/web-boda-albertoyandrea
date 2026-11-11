@@ -1,0 +1,129 @@
+/* Desktop has its own stationery scale; the mobile composition stays independent. */
+@media (min-width:1000px){
+ .natural-edition.wedding{position:relative;width:calc(100% - 64px);max-width:1180px;margin:24px auto;min-height:calc(100svh - 48px);border:1px solid #77705a24;box-shadow:0 12px 45px #453e2b09}
+ .natural-edition .masthead{height:80px;max-width:none;margin:0 40px;padding:0;border-bottom:1px solid var(--rule)}
+ .natural-edition .masthead .brand .aa-monogram{width:44px;height:26px}
+ .natural-edition .scene-nav{position:absolute;top:18px;bottom:auto;left:50%;width:650px;max-width:calc(100% - 210px);transform:translateX(-50%);gap:4px;padding:0;background:transparent;border:0;backdrop-filter:none;z-index:6}
+ .natural-edition .scene-nav button{flex:1;flex-direction:row;justify-content:center;min-height:44px;padding:8px 10px;gap:8px;font:12px/1.4 var(--sans);white-space:nowrap;font-weight:400}
+ .natural-edition .scene-nav button.active:after{left:14px;right:14px;bottom:0}
+ .natural-edition .scene-nav button>svg{width:14px;height:14px}
+ .natural-edition .scene-nav .nav-full{font:12px/1.4 var(--sans)}
+ .natural-edition .scene{padding-bottom:45px}
+ .natural-edition .content-scene{width:100%;max-width:960px;padding:38px 40px 18px}
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-intro h1,.natural-edition .locked h1{font-size:52px;line-height:1.06;letter-spacing:-1.1px}
+ .natural-edition .stationery-heading{margin-bottom:30px}
+ .natural-edition .stationery-heading>.display-title{margin-top:13px}
+ .natural-edition .eyebrow{font-size:9px;letter-spacing:1.8px}
+ .natural-edition .underline-link{font-size:18px}
+ .natural-edition .content-scene:not(.admin-scene) .solid-btn{font-size:19px;min-height:46px;padding:12px 20px}
+ /* A photographic print and a short letter, at the scale of real stationery. */
+ .natural-edition .keepsake-cover{max-width:850px;padding:45px 38px 20px}
+ .natural-edition .keepsake-stationery{grid-template-columns:280px minmax(0,1fr);grid-template-rows:auto 1fr;grid-template-areas:'photo title' 'photo action';gap:22px 70px;padding:0;align-items:center}
+ .natural-edition .keepsake-label{margin:0;text-align:left;align-self:end}
+ .natural-edition .keepsake-label h1{font-size:64px;line-height:.94;letter-spacing:-1.8px}
+ .natural-edition .keepsake-label h1 .couple-name-line{gap:7px;margin-top:6px}
+ .natural-edition .keepsake-label p{font-size:21px;line-height:1.4;margin-top:19px}
+ .natural-edition .keepsake-photo-block{max-width:260px;transform:none}
+ .natural-edition .keepsake-photo>img{height:330px;object-fit:cover;object-position:50% 30%}
+ .natural-edition .photo-bundle{margin-bottom:28px}
+ .natural-edition .keepsake-binding{width:calc(100% + 40px);left:-16px;bottom:-39px}
+ .natural-edition .keepsake-cover .personal-salutation{font-size:22px;margin:0 0 20px}
+ .natural-edition .keepsake-links{padding:0;align-self:start}
+ .natural-edition .invitation-cta{font-size:19px;min-height:46px;width:100%;padding:12px 18px;gap:14px}
+ .natural-edition .invitation-gift{font-size:17px;margin:10px 0 0}
+ .natural-edition .date-keepsake{max-width:360px;padding:25px 20px 5px;margin:8px auto 0;border-top:1px solid var(--rule)}
+ .natural-edition .date-keepsake>span{font-size:21px;margin-bottom:17px}
+ .natural-edition .countdown{margin:0;padding:0;gap:18px}
+ .natural-edition .countdown strong{font-size:30px}
+ .natural-edition .countdown span{font-size:8px}
+ .natural-edition .story-moment{max-width:800px;margin-inline:auto;padding-block:45px}
+ .natural-edition .story-moment figure{max-width:280px}
+ .natural-edition .story-moment p{font-size:26px}
+ /* Venue text and complete photographs share a balanced horizontal layout. */
+ .natural-edition .directions-scene{max-width:1000px!important}
+ .natural-edition .directions-scene .display-title br{display:none}
+ .natural-edition .directions-scene .display-title em:before{content:' '}
+ .natural-edition .directions-scene .address-note{grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);column-gap:48px;margin-bottom:34px;padding-bottom:30px}
+ .natural-edition .directions-scene .address-note>h2{font-size:32px;max-width:20ch;margin:14px 0 17px}
+ .natural-edition .directions-scene .address-note>p{font-size:19px;line-height:1.5;max-width:28ch}
+ .natural-edition .directions-scene .address-note>.venue-photo{max-width:380px;margin:8px 12px 28px}
+ .natural-edition .venue-photo .venue-photo-flowers{width:105px;height:90px;right:-23px;bottom:-17px}
+ .natural-edition .venue-photo-corral .venue-photo-flowers{width:62px;height:114px;right:-10px}
+ .natural-edition .venue-photo .venue-photo-leaf{width:70px;height:40px;left:-22px}
+ /* The answer is a readable form, never an oversized poster. */
+ .natural-edition .rsvp-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:45px;margin-top:0}
+ .natural-edition .rsvp-intro{padding-top:20px}
+ .natural-edition .rsvp-intro h1{max-width:10ch;margin:18px 0}
+ .natural-edition .rsvp-personal{font-size:20px}
+ .natural-edition .rsvp-flowers{width:75px;height:155px}
+ .natural-edition .rsvp-paper{padding:25px 28px}
+ .natural-edition .confirmation h2{font-size:31px;margin-top:23px}
+ .natural-edition .rsvp-step-title{font-size:30px}
+ .natural-edition .rsvp-review strong{font-size:25px}
+ .natural-edition .rsvp-scene .solid-btn{font:13px/1.5 var(--sans)!important}
+ .natural-edition .locked{max-width:540px;margin:25px auto;padding-block:10px}
+ .natural-edition .locked>svg{width:30px;height:30px}
+ /* Album controls remain visible while the photographs keep a print-sized frame. */
+ .natural-edition .gallery-heading{grid-template-columns:minmax(0,1fr) 65px auto;gap:25px;margin:0 0 23px}
+ .natural-edition .album-flowers{width:62px;height:95px;object-fit:contain}
+ .natural-edition .gallery-heading .upload-orbit{width:auto;min-width:225px;min-height:46px;padding:12px 22px}
+ .natural-edition .gallery-heading .upload-orbit>span{font:17px/1.3 var(--serif)}
+ .natural-edition .album-access-actions{gap:25px;margin-bottom:23px}
+ .natural-edition .gallery-toolbar{margin:0 0 25px;padding-block:15px;gap:18px}
+ .natural-edition .photo-wall{grid-template-columns:repeat(auto-fill,minmax(200px,250px));justify-content:start;gap:28px;align-items:start}
+ .natural-edition .photo-wall .memory{width:100%;margin-top:0;padding:8px 8px 13px}
+ .natural-edition .photo-wall .memory:nth-child(even){margin-top:14px}
+ .natural-edition .memory-label>span{font-size:18px}
+ .natural-edition .memory-image,.natural-edition .video-tile{aspect-ratio:4/5}
+ .natural-edition .memory-image img{width:100%;height:100%;object-fit:cover}
+ /* An optional personal note, presented beside its title. */
+ .natural-edition .editorial-gift{display:grid;grid-template-columns:220px minmax(0,1fr);gap:50px;max-width:900px!important;padding-top:50px}
+ .natural-edition .editorial-gift .stationery-heading{padding-top:22px}
+ .natural-edition .gift-stationery{padding:32px 30px;margin:0;max-width:450px}
+ .natural-edition .gift-letter{padding-top:45px}
+ .natural-edition .gift-letter>.gift-opening{font-size:31px}
+ .natural-edition .gift-letter>p{font-size:21px;line-height:1.5}
+ .natural-edition .gift-letter>.gift-pending{font-size:13px}
+ .natural-edition .gift-letter>.gift-signature{font-size:20px}
+ .natural-edition .gift-specimen{width:65px;height:115px;right:8px;top:15px}
+ /* A smaller envelope with an opening action that stays on screen. */
+ .envelope-entry{padding:30px max(35px,calc((100vw - 900px)/2));justify-content:center}
+ .envelope-entry .entry-title{width:480px;max-width:100%;margin:0 auto}
+ .envelope-entry .entry-title h1{font-size:76px;line-height:.9;letter-spacing:-2px}
+ .envelope-entry .envelope-perspective{width:480px;height:276px;max-width:70vw;margin:40px auto 45px}
+ .envelope-entry .envelope-flowers{width:155px;right:-4%;bottom:-50px}
+ .envelope-entry .wax-seal{width:100px;height:105px;left:calc(50% - 50px);top:calc(51% - 52px)}
+ .envelope-entry .envelope-address>strong{font-size:28px}
+ .envelope-entry .entry-bottom{margin-top:0;padding-bottom:0}
+ .envelope-entry .entry-bottom>button{font-size:21px}
+}
+/* Tablet and small laptop widths should not inherit the large desktop typography. */
+@media (min-width:701px) and (max-width:999px){
+ .natural-edition .content-scene{max-width:850px;padding:32px 40px 25px}
+ .natural-edition .display-title,.natural-edition .gallery-heading h1,.natural-edition .rsvp-intro h1{font-size:50px}
+ .natural-edition .keepsake-cover{padding:28px 45px 30px}
+ .natural-edition .keepsake-stationery{gap:20px 45px;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+ .natural-edition .keepsake-label h1{font-size:57px;letter-spacing:-1.5px}
+ .natural-edition .keepsake-label p{font-size:20px}
+ .natural-edition .keepsake-photo-block{max-width:240px}
+ .natural-edition .keepsake-photo>img{height:300px}
+ .natural-edition .photo-bundle{margin-bottom:32px}
+ .natural-edition .keepsake-cover .personal-salutation{font-size:22px}
+ .natural-edition .invitation-cta{font-size:18px;padding-inline:12px}
+ .natural-edition .rsvp-layout{gap:30px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+ .natural-edition .rsvp-paper{padding:23px}
+ .natural-edition .directions-scene .address-note h2{font-size:34px}
+ .natural-edition .directions-scene .venue-photo{max-width:480px}
+ .natural-edition .photo-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+ .envelope-entry .entry-title h1{font-size:78px}
+ .envelope-entry .envelope-perspective{width:460px;height:270px}
+}
+@media (min-width:1000px) and (max-height:760px){
+ .natural-edition.wedding{margin-block:12px;min-height:calc(100svh - 24px)}
+ .natural-edition .keepsake-cover{padding-top:30px}
+ .natural-edition .keepsake-photo-block{max-width:235px}
+ .natural-edition .keepsake-photo>img{height:290px}
+ .natural-edition .date-keepsake{padding-top:18px}
+ .envelope-entry .entry-title h1{font-size:65px}
+ .envelope-entry .envelope-perspective{width:430px;height:245px;margin-block:28px 38px}
+}
