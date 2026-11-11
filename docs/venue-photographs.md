@@ -1,8 +1,8 @@
 # Venue photographs
 
-Selected on 11 November 2026 from each venue's official website for Andrea and Alberto's wedding invitation. The photographs are served locally as optimized WebP copies without generated scenery or colour filters. Frames and pressed flowers are independent HTML/CSS layers, with credits linking to the venues.
+The active venue images are the two JPEG files supplied by the organiser on 11 November 2026. They have been copied byte for byte into the repository, without generated scenery, filters, cropping or recompression. The layout preserves each photograph's original aspect ratio. Paper mounts and flowers are independent HTML/CSS layers.
 
-- `public/assets/huerta-del-conde-garden.webp`: Casa Palacio Huerta del Conde, Cáceres. Garden, fountain and palace facade. Source page: https://huertadelconde.es/ . Image: https://huertadelconde.es/wp-content/uploads/2026/03/JARDINES-JARDIN-FACHADA-Y-FUENTE-1280x960.jpg
-- `public/assets/corral-ciguenas-patio.webp`: El Corral de las Cigüeñas, Cáceres. Patio, palm tree, ivy and tables. Source page: https://elcorralcc.com/el-patio/ . Image: https://elcorralcc.com/wp-content/plugins/elcorral-estilos/assets/img/patio-hero-2400.webp?v=1785922854
+- `public/assets/huerta-del-conde-supplied.jpg`: supplied as `jardin-fachada-y-fuente_1_203412-172846847620213.jpg`, 960 × 640. Casa Palacio Huerta del Conde, Cáceres.
+- `public/assets/corral-ciguenas-supplied.jpg`: supplied as `21_20260805_132833.jpg`, 1000 × 750. El Corral de las Cigüeñas, Cáceres.
 
-The component only shows a photograph when the configured venue name matches the photographed venue. If either venue changes, replace the photograph and update its source and accessible description. The photograph of Huerta del Conde is not of the similarly named venue in Málaga.
+Previously used images were retrieved from each venue's website. They are no longer referenced by the venue component. Selection by the venue name prevents a photo being presented as an unrelated location when the settings change. Native lazy loading and explicit dimensions reserve space; a failed request offers a retry rather than displaying a broken image.

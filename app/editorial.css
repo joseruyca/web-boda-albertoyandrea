@@ -172,3 +172,18 @@ body{background:#e9e7e0}
 @media(min-width:900px){.directions-scene{max-width:1100px!important}.directions-scene .address-note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:55px;align-content:start}.directions-scene .address-note>.eyebrow{grid-column:1;grid-row:1;margin-top:8px}.directions-scene .address-note>h2{grid-column:1;grid-row:2;font-size:40px;align-self:start;margin:18px 0 21px}.directions-scene .address-note>.venue-photo{grid-column:2;grid-row:1/6;margin:8px 10px 20px;align-self:start}.directions-scene .address-note>p{grid-column:1;grid-row:3;font-size:22px}.directions-scene .address-note>.underline-link{grid-column:1;grid-row:4;justify-self:start;align-self:start}.directions-scene .address-note>.dinner-menu{grid-column:1;grid-row:5}.venue-photo .venue-photo-flowers{width:138px;height:115px;right:-28px}.venue-photo-corral .venue-photo-flowers{width:79px;height:141px;right:-14px}}
 @media(max-width:700px){.directions-scene .stationery-heading{margin-bottom:35px}.directions-scene .address-note h2{font-size:35px;max-width:19ch;margin-bottom:23px}.directions-scene .address-note{margin-bottom:37px;padding-bottom:30px}.venue-photo{margin:26px 8px 25px}.venue-photo-mount{padding:7px 7px 11px}.venue-photo-mount:before{inset:-5px -6px -7px}.venue-photo .venue-photo-flowers{width:118px;height:99px;right:-23px;bottom:-18px}.venue-photo .venue-photo-leaf{width:73px;height:40px;left:-20px;bottom:-12px}.venue-photo-corral .venue-photo-flowers{width:62px;height:121px;right:-12px;bottom:-16px}.venue-photo-corral .venue-photo-leaf{left:-15px}.venue-photo figcaption{font-size:9px;margin-top:20px}.directions-scene .address-note>p{font-size:21px}.directions-scene .address-prewedding{padding-bottom:10px}}
 @media(max-width:360px){.directions-scene .address-note h2{font-size:32px}.venue-photo .venue-photo-flowers{width:101px;height:90px;right:-20px}.venue-photo-corral .venue-photo-flowers{width:57px;height:111px;right:-9px}.venue-photo .venue-photo-leaf{width:64px;left:-17px}.venue-photo-corral .venue-photo-leaf{left:-13px}}
+
+/* User-supplied venue photos retain their complete, original composition. */
+.venue-photo .venue-photograph{aspect-ratio:auto;object-fit:contain}
+.directions-scene .venue-photo{margin-bottom:34px}
+.venue-photo-unavailable{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#e8e4d9;color:var(--muted);padding:18px;text-align:center}
+.venue-photo-unavailable p{font:13px/1.6 var(--sans);margin:0}
+.venue-photo-unavailable .small-link{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;font:13px/1.5 var(--sans);text-decoration:underline;text-underline-offset:4px}
+.natural-edition .gallery-toolbar .filter-tabs button{min-height:44px;font-size:13px}
+.natural-edition .gallery-toolbar .underline-link{font:13px/1.5 var(--sans);min-height:44px}
+.natural-edition .album-access-actions .underline-link,.natural-edition .album-access-actions .outline-btn{font:13px/1.5 var(--sans);min-height:44px}
+.natural-edition .site-menu nav>button{min-height:50px;font-size:14px}
+.natural-edition .locked h1{font:400 clamp(46px,5.5vw,68px)/1.05 var(--serif);letter-spacing:-1px;color:var(--olive)}
+.natural-edition .locked>p{max-width:35ch;line-height:1.7}
+@media(max-width:700px){.natural-edition .gift-letter>.gift-pending{max-width:29ch}.directions-scene .venue-photo{margin-bottom:31px}.natural-edition .rsvp-paper .solid-btn{padding-inline:14px}.natural-edition .photo-wall .memory-label{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){.venue-photo-mount{transform:none}}
