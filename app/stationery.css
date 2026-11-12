@@ -18,7 +18,7 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .scene-nav button.active:after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:1px;background:var(--burgundy);transform:none}
 .stationery-edition .scene{padding:0 0 42px;min-height:0;animation:stationery-arrive .36s ease both}
 .stationery-edition .content-scene{max-width:1000px;width:100%;min-height:0;margin:0 auto;padding:48px 44px 24px;position:relative}
-.stationery-edition .display-title,.stationery-edition .gallery-heading h1,.stationery-edition .reply-heading,.stationery-edition .atelier-day-heading h1,.stationery-edition .admin-title h1{font:400 48px/1.08 var(--serif);letter-spacing:-1px;color:var(--olive);margin:0}
+.stationery-edition .display-title,.stationery-edition .gallery-heading h1,.stationery-edition .atelier-rsvp .rsvp-intro .reply-heading,.stationery-edition .atelier-day-heading h1,.stationery-edition .admin-title h1{font:400 48px/1.08 var(--serif);letter-spacing:-1px;color:var(--olive);margin:0}
 .stationery-edition h1 em,.stationery-edition h2 em{font-weight:400;color:inherit}
 .stationery-edition .stationery-heading{position:relative;margin:0 0 38px;isolation:isolate}
 .stationery-edition .stationery-heading>.display-title{margin-top:13px}
@@ -59,7 +59,7 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .keepsake-cover .personal-salutation{font:italic 25px/1.4 var(--serif);margin:0 0 20px;color:var(--olive);transform:none}
 .stationery-edition .invitation-cta{width:100%;justify-content:space-between;font:400 21px/1.4 var(--serif);min-height:48px}
 .stationery-edition .invitation-gift{display:flex;width:max-content;margin:9px 0 0;font-size:12px;color:var(--muted)}
-.stationery-edition .date-keepsake{max-width:480px;position:relative;text-align:center;margin:15px auto 0;padding:23px 35px 65px;border-top:1px solid var(--rule)}
+.stationery-edition .date-keepsake{background:none;color:var(--olive);box-shadow:none;max-width:480px;position:relative;text-align:center;margin:15px auto 0;padding:23px 35px 65px;border-top:1px solid var(--rule)}
 .stationery-edition .date-keepsake>span{font:italic 23px/1.4 var(--serif);text-transform:none;letter-spacing:0;display:block;margin-bottom:14px}
 .stationery-edition .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0;margin:0;background:none;border:0;color:var(--olive)}
 .stationery-edition .countdown strong{font:400 29px/1.2 var(--serif);letter-spacing:0}
@@ -113,7 +113,7 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .atelier-rsvp .rsvp-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:55px;margin:0;align-items:start}
 .stationery-edition .atelier-rsvp .rsvp-intro{position:relative;top:auto;padding:8px 0 0;margin:0}
 .stationery-edition .reply-eyebrow{display:block;font:11px/1.6 var(--sans);letter-spacing:1.8px;text-transform:uppercase;color:var(--burgundy);margin-bottom:18px}
-.stationery-edition .atelier-rsvp .reply-heading{margin:0 0 24px;max-width:13ch}
+.stationery-edition .atelier-rsvp .rsvp-intro .reply-heading{margin:0 0 24px;max-width:13ch}
 .stationery-edition .atelier-rsvp .rsvp-intro>.reply-status{display:flex;align-items:center;gap:11px;font:14px/1.7 var(--sans);margin:0;max-width:24ch}
 .stationery-edition .reply-status svg{flex-shrink:0;stroke-width:1.2}
 .stationery-edition .atelier-rsvp .rsvp-paper{background:none;margin:0;padding:0;border:0;box-shadow:none;transform:none}
@@ -130,7 +130,7 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .reply-facts dt,.stationery-edition .reply-facts dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}
 .stationery-edition .reply-transport>div{padding-bottom:0}
 .stationery-edition .reply-extra{font:13px/1.7 var(--sans);white-space:pre-line;overflow-wrap:anywhere}
-.stationery-edition .reply-edit{width:100%;justify-content:space-between}
+.stationery-edition .atelier-rsvp .rsvp-paper .reply-edit{width:100%;justify-content:space-between;font:13px/1.5 var(--sans);min-height:46px}
 .stationery-edition .reply-programme{display:flex;width:max-content;margin:10px auto 0;color:var(--burgundy);font-size:12px}
 .stationery-edition .reply-signature{position:relative;isolation:isolate;text-align:center;padding:28px 0 60px}
 .stationery-edition .reply-signature>p{font:italic 24px/1.4 var(--serif);margin:0 0 10px}
@@ -158,7 +158,7 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .editorial-gift{display:block;max-width:850px!important}
 .stationery-edition .gift-stationery{display:grid;grid-template-columns:150px minmax(0,1fr);gap:50px;position:relative;max-width:680px;margin:0 auto;padding:20px 0 15px;background:none;box-shadow:none;transform:none}
 .stationery-edition .gift-stationery:before,.stationery-edition .gift-stationery:after{display:none}
-.stationery-edition .gift-specimen{position:relative;grid-column:1;grid-row:1;align-self:center;width:105px;height:315px;inset:auto;margin:auto;transform:rotate(-7deg)}
+.stationery-edition .gift-specimen{z-index:2;position:relative;grid-column:1;grid-row:1;align-self:center;width:105px;height:315px;inset:auto;margin:auto;transform:rotate(-7deg)}
 .stationery-edition .gift-letter{padding:0;position:relative;min-width:0}
 .stationery-edition .gift-letter>.gift-opening{font:400 36px/1.14 var(--serif);letter-spacing:-.6px;margin:0 0 24px}
 .stationery-edition .gift-letter>p{font:italic 23px/1.5 var(--serif);margin:0 0 22px;max-width:27ch}
@@ -189,6 +189,7 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .gallery-toolbar>p{font-size:12px;opacity:1;color:var(--muted);margin:0}
 .stationery-edition .gallery-toolbar>.underline-link{font-size:12px}
 .stationery-edition .photo-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:28px;padding:6px 0 24px;align-items:start}
+.stationery-edition .photo-wall .memory:before,.stationery-edition .photo-wall .memory:after{display:none}
 .stationery-edition .photo-wall .memory{margin:0;padding:8px 8px 4px;background:#fffdf7;box-shadow:0 5px 15px #594d3512;border:0;transform:none!important;width:100%;min-width:0}
 .stationery-edition .memory-preview{display:block;width:100%;padding:0;text-align:left}
 .stationery-edition .memory-image,.stationery-edition .video-tile{width:100%;aspect-ratio:4/5;height:auto;min-height:0;max-height:none;background:#e3e1d5}
@@ -202,6 +203,14 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .empty-album p{font-size:13px;color:var(--muted);max-width:38ch;margin:15px auto 20px}
 .stationery-edition .selection-bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:18px;background:var(--sage);font-size:12px;margin-bottom:20px}
 .stationery-edition .upload-queue{background:#fffdf560;border:1px solid var(--rule);padding:22px}
+.stationery-edition .organizer-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:0 0 23px}
+.stationery-edition .organizer-shortcuts>button{display:flex;flex-direction:column;align-items:center;gap:9px;padding:24px 12px;background:var(--sage);border-radius:4px;min-width:0}
+.stationery-edition .organizer-shortcuts strong{font:400 25px/1.3 var(--serif)}
+.stationery-edition .organizer-shortcuts span{display:flex;align-items:center;gap:7px;font:12px/1.5 var(--sans);color:var(--burgundy)}
+.stationery-edition .organizer-latest table{width:100%;border-collapse:collapse;font:12px/1.6 var(--sans);table-layout:fixed;text-align:left}
+.stationery-edition .organizer-latest th,.stationery-edition .organizer-latest td{padding:12px 8px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere;font-weight:400}
+.stationery-edition .organizer-latest thead{background:var(--sage);font-size:11px}
+.stationery-edition .organizer-latest h2,.stationery-edition .organizer-checklist h2{margin-top:0}
 /* The private workspace uses the same colours with a practical, compact scale. */
 .stationery-edition.view-admin{background:#faf7f0;max-width:1200px}
 .stationery-edition .admin-scene{max-width:none;padding:32px 34px 40px;min-width:0}
@@ -246,7 +255,7 @@ html{scroll-padding-bottom:90px}
 .stationery-envelope.envelope-entry .envelope-perspective{grid-area:envelope;width:470px;height:auto;aspect-ratio:1100/688;max-width:100%;max-height:none;margin:75px 0 48px}
 .stationery-envelope.envelope-entry .envelope-address>strong{font:400 35px/1.2 Parisienne,cursive}
 .stationery-envelope.envelope-entry .wax-seal{top:71%;left:50%;width:110px;height:114px}
-.stationery-envelope.envelope-entry .envelope-flowers{width:155px;height:auto;right:-2%;bottom:-55px}
+.stationery-envelope.envelope-entry .envelope-flowers{width:155px;height:auto;left:auto;right:-2%;bottom:-55px}
 .stationery-envelope .entry-bottom{grid-area:action;margin:0;padding:0;align-self:start;text-align:center}
 .stationery-envelope .entry-bottom>button{min-height:48px;font:400 23px/1.5 var(--serif);padding:8px 0;border:0;border-bottom:1px solid #77705a80;color:var(--olive);display:inline-flex;gap:20px;align-items:center}
 .stationery-envelope .letter-peek>strong{font-family:var(--serif);font-size:32px}
@@ -288,7 +297,7 @@ html{scroll-padding-bottom:90px}
  .stationery-edition .scene-nav button.active:after{left:9px;right:9px;bottom:0}
  .stationery-edition .scene{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
  .stationery-edition .content-scene{padding:32px 28px 12px;max-width:520px;min-height:0}
- .stationery-edition .display-title,.stationery-edition .gallery-heading h1,.stationery-edition .reply-heading,.stationery-edition .atelier-day-heading h1{font-size:42px;letter-spacing:-.8px;line-height:1.08}
+ .stationery-edition .display-title,.stationery-edition .gallery-heading h1,.stationery-edition .atelier-rsvp .rsvp-intro .reply-heading,.stationery-edition .atelier-day-heading h1{font-size:42px;letter-spacing:-.8px;line-height:1.08}
  .stationery-edition .stationery-heading{margin-bottom:30px}
  .stationery-edition .eyebrow{font-size:9px;letter-spacing:1.6px}
  .stationery-edition input:not([type=radio]):not([type=checkbox]),.stationery-edition select,.stationery-edition textarea{font-size:16px}
@@ -346,7 +355,7 @@ html{scroll-padding-bottom:90px}
  .stationery-edition .rsvp-step-title{font-size:29px}
  .stationery-edition .attendance-options label{font-size:12px}
  .stationery-edition .gift-stationery{display:block;margin:0;padding:0 0 25px;max-width:450px}
- .stationery-edition .gift-specimen{position:absolute;width:56px;height:180px;left:auto;right:-4px;top:12px;transform:rotate(6deg);opacity:.9}
+ .stationery-edition .gift-specimen{z-index:2;position:absolute;width:56px;height:180px;left:auto;right:-4px;top:12px;transform:rotate(6deg);opacity:.9}
  .stationery-edition .gift-letter{padding:0}
  .stationery-edition .gift-letter>.gift-opening{font-size:32px;max-width:13ch;padding-right:28px;margin-bottom:25px}
  .stationery-edition .gift-letter>p{font-size:23px;max-width:22ch;padding-right:38px}
@@ -377,6 +386,10 @@ html{scroll-padding-bottom:90px}
  .stationery-edition .admin-title>div:last-child{margin-top:22px;gap:18px}
  .stationery-edition .admin-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding-bottom:20px}
  .stationery-edition .admin-tabs button{font-size:11px;padding:9px 5px}
+ .stationery-edition .organizer-shortcuts{gap:8px}
+ .stationery-edition .organizer-shortcuts>button{padding:18px 7px;gap:9px}
+ .stationery-edition .organizer-shortcuts strong{font-size:20px}
+ .stationery-edition .organizer-shortcuts span{font-size:10px;gap:4px}
  .stationery-edition .organizer-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
  .stationery-edition .organizer-stats>div{padding:16px}
  .stationery-edition .organizer-stats strong{font-size:32px}
@@ -396,7 +409,7 @@ html{scroll-padding-bottom:90px}
  .stationery-envelope.envelope-entry .envelope-perspective{width:min(100%,390px);margin:65px auto 62px;flex-shrink:0}
  .stationery-envelope.envelope-entry .envelope-address>strong{font-size:30px}
  .stationery-envelope.envelope-entry .wax-seal{width:92px;height:96px}
- .stationery-envelope.envelope-entry .envelope-flowers{width:122px;right:-3%;bottom:-43px}
+ .stationery-envelope.envelope-entry .envelope-flowers{width:122px;left:auto;right:-3%;bottom:-43px}
  .stationery-envelope .entry-bottom{width:100%;text-align:center;align-self:stretch;margin:0}
  .stationery-envelope .entry-bottom>button{font-size:22px}
  .stationery-envelope.envelope-entry .letter-peek>strong{font-size:27px}
