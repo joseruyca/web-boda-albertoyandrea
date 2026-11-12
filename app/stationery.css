@@ -159,6 +159,8 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .gift-stationery{display:grid;grid-template-columns:150px minmax(0,1fr);gap:50px;position:relative;max-width:680px;margin:0 auto;padding:20px 0 15px;background:none;box-shadow:none;transform:none}
 .stationery-edition .gift-stationery:before,.stationery-edition .gift-stationery:after{display:none}
 .stationery-edition .gift-specimen{z-index:2;position:relative;grid-column:1;grid-row:1;align-self:center;width:105px;height:315px;inset:auto;margin:auto;transform:rotate(-7deg)}
+.stationery-edition .gift-specimen>img{display:block;position:static;width:100%;height:100%;object-fit:contain}
+.stationery-edition .gift-specimen:after{content:"";position:absolute;left:30%;top:64%;width:30px;height:13px;background:#faf5e8e8;transform:rotate(-5deg);box-shadow:0 2px 2px #60533a12}
 .stationery-edition .gift-letter{padding:0;position:relative;min-width:0}
 .stationery-edition .gift-letter>.gift-opening{font:400 36px/1.14 var(--serif);letter-spacing:-.6px;margin:0 0 24px}
 .stationery-edition .gift-letter>p{font:italic 23px/1.5 var(--serif);margin:0 0 22px;max-width:27ch}
@@ -255,7 +257,7 @@ html{scroll-padding-bottom:90px}
 .stationery-envelope.envelope-entry .envelope-perspective{grid-area:envelope;width:470px;height:auto;aspect-ratio:1100/688;max-width:100%;max-height:none;margin:75px 0 48px}
 .stationery-envelope.envelope-entry .envelope-address>strong{font:400 35px/1.2 Parisienne,cursive}
 .stationery-envelope.envelope-entry .wax-seal{top:71%;left:50%;width:110px;height:114px}
-.stationery-envelope.envelope-entry .envelope-flowers{width:155px;height:auto;left:auto;right:-2%;bottom:-55px}
+.stationery-envelope.envelope-entry .envelope-flowers{position:absolute;width:155px;height:auto;left:auto;right:-2%;bottom:-55px}
 .stationery-envelope .entry-bottom{grid-area:action;margin:0;padding:0;align-self:start;text-align:center}
 .stationery-envelope .entry-bottom>button{min-height:48px;font:400 23px/1.5 var(--serif);padding:8px 0;border:0;border-bottom:1px solid #77705a80;color:var(--olive);display:inline-flex;gap:20px;align-items:center}
 .stationery-envelope .letter-peek>strong{font-family:var(--serif);font-size:32px}
@@ -409,7 +411,7 @@ html{scroll-padding-bottom:90px}
  .stationery-envelope.envelope-entry .envelope-perspective{width:min(100%,390px);margin:65px auto 62px;flex-shrink:0}
  .stationery-envelope.envelope-entry .envelope-address>strong{font-size:30px}
  .stationery-envelope.envelope-entry .wax-seal{width:92px;height:96px}
- .stationery-envelope.envelope-entry .envelope-flowers{width:122px;left:auto;right:-3%;bottom:-43px}
+ .stationery-envelope.envelope-entry .envelope-flowers{position:absolute;width:122px;left:auto;right:-3%;bottom:-43px}
  .stationery-envelope .entry-bottom{width:100%;text-align:center;align-self:stretch;margin:0}
  .stationery-envelope .entry-bottom>button{font-size:22px}
  .stationery-envelope.envelope-entry .letter-peek>strong{font-size:27px}
