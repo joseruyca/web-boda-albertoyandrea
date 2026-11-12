@@ -60,10 +60,10 @@ html{scroll-padding-bottom:90px}
 .stationery-edition .invitation-cta{width:100%;justify-content:space-between;font:400 21px/1.4 var(--serif);min-height:48px}
 .stationery-edition .invitation-gift{display:flex;width:max-content;margin:9px 0 0;font-size:12px;color:var(--muted)}
 .stationery-edition .date-keepsake{background:none;color:var(--olive);box-shadow:none;max-width:480px;position:relative;text-align:center;margin:15px auto 0;padding:23px 35px 65px;border-top:1px solid var(--rule)}
-.stationery-edition .date-keepsake>span{font:italic 23px/1.4 var(--serif);text-transform:none;letter-spacing:0;display:block;margin-bottom:14px}
+.stationery-edition .date-keepsake>span{color:var(--olive);font:italic 23px/1.4 var(--serif);text-transform:none;letter-spacing:0;display:block;margin-bottom:14px}
 .stationery-edition .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0;margin:0;background:none;border:0;color:var(--olive)}
-.stationery-edition .countdown strong{font:400 29px/1.2 var(--serif);letter-spacing:0}
-.stationery-edition .countdown span{font:9px/1.5 var(--sans);text-transform:uppercase;letter-spacing:.8px}
+.stationery-edition .countdown strong{color:var(--olive);font:400 29px/1.2 var(--serif);letter-spacing:0}
+.stationery-edition .countdown span{color:var(--muted);font:9px/1.5 var(--sans);text-transform:uppercase;letter-spacing:.8px}
 .stationery-edition .signature-flora{width:140px;height:65px;bottom:-8px;right:0;transform:rotate(-10deg)}
 .stationery-edition .story-moment{max-width:800px;padding:35px 20px;margin:auto;gap:35px}
 .stationery-edition .story-moment figure{width:100%;max-width:300px;position:relative;top:auto}
