@@ -1,0 +1,423 @@
+/* A single responsive design system for the approved cotton-paper mockups. */
+@font-face{font-family:Stationery;src:url('/assets/cormorant-garamond-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Stationery;src:url('/assets/cormorant-garamond-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+:root{--serif:Stationery,Georgia,serif;--olive:#46503a;--olive-dark:#333e2b;--ink:#46503a;--blue:#46503a;--cream:#faf7f0;--paper:#faf7f0;--burgundy:#934f52;--sage:#e3e5d5;--muted:#6c6d60;--rule:#77705a30}
+body{background:#e9e6df;color:var(--ink);font:14px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+html{scroll-padding-bottom:90px}
+.wedding.stationery-edition{position:relative;width:min(1120px,calc(100% - 64px));min-height:calc(100svh - 48px);margin:24px auto;background:#faf7f0 url('/assets/cotton-paper.webp') center top/760px auto;border:1px solid #84796024;box-shadow:0 12px 45px #453e2b0a;color:var(--olive);overflow-x:clip}
+.stationery-edition .masthead{height:80px;min-height:80px;margin:0 44px;padding:0;border-bottom:1px solid var(--rule);max-width:none}
+.stationery-edition .brand{gap:8px;min-height:44px}
+.stationery-edition .masthead .brand .aa-monogram{width:61px;height:34px;margin:0;color:var(--olive)}
+.brand-sprig{width:42px;height:24px;object-fit:contain;transform:rotate(-24deg)}
+.stationery-edition .site-menu-trigger{border:0;width:44px;height:44px;color:var(--olive)}
+.stationery-edition .scene-nav{position:absolute;inset:18px auto auto 50%;width:580px;max-width:calc(100% - 310px);transform:translateX(-50%);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:0;margin:0;gap:7px;border:0;box-shadow:none;background:transparent;backdrop-filter:none;border-radius:0;z-index:6}
+.stationery-edition .scene-nav button{position:relative;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:7px;min-height:44px;padding:9px 4px;border-radius:0;background:none;color:var(--olive);font:13px/1.4 var(--sans);white-space:nowrap}
+.stationery-edition .scene-nav button>svg{width:15px;height:15px;stroke-width:1.3;flex-shrink:0}
+.stationery-edition .scene-nav .nav-full{display:inline;font:inherit}.stationery-edition .scene-nav .nav-short,.stationery-edition .scene-nav small{display:none}
+.stationery-edition .scene-nav button.active{color:var(--burgundy);background:none}
+.stationery-edition .scene-nav button.active:after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:1px;background:var(--burgundy);transform:none}
+.stationery-edition .scene{padding:0 0 42px;min-height:0;animation:stationery-arrive .36s ease both}
+.stationery-edition .content-scene{max-width:1000px;width:100%;min-height:0;margin:0 auto;padding:48px 44px 24px;position:relative}
+.stationery-edition .display-title,.stationery-edition .gallery-heading h1,.stationery-edition .reply-heading,.stationery-edition .atelier-day-heading h1,.stationery-edition .admin-title h1{font:400 48px/1.08 var(--serif);letter-spacing:-1px;color:var(--olive);margin:0}
+.stationery-edition h1 em,.stationery-edition h2 em{font-weight:400;color:inherit}
+.stationery-edition .stationery-heading{position:relative;margin:0 0 38px;isolation:isolate}
+.stationery-edition .stationery-heading>.display-title{margin-top:13px}
+.stationery-edition .eyebrow,.stationery-edition .scene-label{display:block;font:500 10px/1.7 var(--sans);letter-spacing:1.8px;text-transform:uppercase;color:var(--muted)}
+.stationery-edition .solid-btn,.stationery-edition .outline-btn,.stationery-edition .upload-orbit{min-height:46px;border-radius:2px;padding:12px 19px;font:400 13px/1.5 var(--sans);letter-spacing:0;box-shadow:none;gap:10px;transform:none;transition:background .2s,color .2s,box-shadow .2s}
+.stationery-edition .solid-btn,.stationery-edition .upload-orbit{color:#faf7f0;background:var(--olive);border:1px solid var(--olive)}
+.stationery-edition .outline-btn{border:1px solid #74765b66;background:transparent;color:var(--olive)}
+.stationery-edition .solid-btn:hover,.stationery-edition .upload-orbit:hover{background:var(--olive-dark);transform:none}
+.stationery-edition .underline-link{font:14px/1.5 var(--sans);display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 0;border:0;text-decoration:underline;text-underline-offset:7px;text-decoration-color:#77705a80;text-decoration-thickness:1px;color:var(--olive)}
+.stationery-edition button:active{filter:brightness(.95)}
+.stationery-edition button:focus-visible,.stationery-edition a:focus-visible{outline:2px solid var(--burgundy);outline-offset:4px}
+.stationery-edition input:not([type=radio]):not([type=checkbox]),.stationery-edition select,.stationery-edition textarea{font:14px/1.6 var(--sans);color:var(--olive);border:1px solid #77705a55;padding:11px 12px;background:#fffdf650;border-radius:2px}
+.stationery-edition label{font-size:13px;line-height:1.6}
+.stationery-edition .privacy-footer{display:none}
+/* Pressed botanical, paper tab and blind embossing have distinct roles. */
+.stationery-edition .botanical-arrangement{display:block;position:absolute;pointer-events:none;user-select:none;width:80px;height:130px;isolation:isolate}
+.stationery-edition .botanical-arrangement .arrangement-stem{position:static;width:100%;height:100%;object-fit:contain;max-width:100%;transform:none;filter:drop-shadow(1px 2px 1px #66513a16)}
+.stationery-edition .arrangement-album:after,.stationery-edition .arrangement-gift:after{content:'';position:absolute;left:37%;top:64%;width:25px;height:12px;background:#faf5e8e8;transform:rotate(-5deg);box-shadow:0 2px 2px #60533a12}
+.stationery-edition .arrangement-signature{opacity:.52;filter:brightness(0) invert(.98) drop-shadow(1px 1px 0 #c7bea8) drop-shadow(-1px -1px 0 #fff)}
+/* Invitation: a real print beside a short, personal letter. */
+.stationery-edition .keepsake-cover{max-width:880px;margin:0 auto;padding:56px 38px 25px;min-height:0}
+.stationery-edition .keepsake-stationery{display:grid;grid-template-columns:300px minmax(0,1fr);grid-template-rows:auto auto;grid-template-areas:'photo title' 'photo action';gap:25px 66px;align-items:center;padding:0}
+.stationery-edition .keepsake-label{grid-area:title;text-align:left;margin:0;align-self:end}
+.stationery-edition .keepsake-label h1{font:400 62px/.97 var(--serif);letter-spacing:-1.5px;margin:0;color:var(--olive)}
+.stationery-edition .keepsake-label h1>span{display:block}
+.stationery-edition .keepsake-label h1 .couple-name-line{display:flex;align-items:baseline;gap:9px;margin:7px 0 0}
+.stationery-edition .keepsake-label h1 i{font:italic 1em var(--serif);color:var(--burgundy)}
+.stationery-edition .keepsake-label p{font:400 20px/1.5 var(--serif);margin:22px 0 0;color:var(--olive)}
+.stationery-edition .keepsake-photo-block{grid-area:photo;width:100%;max-width:285px;margin:0 auto;padding:0;transform:none}
+.stationery-edition .photo-bundle{position:relative;margin:10px 9px 30px;isolation:isolate}
+.stationery-edition .photo-bundle:before{content:'';position:absolute;inset:-12px -13px -12px;background:url('/assets/deckled-cotton-v2.webp') center/100% 100% no-repeat;transform:rotate(.8deg);filter:drop-shadow(0 4px 3px #66513a18);z-index:-1}
+.stationery-edition .photo-bundle:after{display:none}
+.stationery-edition .photo-bundle>.keepsake-photo{margin:0;padding:9px 9px 12px;background:#fffdf5;transform:rotate(-1deg);box-shadow:0 5px 13px #574d381c;animation:none}
+.stationery-edition .keepsake-photo>img{display:block;width:100%;height:330px;object-fit:cover;object-position:50% 30%;filter:grayscale(1);background:#c4c2bc}
+.stationery-edition .keepsake-photo figcaption{font:italic 17px/1.4 var(--serif);padding-top:8px}
+.stationery-edition .keepsake-binding{position:absolute;width:calc(100% + 35px);max-width:none;height:auto;left:-14px;bottom:-35px;transform:rotate(-1deg);z-index:4;pointer-events:none}
+.stationery-edition .keepsake-links{grid-area:action;align-self:start;text-align:left;padding:0}
+.stationery-edition .keepsake-cover .personal-salutation{font:italic 25px/1.4 var(--serif);margin:0 0 20px;color:var(--olive);transform:none}
+.stationery-edition .invitation-cta{width:100%;justify-content:space-between;font:400 21px/1.4 var(--serif);min-height:48px}
+.stationery-edition .invitation-gift{display:flex;width:max-content;margin:9px 0 0;font-size:12px;color:var(--muted)}
+.stationery-edition .date-keepsake{max-width:480px;position:relative;text-align:center;margin:15px auto 0;padding:23px 35px 65px;border-top:1px solid var(--rule)}
+.stationery-edition .date-keepsake>span{font:italic 23px/1.4 var(--serif);text-transform:none;letter-spacing:0;display:block;margin-bottom:14px}
+.stationery-edition .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0;margin:0;background:none;border:0;color:var(--olive)}
+.stationery-edition .countdown strong{font:400 29px/1.2 var(--serif);letter-spacing:0}
+.stationery-edition .countdown span{font:9px/1.5 var(--sans);text-transform:uppercase;letter-spacing:.8px}
+.stationery-edition .signature-flora{width:140px;height:65px;bottom:-8px;right:0;transform:rotate(-10deg)}
+.stationery-edition .story-moment{max-width:800px;padding:35px 20px;margin:auto;gap:35px}
+.stationery-edition .story-moment figure{width:100%;max-width:300px;position:relative;top:auto}
+.stationery-edition .story-moment p{font:26px/1.4 var(--serif)}
+/* Programme: the time belongs here; directions have their own page. */
+.stationery-edition .atelier-day{max-width:900px}
+.stationery-edition .atelier-day-heading{position:relative;margin:0 0 30px}
+.stationery-edition .atelier-date{display:flex;flex-direction:column;gap:3px;margin-top:20px}
+.stationery-edition .atelier-date>span:first-child{font:11px/1.6 var(--sans);text-transform:uppercase;letter-spacing:1.4px}
+.stationery-edition .atelier-date>span:last-child{font:italic 21px/1.5 var(--serif)}
+.stationery-edition .atelier-day-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:56px;position:relative;isolation:isolate;padding-right:70px}
+.stationery-edition .atelier-meadow{position:absolute;z-index:-1;pointer-events:none;right:-12px;top:-126px;width:145px;height:auto;object-fit:contain;max-width:none;transform-origin:65% 95%}
+.stationery-edition .atelier-timeline{list-style:none;margin:0;padding:0 0 0 22px;border-top:1px solid var(--rule)}
+.stationery-edition .atelier-timeline li{position:relative;padding:24px 0 0;min-height:91px}
+.stationery-edition .atelier-timeline li:before{content:'';position:absolute;left:-21px;top:37px;width:5px;height:5px;border-radius:50%;background:var(--burgundy)}
+.stationery-edition .atelier-timeline li:not(:last-child):after{content:'';position:absolute;left:-19px;top:42px;bottom:-37px;width:1px;background:#77705a40}
+.stationery-edition .atelier-timeline h2{font:400 29px/1.2 var(--serif);letter-spacing:-.3px;margin:0;color:var(--olive)}
+.stationery-edition .atelier-timeline p{margin:5px 0 0;font:13px/1.6 var(--sans);color:var(--muted)}
+.stationery-edition .atelier-timeline .atelier-event-time{font:italic 22px/1.3 var(--serif);color:var(--burgundy);white-space:nowrap}
+.stationery-edition .atelier-day-aside{padding-top:24px}
+.stationery-edition .atelier-prewedding{background:var(--sage);padding:22px;margin:0 0 20px}
+.stationery-edition .atelier-prewedding h2{font:400 29px/1.2 var(--serif);margin:0 0 12px}
+.stationery-edition .atelier-prewedding-place{font:14px/1.6 var(--sans);margin:0 0 8px}
+.stationery-edition .atelier-prewedding-meta{font:12px/1.7 var(--sans);margin:0;color:var(--muted)}
+.stationery-edition .atelier-direction{display:inline-flex;align-items:center;gap:9px;min-height:44px;font:13px/1.5 var(--sans);text-decoration:underline;text-underline-offset:6px;color:var(--burgundy)}
+.stationery-edition .atelier-save-date{display:flex;align-items:center;justify-content:center;gap:10px;min-height:46px;width:100%;padding:10px 15px;border:1px solid #77705a66;font:13px/1.5 var(--sans)}
+.stationery-edition .atelier-wedding-direction{display:flex;width:max-content;margin:7px auto 0;font-size:12px;color:var(--muted)}
+/* Places: real photography, quiet alternating text and image. */
+.stationery-edition .directions-scene{max-width:1000px!important}
+.stationery-edition .directions-layout,.stationery-edition .directions-places{display:block;width:100%}
+.stationery-edition .address-note{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:40px;align-items:center;border:0;border-top:1px solid var(--rule);padding:30px 0;margin:0}
+.stationery-edition .address-copy{min-width:0}
+.stationery-edition .address-copy h2{font:400 33px/1.15 var(--serif);letter-spacing:-.4px;margin:15px 0}
+.stationery-edition .address-copy p{font:14px/1.7 var(--sans);color:var(--muted);margin:0 0 10px;max-width:28ch}
+.stationery-edition .venue-photo{display:block;width:100%;max-width:400px;margin:10px 0;position:relative;transform:none}
+.stationery-edition .venue-photo-mount{position:relative;padding:7px;background:#fffdf7;box-shadow:0 4px 12px #60543c18;transform:rotate(-.6deg);isolation:isolate}
+.stationery-edition .venue-photo-mount:before{content:'';position:absolute;inset:-8px;background:#e3e5d5;transform:rotate(1.3deg);z-index:-1}
+.stationery-edition .venue-photograph{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;filter:none}
+.stationery-edition .venue-photo .venue-photo-flowers{position:absolute;right:-21px;top:-23px;bottom:auto;width:68px;height:105px;object-fit:contain;transform:rotate(12deg);z-index:2;pointer-events:none}
+.stationery-edition .venue-photo-corral .venue-photo-mount{transform:rotate(.6deg)}
+.stationery-edition .venue-photo-corral .venue-photo-flowers{width:91px;height:50px;right:-19px;top:auto;bottom:-16px;transform:rotate(-17deg)}
+.stationery-edition .address-prewedding .address-copy{grid-column:2;grid-row:1}
+.stationery-edition .address-prewedding .venue-photo{grid-column:1;grid-row:1}
+.stationery-edition .dietary-link{margin-top:8px;font-size:12px;color:var(--muted)}
+/* Reply: the same stationery, with form controls in readable sans. */
+.stationery-edition .atelier-rsvp{max-width:900px}
+.stationery-edition .atelier-rsvp .rsvp-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:55px;margin:0;align-items:start}
+.stationery-edition .atelier-rsvp .rsvp-intro{position:relative;top:auto;padding:8px 0 0;margin:0}
+.stationery-edition .reply-eyebrow{display:block;font:11px/1.6 var(--sans);letter-spacing:1.8px;text-transform:uppercase;color:var(--burgundy);margin-bottom:18px}
+.stationery-edition .atelier-rsvp .reply-heading{margin:0 0 24px;max-width:13ch}
+.stationery-edition .atelier-rsvp .rsvp-intro>.reply-status{display:flex;align-items:center;gap:11px;font:14px/1.7 var(--sans);margin:0;max-width:24ch}
+.stationery-edition .reply-status svg{flex-shrink:0;stroke-width:1.2}
+.stationery-edition .atelier-rsvp .rsvp-paper{background:none;margin:0;padding:0;border:0;box-shadow:none;transform:none}
+.stationery-edition .atelier-rsvp .rsvp-paper:before,.stationery-edition .atelier-rsvp .rsvp-paper:after{display:none}
+.stationery-edition .atelier-confirmation{padding:0;text-align:left}
+.reply-sr-heading{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.stationery-edition .reply-summary{background:var(--sage);padding:24px;margin-bottom:20px}
+.stationery-edition .reply-person+ .reply-person{border-top:1px solid #747b5e45;padding-top:18px;margin-top:18px}
+.stationery-edition .reply-person>header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:15px}
+.stationery-edition .reply-person strong{font:400 31px/1.2 var(--serif);overflow-wrap:anywhere}
+.stationery-edition .reply-person header>span{font:12px/1.5 var(--sans);text-align:right}
+.stationery-edition .reply-facts{margin:0;border-top:1px solid #747b5e35}
+.stationery-edition .reply-facts>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:12px;padding:12px 0;font:13px/1.6 var(--sans)}
+.stationery-edition .reply-facts dt,.stationery-edition .reply-facts dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}
+.stationery-edition .reply-transport>div{padding-bottom:0}
+.stationery-edition .reply-extra{font:13px/1.7 var(--sans);white-space:pre-line;overflow-wrap:anywhere}
+.stationery-edition .reply-edit{width:100%;justify-content:space-between}
+.stationery-edition .reply-programme{display:flex;width:max-content;margin:10px auto 0;color:var(--burgundy);font-size:12px}
+.stationery-edition .reply-signature{position:relative;isolation:isolate;text-align:center;padding:28px 0 60px}
+.stationery-edition .reply-signature>p{font:italic 24px/1.4 var(--serif);margin:0 0 10px}
+.stationery-edition .reply-signature-leaf{width:55px;height:auto;margin:auto;display:block;transform:rotate(-12deg)}
+.stationery-edition .reply-emboss{position:absolute;right:-10px;bottom:0;width:200px;height:auto;z-index:-1;transform:rotate(-22deg);opacity:.5;filter:brightness(0) invert(.98) drop-shadow(1px 1px 0 #c8bc9b) drop-shadow(-1px -1px 0 #fff)}
+.stationery-edition .rsvp-steps{display:flex;gap:14px;list-style:none;padding:0 0 18px;margin:0 0 22px;border-bottom:1px solid var(--rule);font-size:11px;flex-wrap:wrap}
+.stationery-edition .rsvp-steps li{display:flex;gap:6px;align-items:center;color:var(--muted)}
+.stationery-edition .rsvp-steps li.active{color:var(--burgundy)}
+.stationery-edition .rsvp-steps li>span{display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--rule);border-radius:50%}
+.stationery-edition .rsvp-step-title{font:400 31px/1.2 var(--serif);margin:0 0 18px}
+.stationery-edition .rsvp-step-copy{font:13px/1.7 var(--sans);color:var(--muted);margin:0 0 24px}
+.stationery-edition .attendance-person legend,.stationery-edition .diet-person legend{font:400 26px/1.3 var(--serif);margin-bottom:13px}
+.stationery-edition .attendance-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stationery-edition .attendance-options label{display:flex;gap:9px;align-items:center;margin:0;min-height:48px;padding:10px;border:1px solid var(--rule);font-size:12px;background:#fffdf540}
+.stationery-edition .attendance-options label.chosen{background:var(--sage);border-color:#747b5e70}
+.stationery-edition .rsvp-fields{margin:0}
+.stationery-edition .rsvp-fields .privacy-note{font-size:11px;line-height:1.6;margin-top:18px}
+.stationery-edition .rsvp-form-actions{display:flex;gap:20px;align-items:center;justify-content:space-between;margin-top:25px}
+.stationery-edition .rsvp-paper .solid-btn{width:auto;margin:0;flex:1}
+.stationery-edition .rsvp-review strong{font:400 26px/1.3 var(--serif)}
+.stationery-edition .locked{margin:0 auto;padding:25px 0 45px;max-width:450px}
+.stationery-edition .locked h1{font:400 43px/1.1 var(--serif);letter-spacing:-.8px}
+.stationery-edition .locked p{font:14px/1.8 var(--sans);max-width:36ch}
+/* An optional letter, without placeholder bank details. */
+.stationery-edition .editorial-gift{display:block;max-width:850px!important}
+.stationery-edition .gift-stationery{display:grid;grid-template-columns:150px minmax(0,1fr);gap:50px;position:relative;max-width:680px;margin:0 auto;padding:20px 0 15px;background:none;box-shadow:none;transform:none}
+.stationery-edition .gift-stationery:before,.stationery-edition .gift-stationery:after{display:none}
+.stationery-edition .gift-specimen{position:relative;grid-column:1;grid-row:1;align-self:center;width:105px;height:315px;inset:auto;margin:auto;transform:rotate(-7deg)}
+.stationery-edition .gift-letter{padding:0;position:relative;min-width:0}
+.stationery-edition .gift-letter>.gift-opening{font:400 36px/1.14 var(--serif);letter-spacing:-.6px;margin:0 0 24px}
+.stationery-edition .gift-letter>p{font:italic 23px/1.5 var(--serif);margin:0 0 22px;max-width:27ch}
+.stationery-edition .gift-letter>.gift-pending{font:13px/1.7 var(--sans);background:var(--sage);padding:20px;max-width:none;margin-top:25px}
+.stationery-edition .gift-letter>.gift-signature{font:italic 23px/1.5 var(--serif);margin:29px 0 0}
+.stationery-edition .gift-account{padding:20px;background:var(--sage);overflow-wrap:anywhere}
+.stationery-edition .gift-account>p{margin:5px 0 10px;font-size:14px}
+.stationery-edition .gift-account .iban-field{background:#fff8;border:0;font:15px/1.6 var(--sans);letter-spacing:1px}
+.stationery-edition .gift-account .solid-btn{width:100%;margin-top:12px}
+/* Album: photographic prints, with tools separate from the memories. */
+.stationery-edition .gallery-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:25px;position:relative;margin:0 0 25px;align-items:center;padding-right:85px}
+.stationery-edition .gallery-heading:after{display:none}
+.stationery-edition .gallery-heading h1{font-size:44px;max-width:16ch;line-height:1.08}
+.stationery-edition .gallery-heading h1 em{font-size:1em;display:block;color:inherit}
+.stationery-edition .album-title>p{font:italic 23px/1.4 var(--serif);color:var(--burgundy);margin:12px 0 0}
+.stationery-edition .gallery-heading .album-flowers{position:absolute;right:0;top:-12px;width:70px;height:135px;transform:rotate(5deg)}
+.stationery-edition .gallery-heading .upload-orbit{display:flex;flex-direction:row;width:auto;height:auto;min-width:210px;transform:none;position:static}
+.stationery-edition .gallery-heading .upload-orbit>span{font:13px/1.5 var(--sans)}
+.stationery-edition .upload-orbit>svg{position:static;width:18px;height:18px;flex-shrink:0}
+.stationery-edition .album-intro{margin:0;padding:0}
+.stationery-edition .album-access-actions{display:flex;align-items:center;gap:24px;margin:0}
+.stationery-edition .album-access-actions .outline-btn{font-size:12px}
+.stationery-edition .gallery-toolbar{display:grid;grid-template-columns:1fr auto auto;gap:25px;align-items:center;margin:25px 0 24px;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stationery-edition .filter-tabs{display:flex;gap:18px}
+.stationery-edition .filter-tabs button{border:0;border-radius:0;background:none;color:var(--muted);padding:9px 6px;min-height:44px;font:13px/1.5 var(--sans);position:relative}
+.stationery-edition .filter-tabs button.active{background:none;color:var(--burgundy)}
+.stationery-edition .filter-tabs button.active:after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--burgundy)}
+.stationery-edition .gallery-toolbar>p{font-size:12px;opacity:1;color:var(--muted);margin:0}
+.stationery-edition .gallery-toolbar>.underline-link{font-size:12px}
+.stationery-edition .photo-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:28px;padding:6px 0 24px;align-items:start}
+.stationery-edition .photo-wall .memory{margin:0;padding:8px 8px 4px;background:#fffdf7;box-shadow:0 5px 15px #594d3512;border:0;transform:none!important;width:100%;min-width:0}
+.stationery-edition .memory-preview{display:block;width:100%;padding:0;text-align:left}
+.stationery-edition .memory-image,.stationery-edition .video-tile{width:100%;aspect-ratio:4/5;height:auto;min-height:0;max-height:none;background:#e3e1d5}
+.stationery-edition .memory-image>img{height:100%;min-height:0;max-height:none;object-fit:cover;filter:none}
+.stationery-edition .memory-label{display:flex;flex-wrap:wrap;align-items:start;justify-content:start;gap:3px;padding:10px 5px 8px;min-height:42px}
+.stationery-edition .memory-label>span{font:italic 20px/1.3 var(--serif);color:var(--olive);overflow-wrap:anywhere}
+.stationery-edition .memory-label small{font:11px/1.6 var(--sans);white-space:normal;color:var(--muted);width:100%;overflow-wrap:anywhere}
+.stationery-edition .album-file-input{display:none!important}
+.stationery-edition .empty-album{padding:38px 20px;border:1px solid var(--rule)}
+.stationery-edition .empty-album h2{font:400 31px/1.2 var(--serif)}
+.stationery-edition .empty-album p{font-size:13px;color:var(--muted);max-width:38ch;margin:15px auto 20px}
+.stationery-edition .selection-bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:18px;background:var(--sage);font-size:12px;margin-bottom:20px}
+.stationery-edition .upload-queue{background:#fffdf560;border:1px solid var(--rule);padding:22px}
+/* The private workspace uses the same colours with a practical, compact scale. */
+.stationery-edition.view-admin{background:#faf7f0;max-width:1200px}
+.stationery-edition .admin-scene{max-width:none;padding:32px 34px 40px;min-width:0}
+.stationery-edition .admin-title{margin:0 0 24px;gap:25px;align-items:center}
+.stationery-edition .admin-title h1{font-size:38px;line-height:1.12;letter-spacing:-.6px;margin:10px 0 0}
+.stationery-edition .admin-title>div:last-child{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.stationery-edition .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 22px;margin:0 0 24px;border-bottom:1px solid var(--rule)}
+.stationery-edition .admin-tabs button{border:1px solid transparent;border-radius:3px;font:13px/1.5 var(--sans);min-height:44px;padding:10px 16px;color:var(--muted)}
+.stationery-edition .admin-tabs button.active{background:var(--sage);border-color:#77705a35;color:var(--olive)}
+.stationery-edition .admin-card{background:#fffdf7;border:1px solid var(--rule);padding:24px;box-shadow:none;min-width:0;border-radius:4px}
+.stationery-edition .admin-card h2{font:400 29px/1.2 var(--serif);letter-spacing:-.3px;margin:14px 0}
+.stationery-edition .admin-card p{font:13px/1.7 var(--sans)}
+.stationery-edition .organizer-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:25px}
+.stationery-edition .organizer-stats>div{background:var(--sage);padding:20px;border:0}
+.stationery-edition .organizer-stats strong{font:400 36px/1.2 var(--serif);display:block;margin-top:5px}
+.stationery-edition .organizer-stats span{font:12px/1.5 var(--sans)}
+.stationery-edition .organizer-dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.stationery-edition .response-progress-number{font:400 40px/1.3 var(--serif)}
+.stationery-edition .admin-login{max-width:430px;margin:25px auto}
+.stationery-edition .admin-login h1{font:400 42px/1.1 var(--serif);letter-spacing:-.8px}
+.stationery-edition .admin-login>p{font-size:14px}
+.stationery-edition .admin-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.stationery-edition .invite-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:25px;padding:24px 0;border-color:var(--rule)}
+.stationery-edition .invite-actions{display:flex;flex-wrap:wrap;gap:10px;align-content:start;min-width:0}
+.stationery-edition .invite-actions .outline-btn,.stationery-edition .invite-actions .solid-btn{font-size:12px}
+.stationery-edition .admin-list-heading h2,.stationery-edition .catering-panel h2{font:400 30px/1.2 var(--serif);letter-spacing:-.5px}
+.stationery-edition .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.stationery-edition .timeline-edit{display:grid;grid-template-columns:100px 1fr 1.5fr;gap:15px}
+.stationery-edition .admin-title .scene-label{font-size:10px}
+.stationery-edition .modal{border:1px solid var(--rule);background:#faf7f0;max-height:calc(100svh - 32px);max-width:calc(100vw - 28px)}
+.stationery-edition .modal::backdrop{background:#353a2b66;backdrop-filter:blur(4px)}
+.stationery-edition .modal-content{padding:36px 30px}
+.stationery-edition .modal-content>h2{font:400 36px/1.15 var(--serif);letter-spacing:-.6px}
+.stationery-edition .toast{background:var(--olive);color:var(--cream);border:0;bottom:28px;font-size:13px;box-shadow:0 5px 20px #343e2b22}
+/* Envelope: a bounded landscape composition, not a stretched mobile page. */
+.stationery-envelope.envelope-entry{--ink:#46503a;color:var(--olive);background:#faf7f0 url('/assets/cotton-paper.webp') center/760px auto;display:grid;grid-template-columns:330px 470px;grid-template-rows:auto auto;grid-template-areas:'title envelope' 'title action';justify-content:center;align-content:center;align-items:center;gap:20px 70px;padding:65px 40px;min-height:100svh;height:100svh}
+.stationery-envelope.envelope-entry:before{opacity:.1}
+.stationery-envelope .entry-title{grid-area:title;align-self:center;text-align:left;width:auto;max-width:100%;margin:0;padding:0}
+.stationery-envelope .entry-date{font:11px/1.5 var(--sans);letter-spacing:2px;color:var(--burgundy)}
+.stationery-envelope .entry-title h1{font:400 78px/.94 var(--serif);letter-spacing:-2px;margin:28px 0 22px;color:var(--olive)}
+.stationery-envelope .entry-title p{font:italic 23px/1.5 var(--serif);margin:0;color:var(--muted)}
+.stationery-envelope.envelope-entry .envelope-perspective{grid-area:envelope;width:470px;height:auto;aspect-ratio:1100/688;max-width:100%;max-height:none;margin:75px 0 48px}
+.stationery-envelope.envelope-entry .envelope-address>strong{font:400 35px/1.2 Parisienne,cursive}
+.stationery-envelope.envelope-entry .wax-seal{top:71%;left:50%;width:110px;height:114px}
+.stationery-envelope.envelope-entry .envelope-flowers{width:155px;height:auto;right:-2%;bottom:-55px}
+.stationery-envelope .entry-bottom{grid-area:action;margin:0;padding:0;align-self:start;text-align:center}
+.stationery-envelope .entry-bottom>button{min-height:48px;font:400 23px/1.5 var(--serif);padding:8px 0;border:0;border-bottom:1px solid #77705a80;color:var(--olive);display:inline-flex;gap:20px;align-items:center}
+.stationery-envelope .letter-peek>strong{font-family:var(--serif);font-size:32px}
+.stationery-envelope .letter-peek>small{font-family:var(--serif);font-size:18px}
+/* The incoming page is visible before the envelope fades, avoiding a white frame. */
+.wedding.stationery-edition.is-unfolding{animation:stationery-reveal 2.15s ease both;transform:none}
+@keyframes stationery-reveal{0%,48%{opacity:0}72%,100%{opacity:1}}
+@keyframes stationery-arrive{from{opacity:0;translate:0 6px}to{opacity:1;translate:0 0}}
+@keyframes specimen-breathe{0%,100%{rotate:-.3deg}50%{rotate:.5deg}}
+@media(prefers-reduced-motion:no-preference){.stationery-edition .atelier-meadow{animation:specimen-breathe 14s ease-in-out infinite}.stationery-edition .arrangement-album{animation:specimen-breathe 16s ease-in-out infinite}}
+/* Tablet: two columns where useful, compact top navigation. */
+@media(max-width:999px) and (min-width:701px){
+ .wedding.stationery-edition{width:calc(100% - 32px);margin:16px auto;min-height:calc(100svh - 32px)}
+ .stationery-edition .masthead{margin:0 28px;height:70px;min-height:70px}
+ .stationery-edition .scene-nav{position:relative;inset:auto;transform:none;width:calc(100% - 56px);max-width:none;margin:0 auto;padding:5px 0;border-bottom:1px solid var(--rule)}
+ .stationery-edition .content-scene{padding:34px 32px 24px}
+ .stationery-edition .keepsake-cover{padding:40px 34px 20px}
+ .stationery-edition .keepsake-stationery{grid-template-columns:250px minmax(0,1fr);gap:24px 34px}
+ .stationery-edition .keepsake-label h1{font-size:53px}
+ .stationery-edition .keepsake-photo>img{height:300px}
+ .stationery-edition .atelier-day-body{grid-template-columns:minmax(0,1fr) 240px;gap:25px;padding-right:40px}
+ .stationery-edition .atelier-rsvp .rsvp-layout{grid-template-columns:240px minmax(0,1fr);gap:30px}
+ .stationery-edition .gallery-heading{grid-template-columns:1fr;padding-right:85px;gap:20px}
+ .stationery-edition .gallery-heading .upload-orbit{width:max-content}
+ .stationery-envelope.envelope-entry{grid-template-columns:260px 370px;gap:18px 35px;padding:45px 25px}
+ .stationery-envelope .entry-title h1{font-size:66px}
+ .stationery-envelope.envelope-entry .envelope-perspective{width:370px}
+}
+/* Phone: each page flows naturally, with a reserved navigation area. */
+@media(max-width:700px){
+ .wedding.stationery-edition{width:100%;margin:0;min-height:100svh;border:0;box-shadow:none}
+ .stationery-edition .masthead{height:69px;min-height:69px;margin:0 25px;border-bottom:1px solid var(--rule)}
+ .stationery-edition .masthead .brand .aa-monogram{width:49px;height:29px}
+ .brand-sprig{width:32px;height:22px}
+ .stationery-edition .scene-nav{position:fixed;inset:auto 0 0;width:100%;max-width:none;transform:none;padding:7px 12px calc(7px + env(safe-area-inset-bottom,0px));gap:3px;min-height:68px;border-top:1px solid var(--rule);background:#faf7f0f5;backdrop-filter:blur(12px);z-index:30}
+ .stationery-edition .scene-nav button{flex-direction:column;gap:5px;min-height:48px;padding:4px 1px 7px;font:12px/1.2 var(--serif)}
+ .stationery-edition .scene-nav .nav-full{display:none}.stationery-edition .scene-nav .nav-short{display:inline;font:inherit}
+ .stationery-edition .scene-nav button>svg{width:16px;height:16px}
+ .stationery-edition .scene-nav button.active:after{left:9px;right:9px;bottom:0}
+ .stationery-edition .scene{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+ .stationery-edition .content-scene{padding:32px 28px 12px;max-width:520px;min-height:0}
+ .stationery-edition .display-title,.stationery-edition .gallery-heading h1,.stationery-edition .reply-heading,.stationery-edition .atelier-day-heading h1{font-size:42px;letter-spacing:-.8px;line-height:1.08}
+ .stationery-edition .stationery-heading{margin-bottom:30px}
+ .stationery-edition .eyebrow{font-size:9px;letter-spacing:1.6px}
+ .stationery-edition input:not([type=radio]):not([type=checkbox]),.stationery-edition select,.stationery-edition textarea{font-size:16px}
+ .stationery-edition .keepsake-cover{padding:30px 32px 0;max-width:450px}
+ .stationery-edition .keepsake-stationery{display:flex;flex-direction:column;gap:0;align-items:stretch}
+ .stationery-edition .keepsake-label{align-self:stretch;text-align:center;margin:0 0 29px}
+ .stationery-edition .keepsake-label h1{font-size:55px;letter-spacing:-1.5px}
+ .stationery-edition .keepsake-label h1 .couple-name-line{justify-content:center;margin-top:6px}
+ .stationery-edition .keepsake-label p{font-size:20px;margin-top:18px}
+ .stationery-edition .keepsake-photo-block{max-width:252px;margin:0 auto}
+ .stationery-edition .keepsake-photo>img{height:307px}
+ .stationery-edition .keepsake-links{width:100%;text-align:center;align-self:stretch;margin-top:4px}
+ .stationery-edition .keepsake-cover .personal-salutation{font-size:24px;margin:0 0 17px}
+ .stationery-edition .invitation-cta{font-size:20px;min-height:48px}
+ .stationery-edition .invitation-gift{margin:7px auto 0}
+ .stationery-edition .date-keepsake{width:calc(100% - 64px);margin:26px auto 0;padding:22px 5px 56px}
+ .stationery-edition .date-keepsake>span{font-size:21px}
+ .stationery-edition .countdown strong{font-size:28px}
+ .stationery-edition .signature-flora{width:115px;height:55px}
+ .stationery-edition .atelier-day-heading{margin-bottom:27px;padding-right:40px}
+ .stationery-edition .atelier-date{margin-top:20px}
+ .stationery-edition .atelier-date>span:first-child{font-size:10px;letter-spacing:1.2px}
+ .stationery-edition .atelier-date>span:last-child{font-size:20px}
+ .stationery-edition .atelier-day-body{display:block;padding-right:0}
+ .stationery-edition .atelier-meadow{right:-15px;top:-105px;width:126px}
+ .stationery-edition .atelier-timeline{padding-right:65px;margin-bottom:25px}
+ .stationery-edition .atelier-timeline li{padding-top:23px;min-height:87px}
+ .stationery-edition .atelier-timeline h2{font-size:28px}
+ .stationery-edition .atelier-timeline .atelier-event-time{font-size:22px}
+ .stationery-edition .atelier-timeline p{font-size:12px}
+ .stationery-edition .atelier-day-aside{padding-top:0}
+ .stationery-edition .atelier-prewedding{margin:26px 0 19px;padding:20px}
+ .stationery-edition .atelier-prewedding h2{font-size:29px}
+ .stationery-edition .atelier-prewedding-meta{font-size:12px}
+ .stationery-edition .directions-scene{max-width:520px!important}
+ .stationery-edition .directions-scene .display-title{max-width:10ch}
+ .stationery-edition .address-note{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:25px 0 32px;margin:0}
+ .stationery-edition .address-copy h2{font-size:31px;max-width:18ch;margin:12px 0 13px}
+ .stationery-edition .address-copy p{font-size:13px;margin-bottom:4px}
+ .stationery-edition .venue-photo{max-width:none;width:calc(100% - 8px);margin:0 auto 3px}
+ .stationery-edition .venue-photo .venue-photo-flowers{right:-17px;top:-25px;width:61px;height:94px}
+ .stationery-edition .venue-photo-corral .venue-photo-flowers{width:80px;height:43px;top:auto;bottom:-14px}
+ .stationery-edition .atelier-rsvp .rsvp-layout{display:block;margin:0}
+ .stationery-edition .atelier-rsvp .rsvp-intro{padding:0;margin:0 0 29px}
+ .stationery-edition .atelier-rsvp .reply-heading{margin-bottom:22px;max-width:13ch}
+ .stationery-edition .reply-eyebrow{font-size:10px;margin-bottom:16px}
+ .stationery-edition .atelier-rsvp .rsvp-intro>.reply-status{max-width:none;font-size:13px}
+ .stationery-edition .reply-summary{padding:21px;margin-bottom:20px}
+ .stationery-edition .reply-person strong{font-size:30px}
+ .stationery-edition .reply-facts>div{grid-template-columns:80px minmax(0,1fr);font-size:13px}
+ .stationery-edition .reply-signature{padding-bottom:70px}
+ .stationery-edition .reply-emboss{width:200px;right:-3px}
+ .stationery-edition .rsvp-steps{gap:10px;font-size:10px}
+ .stationery-edition .rsvp-steps li{gap:5px}
+ .stationery-edition .rsvp-step-title{font-size:29px}
+ .stationery-edition .attendance-options label{font-size:12px}
+ .stationery-edition .gift-stationery{display:block;margin:0;padding:0 0 25px;max-width:450px}
+ .stationery-edition .gift-specimen{position:absolute;width:56px;height:180px;left:auto;right:-4px;top:12px;transform:rotate(6deg);opacity:.9}
+ .stationery-edition .gift-letter{padding:0}
+ .stationery-edition .gift-letter>.gift-opening{font-size:32px;max-width:13ch;padding-right:28px;margin-bottom:25px}
+ .stationery-edition .gift-letter>p{font-size:23px;max-width:22ch;padding-right:38px}
+ .stationery-edition .gift-letter>.gift-pending{font-size:13px;padding:20px;margin-top:30px;max-width:none}
+ .stationery-edition .gift-letter>.gift-signature{padding-right:0;font-size:22px}
+ .stationery-edition .gallery-heading{grid-template-columns:1fr;gap:24px;padding:0;margin-bottom:22px}
+ .stationery-edition .gallery-heading h1{font-size:40px;max-width:9ch;padding-right:25px}
+ .stationery-edition .album-title>p{font-size:22px;margin-top:12px}
+ .stationery-edition .gallery-heading .album-flowers{right:-9px;top:-11px;width:58px;height:120px}
+ .stationery-edition .gallery-heading .upload-orbit{width:100%;min-width:0;justify-content:center;font-size:13px}
+ .stationery-edition .album-access-actions{gap:23px;justify-content:space-between}
+ .stationery-edition .album-access-actions .outline-btn{font-size:11px;padding:10px 12px}
+ .stationery-edition .album-access-actions .underline-link{font-size:12px;gap:7px}
+ .stationery-edition .gallery-toolbar{grid-template-columns:1fr auto;gap:12px;margin:22px 0;padding:10px 0 12px}
+ .stationery-edition .filter-tabs{grid-column:1/-1;justify-content:space-between;gap:14px}
+ .stationery-edition .filter-tabs button{flex:1;font-size:12px}
+ .stationery-edition .gallery-toolbar>p{font-size:11px}
+ .stationery-edition .gallery-toolbar>.underline-link{font-size:11px;justify-self:end}
+ .stationery-edition .photo-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;padding-top:0}
+ .stationery-edition .photo-wall .memory{padding:6px 6px 4px}
+ .stationery-edition .memory-image,.stationery-edition .video-tile{min-height:0;aspect-ratio:3/4}
+ .stationery-edition .memory-label{padding:9px 2px 5px;min-height:34px}
+ .stationery-edition .memory-label>span{font-size:18px}
+ .stationery-edition .memory-label small{font-size:10px}
+ .stationery-edition .admin-scene{padding:30px 22px 35px}
+ .stationery-edition .admin-title{display:block}
+ .stationery-edition .admin-title h1{font-size:37px}
+ .stationery-edition .admin-title>div:last-child{margin-top:22px;gap:18px}
+ .stationery-edition .admin-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding-bottom:20px}
+ .stationery-edition .admin-tabs button{font-size:11px;padding:9px 5px}
+ .stationery-edition .organizer-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .stationery-edition .organizer-stats>div{padding:16px}
+ .stationery-edition .organizer-stats strong{font-size:32px}
+ .stationery-edition .organizer-dashboard-grid,.stationery-edition .admin-columns,.stationery-edition .form-grid{grid-template-columns:1fr;gap:18px}
+ .stationery-edition .admin-card{padding:20px}
+ .stationery-edition .admin-card h2{font-size:28px}
+ .stationery-edition .invite-row{grid-template-columns:1fr;gap:17px}
+ .stationery-edition .timeline-edit{grid-template-columns:90px 1fr;gap:12px}
+ .stationery-edition .timeline-edit label:last-child{grid-column:1/-1}
+ .stationery-edition .toast{bottom:calc(85px + env(safe-area-inset-bottom,0px));font-size:12px;padding:12px 16px}
+ .stationery-edition .modal-content{padding:34px 24px}
+ .stationery-envelope.envelope-entry{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:0;padding:44px 30px 35px;height:100svh;min-height:620px;overflow-y:auto}
+ .stationery-envelope .entry-title{width:100%;align-self:stretch;text-align:left;margin:0}
+ .stationery-envelope .entry-title h1{font-size:69px;line-height:.94;letter-spacing:-1.6px;margin:20px 0 15px}
+ .stationery-envelope .entry-title p{font-size:20px}
+ .stationery-envelope .entry-date{font-size:10px;letter-spacing:1.8px}
+ .stationery-envelope.envelope-entry .envelope-perspective{width:min(100%,390px);margin:65px auto 62px;flex-shrink:0}
+ .stationery-envelope.envelope-entry .envelope-address>strong{font-size:30px}
+ .stationery-envelope.envelope-entry .wax-seal{width:92px;height:96px}
+ .stationery-envelope.envelope-entry .envelope-flowers{width:122px;right:-3%;bottom:-43px}
+ .stationery-envelope .entry-bottom{width:100%;text-align:center;align-self:stretch;margin:0}
+ .stationery-envelope .entry-bottom>button{font-size:22px}
+ .stationery-envelope.envelope-entry .letter-peek>strong{font-size:27px}
+ .stationery-envelope.envelope-entry .letter-peek>small{font-size:15px}
+}
+@media(max-width:360px){
+ .stationery-edition .content-scene{padding-inline:23px}
+ .stationery-edition .keepsake-cover{padding-inline:25px}
+ .stationery-edition .keepsake-label h1{font-size:50px}
+ .stationery-edition .keepsake-photo-block{max-width:230px}
+ .stationery-edition .keepsake-photo>img{height:280px}
+ .stationery-edition .attendance-options{grid-template-columns:1fr}
+ .stationery-edition .scene-nav button{font-size:11px}
+ .stationery-edition .gallery-heading h1{font-size:36px}
+ .stationery-envelope.envelope-entry{padding-inline:25px}
+ .stationery-envelope .entry-title h1{font-size:61px}
+}
+@media(max-height:560px) and (min-width:650px){
+ .stationery-envelope.envelope-entry{grid-template-columns:240px 350px;padding:25px;gap:12px 45px}
+ .stationery-envelope .entry-title h1{font-size:60px}
+ .stationery-envelope.envelope-entry .envelope-perspective{width:350px;margin:55px 0 28px}
+ .stationery-envelope.envelope-entry .wax-seal{width:85px;height:89px}
+}
+@media(prefers-reduced-motion:reduce){.stationery-edition *,.stationery-envelope *,.wedding.stationery-edition.is-unfolding{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
