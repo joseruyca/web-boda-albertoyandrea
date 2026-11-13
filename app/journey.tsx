@@ -3,7 +3,7 @@ import {useEffect,useState} from 'react';
 import {ArrowUpRight,ArrowRight} from 'lucide-react';
 import {weddingPhase,type WeddingConfig} from './config';
 import Portrait from './portrait';
-import BotanicalArrangement from './botanical-arrangement';
+import InkArt from './ink-art';
 type Destination='venue'|'day'|'rsvp'|'gallery'|'gift';
 export function Countdown({date}:{date:string}) {
  const [now,setNow]=useState<number|null>(null);
@@ -18,26 +18,17 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
  const [a,b]=config.names.split('+').map(s=>s.trim());
  const date=new Date(config.date+'T12:00:00');
  const fullDate=date.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
- return <section className={'natural-invitation phase-'+phase} aria-label="La invitación de Andrea y Alberto">
-  <div className="keepsake-cover">
-   {phase!=='before'&&<p className="keepsake-eyebrow">{phase==='during'?'HOY ES NUESTRO DÍA':'GRACIAS POR ACOMPAÑARNOS'}</p>}
-   <div className="keepsake-stationery">
-    <div className="keepsake-label"><h1><span>{a}</span><span className="couple-name-line"><i>&</i>{b}</span></h1><p>{fullDate}</p></div>
-    <div className="keepsake-photo-block">
-     <div className="photo-bundle"><figure className="keepsake-photo"><Portrait src={config.story[0]?.photo||'/assets/andrea-alberto-portrait.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure><img className="keepsake-binding" src="/assets/chamomile-twine-v2.webp" width="1000" height="667" alt="" aria-hidden="true"/></div>
-    </div>
-    <div className="keepsake-links">
-     <p className="personal-salutation">{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p>
-     <button className="solid-btn invitation-cta" onClick={()=>onGo(phase==='after'?'gallery':'rsvp')}>{phase==='after'?'Volver a los recuerdos':'Confirmar asistencia'}<ArrowRight size={18}/></button>
-     <button className="underline-link invitation-gift" onClick={()=>onGo('gift')}>Un detalle<ArrowUpRight size={14}/></button>
-    </div>
-   </div>
+ return <section className={'hb-invitation phase-'+phase} aria-label="La invitación de Andrea y Alberto">
+  <div className="hb-invitation-hero"><span className="hb-folio">01 / LA INVITACIÓN</span><InkArt kind="poppy" className="hb-invitation-art" eager/>
+   <header className="hb-couple"><h1><span>{a}</span><span><i>&</i>{b}</span></h1><p>{fullDate}<br/>Cáceres</p></header>
+   <figure className="hb-couple-photo"><Portrait src={config.story[0]?.photo||'/assets/herbarium-couple.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure>
   </div>
-  {phase==='after'&&<section className="letter-message" data-reveal><p>{config.thankYou}</p></section>}
-  {config.story.length>0&&<div className="photo-narrative" aria-label="Nuestra historia">{config.story.map((moment,i)=><article key={i} className={'story-moment moment-'+i%3}><figure><img src={moment.photo} alt={moment.caption||'Un recuerdo de Andrea y Alberto'} loading="lazy"/><figcaption>{moment.caption}</figcaption></figure><div data-reveal><span>NUESTRA HISTORIA · {String(i+1).padStart(2,'0')}</span><p>{moment.text||moment.caption}</p></div></article>)}</div>}
-  {phase==='before'&&<section className="date-keepsake" data-reveal><span>Hasta el sí, quiero.</span><Countdown date={config.date}/><BotanicalArrangement variant="signature" className="signature-flora"/></section>}
+  <div className="hb-invitation-actions"><p>{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p><button className="solid-btn" onClick={()=>onGo(phase==='after'?'gallery':'rsvp')}>{phase==='after'?'Volver a los recuerdos':'Confirmar asistencia'}<ArrowUpRight size={18}/></button><button className="underline-link" onClick={()=>onGo('gift')}>Un detalle</button></div>
+  <footer className="hb-page-close"><em>{phase==='after'?config.thankYou:'Todo empieza aquí.'}</em><span>{date.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})}</span></footer>
+  {config.story.length>0&&<div className="photo-narrative" aria-label="Nuestra historia">{config.story.map((moment,i)=><article key={i} className={'story-moment moment-'+i%3}><figure><img src={moment.photo} alt={moment.caption||'Un recuerdo de Andrea y Alberto'} loading="lazy"/><figcaption>{moment.caption}</figcaption></figure><div><span>NUESTRA HISTORIA · {String(i+1).padStart(2,'0')}</span><p>{moment.text||moment.caption}</p></div></article>)}</div>}
  </section>;
 }
+
 export function PracticalDetails({config}:{config:WeddingConfig}){
  const facts=[['Autobuses',config.practical.bus],['Dónde alojarse',config.practical.accommodation],['Cómo venir vestidos',config.practical.dressCode],['¿Necesitas algo?',config.practical.contact]].filter(([,value])=>value);
  return <div className="practical-details">{facts.length>0&&<div className="practical-grid">{facts.map(([title,text])=><article key={title}><span>LOS DETALLES DEL DÍA</span><h2>{title}</h2><p>{text}</p></article>)}</div>}{config.faq.length>0&&<section className="wedding-faq"><span>LAS PEQUEÑAS DUDAS</span><h2>Antes de vernos.</h2>{config.faq.map((f,i)=><details key={i}><summary>{f.question}</summary><p>{f.answer}</p></details>)}</section>}</div>;

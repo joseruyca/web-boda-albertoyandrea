@@ -1,7 +1,7 @@
 'use client';
 import {useState} from 'react';
 import {ImageOff,RotateCcw} from 'lucide-react';
-import NaturalAccent from './natural-accent';
+
 
 const photographs={
  huerta:{src:'/assets/huerta-del-conde-supplied.jpg',width:960,height:640,alt:'La fachada, el jardín y la fuente de Casa Palacio Huerta del Conde, Cáceres'},
@@ -17,5 +17,5 @@ export default function VenuePhoto({name}:{name:string}){
  const key=normalized.includes('huerta del conde')?'huerta':normalized.includes('corral')&&normalized.includes('ciguen')?'corral':null;
  if(!key)return null;
  const photo=photographs[key];
- return <figure className={'venue-photo venue-photo-'+key}><div className="venue-photo-mount"><PhotographImage key={photo.src} photo={photo}/><NaturalAccent kind={key==='huerta'?'oats':'olive'} className="venue-photo-flowers"/></div></figure>;
+ return <figure className={'venue-photo venue-photo-'+key}><div className="venue-photo-mount"><PhotographImage key={photo.src} photo={photo}/></div></figure>;
 }

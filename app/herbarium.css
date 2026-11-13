@@ -1,0 +1,400 @@
+/* Herbario íntimo: the approved editorial compositions, with live content. */
+:root{--paper:#fffdfb;--paper-light:#fffdfb;--cream:#fffdfb;--olive:#202918;--olive-dark:#182013;--ink:#202918;--blue:#77133c;--burgundy:#77133c;--sage:#e5e6d6;--muted:#626456;--rule:#39412d55;--on-olive:#fffdfb}
+body{background:#e9e5e3;color:var(--ink)}
+.wedding.herbarium-edition{background:var(--paper);border:0;box-shadow:0 12px 35px #372b2310;max-width:1180px;width:calc(100% - 64px);margin:24px auto;overflow-x:clip}
+.herbarium-edition .masthead{height:82px;min-height:82px;margin:0 36px;border-bottom:1px solid var(--rule)}
+.herbarium-edition .masthead .brand .aa-monogram{width:58px;height:34px;color:var(--ink)}
+.herbarium-edition .scene-nav{top:22px;width:630px;max-width:calc(100% - 270px);gap:15px}
+.herbarium-edition .scene-nav button{font:400 17px/1.3 var(--serif);padding:8px 2px;min-height:44px;color:var(--ink)}
+.herbarium-edition .scene-nav button>svg{display:none}
+.herbarium-edition .scene-nav button.active{color:var(--burgundy)}
+.herbarium-edition .scene-nav button.active:after{height:2px;bottom:-16px;left:10px;right:10px}
+.herbarium-edition .scene{padding-bottom:0}
+.herbarium-edition .content-scene{max-width:none;width:100%;padding:36px;min-height:0}
+.herbarium-edition .solid-btn,.herbarium-edition .upload-orbit{color:var(--paper);background:var(--burgundy);border:1px solid var(--burgundy);border-radius:4px;font:400 20px/1.3 var(--serif);min-height:46px;padding:11px 22px;box-shadow:none}
+.herbarium-edition .solid-btn:hover,.herbarium-edition .upload-orbit:hover{background:#590e2d;border-color:#590e2d;transform:none}
+.herbarium-edition .outline-btn{border-color:var(--rule);color:var(--ink)}
+.herbarium-edition .underline-link{font:italic 20px/1.3 var(--serif);color:var(--ink);text-decoration-color:var(--ink);text-underline-offset:5px}
+.herbarium-edition .eyebrow{font:500 11px/1.6 var(--sans);letter-spacing:1.7px;color:var(--ink)}
+.herbarium-edition h1{font:400 52px/1.03 var(--serif);letter-spacing:-1px;margin:0;color:var(--ink)}
+.herbarium-edition h1 em{color:var(--burgundy);font-weight:400}
+.hb-ink{display:block;position:absolute;pointer-events:none;user-select:none;object-fit:contain;max-width:none;height:auto;filter:none;mix-blend-mode:multiply}
+.hb-folio{font:12px/1.5 var(--serif);letter-spacing:1.5px;writing-mode:vertical-rl;transform:rotate(180deg);position:absolute;left:0;top:40px;border-left:1px solid var(--rule);padding-left:12px}
+.hb-page-close{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:22px;padding:19px 10px 0;border-top:1px solid var(--rule);min-height:66px}
+.hb-page-close>em{font:italic 21px/1.4 var(--serif);color:var(--burgundy)}
+.hb-page-close>span{font:10px/1.5 var(--sans);letter-spacing:1.7px}
+/* 01: the invitation is an illustrated spread, not a mounted collage. */
+.hb-invitation{padding:28px 36px 24px}
+.hb-invitation-hero{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:35px;min-height:475px;position:relative;padding:24px 32px 22px 75px;isolation:isolate}
+.hb-invitation-hero .hb-folio{top:35px;height:250px}
+.hb-couple{position:relative;z-index:2;padding-top:7px}
+.herbarium-edition .hb-couple h1{font:400 clamp(57px,5.1vw,76px)/.97 var(--serif);letter-spacing:-1.8px;margin:0}
+.hb-couple h1>span{display:block;white-space:nowrap}
+.hb-couple h1 i{font-weight:400;color:var(--burgundy);margin-right:9px}
+.hb-couple h1:after{content:'';display:block;width:52px;height:2px;background:var(--burgundy);margin:25px 0 18px}
+.hb-couple>p{font:italic 24px/1.4 var(--serif);margin:0}
+.hb-invitation-art{z-index:0;bottom:0;left:5px;width:750px;max-width:89%;opacity:.95}
+.hb-couple-photo{position:relative;z-index:2;padding:7px;border:1px solid var(--burgundy);background:var(--paper);margin:0;width:100%;align-self:start}
+.hb-couple-photo>img{width:100%;height:422px;display:block;object-fit:cover;object-position:50% 45%;filter:none}
+.hb-couple-photo figcaption{font:italic 17px/1.4 var(--serif);padding:7px 2px}
+.hb-invitation-actions{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr auto;align-items:center;gap:20px;margin:0 22px 0 60px;padding-top:6px}
+.hb-invitation-actions>p{margin:0;padding:11px 15px;background:var(--sage);text-align:center;font:italic 23px/1.3 var(--serif)}
+.hb-invitation-actions>.underline-link{padding-inline:12px;border-left:1px solid var(--rule);min-width:120px;justify-content:center}
+/* 02: a rising botanical score on desktop becomes a vertical sequence on mobile. */
+.herbarium-edition .hb-day{position:relative;padding-bottom:24px;isolation:isolate}
+.hb-day-score{position:relative;min-height:505px;margin-bottom:4px}
+.hb-day-title{position:relative;z-index:2;width:40%;padding:10px 0 0 5px}
+.herbarium-edition .hb-day-title h1{font-size:54px;line-height:1.02}
+.hb-day-title h1 em{color:var(--ink)}
+.hb-day-title h1 em>span{color:var(--burgundy)}
+.hb-day-title:after{content:'';display:block;width:55px;height:2px;background:var(--burgundy);margin-top:19px}
+.hb-date-badge{position:absolute;left:5px;top:190px;width:128px;min-height:165px;padding:12px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid var(--burgundy);background:var(--paper);z-index:2}
+.hb-date-badge>span{font:11px/1.4 var(--serif);text-transform:uppercase;letter-spacing:2px}
+.hb-date-badge>strong{font:400 65px/.95 var(--serif);color:var(--burgundy)}
+.hb-day-meadow{right:-10px;top:-10px;width:365px;z-index:0}
+.hb-score-line{position:absolute;inset:0;width:100%;height:500px;fill:none;stroke:#697246;stroke-width:1;pointer-events:none}
+.hb-moments{list-style:none;padding:0;margin:0;position:absolute;inset:0;z-index:2}
+.hb-moments>li{position:absolute;width:180px;padding:16px 0 0 8px}
+.hb-moments>li:nth-child(1){left:19%;top:71%}.hb-moments>li:nth-child(2){left:40%;top:48%}.hb-moments>li:nth-child(3){left:60%;top:30%}.hb-moments>li:nth-child(4){left:79%;top:10%}
+.hb-moment-dot{position:absolute;left:0;top:-3px;width:10px;height:10px;border-radius:50%;background:var(--burgundy)}
+.herbarium-edition .hb-moments h2{font:italic 28px/1.15 var(--serif);letter-spacing:-.4px;margin:0 0 5px;color:var(--ink)}
+.hb-moments p{font:19px/1.3 var(--serif);margin:3px 0 0;color:var(--ink)}
+.hb-moments .hb-moment-time{font-size:18px;white-space:nowrap}
+.hb-moments .hb-moment-note{font:italic 15px/1.4 var(--serif)}
+.hb-prewedding{position:relative;z-index:2;width:360px;max-width:48%;margin:-115px 0 0 auto;padding:20px 26px;background:var(--sage)}
+.herbarium-edition .hb-prewedding h2{font:italic 34px/1.2 var(--serif);margin:0 0 12px;color:var(--ink)}
+.hb-prewedding h2:after{content:'';display:block;width:35px;height:2px;background:var(--burgundy);margin-top:10px}
+.herbarium-edition .hb-prewedding h3{font:italic 24px/1.3 var(--serif);margin:0 0 4px}
+.hb-prewedding p{font:19px/1.4 var(--serif);margin:0}
+.hb-prewedding .hb-prewedding-date{font:italic 16px/1.4 var(--serif)}
+.hb-prewedding .underline-link{margin-top:4px}
+.hb-programme-actions{margin-top:30px;padding-bottom:0}
+.hb-programme-actions .solid-btn{min-width:230px}
+/* 03: real venue photos follow a single engraved vine through two chapters. */
+.hb-places-title{position:relative;min-height:150px;padding:0 10px 10px;isolation:isolate}
+.herbarium-edition .hb-places-title h1{font-size:52px;position:relative;z-index:2}
+.hb-places-title>.hb-ink{width:530px;right:10px;top:-33px;max-height:270px;object-fit:contain;object-position:top right;z-index:0}
+.hb-place{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:65px;position:relative;padding:20px 25px 25px 5px;margin:0 0 5px;isolation:isolate}
+.hb-place-copy{grid-column:2;grid-row:1;position:relative;z-index:2;padding:24px 0 5px 32px;min-width:0}
+.hb-place-number{position:absolute;left:58%;top:0;font:italic 112px/1 var(--serif);color:#c4c8a3;z-index:1;pointer-events:none;opacity:.8}
+.hb-place .eyebrow:after{content:'';display:block;width:42px;height:2px;background:var(--burgundy);margin-top:10px}
+.herbarium-edition .hb-place h2{font:400 35px/1.12 var(--serif);margin:17px 0 12px;letter-spacing:-.5px;color:var(--ink)}
+.hb-place-copy>p{font:italic 19px/1.5 var(--serif);margin:0 0 15px;max-width:29ch}
+.hb-place .solid-btn{min-width:185px;font-size:19px}
+.herbarium-edition .hb-place .venue-photo{grid-column:1;grid-row:1;width:100%;max-width:none;margin:0;position:relative;z-index:2;transform:none}
+.herbarium-edition .hb-place .venue-photo-mount{padding:7px;border:1px solid var(--burgundy);background:var(--paper);box-shadow:none;transform:none;isolation:auto}
+.herbarium-edition .hb-place .venue-photo-mount:before{display:none}
+.herbarium-edition .hb-place .venue-photograph{height:auto;aspect-ratio:1.65;object-fit:cover;filter:none;display:block;width:100%}
+.hb-place:nth-child(even){grid-template-columns:1fr 1.15fr;gap:50px;padding-left:25px;padding-right:5px}
+.hb-place:nth-child(even) .hb-place-copy{grid-column:1;padding-left:50px}
+.hb-place:nth-child(even) .venue-photo{grid-column:2}
+.hb-place:nth-child(even) .hb-place-number{left:0;top:0}
+.hb-place-vine{position:absolute;z-index:1;width:660px;top:50%;left:26%;transform:rotate(-9deg);pointer-events:none}
+/* 04: confirmation remains a real, accessible three-step form. */
+.herbarium-edition .hb-reply{padding:44px 50px 25px;position:relative;isolation:isolate}
+.herbarium-edition .hb-reply .rsvp-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:75px;min-height:500px}
+.herbarium-edition .hb-reply .rsvp-intro{min-height:370px;isolation:isolate}
+.herbarium-edition .hb-reply .rsvp-intro .reply-heading{font:400 58px/1.03 var(--serif);letter-spacing:-1px;max-width:13ch;margin:15px 0 25px;color:var(--ink)}
+.herbarium-edition .hb-reply .reply-heading:after{content:'';display:block;width:50px;height:2px;margin-top:25px;background:var(--burgundy)}
+.herbarium-edition .reply-eyebrow{font:italic 22px/1.4 var(--serif);letter-spacing:0;text-transform:none;color:var(--ink)}
+.hb-reply-art{width:520px;max-width:135%;left:-55px;top:230px;z-index:-1}
+.herbarium-edition .hb-reply:not(.reply-is-saved) .rsvp-paper{border-top:1px solid var(--burgundy);border-left:1px solid var(--burgundy);border-top-left-radius:110px;padding:50px 0 0 32px}
+.herbarium-edition .hb-reply .rsvp-steps{border:0;justify-content:space-between;padding:0 0 24px;gap:12px}
+.herbarium-edition .hb-reply .rsvp-steps li{flex-direction:column;gap:8px;font:italic 17px/1.4 var(--serif)}
+.herbarium-edition .hb-reply .rsvp-steps li>span{width:29px;height:29px;border-color:var(--rule);font:16px var(--serif)}
+.herbarium-edition .hb-reply .rsvp-steps li.active>span{background:var(--burgundy);border-color:var(--burgundy);color:var(--paper)}
+.herbarium-edition .hb-reply .attendance-options{grid-template-columns:1fr;gap:13px}
+.herbarium-edition .hb-reply .attendance-options label{font:italic 22px/1.5 var(--serif);padding:12px 17px;border-radius:6px;gap:14px}
+.herbarium-edition .hb-reply .attendance-options label.chosen{background:#77133c08;border:1px solid var(--burgundy)}
+.herbarium-edition .hb-reply .rsvp-form-actions .solid-btn{width:100%;font:22px/1.4 var(--serif);background:var(--burgundy)}
+.herbarium-edition .hb-reply .reply-summary{background:var(--sage);border-radius:5px;padding:23px 27px;margin:0 0 24px}
+.herbarium-edition .hb-reply .reply-facts>div{font:18px/1.5 var(--serif);grid-template-columns:90px minmax(0,1fr)}
+.herbarium-edition .hb-reply .reply-person header>span{font:18px/1.5 var(--serif)}
+.herbarium-edition .hb-reply .rsvp-paper .reply-edit{width:100%;font:21px/1.4 var(--serif);justify-content:center;background:var(--burgundy);border-color:var(--burgundy)}
+.herbarium-edition .hb-reply .reply-programme{font:italic 20px/1.4 var(--serif);color:var(--ink);margin-top:8px}
+.hb-reply-signature{height:155px;position:relative;isolation:isolate;margin-top:12px}
+.hb-reply-signature>.hb-ink{right:-50px;bottom:-25px;width:430px;max-width:120%;z-index:-1}
+.hb-reply-signature>span{font:italic 20px/1.5 var(--serif);display:block;text-align:center;padding-top:110px;color:var(--muted)}
+.herbarium-edition .reply-is-saved .hb-reply-art{display:none}
+.herbarium-edition .reply-is-saved .rsvp-intro{min-height:0}
+/* 05: the flax engraving brackets the entire personal letter. */
+.herbarium-edition .hb-gift{padding-bottom:24px}
+.hb-gift-letter{position:relative;min-height:570px;isolation:isolate;padding:35px 35px 15px 31%}
+.hb-gift-letter .hb-folio{left:6px;top:18px;height:220px}
+.hb-gift-art{left:30px;top:-12px;height:590px;width:auto;max-width:none;z-index:-1}
+.hb-gift-copy{position:relative;z-index:2}
+.herbarium-edition .hb-gift h1{font:400 54px/1.07 var(--serif);letter-spacing:-1px;margin:25px 0 28px}
+.hb-gift h1:after{content:'';display:block;width:55px;height:2px;background:var(--burgundy);margin-top:22px}
+.hb-gift-copy>p{font:italic 25px/1.5 var(--serif);margin:0 0 28px;max-width:33ch}
+.hb-gift-pending{display:flex;flex-direction:column;gap:6px;padding:23px 27px;background:var(--sage);max-width:570px;border-radius:4px}
+.hb-gift-pending strong{font:italic 27px/1.4 var(--serif)}
+.hb-gift-pending span{font:italic 20px/1.4 var(--serif)}
+.hb-gift-copy>.hb-gift-signature{font:italic 34px/1.4 var(--serif);margin:35px 0 0}
+.herbarium-edition .hb-gift .gift-account{background:var(--sage);padding:22px;border-radius:4px;max-width:570px}
+.herbarium-edition .hb-gift .gift-account .solid-btn{width:100%;font-size:19px}
+/* 06: an engraved margin follows the controls and photographs through the album. */
+.herbarium-edition .hb-gallery{padding:36px 36px 30px 190px;position:relative;isolation:isolate;min-height:650px}
+.herbarium-edition .hb-gallery .gallery-heading{grid-template-columns:minmax(0,1fr) auto;padding:0;gap:20px;position:static;margin:0 0 20px}
+.herbarium-edition .hb-gallery .gallery-heading h1{font:400 45px/1.05 var(--serif);letter-spacing:-.7px;padding:0;max-width:none;color:var(--ink)}
+.herbarium-edition .hb-gallery .album-title>p{font:italic 22px/1.4 var(--serif);color:var(--ink);margin:0 0 15px}
+.herbarium-edition .hb-gallery .album-title>p:after{content:'';display:block;width:45px;height:2px;background:var(--burgundy);margin-top:12px}
+.herbarium-edition .hb-gallery .gallery-heading .upload-orbit{min-width:230px;padding:12px 20px;align-self:center}
+.herbarium-edition .hb-gallery .upload-orbit>span{font:20px/1.3 var(--serif)}
+.hb-album-art{width:310px;left:-5px;top:20px;height:700px;object-fit:contain;object-position:top left;z-index:-1}
+.herbarium-edition .hb-gallery .album-access-actions{justify-content:flex-end;gap:23px}
+.herbarium-edition .hb-gallery .album-access-actions .outline-btn{border:0;border-bottom:1px solid var(--rule);padding:0;border-radius:0;font:18px/1.4 var(--serif)}
+.herbarium-edition .hb-gallery .gallery-toolbar{border-top:1px solid var(--burgundy);border-bottom:0;padding-top:20px;margin:24px 0 16px;gap:17px;grid-template-columns:1fr auto auto}
+.herbarium-edition .hb-gallery .filter-tabs{gap:20px}
+.herbarium-edition .hb-gallery .filter-tabs button{font:18px/1.4 var(--serif);padding:8px 14px;min-height:38px}
+.herbarium-edition .hb-gallery .filter-tabs button.active{background:var(--sage);border-radius:3px;color:var(--burgundy)}
+.herbarium-edition .hb-gallery .filter-tabs button.active:after{display:none}
+.herbarium-edition .hb-gallery .gallery-toolbar>p{font:italic 17px/1.4 var(--serif)}
+.herbarium-edition .hb-gallery .gallery-toolbar>.underline-link{font:17px/1.4 var(--serif)}
+.herbarium-edition .hb-gallery .photo-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px;padding:0;max-width:850px}
+.herbarium-edition .hb-gallery .photo-wall .memory{padding:7px 7px 0;border:1px solid var(--burgundy);background:var(--paper);box-shadow:none;position:relative;isolation:isolate}
+.herbarium-edition .hb-gallery .memory-label{margin:8px -8px -1px;padding:8px 12px;background:var(--sage);min-height:42px;text-align:center;justify-content:center}
+.herbarium-edition .hb-gallery .memory-label>span{font:italic 20px/1.3 var(--serif)}
+.herbarium-edition .hb-gallery .memory-image{aspect-ratio:4/5;height:auto}
+/* Private organizer: functional workspace, no illustration behind data. */
+.herbarium-edition.view-admin{background:var(--paper)}
+.herbarium-edition .admin-scene{display:grid;grid-template-columns:155px minmax(0,1fr);gap:22px 28px;padding:28px 30px 32px}
+.herbarium-edition .admin-title{grid-column:1/-1;border:0;margin:0 0 4px}
+.herbarium-edition .admin-tabs{grid-column:1;grid-row:2/20;display:flex;flex-direction:column;gap:7px;border:0;border-right:1px solid var(--rule);padding:8px 18px 0 0;margin:0;align-self:stretch}
+.herbarium-edition .admin-tabs button{text-align:left;justify-content:start;padding:12px;font-size:12px;border-radius:3px}
+.herbarium-edition .admin-tabs button.active{background:var(--sage);color:var(--burgundy)}
+.herbarium-edition .admin-scene>div:not(.admin-title):not(.admin-tabs),.herbarium-edition .admin-scene>section,.herbarium-edition .admin-scene>form,.herbarium-edition .admin-scene>p{grid-column:2;min-width:0}
+.herbarium-edition .admin-title h1{font-size:39px}
+.herbarium-edition .admin-card{background:var(--paper);border:1px solid var(--rule)}
+.herbarium-edition .organizer-shortcuts>button,.herbarium-edition .organizer-stats>div{background:var(--sage)}
+.herbarium-edition .admin-card .solid-btn,.herbarium-edition .admin-title .solid-btn{font:13px/1.5 var(--sans)}
+.herbarium-edition .organizer-stats{gap:12px;margin-bottom:20px}
+.herbarium-edition .organizer-stats strong{font-size:30px}
+.herbarium-edition .organizer-stats>div{padding:15px}
+/* The opening matches the illustrated envelope mockup, retaining the live flap. */
+.herbarium-envelope.envelope-entry{background:var(--paper);color:var(--ink);grid-template-columns:310px 530px;gap:20px 65px;padding:65px 40px;isolation:isolate}
+.herbarium-envelope.envelope-entry:before{display:none}
+.herbarium-envelope .entry-title h1{font:400 68px/.96 var(--serif);letter-spacing:-1.8px;margin:28px 0 0;color:var(--ink)}
+.herbarium-envelope .entry-title h1 em{font-weight:400;color:var(--ink)}
+.herbarium-envelope .entry-date{font:13px/1.5 var(--serif);color:var(--burgundy);letter-spacing:2px}
+.herbarium-envelope.envelope-entry .envelope-perspective{width:530px;aspect-ratio:1100/688;margin:70px 0 25px;isolation:isolate}
+.herbarium-envelope .envelope-object{filter:drop-shadow(0 8px 7px #4536221b);transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(-3deg)}
+.herbarium-envelope .envelope-object:after{content:'';position:absolute;left:3%;right:3%;top:69%;height:3px;background:#d5c5a9;box-shadow:0 4px 0 #e2d2b7,0 6px 1px #7f6a3620;transform:rotate(-1deg);z-index:6;pointer-events:none}
+.herbarium-envelope.envelope-entry .wax-seal{width:105px;height:110px;top:70%;left:51%;z-index:8}
+.herbarium-envelope.envelope-entry .envelope-address{inset:17% 9% auto;display:flex;align-items:flex-end}
+.herbarium-envelope.envelope-entry .envelope-address>strong{font-size:31px;color:var(--burgundy)}
+.hb-envelope-print{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:6;clip-path:polygon(3% 5%,97% 5%,97% 95%,3% 95%);opacity:.9}
+.hb-envelope-ground{position:absolute;left:-30px;top:0;width:660px;height:440px;object-fit:contain;z-index:-1;opacity:.65}
+.herbarium-envelope .entry-bottom{padding:20px 0 0;width:100%}
+.herbarium-envelope .entry-bottom>button{font:23px/1.4 var(--serif);background:var(--burgundy);border:1px solid var(--burgundy);color:var(--paper);border-radius:3px;min-height:47px;padding:10px 24px;gap:18px}
+.hb-envelope-signature{font:italic 18px/1.5 var(--serif);margin:30px 0 0;padding-top:17px;border-top:1px solid var(--rule)}
+.herbarium-envelope.is-opening .hb-envelope-print,.herbarium-envelope.is-opening .envelope-object:after{opacity:0;transition:opacity .3s}
+.herbarium-envelope.is-opening .hb-envelope-ground{animation:opening-label-away .5s .3s both}
+.herbarium-edition .modal{background:var(--paper);background-image:none;color:var(--ink)}
+.herbarium-edition .toast{background:var(--burgundy);color:var(--paper)}
+@media(max-width:999px) and (min-width:701px){
+ .wedding.herbarium-edition{width:calc(100% - 32px);margin:16px auto}
+ .herbarium-edition .masthead{margin:0 28px;height:70px;min-height:70px}
+ .herbarium-edition .scene-nav{position:relative;inset:auto;transform:none;max-width:none;width:calc(100% - 56px);margin:0 auto;padding-block:5px;border-bottom:1px solid var(--rule);gap:5px}
+ .herbarium-edition .scene-nav button.active:after{bottom:0}
+ .hb-invitation{padding:25px 28px}
+ .hb-invitation-hero{grid-template-columns:1fr 265px;padding-left:48px;padding-right:0;gap:20px;min-height:435px}
+ .herbarium-edition .hb-couple h1{font-size:57px}
+ .hb-couple-photo>img{height:380px}
+ .hb-invitation-actions{margin-left:0;gap:15px}
+ .hb-invitation-actions>p{font-size:21px}
+ .hb-invitation-actions .solid-btn{font-size:18px;padding-inline:12px}
+ .hb-invitation-art{width:660px;max-width:100%}
+ .herbarium-edition .hb-day-title h1{font-size:45px}
+ .hb-moments>li{width:145px}.herbarium-edition .hb-moments h2{font-size:24px}
+ .hb-day-meadow{width:280px}
+ .hb-prewedding{width:310px;padding:18px}
+ .hb-place{gap:30px;padding-right:10px}.hb-place-copy{padding-left:10px}
+ .herbarium-edition .hb-place h2{font-size:29px}
+ .hb-place:nth-child(even){gap:30px;padding-left:10px}.hb-place:nth-child(even) .hb-place-copy{padding-left:35px}
+ .hb-place-number{font-size:90px}
+ .herbarium-edition .hb-reply .rsvp-layout{gap:35px}
+ .herbarium-edition .hb-reply .rsvp-intro .reply-heading{font-size:46px}
+ .hb-gift-letter{padding-left:29%;padding-right:10px}
+ .herbarium-edition .hb-gift h1{font-size:43px}
+ .hb-gift-art{height:540px;left:5px}
+ .herbarium-edition .hb-gallery{padding-left:115px}
+ .hb-album-art{width:200px;left:-12px;height:600px}
+ .herbarium-edition .hb-gallery .gallery-heading{grid-template-columns:1fr}
+ .herbarium-edition .hb-gallery .gallery-heading .upload-orbit{width:max-content}
+ .herbarium-edition .hb-gallery .album-access-actions{justify-content:start}
+ .herbarium-edition .hb-gallery .gallery-toolbar{gap:10px;grid-template-columns:1fr auto}
+ .herbarium-edition .hb-gallery .filter-tabs{grid-column:1/-1}
+ .herbarium-envelope.envelope-entry{grid-template-columns:250px 390px;gap:20px 30px;padding-inline:20px}
+ .herbarium-envelope .entry-title h1{font-size:58px}
+ .herbarium-envelope.envelope-entry .envelope-perspective{width:390px}
+ .hb-envelope-ground{width:490px;height:330px;left:-35px}
+}
+@media(max-width:700px){
+ .wedding.herbarium-edition{width:100%;margin:0;min-height:100svh;box-shadow:none}
+ .herbarium-edition .masthead{height:65px;min-height:65px;margin:0 22px}
+ .herbarium-edition .masthead .brand .aa-monogram{width:48px;height:28px}
+ .herbarium-edition .scene-nav{position:fixed;inset:auto 0 0;width:100%;max-width:none;transform:none;margin:0;padding:7px 10px calc(7px + env(safe-area-inset-bottom,0px));gap:3px;background:#fffdfbf7;border-top:1px solid var(--rule);border-bottom:0}
+ .herbarium-edition .scene-nav button{font:11px/1.3 var(--sans);padding:4px 1px 7px;gap:5px;min-height:48px}
+ .herbarium-edition .scene-nav button>svg{display:block;width:18px;height:18px;stroke-width:1.35}
+ .herbarium-edition .scene-nav button.active:after{height:2px;bottom:0;left:7px;right:7px}
+ .herbarium-edition .scene{padding-bottom:calc(91px + env(safe-area-inset-bottom,0px))}
+ .herbarium-edition .content-scene{padding:25px 22px 15px;max-width:520px;margin:0 auto}
+ .herbarium-edition h1{font-size:41px;letter-spacing:-.7px}
+ .herbarium-edition .solid-btn,.herbarium-edition .upload-orbit{font-size:20px;padding:10px 17px;min-height:46px}
+ .herbarium-edition .underline-link{font-size:19px;min-height:44px}
+ .hb-page-close{margin-top:23px;padding:16px 0 0;min-height:54px;gap:12px}
+ .hb-page-close>em{font-size:18px}.hb-page-close>span{font-size:9px;letter-spacing:1px;white-space:nowrap}
+ .hb-folio{display:none}
+ .hb-invitation{padding:22px 23px 12px;max-width:460px;margin:0 auto}
+ .hb-invitation-hero{display:flex;flex-direction:column;align-items:flex-end;padding:0 0 14px;gap:20px;min-height:0}
+ .hb-couple{width:calc(100% - 70px);align-self:flex-end;padding:0}
+ .herbarium-edition .hb-couple h1{font-size:43px;line-height:.98;letter-spacing:-1px}
+ .hb-couple h1 i{margin-right:5px}
+ .hb-couple h1:after{margin:17px 0 12px;width:35px}
+ .hb-couple>p{font:italic 19px/1.4 var(--serif)}
+ .hb-couple-photo{width:calc(100% - 58px);max-width:265px;padding:6px;align-self:flex-end}
+ .hb-couple-photo>img{height:300px;object-position:50% 47%}
+ .hb-invitation-art{width:400px;max-width:none;height:470px;left:-78px;bottom:0;object-fit:cover;object-position:10% 50%;z-index:0}
+ .hb-invitation-actions{display:flex;flex-direction:column;gap:12px;margin:0 0 0 6px;padding:0;align-items:stretch}
+ .hb-invitation-actions>p{font-size:22px;padding:9px 10px}
+ .hb-invitation-actions>.solid-btn{justify-content:center;min-height:45px;font-size:20px;gap:15px}
+ .hb-invitation-actions>.underline-link{border:0;min-width:0;align-self:center;padding:0;font-size:18px;min-height:32px}
+ .hb-invitation .hb-page-close{margin-top:18px}
+ .hb-day-score{min-height:0;margin:0;position:relative;padding-bottom:0}
+ .hb-day-title{width:100%;padding:0}
+ .herbarium-edition .hb-day-title h1{font-size:41px;line-height:1.02;max-width:10ch}
+ .hb-day-title:after{width:35px;margin-top:14px}
+ .hb-date-badge{position:relative;inset:auto;width:100%;min-height:49px;margin:20px 0 20px;flex-direction:row;justify-content:center;padding:6px 9px;gap:12px}
+ .hb-date-badge>strong{font-size:40px;line-height:1}.hb-date-badge>span{font-size:10px;letter-spacing:1px}
+ .hb-day-meadow{width:190px;right:-20px;top:190px;height:330px;object-position:bottom right}
+ .hb-score-line{display:none}
+ .hb-moments{position:relative;inset:auto;padding:0 100px 0 29px;min-height:310px;margin:0 0 17px}
+ .hb-moments:before{content:'';position:absolute;left:6px;top:4px;bottom:15px;width:15px;border-left:1px solid #6b744e;border-radius:50%}
+ .hb-moments>li,.hb-moments>li:nth-child(n){position:relative;inset:auto;width:auto;padding:0 0 0 4px;min-height:70px;margin-bottom:6px}
+ .hb-moment-dot{left:-23px;top:9px;width:7px;height:7px}
+ .herbarium-edition .hb-moments h2{font-size:24px;line-height:1.15;margin:0 0 4px;white-space:nowrap}
+ .hb-moments p{font-size:17px;margin-top:1px}
+ .hb-moments .hb-moment-time{font-size:17px;white-space:nowrap}
+ .hb-moments .hb-moment-note{font-size:14px}
+ .hb-prewedding{width:100%;max-width:none;margin:0;padding:17px 22px;border-radius:4px;display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:end}
+ .herbarium-edition .hb-prewedding h2{font-size:29px;margin:0;grid-column:1/-1}
+ .hb-prewedding h2:after{width:28px;margin-top:7px}
+ .herbarium-edition .hb-prewedding h3{font-size:22px;margin-top:3px}
+ .hb-prewedding p{font-size:17px}.hb-prewedding .hb-prewedding-date{font-size:15px}
+ .hb-prewedding>.underline-link{font-size:16px;margin:0;white-space:nowrap}
+ .hb-programme-actions{display:flex;flex-direction:column;gap:5px;border:0;margin:20px 0 0;padding:0}
+ .hb-programme-actions>em{display:none}.hb-programme-actions .solid-btn{width:100%}.hb-programme-actions>.underline-link{font-size:16px}
+ .hb-places-title{min-height:108px;padding:0;isolation:isolate}
+ .herbarium-edition .hb-places-title h1{font-size:38px;position:relative;z-index:2}
+ .hb-places-title>.hb-ink{width:220px;right:-85px;top:-35px;height:190px;object-position:top right;z-index:0}
+ .hb-place,.hb-place:nth-child(even){display:flex;flex-direction:column;align-items:stretch;padding:22px 0 25px;margin:0;gap:15px;position:relative}
+ .hb-place-number,.hb-place:nth-child(even) .hb-place-number{left:0;top:5px;font-size:72px;line-height:1;opacity:.7}
+ .hb-place-copy,.hb-place:nth-child(even) .hb-place-copy{display:contents;padding:0}
+ .hb-place .eyebrow{order:0;margin-left:76px;font:500 10px/1.5 var(--sans);letter-spacing:1.5px}
+ .hb-place .eyebrow:after{width:25px;margin-top:7px}
+ .herbarium-edition .hb-place h2{order:1;font-size:29px;margin:-10px 0 0 76px;line-height:1.05;min-height:38px;letter-spacing:-.5px}
+ .herbarium-edition .hb-place .venue-photo{order:2;width:100%;margin:0;max-width:none;align-self:stretch}
+ .herbarium-edition .hb-place .venue-photo-mount{padding:4px}
+ .herbarium-edition .hb-place .venue-photograph{aspect-ratio:1.95;object-fit:cover}
+ .hb-place-copy>p{order:3;font-size:17px;text-align:center;margin:-5px 0 0;max-width:none;line-height:1.4}
+ .hb-place-copy>.solid-btn{order:4;min-width:0;align-self:center;padding:8px 23px;min-height:39px;font-size:18px;margin-top:-4px}
+ .hb-place+.hb-place{border-top:1px solid var(--rule)}
+ .hb-place-vine{width:300px;left:-125px;top:75%;opacity:.65;z-index:0}
+ .herbarium-edition .hb-reply{padding:28px 23px 14px}
+ .herbarium-edition .hb-reply .rsvp-layout{display:block;min-height:0}
+ .herbarium-edition .hb-reply .rsvp-intro{padding:0;margin:0 0 24px;min-height:0}
+ .herbarium-edition .hb-reply .rsvp-intro .reply-heading{font:400 43px/1.03 var(--serif);letter-spacing:-.7px;max-width:13ch;margin:12px 0 22px}
+ .herbarium-edition .hb-reply .reply-heading:after{width:34px;margin-top:17px}
+ .herbarium-edition .reply-eyebrow{font-size:19px;margin-bottom:12px}
+ .herbarium-edition .hb-reply .rsvp-intro>.reply-status{font:17px/1.5 var(--serif);gap:10px}
+ .herbarium-edition .hb-reply .reply-status svg{width:24px;height:24px;color:var(--burgundy)}
+ .hb-reply-art{width:200px;max-width:none;left:auto;right:-80px;top:-15px;opacity:.8}
+ .herbarium-edition .hb-reply:not(.reply-is-saved) .rsvp-paper{padding:25px 0 0;border-left:0;border-radius:0}
+ .herbarium-edition .hb-reply .rsvp-steps{padding-bottom:16px}
+ .herbarium-edition .hb-reply .rsvp-steps li{font-size:16px}
+ .herbarium-edition .hb-reply .rsvp-step-title{font-size:29px}
+ .herbarium-edition .hb-reply .rsvp-step-copy{font-size:13px}
+ .herbarium-edition .hb-reply .reply-summary{padding:20px 24px;margin:0 0 22px}
+ .herbarium-edition .hb-reply .reply-person strong{font-size:26px}
+ .herbarium-edition .hb-reply .reply-person>header{padding-bottom:10px}
+ .herbarium-edition .hb-reply .reply-facts>div{font-size:18px;padding:10px 0;grid-template-columns:85px minmax(0,1fr)}
+ .herbarium-edition .hb-reply .rsvp-paper .reply-edit{font-size:20px;min-height:46px}
+ .herbarium-edition .hb-reply .reply-programme{font-size:19px;margin:7px auto 0}
+ .hb-reply-signature{height:135px;margin-top:0}
+ .hb-reply-signature>.hb-ink{bottom:-18px;right:-24px;width:350px;max-width:115%;height:185px}
+ .hb-reply-signature>span{display:none}
+ .hb-gift-letter{min-height:0;padding:76px 0 22px 72px;isolation:isolate}
+ .hb-gift-art{top:-12px;left:-30px;height:575px;width:auto;z-index:-1;max-width:none}
+ .herbarium-edition .hb-gift h1{font-size:37px;line-height:1.04;letter-spacing:-.7px;margin:0 0 26px;max-width:12ch}
+ .hb-gift h1:after{width:32px;margin-top:20px}
+ .hb-gift-copy>p{font:italic 21px/1.4 var(--serif);margin:0 0 24px;max-width:22ch}
+ .hb-gift-pending{padding:17px 15px;margin-left:-26px;gap:4px}
+ .hb-gift-pending strong{font-size:23px}.hb-gift-pending span{font-size:18px}
+ .hb-gift-copy>.hb-gift-signature{font-size:27px;margin:30px 0 12px -15px;white-space:nowrap}
+ .hb-gift .hb-page-close{margin-top:20px}
+ .hb-gift .hb-page-close .underline-link{font-size:18px;color:var(--burgundy)}
+ .herbarium-edition .hb-gallery{padding:27px 22px 15px;min-height:0}
+ .herbarium-edition .hb-gallery .gallery-heading{display:flex;flex-direction:column;gap:21px;align-items:stretch;margin-bottom:16px}
+ .herbarium-edition .hb-gallery .album-title{padding-left:125px;min-height:145px;position:relative;z-index:2}
+ .herbarium-edition .hb-gallery .album-title>p{font-size:19px;margin:0 0 15px}
+ .herbarium-edition .hb-gallery .album-title>p:after{width:32px;margin-top:9px}
+ .herbarium-edition .hb-gallery .gallery-heading h1{font:400 37px/1.05 var(--serif);letter-spacing:-.7px;max-width:none;white-space:nowrap}
+ .hb-album-art{position:absolute;left:-5px;top:10px;width:170px;height:380px;object-position:left top;z-index:0}
+ .herbarium-edition .hb-gallery .gallery-heading .upload-orbit{align-self:stretch;width:100%;min-width:0;justify-content:center;padding:11px 15px;font-size:20px;z-index:2}
+ .herbarium-edition .hb-gallery .upload-orbit>span{font-size:20px}
+ .herbarium-edition .hb-gallery .album-access-actions{justify-content:space-between;gap:15px;position:relative;z-index:2;padding-inline:6px}
+ .herbarium-edition .hb-gallery .album-access-actions .outline-btn{font-size:17px;border-bottom:0;padding:0}
+ .herbarium-edition .hb-gallery .album-access-actions .underline-link{font-size:17px}
+ .herbarium-edition .hb-gallery .gallery-toolbar{grid-template-columns:1fr auto;position:relative;z-index:2;gap:13px;margin:24px 0 20px;padding-top:17px}
+ .herbarium-edition .hb-gallery .filter-tabs{grid-column:1/-1;justify-content:space-between;gap:12px}
+ .herbarium-edition .hb-gallery .filter-tabs button{font-size:17px;padding:6px 15px;flex:1}
+ .herbarium-edition .hb-gallery .gallery-toolbar>p{font-size:17px;margin-left:14px}
+ .herbarium-edition .hb-gallery .gallery-toolbar>.underline-link{font-size:17px}
+ .herbarium-edition .hb-gallery .photo-wall{gap:15px;grid-template-columns:repeat(2,minmax(0,1fr));position:relative;z-index:2}
+ .herbarium-edition .hb-gallery .photo-wall .memory{padding:5px 5px 0}
+ .herbarium-edition .hb-gallery .memory-image{aspect-ratio:3/4;min-height:0}
+ .herbarium-edition .hb-gallery .memory-label{margin:7px -6px -1px;padding:8px 5px;min-height:41px}
+ .herbarium-edition .hb-gallery .memory-label>span{font-size:17px}
+ .herbarium-edition .admin-scene{display:block;padding:28px 22px 32px}
+ .herbarium-edition .admin-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;border:0;border-bottom:1px solid var(--rule);padding:0 0 18px;margin-bottom:20px}
+ .herbarium-edition .admin-tabs button{text-align:center;padding:8px 4px;font-size:11px}
+ .herbarium-edition .admin-title h1{font-size:36px}
+ .herbarium-envelope.envelope-entry{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;min-height:650px;height:100svh;padding:34px 25px 25px;gap:0;background:var(--paper)}
+ .herbarium-envelope .entry-title{position:relative;z-index:2;width:100%;text-align:center}
+ .herbarium-envelope .entry-date{font-size:12px;letter-spacing:2px}
+ .herbarium-envelope .entry-title h1{font:400 48px/.95 var(--serif);letter-spacing:-1px;margin:17px 0 0;text-align:center}
+ .herbarium-envelope.envelope-entry .envelope-perspective{width:min(100%,390px);max-width:100%;margin:45px auto 35px;height:auto;aspect-ratio:1100/688;flex-shrink:0}
+ .herbarium-envelope.envelope-entry .wax-seal{width:84px;height:88px;top:70%}
+ .herbarium-envelope.envelope-entry .envelope-address>strong{font-size:25px}
+ .hb-envelope-ground{width:400px;height:300px;left:-35px;top:0;opacity:.65;object-position:bottom left}
+ .herbarium-envelope .entry-bottom{padding:0}
+ .herbarium-envelope .entry-bottom>button{width:100%;justify-content:center;font-size:21px;min-height:44px;padding:10px 15px}
+ .hb-envelope-signature{font-size:16px;margin:24px 0 0;padding-top:14px}
+}
+@media(max-width:360px){
+ .herbarium-edition .content-scene{padding-inline:19px}
+ .hb-invitation{padding-inline:19px}
+ .hb-couple{width:calc(100% - 58px)}.herbarium-edition .hb-couple h1{font-size:39px}
+ .hb-couple-photo{width:calc(100% - 55px);max-width:235px}.hb-couple-photo>img{height:275px}
+ .hb-couple>p{font-size:18px}.hb-invitation-actions>p{font-size:20px}
+ .hb-moments{padding-right:75px}.herbarium-edition .hb-moments h2{font-size:22px}.hb-moments .hb-moment-time{font-size:16px}
+ .hb-day-meadow{width:160px;right:-25px}
+ .hb-prewedding{padding:16px}.hb-prewedding>.underline-link{font-size:15px}
+ .hb-date-badge{gap:9px}.hb-date-badge>span{font-size:9px}
+ .herbarium-edition .hb-places-title h1{font-size:35px}.herbarium-edition .hb-place h2{font-size:26px}
+ .hb-place-copy>p{font-size:16px}
+ .herbarium-edition .hb-reply .rsvp-intro .reply-heading{font-size:39px}
+ .hb-gift-letter{padding-left:55px;padding-top:67px}.hb-gift-art{height:535px;left:-40px}
+ .herbarium-edition .hb-gift h1{font-size:33px}.hb-gift-copy>p{font-size:20px}.hb-gift-pending strong{font-size:21px}
+ .hb-gift-copy>.hb-gift-signature{font-size:24px}
+ .herbarium-edition .hb-gallery .album-title{padding-left:110px;min-height:135px}.herbarium-edition .hb-gallery .gallery-heading h1{font-size:32px}
+ .hb-album-art{width:145px}.herbarium-edition .hb-gallery .upload-orbit>span{font-size:18px}
+ .herbarium-envelope .entry-title h1{font-size:44px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .herbarium-edition .hb-invitation-art{animation:hb-ink-appear 1.3s ease both}
+ .herbarium-edition .hb-day-meadow{animation:hb-meadow-sway 18s ease-in-out infinite;transform-origin:70% 100%}
+}
+@keyframes hb-ink-appear{from{opacity:0;translate:0 7px}to{opacity:.95;translate:0 0}}
+@keyframes hb-meadow-sway{0%,100%{rotate:-.2deg}50%{rotate:.3deg}}
+@media(prefers-reduced-motion:reduce){.herbarium-edition *,.herbarium-envelope *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

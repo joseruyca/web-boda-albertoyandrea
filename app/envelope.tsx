@@ -1,6 +1,7 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 import EnvelopeMaterial from './envelope-material';
+import InkArt from './ink-art';
 
 /** Pointer depth and scroll depth use CSS variables, avoiding React renders on scroll. */
 export function useInvitationMotion(active:boolean){
@@ -24,12 +25,12 @@ export default function Envelope({names,guest,date,loading,onStart,onOpen,error,
  const [opening,setOpening]=useState(false);const surface=useRef<HTMLDivElement>(null);const timer=useRef<ReturnType<typeof setTimeout>|null>(null);
  useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current);},[]);
  function open(){if(opening||loading)return;setOpening(true);onStart();timer.current=setTimeout(onOpen,matchMedia('(prefers-reduced-motion: reduce)').matches?0:2150);}
- return <section className={'envelope-entry stationery-envelope '+(opening?'is-opening':'')} aria-label={guest?`Una invitación para ${guest}`:"Una invitación para ti"}>
-  <div className="entry-title"><span className="entry-date">{new Date(date+'T12:00:00').toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})}</span><h1>Nos<br/>casamos.</h1><p>Una invitación para guardar.</p></div>
+ return <section className={'envelope-entry stationery-envelope herbarium-envelope '+(opening?'is-opening':'')} aria-label={guest?`Una invitación para ${guest}`:"Una invitación para ti"}>
+  <div className="entry-title"><span className="entry-date">{new Date(date+'T12:00:00').toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})}</span><h1>Hay días<br/>que lo<br/>cambian<br/><em>todo.</em></h1></div>
   <div ref={surface} className="envelope-perspective" onPointerMove={e=>{if(e.pointerType!=='mouse'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const r=e.currentTarget.getBoundingClientRect();e.currentTarget.style.setProperty('--tilt-x',`${((e.clientY-r.top)/r.height-.5)*-7}deg`);e.currentTarget.style.setProperty('--tilt-y',`${((e.clientX-r.left)/r.width-.5)*9}deg`);}} onPointerLeave={()=>{surface.current?.style.setProperty('--tilt-x','0deg');surface.current?.style.setProperty('--tilt-y','0deg');}}>
-   <div className="envelope-object"><EnvelopeMaterial guest={guest}/><div className="letter-peek"><span>NOS CASAMOS</span><strong>{names.replace('+','&')}</strong><small>{new Date(date+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'})}</small></div><button className="wax-seal" onClick={open} disabled={opening||loading} aria-label="Abrir el sobre de Andrea y Alberto"><svg className="wax-art" viewBox="280 270 1600 1660" aria-hidden="true"><image href="/assets/aa-wax-seal.webp" width="2048" height="2048"/></svg></button></div>
-   <img className="envelope-flowers" src="/assets/pressed-chamomile-v2.webp" width="650" height="433" alt="" aria-hidden="true"/>
+   <InkArt kind="rose" className="hb-envelope-ground" eager/><div className="envelope-object"><EnvelopeMaterial guest={guest}/><InkArt kind="rose" className="hb-envelope-print" eager/><div className="letter-peek"><span>NOS CASAMOS</span><strong>{names.replace('+','&')}</strong><small>{new Date(date+'T12:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'})}</small></div><button className="wax-seal" onClick={open} disabled={opening||loading} aria-label="Abrir el sobre de Andrea y Alberto"><svg className="wax-art" viewBox="280 270 1600 1660" aria-hidden="true"><image href="/assets/aa-wax-seal.webp" width="2048" height="2048"/></svg></button></div>
+   
   </div>
-  <div className="entry-bottom">{error&&<div className="envelope-retry" role="alert"><p>No hemos podido cargar tu invitación. Comprueba tu conexión.</p><button onClick={onRetry} disabled={loading}>{loading?'Conectando…':'Volver a intentarlo'}</button></div>}<button onClick={open} disabled={opening||loading}>{opening?'Abriendo tu invitación…':'Abrir invitación'}<span aria-hidden="true">↗</span></button></div>
+  <div className="entry-bottom">{error&&<div className="envelope-retry" role="alert"><p>No hemos podido cargar tu invitación. Comprueba tu conexión.</p><button onClick={onRetry} disabled={loading}>{loading?'Conectando…':'Volver a intentarlo'}</button></div>}<button onClick={open} disabled={opening||loading}>{opening?'Abriendo tu invitación…':'Abrir invitación'}<span aria-hidden="true">↗</span></button><p className="hb-envelope-signature">{names.replace('+','&')} · Cáceres</p></div>
  </section>;
 }
