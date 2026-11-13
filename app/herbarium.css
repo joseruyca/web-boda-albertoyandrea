@@ -424,3 +424,4 @@ body{background:#e9e5e3;color:var(--ink)}
 @media(min-width:701px){
  .hb-gift-letter{padding-top:65px}
 }
+.herbarium-edition .hb-reply-signature>span{display:none}
