@@ -18,13 +18,12 @@ export default function Journey({config,guest,preview,onGo,openInvite}:{config:W
  const [a,b]=config.names.split('+').map(s=>s.trim());
  const date=new Date(config.date+'T12:00:00');
  const fullDate=date.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
- return <section className={'hb-invitation phase-'+phase} aria-label="La invitación de Andrea y Alberto">
-  <div className="hb-invitation-hero"><span className="hb-folio">01 / LA INVITACIÓN</span><InkArt kind="poppy" className="hb-invitation-art" eager/>
-   <header className="hb-couple"><h1><span>{a}</span><span><i>&</i>{b}</span></h1><p>{fullDate}<br/>Cáceres</p></header>
-   <figure className="hb-couple-photo"><Portrait src={config.story[0]?.photo||'/assets/herbarium-couple.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure>
+ return <section className={'hb-invitation invitation-letter phase-'+phase} aria-label="La invitación de Andrea y Alberto">
+  <div className="invitation-spread">
+   <header className="hb-couple"><span className="invitation-kicker">NOS CASAMOS</span><h1><span>{a}</span><span><i>&</i>{b}</span></h1><p>{fullDate}<br/><span>Cáceres</span></p></header>
+   <div className="invitation-portrait"><InkArt kind="rose" className="invitation-rose" eager/><figure className="hb-couple-photo"><Portrait src={config.story[0]?.photo||'/assets/herbarium-couple.webp'} alt="Andrea y Alberto juntos"/>{config.story[0]?.caption&&<figcaption>{config.story[0].caption}</figcaption>}</figure></div>
+   <div className="hb-invitation-actions"><p>{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p><button className="solid-btn" onClick={()=>onGo(phase==='after'?'gallery':'rsvp')}>{phase==='after'?'Volver a los recuerdos':'Confirmar asistencia'}<ArrowUpRight size={18}/></button><button className="underline-link" onClick={()=>onGo('gift')}>Un detalle</button></div>
   </div>
-  <div className="hb-invitation-actions"><p>{guest?<>Para {guest}, con cariño.</>:<>Para ti, con cariño.</>}</p><button className="solid-btn" onClick={()=>onGo(phase==='after'?'gallery':'rsvp')}>{phase==='after'?'Volver a los recuerdos':'Confirmar asistencia'}<ArrowUpRight size={18}/></button><button className="underline-link" onClick={()=>onGo('gift')}>Un detalle</button></div>
-  <footer className="hb-page-close"><em>{phase==='after'?config.thankYou:'Todo empieza aquí.'}</em><span>{date.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})}</span></footer>
   {config.story.length>0&&<div className="photo-narrative" aria-label="Nuestra historia">{config.story.map((moment,i)=><article key={i} className={'story-moment moment-'+i%3}><figure><img src={moment.photo} alt={moment.caption||'Un recuerdo de Andrea y Alberto'} loading="lazy"/><figcaption>{moment.caption}</figcaption></figure><div><span>NUESTRA HISTORIA · {String(i+1).padStart(2,'0')}</span><p>{moment.text||moment.caption}</p></div></article>)}</div>}
  </section>;
 }

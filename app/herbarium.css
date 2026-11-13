@@ -425,3 +425,50 @@ body{background:#e9e5e3;color:var(--ink)}
  .hb-gift-letter{padding-top:65px}
 }
 .herbarium-edition .hb-reply-signature>span{display:none}
+/* A personal invitation: centered portrait, one botanical frame, no ribbons. */
+.herbarium-edition .invitation-letter{max-width:1040px;margin:auto;padding:45px 65px 45px}
+.invitation-letter .invitation-spread{display:grid;grid-template-columns:390px minmax(0,1fr);grid-template-areas:'portrait title' 'portrait actions';gap:12px 65px;align-items:center}
+.invitation-letter .hb-couple{grid-area:title;text-align:center;align-self:end;width:auto;padding:0}
+.invitation-kicker{display:block;font:10px/1.5 var(--sans);letter-spacing:3.5px;color:var(--muted);margin-bottom:22px}
+.herbarium-edition .invitation-letter .hb-couple h1{font:400 64px/1.02 var(--serif);letter-spacing:-1.2px;margin:0}
+.invitation-letter .hb-couple h1 i{margin-right:8px}
+.invitation-letter .hb-couple h1:after{display:none}
+.invitation-letter .hb-couple>p{font:italic 21px/1.5 var(--serif);margin:23px 0 0}
+.invitation-letter .hb-couple>p>span{display:inline-block;font:10px/1.7 var(--sans);letter-spacing:2.5px;text-transform:uppercase;margin-top:7px}
+.invitation-portrait{grid-area:portrait;position:relative;isolation:isolate;min-width:0;padding:25px 30px 35px}
+.invitation-letter .hb-couple-photo{border:0;width:100%;max-width:none;padding:8px;background:#fffdf9;box-shadow:0 8px 28px #29231d14;transform:rotate(-2deg);border-radius:150px 150px 2px 2px;overflow:hidden;margin:0;z-index:1}
+.invitation-letter .hb-couple-photo>img{height:410px;width:100%;object-fit:cover;object-position:50% 45%;filter:grayscale(1);border-radius:145px 145px 0 0}
+.invitation-letter .invitation-rose{z-index:2;width:240px;max-width:none;height:auto;bottom:0;right:-25px;left:auto;transform:rotate(-17deg);opacity:.95;pointer-events:none}
+.invitation-letter .hb-invitation-actions{grid-area:actions;display:flex;flex-direction:column;align-items:center;align-self:start;gap:17px;margin:14px 0 0;padding:0}
+.invitation-letter .hb-invitation-actions>p{background:none;padding:0;font:italic 24px/1.4 var(--serif);color:var(--ink);margin:0 0 8px}
+.herbarium-edition .invitation-letter .hb-invitation-actions>.solid-btn{width:100%;max-width:300px;justify-content:center;min-height:47px;gap:16px;font-size:20px;border-radius:2px}
+.invitation-letter .hb-invitation-actions>.underline-link{border:0;min-width:0;padding:0;font:italic 18px/1.5 var(--serif);min-height:35px;color:var(--muted)}
+@media(min-width:701px) and (max-width:1050px){
+ .herbarium-edition .invitation-letter{padding:30px 25px}
+ .invitation-letter .invitation-spread{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 25px}
+ .herbarium-edition .invitation-letter .hb-couple h1{font-size:54px}
+ .invitation-letter .hb-couple-photo>img{height:350px}
+}
+@media(max-width:700px){
+ .herbarium-edition .invitation-letter{padding:25px 23px 22px;max-width:460px}
+ .invitation-letter .invitation-spread{grid-template-columns:minmax(0,1fr);grid-template-areas:'title' 'portrait' 'actions';gap:0;justify-items:center}
+ .invitation-letter .hb-couple{width:100%;align-self:auto}
+ .invitation-kicker{font-size:9px;letter-spacing:2.8px;margin-bottom:13px}
+ .herbarium-edition .invitation-letter .hb-couple h1{font-size:48px;line-height:.98;letter-spacing:-.8px}
+ .invitation-letter .hb-couple>p{font-size:18px;margin:17px 0 0}
+ .invitation-letter .hb-couple>p>span{font-size:9px;margin-top:5px;letter-spacing:2.2px}
+ .invitation-portrait{width:100%;max-width:310px;padding:24px 22px 28px;margin-top:1px}
+ .invitation-letter .hb-couple-photo{padding:7px;align-self:auto;width:100%;max-width:none}
+ .invitation-letter .hb-couple-photo>img{height:289px;object-position:50% 45%}
+ .invitation-letter .invitation-rose{width:178px;bottom:1px;right:-15px;transform:rotate(-17deg)}
+ .invitation-letter .hb-invitation-actions{width:100%;gap:12px;margin:0;align-self:auto}
+ .invitation-letter .hb-invitation-actions>p{font-size:23px;margin:0 0 8px}
+ .herbarium-edition .invitation-letter .hb-invitation-actions>.solid-btn{max-width:290px;font-size:20px}
+ .invitation-letter .hb-invitation-actions>.underline-link{font-size:17px}
+}
+@media(max-width:360px){
+ .herbarium-edition .invitation-letter{padding-inline:19px}
+ .herbarium-edition .invitation-letter .hb-couple h1{font-size:43px}
+ .invitation-letter .hb-couple-photo>img{height:260px}
+ .invitation-letter .invitation-rose{width:160px;right:-7px}
+}
