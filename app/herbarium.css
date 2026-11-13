@@ -421,3 +421,6 @@ body{background:#e9e5e3;color:var(--ink)}
  .hb-gift-art{left:-110px}
  .herbarium-edition .hb-gift h1{font-size:30px}
 }
+@media(min-width:701px){
+ .hb-gift-letter{padding-top:65px}
+}
