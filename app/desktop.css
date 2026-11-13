@@ -1,0 +1,121 @@
+/* Desktop has its own reading scale; mobile artwork and typography remain independent. */
+@media (min-width:701px){
+ .wedding.herbarium-edition{max-width:1000px;width:calc(100% - 64px);min-height:0;margin:32px auto}
+ .herbarium-edition .masthead{height:66px;min-height:66px;margin-inline:30px}
+ .herbarium-edition .masthead .brand .aa-monogram{width:46px;height:28px}
+ .herbarium-edition .scene-nav{top:12px;width:540px;gap:10px}
+ .herbarium-edition .scene-nav button{font-size:15px;min-height:40px;padding:6px 2px}
+ .herbarium-edition .scene-nav button.active:after{bottom:-12px;height:1px}
+ .herbarium-edition .content-scene{padding:28px 32px}
+ .herbarium-edition h1{font-size:40px;letter-spacing:-.6px}
+ .herbarium-edition .solid-btn,.herbarium-edition .upload-orbit{font-size:17px;min-height:42px;padding:9px 17px}
+ .herbarium-edition .underline-link{font-size:17px;min-height:38px}
+ .hb-page-close{margin-top:20px;padding-top:15px;min-height:50px}
+ .hb-page-close>em{font-size:18px}
+ /* The arched portrait is a modest print rather than a full-screen hero. */
+ .herbarium-edition .invitation-letter{max-width:920px;padding:28px 36px 32px}
+ .invitation-letter .invitation-spread{grid-template-columns:340px minmax(0,1fr);gap:8px 60px}
+ .herbarium-edition .invitation-letter .hb-couple h1{font-size:52px;line-height:1.02;letter-spacing:-.8px}
+ .invitation-letter .hb-couple h1:after{margin:19px 0 17px;width:34px}
+ .invitation-letter .hb-couple>p{font-size:20px}
+ .invitation-letter .hb-couple>p>span{font-size:11px;letter-spacing:3px;margin-top:8px}
+ .invitation-letter .invitation-portrait{padding:17px 35px 30px}
+ .invitation-letter .hb-couple-photo{padding:7px}
+ .invitation-letter .hb-couple-photo>img{height:340px}
+ .invitation-rose-frame{width:340px;bottom:-6px}
+ .invitation-letter .hb-invitation-actions{margin-top:12px;gap:12px}
+ .invitation-letter .hb-invitation-actions>p{font-size:26px;margin-bottom:6px}
+ .herbarium-edition .invitation-letter .hb-invitation-actions>.solid-btn{max-width:275px;font-size:18px;min-height:43px}
+ .invitation-letter .hb-invitation-actions>.underline-link{font-size:17px}
+ /* A compact programme keeps all four moments and the practical actions together. */
+ .hb-day-score{min-height:400px}
+ .herbarium-edition .hb-day-title h1{font-size:42px}
+ .hb-score-line{height:400px}
+ .hb-date-badge{top:150px;width:105px;min-height:134px;padding:10px}
+ .hb-date-badge>strong{font-size:51px}
+ .hb-date-badge>span{font-size:9px;letter-spacing:1.6px}
+ .hb-day-meadow{width:280px;right:0;top:0}
+ .hb-moments>li{width:145px;padding-top:13px}
+ .herbarium-edition .hb-moments h2{font-size:23px}
+ .hb-moments p,.hb-moments .hb-moment-time{font-size:16px}
+ .hb-moments .hb-moment-note{font-size:13px}
+ .hb-moment-dot{width:8px;height:8px}
+ .hb-prewedding{width:280px;margin-top:-72px;padding:17px 20px}
+ .herbarium-edition .hb-prewedding h2{font-size:28px;margin-bottom:9px}
+ .herbarium-edition .hb-prewedding h3{font-size:21px}
+ .hb-prewedding p{font-size:17px}.hb-prewedding .hb-prewedding-date{font-size:14px}
+ .hb-programme-actions .solid-btn{min-width:190px}
+ /* Real venue photographs are bounded independently from the display width. */
+ .hb-places-title{min-height:118px;padding-bottom:10px}
+ .herbarium-edition .hb-places-title h1{font-size:40px}
+ .hb-places-title>.hb-ink{width:390px;max-height:205px;top:-25px}
+ .hb-place,.hb-place:nth-child(even){gap:38px;padding-block:17px 23px}
+ .hb-place-copy{padding:17px 0 0 18px}
+ .hb-place:nth-child(even) .hb-place-copy{padding-left:30px}
+ .herbarium-edition .hb-place h2{font-size:28px;margin:13px 0 10px}
+ .hb-place-copy>p{font-size:17px;margin-bottom:12px}
+ .hb-place-number{font-size:84px}
+ .hb-place-vine{width:500px}
+ .herbarium-edition .hb-place .venue-photograph{aspect-ratio:1.8;max-height:245px}
+ .hb-place .solid-btn{font-size:17px;min-width:155px}
+ /* Confirmation retains comfortable controls without oversized headings or cards. */
+ .herbarium-edition .hb-reply{padding:30px 36px 24px}
+ .herbarium-edition .hb-reply .rsvp-layout{gap:50px;min-height:420px}
+ .herbarium-edition .hb-reply .rsvp-intro .reply-heading{font-size:43px;margin:12px 0 20px}
+ .herbarium-edition .reply-eyebrow{font-size:19px}
+ .hb-reply-art{width:360px;left:-25px;top:195px}
+ .herbarium-edition .hb-reply:not(.reply-is-saved) .rsvp-paper{padding:35px 0 0 25px;border-top-left-radius:85px}
+ .herbarium-edition .hb-reply .attendance-options label{font-size:19px;padding:10px 14px}
+ .herbarium-edition .hb-reply .rsvp-form-actions .solid-btn,.herbarium-edition .hb-reply .rsvp-paper .reply-edit{font-size:18px;min-height:43px}
+ .herbarium-edition .hb-reply .reply-summary{padding:19px 22px;margin-bottom:18px}
+ .herbarium-edition .hb-reply .reply-facts>div,.herbarium-edition .hb-reply .reply-person header>span{font-size:16px}
+ .herbarium-edition .hb-reply .reply-programme{font-size:17px}
+ .hb-reply-signature{height:130px}.hb-reply-signature>.hb-ink{width:325px;right:-15px;bottom:-12px}
+ /* The gift is a short personal note. */
+ .hb-gift-letter{min-height:430px;padding:48px 20px 15px 31%}
+ .hb-gift-art{height:445px;left:18px;top:-8px}
+ .herbarium-edition .hb-gift h1{font-size:41px;margin:15px 0 22px}
+ .hb-gift-copy>p{font-size:20px;line-height:1.45;margin-bottom:22px}
+ .hb-gift-pending{padding:18px 22px}.hb-gift-pending strong{font-size:23px}.hb-gift-pending span{font-size:17px}
+ .hb-gift-copy>.hb-gift-signature{font-size:28px;margin-top:25px}
+ /* Desktop album thumbnails do not expand into poster-sized photographs. */
+ .herbarium-edition .hb-gallery{padding:28px 30px 28px 150px;min-height:520px}
+ .herbarium-edition .hb-gallery .gallery-heading h1{font-size:36px}
+ .herbarium-edition .hb-gallery .album-title>p{font-size:19px}
+ .hb-album-art{width:245px;height:530px;top:15px}
+ .herbarium-edition .hb-gallery .gallery-heading .upload-orbit{min-width:190px;padding:10px 15px}
+ .herbarium-edition .hb-gallery .upload-orbit>span{font-size:17px}
+ .herbarium-edition .hb-gallery .photo-wall{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;max-width:none}
+ .herbarium-edition .hb-gallery .memory-image{aspect-ratio:4/5;max-height:325px;min-height:0}
+ .herbarium-edition .hb-gallery .memory-label>span{font-size:17px}
+ .herbarium-edition .hb-gallery .memory-label{min-height:35px;padding-block:7px}
+ .herbarium-edition .hb-gallery .filter-tabs button,.herbarium-edition .hb-gallery .album-access-actions .outline-btn{font-size:16px}
+ .herbarium-edition .admin-title h1{font-size:32px}
+ /* The entrance uses the same restrained desktop scale. */
+ .clean-envelope.herbarium-envelope.envelope-entry{grid-template-columns:250px 390px;gap:20px 55px;padding:40px}
+ .clean-envelope.herbarium-envelope .entry-title h1{font-size:60px;letter-spacing:-1px;margin-bottom:22px}
+ .clean-envelope .entry-title>.entry-names{font-size:12px;letter-spacing:3px}
+ .clean-envelope .entry-names:after{margin:20px auto 23px;width:36px}
+ .clean-envelope .entry-title>.entry-full-date{font-size:19px}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-perspective{width:390px;margin:20px auto 16px}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-address>strong{font-size:31px}
+ .clean-envelope.herbarium-envelope.envelope-entry .wax-seal{width:88px;height:91px}
+ .clean-envelope.herbarium-envelope .entry-bottom>button{width:255px;min-height:42px;padding:8px 17px;font-size:19px;gap:20px}
+ .clean-envelope .entry-bottom>.hb-envelope-signature{font-size:18px;margin-top:21px}
+}
+@media(min-width:701px) and (max-width:1000px){
+ .wedding.herbarium-edition{width:calc(100% - 32px);margin:16px auto}
+ .herbarium-edition .scene-nav{position:relative;inset:auto;transform:none;width:calc(100% - 60px);max-width:none;margin:0 auto;padding-block:5px}
+ .herbarium-edition .scene-nav button.active:after{bottom:0}
+ .invitation-letter .invitation-spread{grid-template-columns:300px minmax(0,1fr);column-gap:30px}
+ .herbarium-edition .invitation-letter{padding-inline:25px}
+ .invitation-letter .invitation-portrait{padding-inline:30px}
+ .invitation-letter .hb-couple-photo>img{height:310px}.invitation-rose-frame{width:300px}
+ .herbarium-edition .invitation-letter .hb-couple h1{font-size:47px}
+ .clean-envelope.herbarium-envelope.envelope-entry{grid-template-columns:230px 350px;gap:20px 35px;padding:35px 25px}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-perspective{width:350px}
+ .clean-envelope.herbarium-envelope .entry-title h1{font-size:56px}
+ .herbarium-edition .hb-gallery{padding-left:120px}
+ .herbarium-edition .hb-gallery .gallery-heading{gap:15px}
+ .herbarium-edition .hb-gallery .gallery-heading .upload-orbit{min-width:175px}
+}
