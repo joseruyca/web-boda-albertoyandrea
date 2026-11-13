@@ -527,3 +527,54 @@ body{background:#e9e5e3;color:var(--ink)}
  .invitation-letter .hb-invitation-actions>p{font-size:24px}
  .herbarium-edition .invitation-letter .hb-invitation-actions>.solid-btn{font-size:19px}
 }
+/* Approved clean envelope: the name and seal are the only printed details. */
+.clean-envelope.herbarium-envelope.envelope-entry{--paper:#fdfbf6;--ink:#353b23;color:var(--ink);background:var(--paper) url('/assets/cotton-paper.webp') center/850px;background-blend-mode:soft-light;grid-template-columns:300px 500px;gap:26px 70px;padding:60px 40px;min-height:100svh;height:auto;align-content:center}
+.clean-envelope .entry-title{text-align:center;margin:0}
+.clean-envelope .entry-title>.entry-names{display:block;font:14px/1.5 var(--serif);letter-spacing:4px;color:var(--ink);text-transform:uppercase}
+.clean-envelope .entry-names:after{content:'';display:block;width:45px;height:1px;background:#77133c;margin:24px auto 27px}
+.clean-envelope.herbarium-envelope .entry-title h1{font:400 82px/.99 var(--serif);letter-spacing:-2px;margin:0 0 28px}
+.clean-envelope .entry-title>.entry-full-date{font:italic 23px/1.45 var(--serif);color:var(--ink);margin:0;white-space:nowrap}
+.clean-envelope.herbarium-envelope.envelope-entry .envelope-perspective{width:500px;margin:30px auto 22px;aspect-ratio:1100/688}
+.clean-envelope.herbarium-envelope .envelope-object:after{display:none;content:none}
+.clean-envelope.herbarium-envelope .envelope-object{filter:drop-shadow(0 13px 10px #45362228);transform:rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(-3deg)}
+.clean-envelope.herbarium-envelope.envelope-entry .envelope-address{inset:22% 12% auto;align-items:center;justify-content:center;text-align:center}
+.clean-envelope.herbarium-envelope.envelope-entry .envelope-address>strong{font:400 38px/1.25 Parisienne,cursive;color:var(--ink);max-width:100%;overflow-wrap:anywhere}
+.clean-envelope.herbarium-envelope.envelope-entry .wax-seal{left:50%;top:71%;width:108px;height:108px}
+.clean-envelope .wax-art{object-fit:contain;filter:drop-shadow(0 3px 2px #511b1c26)}
+.clean-envelope.herbarium-envelope .entry-bottom{padding:0;margin:0}
+.clean-envelope.herbarium-envelope .entry-bottom>button{width:310px;max-width:100%;min-height:48px;background:#474b25;border:1px solid #474b25;color:#fffdf6;font:23px/1.4 var(--serif);padding:10px 22px;justify-content:center;gap:25px;border-radius:4px}
+.clean-envelope.herbarium-envelope .entry-bottom>button:hover{background:#353b23;border-color:#353b23}
+.clean-envelope.herbarium-envelope .entry-bottom>button:focus-visible{outline:2px solid #77133c;outline-offset:5px}
+.clean-envelope .entry-bottom>.hb-envelope-signature{border:0;padding:0;font:italic 22px/1.4 var(--serif);color:var(--ink);margin:26px 0 0}
+@media(min-width:701px) and (max-width:1000px){
+ .clean-envelope.herbarium-envelope.envelope-entry{grid-template-columns:260px 370px;gap:24px 30px;padding:45px 25px}
+ .clean-envelope.herbarium-envelope .entry-title h1{font-size:69px}
+ .clean-envelope .entry-title>.entry-full-date{font-size:20px}
+ .clean-envelope .entry-title>.entry-names{font-size:12px;letter-spacing:3px}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-perspective{width:370px}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-address>strong{font-size:31px}
+ .clean-envelope.herbarium-envelope.envelope-entry .wax-seal{width:89px;height:89px}
+}
+@media(max-width:700px){
+ .clean-envelope.herbarium-envelope.envelope-entry{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;padding:46px 24px 38px;min-height:100svh;height:auto;overflow-y:auto}
+ .clean-envelope .entry-title{width:100%;text-align:center}
+ .clean-envelope .entry-title>.entry-names{font-size:12px;letter-spacing:3.3px}
+ .clean-envelope .entry-names:after{width:36px;margin:21px auto 25px}
+ .clean-envelope.herbarium-envelope .entry-title h1{font-size:54px;line-height:1;letter-spacing:-1px;margin:0 0 21px}
+ .clean-envelope .entry-title>.entry-full-date{font-size:20px;line-height:1.35}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-perspective{width:min(100%,360px);max-width:100%;margin:0 auto;aspect-ratio:1100/688;flex-shrink:0}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-address{inset:22% 10% auto}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-address>strong{font-size:29px}
+ .clean-envelope.herbarium-envelope.envelope-entry .wax-seal{width:79px;height:79px}
+ .clean-envelope.herbarium-envelope .entry-bottom{width:100%;padding:0}
+ .clean-envelope.herbarium-envelope .entry-bottom>button{width:285px;font-size:21px;min-height:45px;padding:9px 17px}
+ .clean-envelope .entry-bottom>.hb-envelope-signature{font-size:20px;margin:25px 0 0}
+}
+@media(max-width:360px){
+ .clean-envelope.herbarium-envelope.envelope-entry{padding:32px 21px;gap:30px}
+ .clean-envelope .entry-title>.entry-names{font-size:11px;letter-spacing:2.6px}
+ .clean-envelope.herbarium-envelope .entry-title h1{font-size:49px}
+ .clean-envelope .entry-title>.entry-full-date{font-size:18px}
+ .clean-envelope.herbarium-envelope.envelope-entry .envelope-address>strong{font-size:25px}
+ .clean-envelope.herbarium-envelope.envelope-entry .wax-seal{width:69px;height:69px}
+}
