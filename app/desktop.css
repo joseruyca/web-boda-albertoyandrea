@@ -120,8 +120,8 @@
  .herbarium-edition .hb-gallery .gallery-heading .upload-orbit{min-width:175px}
 }
 @media(min-width:701px){
- .herbarium-edition .hb-reply .rsvp-step-title{font-size:30px;line-height:1.15;margin-block:16px}
- .herbarium-edition .hb-reply .attendance-person>legend,.herbarium-edition .hb-reply .diet-person>legend{font-size:24px}
+ .wedding.herbarium-edition .hb-reply .rsvp-paper .rsvp-step-title{font-size:30px;line-height:1.15;margin-block:16px}
+ .wedding.herbarium-edition .hb-reply .rsvp-paper .attendance-person>legend,.wedding.herbarium-edition .hb-reply .rsvp-paper .diet-person>legend{font-size:24px}
  .herbarium-edition .hb-reply .reply-person strong{font-size:25px}
  .herbarium-edition .hb-reply .rsvp-step-copy{font-size:13px;line-height:1.6}
 }
