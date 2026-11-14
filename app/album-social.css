@@ -69,3 +69,7 @@
  .herbarium-edition .album-simple .album-moment-filter{padding:12px}.memory-owner-actions{right:6px;bottom:6px}
 }
 @media(prefers-reduced-motion:reduce){.herbarium-edition .album-simple .memory-image>img,.herbarium-edition .album-simple .video-tile>img{transition:none}}
+
+.herbarium-edition .album-simple .person-album{border:0;padding:0}
+.herbarium-edition .album-simple .person-album>img,.herbarium-edition .album-simple .person-album-placeholder{border:6px solid var(--paper);outline:1px solid var(--rule);box-sizing:border-box}
+.herbarium-edition .album-simple .album-access-actions .album-refresh,.herbarium-edition .album-simple .album-filter-toggle{border:1px solid var(--rule);color:var(--ink)}
