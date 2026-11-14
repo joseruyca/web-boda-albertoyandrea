@@ -1,7 +1,7 @@
 'use client';
 import {requestJSON} from './http.mjs';
 type Plan={id:string;uploadUrl?:string;thumbnailUploadUrl?:string;duplicate?:boolean;stored?:boolean};
-type Options={signal?:AbortSignal;onStage?:(message:string)=>void};
+type Options={memberId?:string;moment?:string;signal?:AbortSignal;onStage?:(message:string)=>void};
 const prefix='wedding-upload:v3:';
 const aborted=()=>new DOMException('Subida interrumpida.','AbortError');
 const preserved=(signal?:AbortSignal)=>signal?.reason==='pause'||signal?.reason==='navigation';
@@ -36,7 +36,7 @@ export async function uploadMemory(file:File,author:string,onProgress:(percent:n
  const storeKey=prefix+contentHash;let id:string|null=null;let plan:Plan|undefined;try{id=localStorage.getItem(storeKey);}catch{}
  try{
   if(id){try{await request('media/complete',{id},signal);forget(storeKey);onProgress(100);return {id,duplicate:false};}catch(e){check();if([403,404].includes((e as {status?:number}).status||0))id=null;}if(id)try{plan=await request('media/resume',{id},signal);}catch(error){check();if([403,404].includes((error as {status?:number}).status||0))id=null;else throw error;}}
-  if(!plan)plan=await request('media/prepare',{name:file.name,size:file.size,mime:file.type,author,caption,contentHash},signal);let target=plan!;id=target.id;
+  if(!plan)plan=await request('media/prepare',{name:file.name,size:file.size,mime:file.type,author,caption,contentHash,memberId:options.memberId,moment:options.moment},signal);let target=plan!;id=target.id;
   if(target.duplicate){forget(storeKey);onProgress(100);return {id,duplicate:true};}
   if(!target.uploadUrl&&!target.stored)throw Error('Actualiza la página antes de volver a subir.');try{localStorage.setItem(storeKey,id!);}catch{}
   let saved=!!target.stored;

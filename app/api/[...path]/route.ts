@@ -15,7 +15,7 @@ async function handle(req:Request):Promise<Response>{
  try {
   const url=new URL(req.url);const path=url.pathname.replace(/^\/api\/?/,'');const method=req.method;
   if(method!=='GET'&&req.headers.get('origin')&&req.headers.get('origin')!==url.origin)return json({error:'Origen no permitido.'},403);
-  const body=method==='GET'?{offset:Math.max(0,Math.floor(Number(url.searchParams.get('offset'))||0))}:await read(req);
+  const body=method==='GET'?{offset:Math.max(0,Math.floor(Number(url.searchParams.get('offset'))||0)),...Object.fromEntries(['scope','member','moment','kind','search'].map(k=>[k,url.searchParams.get(k)||'']))}:await read(req);
   const preview=previewResponse(req,path,method,body);if(preview)return preview;
   if(!process.env.WEDDING_API_URL||!process.env.WEDDING_BACKEND_SECRET){
    if(path==='config'&&method==='GET')return json({...defaults,setupPending:true});
@@ -41,7 +41,7 @@ async function handle(req:Request):Promise<Response>{
   const uploaderId=cookie(req,'w_uploader')||randomToken();
   const response=await fetch(process.env.WEDDING_API_URL,{
    method:'POST',cache:'no-store',headers:{'Content-Type':'application/json','X-Wedding-Backend':process.env.WEDDING_BACKEND_SECRET},
-   body:JSON.stringify({path:path==='invitation-pass'&&method==='GET'?'me':path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,networkKey:digest(process.env.WEDDING_BACKEND_SECRET+':'+(req.headers.get('x-forwarded-for')||'unknown').split(',')[0].trim()),thumbnail:url.searchParams.has('thumb'),download:url.searchParams.has('download')})
+   body:JSON.stringify({path:path==='invitation-pass'&&method==='GET'?'me':path,method,body,organizer,invitationToken:cookie(req,'w_invite'),albumToken:cookie(req,'w_album'),uploaderId,memberId:cookie(req,'w_album_member'),networkKey:digest(process.env.WEDDING_BACKEND_SECRET+':'+(req.headers.get('x-forwarded-for')||'unknown').split(',')[0].trim()),thumbnail:url.searchParams.has('thumb'),download:url.searchParams.has('download')})
   });
   const data=await response.json();
   if(path==='invitation-pass'&&method==='GET'){const pass=response.ok?invitationPass(data,cookie(req,'w_invite')):null;return pass?json(pass):json({error:'Abre tu enlace personal para guardar tu invitación.'},401);}
@@ -55,6 +55,7 @@ async function handle(req:Request):Promise<Response>{
    return new Response(null,{status:307,headers:{...headers,Location:data.url}});
   }
   const res=json(data,response.status);
+  if(response.ok&&path==='album/identity'&&method==='POST'&&data.current?.id)res.headers.append('Set-Cookie',setCookie(req,'w_album_member',data.current.id));
   if(response.ok&&!cookie(req,'w_uploader'))res.headers.append('Set-Cookie',setCookie(req,'w_uploader',uploaderId));
   if(response.ok&&['session','album-session'].includes(path)&&method==='POST'){res.headers.append('Set-Cookie',setCookie(req,'w_preview',''));res.headers.append('Set-Cookie',setCookie(req,path==='session'?'w_invite':'w_album',String(body.token||'')));}
   return res;
