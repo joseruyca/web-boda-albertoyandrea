@@ -183,3 +183,9 @@
  .herbarium-edition .invite-row h3{font-size:17px}.herbarium-edition .invite-actions .solid-btn,.herbarium-edition .invite-actions .outline-btn{font-size:12px;min-height:32px;padding:7px 10px}
  .herbarium-edition .photo-narrative{max-width:600px;margin-inline:auto;padding-block:25px}.herbarium-edition .story-moment img{max-height:240px}
 }
+@media(min-width:701px){
+ .herbarium-edition .locked{max-width:340px;padding:18px 0 28px;margin:0 auto}
+ .herbarium-edition .locked h1{font-size:30px;line-height:1.1;margin-block:16px}
+ .herbarium-edition .locked>svg{width:28px;height:28px}
+ .herbarium-edition .locked p{font-size:12px;line-height:1.6;max-width:32ch;margin:18px auto 22px}
+}
