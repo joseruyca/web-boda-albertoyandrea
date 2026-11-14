@@ -1,0 +1,72 @@
+/* Shared finishing: quiet hierarchy, useful feedback and restrained motion. */
+.herbarium-edition button:focus-visible,.herbarium-edition a:focus-visible{outline:2px solid var(--burgundy);outline-offset:4px}
+.herbarium-edition button:disabled{cursor:default}
+.herbarium-edition .invitation-letter .hb-invitation-actions>.underline-link{align-self:flex-start;border-left:0;padding-inline:0;color:var(--muted);font-size:16px;min-width:0}
+.invitation-letter .hb-invitation-actions>.solid-btn{justify-content:space-between;width:100%}
+.herbarium-edition .invitation-letter .hb-invitation-actions>p{color:var(--ink)}
+/* Needs are optional, but remain prominent and are never erased when collapsed. */
+.rsvp-progress-label{font:11px/1.4 var(--sans);letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.herbarium-edition .diet-extra{margin:18px 0 5px;border-block:1px solid var(--rule)}
+.herbarium-edition .diet-extra>summary{cursor:pointer;padding:14px 4px;font:18px/1.4 var(--serif);list-style-position:inside}
+.diet-extra>summary>span{display:block;padding:4px 0 0 17px;font:11px/1.5 var(--sans);color:var(--muted)}
+.diet-extra>div{padding:0 4px 12px}.herbarium-edition .diet-extra label{margin-top:18px}
+.reply-next-actions{display:flex;flex-direction:column;gap:10px}
+.herbarium-edition .hb-reply .rsvp-paper .reply-next-actions>.reply-edit{background:transparent;color:var(--ink);border:1px solid var(--rule);font:15px/1.4 var(--sans);min-height:38px}
+.herbarium-edition .reply-next-actions>.solid-btn{justify-content:space-between}
+.herbarium-edition .rsvp-review article>div{align-items:center}.herbarium-edition .rsvp-review article>p{margin-top:9px}
+/* One chapter for the preboda, with its date and time separate from the wedding. */
+.event-eyebrow{font:10px/1.5 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:9px}
+.herbarium-edition .hb-prewedding h2{margin-bottom:10px}.herbarium-edition .hb-prewedding .hb-prewedding-date{margin-top:6px}
+.venue-photo{isolation:isolate}.herbarium-edition .hb-place .venue-photo .venue-photo-ornament{width:145px;max-width:40%;height:auto;right:-22px;bottom:-27px;left:auto;top:auto;z-index:4;pointer-events:none}
+.herbarium-edition .hb-place .venue-photo-corral .venue-photo-ornament{width:165px;bottom:-26px;right:-14px;transform:rotate(-12deg)}
+.hb-place-vine{display:none}
+/* Photographs have a deliberate loading state instead of a false error placeholder. */
+.album-thumbnail{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#ece9e2}
+.album-thumbnail>img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;transition:opacity .25s ease}
+.album-thumbnail.thumbnail-ready>img{opacity:1}.album-thumbnail.thumbnail-failed>img{visibility:hidden}
+.thumbnail-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;color:var(--muted);font:11px/1.5 var(--sans)}
+.album-pagination{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:18px;margin-top:20px;border-top:1px solid var(--rule)}
+.album-pagination>span{font:12px/1.5 var(--sans);color:var(--muted)}
+.herbarium-edition .album-pagination>.outline-btn{font:13px/1.4 var(--sans);min-width:110px;justify-content:center;gap:9px}
+.challenge-category{display:flex;align-items:center;gap:9px;font:11px/1.4 var(--sans);letter-spacing:1.2px;text-transform:uppercase;color:var(--burgundy)}
+.herbarium-edition .challenge-card[data-theme=outfit]{background:#eeece533}.herbarium-edition .challenge-card[data-theme=bride]{background:#f3e9eb33}.herbarium-edition .challenge-card[data-theme=dance]{background:#e9e8ef33}.herbarium-edition .challenge-card[data-theme=fun]{background:#f3eddf44}.herbarium-edition .challenge-card[data-theme=couple]{background:#e9ecdf44}
+.challenge-own-status{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;background:var(--sage);font:12px/1.4 var(--sans);color:var(--ink)}
+.herbarium-edition .person-album{transition:translate .2s ease,box-shadow .2s ease}.herbarium-edition .person-album:focus-visible{outline-offset:6px}
+.organizer-shortcuts>button strong{font-variant-numeric:tabular-nums}.organizer-shortcuts>button>span{margin-top:8px}
+/* The incoming invitation is present before the veil disappears. */
+.herbarium-envelope.envelope-entry.is-opening{animation:experience-veil 1.9s ease both}
+.herbarium-envelope.envelope-entry.is-opening .envelope-moving-flap{animation:experience-flap 1.9s cubic-bezier(.35,0,.2,1) both}
+.herbarium-envelope.envelope-entry.is-opening .envelope-perspective{animation:experience-envelope-away 1.9s cubic-bezier(.22,.61,.36,1) both}
+.herbarium-envelope.envelope-entry.is-opening .letter-peek{animation:experience-letter 1.9s cubic-bezier(.22,.61,.36,1) both}
+.wedding.herbarium-edition.is-unfolding{animation:experience-reveal 1.9s ease both}
+.wedding.herbarium-edition.is-unfolding .scene{animation:none}
+@keyframes experience-flap{0%,10%{transform:scaleY(1);z-index:5}30%{transform:scaleY(0);z-index:5}31%{transform:scaleY(-.03);z-index:1}48%,100%{transform:scaleY(-1);z-index:1}}
+@keyframes experience-letter{0%,30%{opacity:0;transform:translateY(7%)}39%{opacity:1;transform:translateY(0)}72%{opacity:1;transform:translateY(-75%)}100%{opacity:1;transform:translateY(-84%)}}
+@keyframes experience-envelope-away{0%,70%{translate:0 0}100%{translate:0 16px}}
+@keyframes experience-veil{0%,70%{opacity:1}100%{opacity:0}}
+@keyframes experience-reveal{0%,48%{opacity:0}70%,100%{opacity:1}}
+@media(prefers-reduced-motion:no-preference){
+ .herbarium-edition .scene{animation:experience-arrive .28s ease-out both}
+ .herbarium-edition .solid-btn,.herbarium-edition .outline-btn{transition:background .18s ease,border-color .18s ease,box-shadow .18s ease}
+ .herbarium-edition button:active:not(:disabled){filter:brightness(.96)}
+ .venue-photo-ornament{animation:experience-botanical 13s ease-in-out infinite}
+ @keyframes experience-arrive{from{opacity:.3;translate:0 5px}to{opacity:1;translate:0 0}}
+ @keyframes experience-botanical{0%,100%{translate:0 0}50%{translate:0 -2px}}
+}
+@media(max-width:700px){
+ .herbarium-edition .diet-extra>summary{font-size:18px}.diet-extra>summary>span{font-size:11px}
+ .herbarium-edition .hb-prewedding{grid-template-columns:1fr auto;row-gap:6px}.hb-prewedding>.event-eyebrow{grid-column:1/-1;margin-bottom:0}.herbarium-edition .hb-prewedding h2{font-size:28px;margin:0 0 4px}
+ .herbarium-edition .hb-place .venue-photo .venue-photo-ornament{max-width:38%;width:125px;right:-10px;bottom:-21px}
+ .album-loading-state{min-height:160px;display:flex;align-items:center;justify-content:center;gap:10px;font:13px/1.5 var(--sans);color:var(--muted)}
+ .challenge-category{font-size:10px;letter-spacing:.8px}.challenge-category>svg{width:17px;height:17px}
+}
+@media(prefers-reduced-motion:reduce){
+ .herbarium-edition .scene,.herbarium-envelope.envelope-entry.is-opening,.herbarium-envelope.envelope-entry.is-opening *,.wedding.herbarium-edition.is-unfolding,.venue-photo-ornament{animation:none!important;transition:none!important}
+ .album-thumbnail>img,.herbarium-edition .person-album{transition:none}
+}
+@media(min-width:701px) and (max-width:1050px){
+ .herbarium-edition .album-simple .gallery-heading h1{font-size:30px;flex-wrap:wrap;gap:5px}
+ .herbarium-edition .album-simple .album-title{min-width:0}
+ .herbarium-edition .album-simple .gallery-heading .upload-orbit{min-width:165px;padding-inline:12px}
+ .herbarium-edition .album-simple .upload-orbit>span{font-size:14px}
+}

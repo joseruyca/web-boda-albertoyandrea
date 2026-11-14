@@ -34,3 +34,16 @@ test('Las candidaturas disponibles exigen identidad y no devuelven la galería g
  const r=await albumApi({db:{},path:'album/feed',method:'GET',body:{scope:'eligible'},memberId:'',uploadOwner:'album:test',organizer:false,inv:null});
  assert.deepEqual(await r.json(),{items:[],hasMore:false,needsIdentity:true});
 });
+
+test('La paginación de escritorio mantiene filas acotadas y móvil conserva el feed',async()=>{
+ const {desktopAlbumPageSize,albumPage}=await import('../lib/album-social.mjs');
+ assert.equal(desktopAlbumPageSize(390,844),0);
+ assert.equal(desktopAlbumPageSize(1363,936),12);
+ assert.equal(desktopAlbumPageSize(1363,768),6);
+ const rows=Array.from({length:60},(_,id)=>({id}));
+ const pages=Array.from({length:5},(_,i)=>albumPage(rows,i,12));
+ assert.deepEqual(pages.flatMap(p=>p.items).map(m=>m.id),rows.map(m=>m.id));
+ assert.equal(albumPage(rows,999,12).page,4);
+ assert.equal(albumPage(rows,4,0).items.length,60);
+ assert.equal(albumPage([],5,12).page,0);
+});

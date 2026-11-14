@@ -1,6 +1,7 @@
 'use client';
 import {useState} from 'react';
 import {ImageOff,RotateCcw} from 'lucide-react';
+import InkArt from './ink-art';
 
 
 const photographs={
@@ -17,5 +18,5 @@ export default function VenuePhoto({name}:{name:string}){
  const key=normalized.includes('huerta del conde')?'huerta':normalized.includes('corral')&&normalized.includes('ciguen')?'corral':null;
  if(!key)return null;
  const photo=photographs[key];
- return <figure className={'venue-photo venue-photo-'+key}><div className="venue-photo-mount"><PhotographImage key={photo.src} photo={photo}/></div></figure>;
+ return <figure className={'venue-photo venue-photo-'+key}><div className="venue-photo-mount"><PhotographImage key={photo.src} photo={photo}/></div><InkArt kind={key==='huerta'?'rose':'vine'} className="venue-photo-ornament"/></figure>;
 }
