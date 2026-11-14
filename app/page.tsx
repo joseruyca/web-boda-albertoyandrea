@@ -83,7 +83,7 @@ export default function Wedding() {
   {view==='day'&&<DayProgramme config={config} onDirections={()=>go('venue')}/>}
   {view==='venue'&&<Venue config={config} onConfirm={()=>go('rsvp')}/>}
   {view==='rsvp'&&<RSVP key={inv?.id||'locked'} invitation={inv} demo={demo} config={config} onSaved={async()=>{await refresh();}} openInvite={()=>setManual(true)} onGo={go} onDirtyChange={dirty=>{rsvpDirty.current=dirty;}}/>}
-  {view==='gallery'&&<Gallery person={person} demo={demo} notify={notify} showQr={setQr} onBusyChange={busy=>{albumBusy.current=busy;}}/>}
+  {view==='gallery'&&<Gallery key={(demo?'preview:':'live:')+(person.invitation?.id||'visitor')} person={person} demo={demo} notify={notify} showQr={setQr} onBusyChange={busy=>{albumBusy.current=busy;}}/>}
   {view==='gift'&&<Gift config={config} canSee={!!person.invitation||person.admin} openInvite={()=>setManual(true)} notify={notify} onBack={()=>go('invitation')}/>}
   {view==='admin'&&<Admin person={person} config={config} onRefresh={refresh} notify={notify} showQr={setQr} onGo={go}/>}
   </main>
