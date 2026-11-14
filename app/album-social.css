@@ -28,3 +28,44 @@
  .herbarium-edition .hb-gallery .memory-social{gap:6px;padding-block:8px}.memory-social>small{flex-basis:100%;margin:0}.memory-person-link{font-size:14px}.memory-heart{padding:6px 8px}.memory-social>.icon-btn{width:30px}.challenge-grid{gap:12px}.challenge-card{padding:17px 15px;min-height:163px}.herbarium-edition .challenge-card h3{font-size:23px;max-width:none}.challenge-card>svg{width:17px;right:13px;bottom:16px}.challenge-card>small{font-size:10px}.challenge-entry-grid,.challenge-candidate-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.challenge-entry-grid strong{font-size:20px}.challenge-vote{font-size:11px;padding:7px;gap:5px}.challenge-vote svg{width:14px}.challenge-actions{gap:10px}.challenge-photo-picker{padding:14px}.challenge-photo-picker h3{font-size:24px}.challenge-candidate-grid button>span{font-size:12px;padding:8px 3px}.admin-album-challenges .challenge-entry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(prefers-reduced-motion:reduce){.person-album,.challenge-card{transition:none}}
+
+/* A quiet gallery: the photographs lead, names belong to album covers. */
+.herbarium-edition .album-simple .album-intro{margin-bottom:22px}
+.herbarium-edition .album-simple .album-access-actions{justify-content:flex-start;gap:22px;flex-wrap:wrap}
+.herbarium-edition .album-simple .album-access-actions .album-refresh{width:36px;height:36px;min-height:36px;margin-left:auto}
+.herbarium-edition .album-simple .album-access-actions .active{color:var(--burgundy)}
+.herbarium-edition .album-simple .album-sections{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-bottom:26px}
+.herbarium-edition .album-simple .album-sections button{font:20px/1.2 var(--serif);padding:15px 8px;min-height:50px}
+.herbarium-edition .album-simple .gallery-toolbar{display:grid;grid-template-columns:1fr auto auto;gap:16px;margin:0 0 20px;padding:0;border:0;align-items:center}
+.herbarium-edition .album-simple .gallery-toolbar .filter-tabs{grid-column:auto;border:0;gap:4px;justify-content:start}
+.herbarium-edition .album-simple .filter-tabs button{font:14px/1.3 var(--sans);padding:9px 13px;min-height:38px;flex:0;border-radius:2px}
+.herbarium-edition .album-simple .gallery-toolbar>p{font:12px/1.4 var(--sans);margin:0;color:var(--muted);white-space:nowrap}
+.album-tools{display:flex;align-items:center;gap:14px}.album-tools>.underline-link{font:13px/1.4 var(--sans);gap:7px;padding:8px 0}.album-tools .icon-btn{width:36px;height:36px;min-height:36px}.album-filter-toggle.active{color:var(--burgundy);background:#77133c08}
+.herbarium-edition .album-simple .album-moment-filter{background:#e5e6d633;padding:14px 16px;border:1px solid var(--rule);margin-bottom:20px}
+.herbarium-edition .hb-gallery.album-simple .photo-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;align-items:start}
+.herbarium-edition .hb-gallery.album-simple .photo-wall .memory{padding:0;margin:0;min-width:0;background:transparent;border:0;border-radius:2px;box-shadow:none;transform:none!important;position:relative;overflow:hidden}
+.herbarium-edition .hb-gallery.album-simple .photo-wall .memory::before,.herbarium-edition .hb-gallery.album-simple .photo-wall .memory::after{display:none}
+.herbarium-edition .album-simple .memory-preview{display:block;padding:0;width:100%;text-align:left;overflow:hidden}
+.herbarium-edition .album-simple .memory-image,.herbarium-edition .album-simple .video-tile{aspect-ratio:4/5;min-height:0;height:auto;position:relative;background:#e8e6de}
+.herbarium-edition .album-simple .memory-image>img,.herbarium-edition .album-simple .video-tile>img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .35s ease}
+@media(hover:hover){.herbarium-edition .album-simple .memory-preview:hover img{transform:scale(1.025)}}
+.memory-owner-actions{position:absolute;bottom:8px;right:8px;display:flex;align-items:center;gap:8px;color:var(--ink)}.memory-owner-actions>.icon-btn{width:36px;height:36px;min-height:36px;background:var(--paper);border:1px solid var(--rule);border-radius:50%}.memory-owner-actions>small{background:var(--paper);padding:5px 8px;font:11px var(--sans);border-radius:2px}
+.album-mine-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin:0 0 25px}.album-mine-heading>div:first-child{display:flex;flex-direction:column-reverse;gap:7px}.herbarium-edition .album-mine-heading h2{font:30px/1.2 var(--serif);margin:0}.album-mine-heading p{font:12px/1.5 var(--sans);color:var(--muted);margin:0}.album-invitation-linked{display:flex;align-items:center;gap:7px;font:11px/1.5 var(--sans);color:var(--muted)}
+.album-profile-status{font:13px/1.5 var(--sans);color:var(--muted)}.album-profile-status p{margin-bottom:8px}.upload-person{font:14px/1.5 var(--sans);color:var(--muted)}
+.herbarium-edition .album-simple .people-album-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:25px 21px}
+.herbarium-edition .album-simple .person-album{padding:6px 6px 0;background:transparent;border:1px solid var(--rule);border-bottom:0;box-shadow:none;overflow:visible;position:relative}
+.herbarium-edition .album-simple .person-album>img,.herbarium-edition .album-simple .person-album-placeholder{aspect-ratio:4/5}
+.herbarium-edition .album-simple .person-album strong{font:25px/1.2 var(--serif);padding:14px 0 3px}
+.herbarium-edition .album-simple .person-album>span:last-child{padding:0 0 10px;font:11px/1.5 var(--sans)}
+.herbarium-edition .album-simple .album-section-heading h2{font-size:28px}.herbarium-edition .album-simple .album-section-heading p{font-size:12px}
+.herbarium-edition .album-simple .challenge-entry-grid article>div{gap:9px;padding-top:12px}.herbarium-edition .album-simple .challenge-vote{min-height:40px}
+@media(max-width:700px){
+ .herbarium-edition .album-simple .album-intro{margin-bottom:16px}.herbarium-edition .album-simple .album-access-actions{gap:18px;padding:0}.herbarium-edition .album-simple .album-access-actions .outline-btn,.herbarium-edition .album-simple .album-access-actions .underline-link{font-size:16px}
+ .herbarium-edition .album-simple .album-sections{margin-bottom:23px}.herbarium-edition .album-simple .album-sections button{font-size:19px;padding:13px 5px}
+ .herbarium-edition .album-simple .gallery-toolbar{grid-template-columns:1fr auto;gap:12px;margin:0 0 16px}.herbarium-edition .album-simple .gallery-toolbar .filter-tabs{grid-column:1/-1;justify-content:start}.herbarium-edition .album-simple .filter-tabs button{font-size:13px;padding:8px 14px;flex:0}.herbarium-edition .album-simple .gallery-toolbar>p{font-size:11px}.album-tools{gap:12px}.album-tools>.underline-link{font-size:12px}
+ .herbarium-edition .hb-gallery.album-simple .photo-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .herbarium-edition .album-simple .people-album-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}.herbarium-edition .album-simple .person-album strong{font-size:23px}
+ .album-mine-heading{display:block}.album-mine-heading>.album-invitation-linked{margin-top:12px}.album-mine-heading .album-identity{margin-bottom:0}.herbarium-edition .album-simple .album-section-heading h2{font-size:26px}
+ .herbarium-edition .album-simple .album-moment-filter{padding:12px}.memory-owner-actions{right:6px;bottom:6px}
+}
+@media(prefers-reduced-motion:reduce){.herbarium-edition .album-simple .memory-image>img,.herbarium-edition .album-simple .video-tile>img{transition:none}}

@@ -8,39 +8,33 @@ export async function albumApi(c:any){
  const {db,path,method,body:b,inv,uploadOwner:owner,memberId,organizer,limit}=c;
  if(!path.startsWith('album/')&&!path.startsWith('admin/album/'))return null;
  const member=await resolveAlbumMember(db,memberId,owner);
- const verified=!!inv&&/^guest:\d+$/.test(member?.slot||'');
+ const verified=!!inv&&/^guest:\d+$/.test(member?.slot||'')&&!!inv.guests[Number(member.slot.slice(6))];
  const offset=Math.max(0,Math.min(100000,Math.floor(Number(b.offset)||0)));
- const stats=async(rows:any[])=>{if(!rows.length)return [];const data=ok(await db.rpc('wedding_album_stats',{p_ids:rows.map(r=>r.id),p_member:member?.id||null}));const by=new Map(data.map((s:any)=>[s.media_id,s]));return rows.map(r=>{const s:any=by.get(r.id);return {...r,author:r.person?.display_name||r.author,person:undefined,created:r.created_at,likes:Number(s?.likes||0),liked:!!s?.liked,own:r.member_id===member?.id};});};
+ const memories=(rows:any[])=>rows.map(r=>({...r,author:r.person?.display_name||r.author,person:undefined,created:r.created_at,own:r.member_id===member?.id}));
  const rpc=async(name:string,args:any)=>{const r=await db.rpc(name,args);if(r.error){if(/^(Identifícate|El recuerdo|Selecciona|Este reto|Elige una foto|Tu foto|Para votar|Para participar|La votación|No puedes)/.test(r.error.message))return out({error:r.error.message},409);throw Error(r.error.message);}return r.data;};
- if(path==='album/identity'&&method==='GET')return out({current:member?{id:member.id,name:member.display_name,verified}:null,members:owner?ok(await db.from('wedding_album_members').select('id,display_name,slot').eq('owner_key',owner).order('created_at')):[],choices:inv?inv.guests.map((name:string,i:number)=>({slot:'guest:'+i,name})):[],canVote:!!inv});
+ if(path==='album/identity'&&method==='GET')return out({current:member?{id:member.id,name:member.display_name,slot:member.slot,verified}:null,members:owner?ok(await db.from('wedding_album_members').select('id,display_name,slot').eq('owner_key',owner).order('created_at')):[],choices:inv?inv.guests.map((name:string,i:number)=>({slot:'guest:'+i,name})):[],canVote:!!inv});
  if(path==='album/identity'&&method==='POST'){
   if(!owner)return out({error:'Actualiza el álbum para identificarte.'},401);
   if(!await limit('album-profile:'+owner,30,3600))return out({error:'Espera unos minutos antes de cambiar de perfil.'},429);
-  if(b.memberId){const selected=await resolveAlbumMember(db,b.memberId,owner);return selected?out({current:{id:selected.id,name:selected.display_name,verified:!!inv&&/^guest:\d+$/.test(selected.slot)}}):out({error:'Ese álbum personal no pertenece a este acceso.'},403);}
+  if(b.memberId){const selected=await resolveAlbumMember(db,b.memberId,owner);return selected?out({current:{id:selected.id,name:selected.display_name,slot:selected.slot,verified:!!inv&&/^guest:\d+$/.test(selected.slot)&&!!inv.guests[Number(selected.slot.slice(6))]}}):out({error:'Ese álbum personal no pertenece a este acceso.'},403);}
   const n=Number(String(b.slot||'').replace(/^guest:/,''));const name=inv&&/^guest:\d+$/.test(b.slot)&&Number.isInteger(n)?clean(inv.guests[n],120):!inv?clean(b.name,80):'';
   if(!name)return out({error:inv?'Elige una persona de tu invitación.':'Indica tu nombre para crear tu álbum.'},400);
   const row=ok(await db.from('wedding_album_members').upsert({owner_key:owner,slot:inv?'guest:'+n:'visitor',display_name:name,invitation_id:inv?.id||null},{onConflict:'owner_key,slot'}).select('id,display_name').single());
-  return out({current:{id:row.id,name:row.display_name,verified:!!inv}});
+  return out({current:{id:row.id,name:row.display_name,slot:inv?'guest:'+n:'visitor',verified:!!inv}});
  }
  if(path==='album/people'&&method==='GET'){const rows=ok(await db.rpc('wedding_album_people',{p_offset:offset,p_search:clean(b.search,100)}));return out({items:rows.slice(0,60),hasMore:rows.length>60});}
  if(path==='album/moments'&&method==='GET')return out({items:ok(await db.rpc('wedding_album_moments'))});
  if(path==='album/feed'&&method==='GET'){
   if(b.scope==='admin'&&!organizer)return out({error:'Acceso reservado a los novios.'},403);
-  if(b.scope==='mine'&&!member)return out({items:[],hasMore:false,needsIdentity:true});
+  if(['mine','eligible'].includes(b.scope)&&!member)return out({items:[],hasMore:false,needsIdentity:true});
   let q=db.from('wedding_media').select('id,name,mime,size,author,caption,approved,thumbnail_ready,hidden,created_at,member_id,moment,person:wedding_album_members!wedding_media_member_id_fkey(display_name)').eq('status','ready');
-  if(b.scope==='mine')q=q.eq('member_id',member.id);else if(b.scope!=='admin')q=q.eq('hidden',false);
+  if(['mine','eligible'].includes(b.scope)){q=q.eq('member_id',member.id);if(b.scope==='eligible')q=q.eq('hidden',false);}else if(b.scope!=='admin')q=q.eq('hidden',false);
   if(b.member){if(!uuid(b.member))return out({error:'Álbum no válido.'},400);q=q.eq('member_id',b.member);}
   if(b.moment&&b.moment!=='all'){if(!MOMENTS.has(b.moment))return out({error:'Momento no válido.'},400);q=q.eq('moment',b.moment);}
   if(['image','video'].includes(b.kind))q=q.like('mime',b.kind+'/%');
-  const rows=ok(await q.order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+60));return out({items:await stats(rows.slice(0,60)),hasMore:rows.length>60});
+  const rows=ok(await q.order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+60));return out({items:memories(rows.slice(0,60)),hasMore:rows.length>60});
  }
- if(path==='album/like'&&method==='PUT'){
-  if(!member)return out({error:'Selecciona tu nombre antes de dar un corazón.'},401);
-  if(!uuid(b.id)||typeof b.liked!=='boolean')return out({error:'Reacción no válida.'},400);
-  if(!await limit('album-like:'+member.id,180,600))return out({error:'Espera un momento antes de seguir reaccionando.'},429);
-  const r=await rpc('wedding_album_react',{p_media:b.id,p_member:member.id,p_owner:owner,p_liked:b.liked});if(r instanceof Response)return r;
-  return out({ok:true,...ok(await db.rpc('wedding_album_stats',{p_ids:[b.id],p_member:member.id}))[0]});
- }
+ if(path==='album/like')return out({error:'Los votos están disponibles solo en los retos.'},405);
  if(path.startsWith('album/media/')&&method==='PATCH'){
   const id=path.split('/')[2];if(!member||!uuid(id))return out({error:'Selecciona tu álbum personal.'},401);
   const row=ok(await db.from('wedding_media').select('id').eq('id',id).eq('upload_owner',owner).eq('member_id',member.id).eq('status','ready').maybeSingle());if(!row)return out({error:'Solo puedes modificar tus recuerdos.'},403);
