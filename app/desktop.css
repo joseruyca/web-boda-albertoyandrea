@@ -129,7 +129,7 @@
 /* Final desktop scale, after the album styles. Mobile rules end at 700px. */
 @media(min-width:701px){
  .wedding.herbarium-edition{max-width:720px;margin:24px auto;font-size:13px}
- .clean-envelope.herbarium-envelope.envelope-entry{width:calc(100% - 46px);max-width:720px;margin:24px auto;min-height:430px;height:auto;box-shadow:0 12px 35px #372b2310}
+ .clean-envelope.herbarium-envelope.envelope-entry{width:calc(100% - 46px);max-width:720px;position:fixed;inset:24px 0 auto;margin:0 auto;min-height:430px;height:auto;box-shadow:0 12px 35px #372b2310}
  .stationery-envelope .letter-peek>strong{font-size:23px}.stationery-envelope .letter-peek>small{font-size:13px}.stationery-envelope .letter-peek>span{font-size:8px;letter-spacing:2px}
  .herbarium-edition .masthead .menu-trigger{width:32px;height:32px;min-height:32px}.herbarium-edition .masthead .menu-trigger svg{width:18px;height:18px}
  .herbarium-edition .outline-btn,.herbarium-edition .small-link{font-size:13px;min-height:30px;padding:6px 11px}
