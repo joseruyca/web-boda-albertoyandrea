@@ -99,3 +99,89 @@
  .album-welcome{font-size:16px;max-width:23ch;margin-top:12px}.herbarium-edition .album-simple .gallery-heading .upload-orbit{width:100%;justify-content:center;min-height:46px}
 }
 @media(prefers-reduced-motion:reduce){.herbarium-edition .venue-photo-ornament{animation:none}}
+/* Finishing for real devices: readable controls, short screens and long content. */
+.herbarium-edition .content-scene,.herbarium-edition .invitation-spread>*{min-width:0}
+.herbarium-edition :is(button,a,input,select,textarea){-webkit-tap-highlight-color:transparent}
+.herbarium-edition :is(button,a):focus-visible{outline:2px solid var(--burgundy);outline-offset:4px}
+.herbarium-edition :is(input,select,textarea):focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+.herbarium-edition .icon-btn{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.herbarium-edition .album-tools>.underline-link,.herbarium-edition .small-link{min-height:44px}
+.herbarium-edition .modal:not(.memory-viewer){max-height:calc(100svh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;scroll-padding-block:24px;margin:auto}
+.herbarium-edition .modal-content{min-width:0}.herbarium-edition .modal-content :is(input,select,textarea){max-width:100%;min-width:0}
+.herbarium-edition .modal-content>p{line-height:1.7}.herbarium-edition .modal .close{min-width:44px;min-height:44px;z-index:5}
+.herbarium-edition .modal :is(.access-error,.album-error),.herbarium-edition .access-error{overflow-wrap:anywhere;line-height:1.65}
+.herbarium-edition .toast{max-width:min(520px,calc(100vw - 32px));font:13px/1.6 var(--sans);white-space:normal;text-align:center;overflow-wrap:anywhere}
+/* A contained original with its controls always reachable; no cropping to fill. */
+.herbarium-edition .special-viewer[open]{display:flex;flex-direction:column;gap:0;width:min(1080px,calc(100vw - 40px));height:calc(100svh - 32px);height:calc(100dvh - 32px);max-height:calc(100dvh - 32px);padding:12px 20px 16px;overflow-y:auto;overscroll-behavior:contain}
+.herbarium-edition .special-viewer .viewer-topbar{flex:0 0 auto;margin:0 0 10px;min-height:44px}
+.herbarium-edition .special-viewer .viewer-stage{flex:1 1 auto;height:auto;min-height:150px;overflow:auto;margin:0;background:#151c1466}
+.herbarium-edition .special-viewer .viewer-stage>img,.herbarium-edition .special-viewer .viewer-stage>video{max-height:100%;max-width:100%;height:auto;width:auto;object-fit:contain}
+.herbarium-edition .special-viewer .viewer-stage.zoomed-stage{display:block}.herbarium-edition .special-viewer .viewer-stage>img.is-zoomed{width:200%;max-width:none;max-height:none;cursor:zoom-out}
+.herbarium-edition .special-viewer :is(.viewer-controls,.viewer-filmstrip,.viewer-bottom-actions){flex:0 0 auto;min-width:0}
+.herbarium-edition .special-viewer .viewer-controls{width:100%;margin:10px auto 6px;gap:10px}
+.herbarium-edition .special-viewer .viewer-dedication{min-width:0}.herbarium-edition .special-viewer .viewer-dedication>p{max-height:4.5em;overflow:auto;overflow-wrap:anywhere;font:17px/1.5 var(--serif);margin:0}
+.herbarium-edition .special-viewer .viewer-filmstrip{justify-content:flex-start;max-width:100%;width:fit-content;margin-inline:auto;scroll-padding-inline:6px}
+.herbarium-edition .special-viewer .viewer-filmstrip>button{min-width:44px;min-height:44px}
+.herbarium-edition .special-viewer .viewer-bottom-actions{gap:10px 24px;margin-top:4px}.herbarium-edition .special-viewer .report-link{margin:0;min-height:44px}
+.herbarium-edition .special-viewer .report-form{flex:0 0 auto;width:100%;padding:16px;margin-top:12px;background:#f6f4ed;color:#25301f}.herbarium-edition .special-viewer .report-form textarea{background:#fff;color:#25301f}
+.herbarium-edition .viewer-buffering{position:absolute;left:50%;top:14px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:#20271ee6;color:#fffdf6;padding:8px 13px;border-radius:3px;font:12px/1.5 var(--sans);pointer-events:none;z-index:2}
+.herbarium-edition .special-viewer .format-fallback{max-width:100%;min-width:0;gap:10px}.herbarium-edition .special-viewer .format-fallback p{font-size:27px}
+/* Saved responses read as one person's details at a time. */
+.herbarium-edition .hb-reply .reply-person>header{align-items:flex-start;flex-wrap:wrap;gap:10px}
+.herbarium-edition .hb-reply .reply-person .attendance-result,.herbarium-edition .hb-reply .rsvp-review .attendance-result{display:inline-flex;align-items:center;gap:5px;font:12px/1.5 var(--sans);padding:5px 9px;background:#eeece7;border-radius:2px;white-space:normal;text-align:left}
+.herbarium-edition .hb-reply .attendance-result[data-attending=yes]{background:#e6ebdc;color:#34472c}
+.herbarium-edition .hb-reply .reply-facts>div{font:14px/1.65 var(--sans);grid-template-columns:95px minmax(0,1fr)}
+.herbarium-edition .hb-reply .reply-facts dt{color:var(--muted)}
+.herbarium-edition .hb-reply .rsvp-review article>div{align-items:flex-start;flex-wrap:wrap;gap:8px}
+.herbarium-edition .hb-reply .rsvp-review article p,.herbarium-edition .hb-reply .rsvp-step-copy{font-size:14px;line-height:1.7}
+.herbarium-edition .hb-reply :is(.reply-extra,.privacy-note){overflow-wrap:anywhere;line-height:1.7}
+/* The two real venue photographs keep their intended focal points. */
+.venue-photo-huerta .venue-photograph{object-position:50% 48%}.venue-photo-corral .venue-photograph{object-position:50% 58%}
+.herbarium-edition .gift-account{min-width:0;padding:20px 0;border-block:1px solid var(--rule)}
+.herbarium-edition .gift-account>p{overflow-wrap:anywhere}.herbarium-edition .gift-account .iban-field{width:100%;min-width:0;font:15px/1.6 var(--sans);letter-spacing:.4px;font-variant-numeric:tabular-nums;padding:12px;margin:7px 0 14px}
+.herbarium-edition .gift-account>.solid-btn{min-height:44px;width:100%;justify-content:center;gap:10px}.herbarium-edition .hb-gift-copy>p{max-width:34ch;line-height:1.6}
+@media(min-width:701px){
+ .herbarium-edition .hb-place-copy{display:flex;flex-direction:column;align-items:flex-start;flex:1}
+ .herbarium-edition .hb-place h2{min-height:2.3em}.herbarium-edition .hb-place-copy>.solid-btn{margin-top:auto}
+ .herbarium-edition .hb-place-copy>.place-address{min-height:1.7em}
+ .herbarium-edition .invitation-letter .hb-couple h1{font-size:clamp(44px,4.1vw,52px)}
+}
+@media(min-width:701px) and (max-width:1000px){
+ .herbarium-edition .hb-reply{padding:26px 24px;max-width:720px}.herbarium-edition .hb-reply .rsvp-layout{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:0;min-height:0}
+ .herbarium-edition .hb-reply .rsvp-intro{min-height:0;position:relative;padding-right:130px}.herbarium-edition .hb-reply .rsvp-intro .reply-heading{font-size:36px;margin:10px 0 15px}
+ .herbarium-edition .hb-reply .hb-reply-art{width:115px;height:145px;object-fit:contain;top:0;right:0;left:auto;opacity:.7}
+ .herbarium-edition .hb-reply:not(.reply-is-saved) .rsvp-paper{padding:22px 0 0;border-radius:0}.herbarium-edition .hb-reply .rsvp-paper{margin:0;min-width:0}
+ .herbarium-edition .hb-reply .reply-status{font-size:16px}.herbarium-edition .hb-reply .reply-summary{margin-top:0}
+ .herbarium-edition .hb-place-chapters{gap:26px}.herbarium-edition .hb-place h2{font-size:25px}
+ .herbarium-edition .hb-gift-letter{padding:24px 15px 10px 130px;min-height:350px}.herbarium-edition .hb-gift-art{width:100px;max-height:290px;left:0;top:30px;object-fit:contain}.herbarium-edition .hb-gift h1{font-size:35px}
+}
+@media(min-width:701px) and (max-width:850px){
+ .herbarium-edition .hb-day .hb-moments{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .herbarium-edition .hb-day .hb-moments>li:nth-child(n){min-height:145px;padding:20px 15px;border-bottom:1px solid var(--rule)}
+ .herbarium-edition .hb-day .hb-moments>li:nth-child(2n+1){padding-left:0;border-left:0}
+ .herbarium-edition .hb-day .hb-moments>li:nth-child(n+3){border-bottom:0}
+ .herbarium-edition .hb-day-meadow{right:200px;width:80px;opacity:.45}
+ .herbarium-edition .hb-day .hb-prewedding{gap:0 16px;padding-inline:17px}.hb-day .hb-prewedding .underline-link{font-size:15px}
+}
+@media(max-width:700px){
+ .herbarium-edition :is(input:not([type=checkbox]):not([type=radio]),select,textarea){font-size:16px!important}
+ .herbarium-edition :is(.solid-btn,.outline-btn){min-height:44px}
+ .herbarium-edition .modal:not(.memory-viewer){width:calc(100vw - 24px);max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px)}
+ .herbarium-edition .modal .modal-content{padding:30px 20px 24px}.herbarium-edition .modal-content>h2{font-size:34px;line-height:1.1;max-width:90%}
+ .herbarium-edition .modal-content :is(label,p){font-size:13px;line-height:1.7}.herbarium-edition .modal-content .upload-hint{font-size:12px}
+ .herbarium-edition .special-viewer[open]{width:100vw;max-width:100vw;height:100svh;height:100dvh;max-height:100dvh;margin:0;padding:8px 12px max(12px,env(safe-area-inset-bottom));border:0;border-radius:0}
+ .herbarium-edition .special-viewer .viewer-topbar{margin-bottom:8px}.herbarium-edition .special-viewer .viewer-topbar>div{gap:4px}.herbarium-edition .special-viewer .viewer-topbar>span{font-size:22px}
+ .herbarium-edition .special-viewer .viewer-stage{min-height:140px}.herbarium-edition .special-viewer .viewer-dedication>p{font-size:16px;max-height:3em}
+ .herbarium-edition .special-viewer .viewer-dedication>small{font-size:11px}.herbarium-edition .special-viewer .viewer-bottom-actions{gap:7px 12px;justify-content:space-between}.herbarium-edition .special-viewer .viewer-bottom-actions>.outline-btn{font-size:12px;padding-inline:10px}
+ .herbarium-edition .hb-reply .reply-facts>div{grid-template-columns:88px minmax(0,1fr);font-size:14px}.herbarium-edition .hb-reply .reply-status{font-size:16px}
+ .herbarium-edition .hb-reply .rsvp-steps{gap:8px}.herbarium-edition .hb-reply .rsvp-steps>li{font-size:12px}
+ .herbarium-edition .hb-reply .rsvp-review article strong{font-size:25px}.herbarium-edition .hb-reply .rsvp-form-actions{gap:12px}
+ .herbarium-edition .hb-reply .privacy-note{font-size:11px}.herbarium-edition .hb-reply .diet-extra>summary{font-size:18px;line-height:1.4}
+ .herbarium-edition .gift-account{padding:18px 0}.herbarium-edition .gift-account .iban-field{letter-spacing:0;font-size:16px;min-height:48px}
+ .herbarium-edition .toast{bottom:calc(92px + env(safe-area-inset-bottom));font-size:13px}
+}
+@media(max-height:650px) and (min-width:701px){
+ .herbarium-edition .special-viewer[open]{height:calc(100dvh - 16px);max-height:calc(100dvh - 16px);padding:6px 15px 10px}
+ .herbarium-edition .special-viewer .viewer-topbar{margin-bottom:5px}.herbarium-edition .special-viewer .viewer-filmstrip>button{height:44px}
+ .herbarium-edition .special-viewer .viewer-controls{margin:5px auto}.herbarium-edition .special-viewer .viewer-stage{min-height:120px}
+}
