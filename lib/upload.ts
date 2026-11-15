@@ -31,6 +31,17 @@ async function put(url:string,body:Blob,onProgress:(percent:number)=>void,signal
   signal?.addEventListener('abort',cancel,{once:true});active();maximum=setTimeout(inactive,1800000);xhr.send(body);
  });
 }
+async function confirmStored(id:string,signal?:AbortSignal,onStage?:Options['onStage']){
+ for(let attempt=0;attempt<3;attempt++){
+  await connected(signal,onStage);
+  if(attempt){onStage?.('El original ha llegado. Confirmando que está guardado…');await delay(attempt*1000,signal);}
+  try{return await request('media/complete',{id},signal);}catch(error){
+   if(signal?.aborted)throw aborted();
+   const status=(error as {status?:number}).status||0;
+   if(attempt===2||(status>=400&&status<500&&status!==408&&status!==429))throw error;
+  }
+ }
+}
 export async function uploadMemory(file:File,author:string,onProgress:(percent:number)=>void,caption='',options:Options={}){
  const {signal,onStage}=options;const check=()=>{if(signal?.aborted)throw aborted();};check();await connected(signal,onStage);onStage?.('Comprobando el archivo…');const contentHash=await fingerprint(file);check();
  const storeKey=prefix+contentHash;let id:string|null=null;let plan:Plan|undefined;try{id=localStorage.getItem(storeKey);}catch{}
@@ -47,8 +58,9 @@ export async function uploadMemory(file:File,author:string,onProgress:(percent:n
    try{await put(target.uploadUrl!,file,onProgress,signal);saved=true;break;}catch(error){check();try{await request('media/complete',{id},signal);saved=true;break;}catch{check();}if([400,402,413,415].includes((error as {status?:number}).status||0))throw error;}
   }
   if(!saved)throw Error('No se ha podido terminar. Puedes reintentar este archivo cuando mejore la conexión.');
+  onProgress(99);
   if(target.thumbnailUploadUrl){onStage?.('Preparando la vista previa…');try{const {memoryThumbnail}=await import('./thumbnail');const thumbnail=await memoryThumbnail(file,signal);check();if(thumbnail)await put(target.thumbnailUploadUrl,thumbnail,()=>{},signal);}catch{check();}}
-  check();onStage?.('Guardando el recuerdo…');await request('media/complete',{id},signal);forget(storeKey);onProgress(100);return {id,duplicate:false};
+  check();onStage?.('Guardando el recuerdo…');await confirmStored(id!,signal,onStage);forget(storeKey);onProgress(100);return {id,duplicate:false};
  }catch(error){
   if(signal?.aborted){if(!preserved(signal)){if(id)try{await request('media/cancel',{id});}catch{}forget(storeKey);}throw aborted();}
   throw error;

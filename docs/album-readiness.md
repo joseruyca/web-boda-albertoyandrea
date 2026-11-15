@@ -3,9 +3,10 @@
 ## Invitados
 
 - El QR común abre `/#gallery`. Ver, subir y descargar no requiere una invitación personal.
-- La cola permite añadir más archivos, pausar, continuar y cancelar. Si se pierde la conexión, espera hasta dos minutos para recuperar red; después ofrece reintentar.
+- La cola permite añadir más archivos, pausar o continuar todos, cancelar por archivo y reintentar únicamente errores recuperables. Evita repetir en la misma cola una selección con el mismo álbum, nombre, tamaño, tipo y fecha de modificación. El servidor mantiene además su comprobación por contenido. El progreso total se pondera por tamaño y no anuncia éxito hasta confirmar el original. Si se pierde la conexión, espera hasta dos minutos para recuperar red; después ofrece reintentar.
 - Una transferencia activa puede durar más de tres minutos. Se limita la inactividad (dos minutos) y se aplica un máximo de treinta minutos a cada transferencia.
 - Las reservas propias se recuperan al elegir el mismo archivo. Si se cierra o recarga la pestaña hay que volver a seleccionarlo: no se guardan los vídeos completos en el almacenamiento del navegador. La transferencia del original puede reiniciarse desde el principio; **no se anuncia reanudación por fragmentos**.
+- Si falla temporalmente la confirmación final de un original, se reintenta hasta tres veces sin reenviar sus bytes. Un rechazo definitivo no entra en ese reintento automático.
 - Las miniaturas son opcionales. Un fallo al generarlas no invalida un original ya guardado.
 
 ## Copias y recuperación
