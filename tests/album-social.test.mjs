@@ -38,8 +38,8 @@ test('Las candidaturas disponibles exigen identidad y no devuelven la galería g
 test('La paginación de escritorio mantiene filas acotadas y móvil conserva el feed',async()=>{
  const {desktopAlbumPageSize,albumPage}=await import('../lib/album-social.mjs');
  assert.equal(desktopAlbumPageSize(390,844),0);
- assert.equal(desktopAlbumPageSize(1363,936),12);
- assert.equal(desktopAlbumPageSize(1363,768),6);
+ assert.equal(desktopAlbumPageSize(1363,936),14);
+ assert.equal(desktopAlbumPageSize(1363,768),7);
  const rows=Array.from({length:60},(_,id)=>({id}));
  const pages=Array.from({length:5},(_,i)=>albumPage(rows,i,12));
  assert.deepEqual(pages.flatMap(p=>p.items).map(m=>m.id),rows.map(m=>m.id));
