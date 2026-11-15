@@ -91,3 +91,7 @@
  .queue-overview{align-items:flex-start}.queue-success{white-space:normal;max-width:110px}.queue-file-details .upload-job-info{min-width:0;flex-basis:calc(100% - 75px)}
  .queue-file-details .upload-job{gap:10px}.queue-batch-actions{gap:10px}
 }
+.herbarium-edition .modal .album-identity{display:block;margin:20px 0;padding:16px 18px}
+.modal .album-identity>div:first-child{width:100%}.modal .album-identity strong{overflow-wrap:normal}
+.modal .album-name-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:14px}
+.modal .album-name-entry input{width:100%;min-width:0;max-width:none}.modal .album-identity select{width:100%;max-width:none;margin-top:14px}
