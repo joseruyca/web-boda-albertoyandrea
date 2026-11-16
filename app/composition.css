@@ -215,15 +215,13 @@
 .invitation-letter .keepsake-portrait .hb-couple-photo:before{display:none}
 .herbarium-edition .invitation-letter .keepsake-portrait .hb-couple-photo>img{border-radius:0;filter:grayscale(1);object-fit:cover;object-position:50% 43%}
 .invitation-letter .keepsake-portrait .hb-couple-photo>figcaption{padding-top:9px}
-.photo-linen-thread{position:absolute;left:32px;right:32px;bottom:47px;height:3px;z-index:3;background:repeating-linear-gradient(145deg,#bda77e 0 1px,#f0e5c9 1px 3px,#d5bf95 3px 4px);box-shadow:0 1px 1px #58452135;border-radius:2px;transform:rotate(-1deg);pointer-events:none}
-.photo-linen-thread>i{position:absolute;right:12px;top:-3px;width:7px;height:7px;border:2px solid #c4ad83;border-radius:50%;background:#e7d7b6;box-shadow:0 1px 1px #58452125}
-.photo-linen-thread>i:before,.photo-linen-thread>i:after{content:'';position:absolute;top:3px;right:2px;width:2px;height:23px;background:linear-gradient(90deg,#c1a578,#ede0bd);border-radius:2px;transform-origin:top}
-.photo-linen-thread>i:before{transform:rotate(22deg)}.photo-linen-thread>i:after{height:18px;transform:rotate(-17deg)}
+.photo-linen-thread{position:absolute;left:32px;right:32px;bottom:34px;height:26px;z-index:3;background:url('/assets/photo-linen-thread.svg') center/100% 100% no-repeat;pointer-events:none}
+.photo-linen-thread>i{position:absolute;right:-4px;top:-5px;width:32px;height:35px;background:url('/assets/photo-linen-knot.svg') center/contain no-repeat}
 .invitation-letter .keepsake-portrait .photo-pressed-sprig{position:absolute;right:4px;bottom:23px;width:76px;height:auto;max-width:none;z-index:2;transform:rotate(16deg);filter:drop-shadow(1px 2px 1px #50412520);pointer-events:none}
 @media(min-width:701px){.invitation-letter .keepsake-portrait .hb-couple-photo>img{height:min(350px,44svh)}}
 @media(min-width:701px) and (max-width:1050px){.keepsake-portrait .photo-linen-thread{left:27px;right:27px}}
 @media(max-width:700px){
  .herbarium-edition .invitation-letter .keepsake-portrait .hb-couple-photo{padding:7px 7px 34px}
- .invitation-letter .keepsake-portrait .photo-linen-thread{left:24px;right:24px;bottom:43px;height:2px}
+ .invitation-letter .keepsake-portrait .photo-linen-thread{left:24px;right:24px;bottom:30px;height:26px}
  .invitation-letter .keepsake-portrait .photo-pressed-sprig{width:66px;right:4px;bottom:23px}
 }
