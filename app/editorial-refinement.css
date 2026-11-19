@@ -220,27 +220,3 @@ body{background:var(--paper);color:var(--ink)}
  .herbarium-edition .hb-place{transition:box-shadow .2s ease}.herbarium-edition .hb-place:hover{box-shadow:0 5px 16px #463e2d10}
 }
 
-/* Bespoke transparent botanicals and cotton stock, generated for this edition. */
-.wedding.herbarium-edition{background-image:linear-gradient(#fffdf944,#fffdf944),url('/assets/editorial-paper-v3.webp');background-size:auto,620px}
-.clean-envelope.herbarium-envelope.envelope-entry{background-image:linear-gradient(#fffdf944,#fffdf944),url('/assets/editorial-paper-v3.webp');background-size:auto,620px;background-blend-mode:normal}
-.herbarium-edition .hb-ink{filter:none;pointer-events:none}
-.herbarium-edition .hb-day-meadow{width:145px;height:180px;top:-9px;right:0;opacity:1;transform:none}
-.herbarium-edition .hb-place .venue-photo .venue-photo-ornament{width:130px;height:120px;max-width:28%;right:-8px;bottom:-13px;opacity:1;transform:none}
-.herbarium-edition .hb-place .venue-photo-vine .venue-photo-ornament{object-position:right bottom}
-.herbarium-edition .hb-reply .hb-reply-art{width:205px;height:285px;left:-35px;bottom:-35px;opacity:1;object-position:left bottom;transform:none}
-.herbarium-edition .hb-gift-art{width:190px;height:345px;left:0;top:12px;opacity:1;transform:none}
-.herbarium-edition .hb-gallery .hb-album-art{width:195px;height:140px;right:-18px;top:-12px;opacity:1;transform:none}
-.herbarium-edition :is(.hb-place,.rsvp-paper){background-image:linear-gradient(#fffdf977,#fffdf977),url('/assets/editorial-paper-v3.webp');background-size:auto,620px}
-@media(max-width:1050px) and (min-width:701px){
- .herbarium-edition .hb-day-meadow{width:110px;height:150px}
- .herbarium-edition .hb-reply .hb-reply-art{width:115px;height:170px;left:auto;right:-12px;bottom:0}
- .herbarium-edition .hb-gallery .hb-album-art{width:125px;height:110px}
- .herbarium-edition .hb-gift-art{width:130px;height:280px}
-}
-@media(max-width:700px){
- .herbarium-edition .hb-day-meadow{width:100px;height:145px;top:92px;right:-5px}
- .herbarium-edition .hb-place .venue-photo .venue-photo-ornament{width:100px;height:105px;right:-5px;bottom:-12px}
- .herbarium-edition .hb-reply .hb-reply-art{width:100px;height:145px;left:auto;right:-19px;top:-8px;bottom:auto}
- .herbarium-edition .hb-gallery .hb-album-art{width:95px;height:105px;top:-8px;right:-17px}
- .herbarium-edition .hb-gift-art{width:95px;height:145px;left:-15px;top:auto;bottom:0}
-}
