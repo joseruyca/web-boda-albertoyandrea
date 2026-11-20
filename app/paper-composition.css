@@ -165,7 +165,7 @@ body {
 .wedding.herbarium-edition .hb-place-copy > .eyebrow {margin:0;align-self:flex-start}
 .wedding.herbarium-edition .hb-place-copy > .place-route {order:1}
 .wedding.herbarium-edition .keepsake-portrait .photo-botanical-corner {
-  width:130px;height:220px;inset:auto auto 10px -25px;z-index:2;opacity:1;object-position:left bottom;
+  width:130px;height:220px;inset:auto auto 10px 0;z-index:2;opacity:1;object-position:left bottom;
 }
 .wedding.herbarium-edition .hb-reply .hb-reply-signature {
   position:relative;isolation:isolate;min-height:115px;margin-top:24px;display:flex;align-items:center;justify-content:flex-end;padding:0 8px 0 105px;
@@ -263,7 +263,7 @@ body {
   .wedding.herbarium-edition .hb-place-copy > h2 {margin:14px 0 12px;line-height:1.15}
   .wedding.herbarium-edition .hb-place-copy > .place-address {margin:0 0 18px}
   .wedding.herbarium-edition .hb-place-copy > .place-route {margin:0;align-self:flex-start}
-  .wedding.herbarium-edition .keepsake-portrait .photo-botanical-corner {width:105px;height:180px;left:-22px;bottom:8px}
+  .wedding.herbarium-edition .keepsake-portrait .photo-botanical-corner {width:105px;height:180px;left:2px;bottom:8px}
   .wedding.herbarium-edition .hb-reply.reply-is-saved .rsvp-intro {min-height:185px}
   .wedding.herbarium-edition .hb-reply .rsvp-intro {padding-right:100px}
   .wedding.herbarium-edition .hb-reply .hb-reply-art {width:105px;height:135px;inset:5px -10px auto auto;display:block}
