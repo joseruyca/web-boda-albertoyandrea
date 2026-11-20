@@ -1,8 +1,65 @@
 /* Cotton stock is shared by every light surface. Botanicals have reserved space. */
 :root {
-  --cotton-stock: url('/assets/editorial-paper-v3.webp');
+  --cotton-stock: url('/assets/editorial-paper-v4.webp');
   --cotton-scale: 560px;
   --cotton-card: linear-gradient(#fffdf945, #fffdf945), var(--cotton-stock);
+}
+/* Readable details and quiet interactions within the existing compact layout. */
+.wedding.herbarium-edition :is(.page-kicker,.eyebrow) {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  color: #555b49;
+}
+.wedding.herbarium-edition .hb-place .eyebrow {color:var(--burgundy)}
+.wedding.herbarium-edition .hb-place h2 {
+  font-size: 29px;
+  line-height: 1.15;
+  min-height: 0;
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.wedding.herbarium-edition .hb-place-copy > .place-address {
+  font: 16px/1.6 var(--serif);
+  color: #555b49;
+  margin-bottom: 20px;
+}
+.wedding.herbarium-edition .hb-place .place-route {font-size:16px;min-height:44px}
+.wedding.herbarium-edition .hb-day .hb-moments .hb-moment-note {
+  font: 14px/1.5 var(--sans);
+  max-width: 25ch;
+  color: #555b49;
+}
+.wedding.herbarium-edition .hb-day .hb-moments .hb-moment-time {font-size:20px}
+.wedding.herbarium-edition .hb-day .hb-moments > li > p:not(.hb-moment-note):not(.hb-moment-time) {font-size:17px}
+.wedding.herbarium-edition .hb-day .hb-date-badge > span:not(:nth-child(3)) {font-size:12px}
+.wedding.herbarium-edition .hb-prewedding .hb-prewedding-date {font:14px/1.5 var(--sans)}
+.wedding.herbarium-edition .programme-footnote {font-size:16px;letter-spacing:0}
+.wedding.herbarium-edition .hb-gallery .gallery-toolbar > p,
+.wedding.herbarium-edition .hb-gallery .person-album > span {font:14px/1.5 var(--sans);color:#555b49}
+.wedding.herbarium-edition .hb-gallery .filter-tabs button {font:14px/1.4 var(--sans);min-height:40px}
+.wedding.herbarium-edition .hb-gallery .album-tools > .underline-link {font:14px/1.4 var(--sans);min-height:44px}
+.wedding.herbarium-edition .hb-gallery .album-tools > .icon-btn {width:44px;height:44px;min-height:44px}
+.wedding.herbarium-edition .hb-reply :is(.reply-facts > div,.privacy-note) {font-size:14px;line-height:1.6}
+.wedding.herbarium-edition :is(input:not([type=radio]):not([type=checkbox]),select) {min-height:44px}
+.wedding.herbarium-edition :is(button,a,input,select,textarea):focus-visible {outline:2px solid var(--burgundy);outline-offset:4px}
+.wedding.herbarium-edition .venue-photo-ornament {animation:none;translate:none}
+@media(min-width:701px) {
+  .wedding.herbarium-edition .hb-day .hb-moments > li + li {border-left:1px solid var(--rule);padding-left:24px}
+  .wedding.herbarium-edition .hb-day .hb-moments > li:nth-child(n) {min-height:175px}
+}
+@media(max-width:700px) {
+  .wedding.herbarium-edition .hb-place h2 {font-size:28px}
+  .wedding.herbarium-edition .hb-day .hb-moments > li:nth-child(n) {padding-block:23px}
+  .wedding.herbarium-edition .hb-day .hb-moments .hb-moment-note {max-width:none}
+  .wedding.herbarium-edition .hb-gallery .gallery-toolbar {row-gap:14px}
+}
+@media(prefers-reduced-motion:no-preference) {
+  .wedding.herbarium-edition .scene {animation:cotton-chapter-arrive .2s ease-out both}
+  .wedding.herbarium-edition :is(.solid-btn,.outline-btn,.upload-orbit,.icon-btn) {transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,scale .1s ease}
+  .wedding.herbarium-edition :is(.solid-btn,.upload-orbit):hover:not(:disabled) {box-shadow:0 3px 10px #353e2b25}
+  .wedding.herbarium-edition :is(.solid-btn,.outline-btn,.upload-orbit,.icon-btn):active:not(:disabled) {scale:.985}
+  .wedding.herbarium-edition .underline-link:hover {color:var(--burgundy);border-color:var(--burgundy)}
+  @keyframes cotton-chapter-arrive {from{opacity:.88;translate:0 3px}to{opacity:1;translate:0 0}}
 }
 body {
   background: #fffdf9 var(--cotton-stock) center top / var(--cotton-scale) repeat;
