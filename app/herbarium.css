@@ -115,7 +115,7 @@ body{background:#e9e5e3;color:var(--ink)}
 .hb-reply-signature{height:155px;position:relative;isolation:isolate;margin-top:12px}
 .hb-reply-signature>.hb-ink{right:-50px;bottom:-25px;width:430px;max-width:120%;z-index:-1}
 .hb-reply-signature>span{font:italic 20px/1.5 var(--serif);display:block;text-align:center;padding-top:110px;color:var(--muted)}
-.herbarium-edition .reply-is-saved .hb-reply-art{display:none}
+.herbarium-edition .reply-is-saved .hb-reply-art{display:block}
 .herbarium-edition .reply-is-saved .rsvp-intro{min-height:0}
 /* 05: the flax engraving brackets the entire personal letter. */
 .herbarium-edition .hb-gift{padding-bottom:24px}
@@ -290,13 +290,13 @@ body{background:#e9e5e3;color:var(--ink)}
  .hb-place,.hb-place:nth-child(even){display:flex;flex-direction:column;align-items:stretch;padding:22px 0 25px;margin:0;gap:15px;position:relative}
  .hb-place-number,.hb-place:nth-child(even) .hb-place-number{left:0;top:5px;font-size:72px;line-height:1;opacity:.7}
  .hb-place-copy,.hb-place:nth-child(even) .hb-place-copy{display:contents;padding:0}
- .hb-place .eyebrow{order:0;margin-left:76px;font:500 10px/1.5 var(--sans);letter-spacing:1.5px}
+ .hb-place .eyebrow{order:0;margin-left:0;font:500 10px/1.5 var(--sans);letter-spacing:1.5px}
  .hb-place .eyebrow:after{width:25px;margin-top:7px}
- .herbarium-edition .hb-place h2{order:1;font-size:29px;margin:-10px 0 0 76px;line-height:1.05;min-height:38px;letter-spacing:-.5px}
+ .herbarium-edition .hb-place h2{order:0;font-size:29px;margin:12px 0 0;line-height:1.05;min-height:38px;letter-spacing:-.5px}
  .herbarium-edition .hb-place .venue-photo{order:2;width:100%;margin:0;max-width:none;align-self:stretch}
  .herbarium-edition .hb-place .venue-photo-mount{padding:4px}
  .herbarium-edition .hb-place .venue-photograph{aspect-ratio:1.95;object-fit:cover}
- .hb-place-copy>p{order:3;font-size:17px;text-align:center;margin:-5px 0 0;max-width:none;line-height:1.4}
+ .hb-place-copy>p{order:0;font-size:17px;text-align:center;margin:-5px 0 0;max-width:none;line-height:1.4}
  .hb-place-copy>.solid-btn{order:4;min-width:0;align-self:center;padding:8px 23px;min-height:39px;font-size:18px;margin-top:-4px}
  .hb-place+.hb-place{border-top:1px solid var(--rule)}
  .hb-place-vine{width:300px;left:-125px;top:75%;opacity:.65;z-index:0}

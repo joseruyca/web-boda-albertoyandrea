@@ -161,6 +161,19 @@ body {
 .wedding.herbarium-edition .hb-place:nth-child(even) .hb-place-copy {
   padding-inline: 14px;
 }
+.wedding.herbarium-edition .hb-place-copy > :is(.eyebrow,h2,p,a,details) {order:0;margin-left:0;text-align:left}
+.wedding.herbarium-edition .hb-place-copy > .eyebrow {margin:0;align-self:flex-start}
+.wedding.herbarium-edition .hb-place-copy > .place-route {order:1}
+.wedding.herbarium-edition .keepsake-portrait .photo-botanical-corner {
+  width:130px;height:220px;inset:auto auto 10px -25px;z-index:2;opacity:1;object-position:left bottom;
+}
+.wedding.herbarium-edition .hb-reply .hb-reply-signature {
+  position:relative;isolation:isolate;min-height:115px;margin-top:24px;display:flex;align-items:center;justify-content:flex-end;padding:0 8px 0 105px;
+}
+.wedding.herbarium-edition .hb-reply .hb-reply-signature > .hb-ink {
+  display:block;width:115px;height:165px;inset:auto auto -5px -12px;z-index:0;opacity:1;object-position:left bottom;
+}
+.wedding.herbarium-edition .hb-reply .hb-reply-signature > span {position:relative;display:block;z-index:1;font-size:26px;text-align:right;padding:0;margin:0}
 /* The date and stems occupy two distinct areas of the programme header. */
 .wedding.herbarium-edition .hb-day-score {isolation:isolate}
 .wedding.herbarium-edition .hb-day .hb-date-badge {margin-right:155px;inset:auto}
@@ -178,9 +191,9 @@ body {
 .wedding.herbarium-edition .hb-reply .rsvp-intro > :not(.hb-ink) {position:relative;z-index:1}
 .wedding.herbarium-edition .hb-reply .hb-reply-art {
   display: block;
-  width: 185px;
-  height: 260px;
-  inset: auto auto -12px -19px;
+  width: 150px;
+  height: 125px;
+  inset: auto 0 0 auto;
   max-width: none;
   z-index: 0;
   opacity: 1;
@@ -247,16 +260,26 @@ body {
   .wedding.herbarium-edition .hb-place .venue-photo-corral .venue-photo-ornament {width:125px;height:95px;top:-5px;right:-6px}
   .wedding.herbarium-edition .hb-place-copy,
   .wedding.herbarium-edition .hb-place:nth-child(even) .hb-place-copy {padding-inline:10px}
+  .wedding.herbarium-edition .hb-place-copy > h2 {margin:14px 0 12px;line-height:1.15}
+  .wedding.herbarium-edition .hb-place-copy > .place-address {margin:0 0 18px}
+  .wedding.herbarium-edition .hb-place-copy > .place-route {margin:0;align-self:flex-start}
+  .wedding.herbarium-edition .keepsake-portrait .photo-botanical-corner {width:105px;height:180px;left:-22px;bottom:8px}
+  .wedding.herbarium-edition .hb-reply.reply-is-saved .rsvp-intro {min-height:185px}
+  .wedding.herbarium-edition .hb-reply .rsvp-intro {padding-right:100px}
+  .wedding.herbarium-edition .hb-reply .hb-reply-art {width:105px;height:135px;inset:5px -10px auto auto;display:block}
+  .wedding.herbarium-edition .hb-reply .hb-reply-signature {min-height:115px;padding-left:95px}
+  .wedding.herbarium-edition .hb-reply .hb-reply-signature > .hb-ink {width:110px;height:155px;left:-8px}
+  .wedding.herbarium-edition .hb-reply .hb-reply-signature > span {font-size:25px}
   .wedding.herbarium-edition .hb-day .hb-date-badge {margin-right:105px;grid-row:2;align-self:center}
   .wedding.herbarium-edition .hb-day-meadow {position:relative;width:90px;height:120px;inset:auto;grid-column:1;grid-row:2;justify-self:end;align-self:end}
   .wedding.herbarium-edition .hb-day .hb-moments {margin-top:22px}
   .wedding.herbarium-edition .hb-reply .rsvp-intro {min-height:175px;padding-right:95px;padding-bottom:10px}
   .wedding.herbarium-edition .hb-reply .rsvp-intro .reply-heading {max-width:none}
-  .wedding.herbarium-edition .hb-reply .hb-reply-art {width:85px;height:140px;inset:auto -8px 0 auto}
+  .wedding.herbarium-edition .hb-reply .hb-reply-art {width:105px;height:135px;inset:5px -10px auto auto}
   .wedding.herbarium-edition .hb-gift-letter {padding:0 0 170px;min-height:0}
   .wedding.herbarium-edition .hb-gift-art {width:100px;height:155px;inset:auto auto 0 0}
   .wedding.herbarium-edition .hb-gift-copy > .hb-gift-signature {margin-top:24px}
   .wedding.herbarium-edition .hb-gallery .gallery-heading {padding-right:0}
-  .wedding.herbarium-edition .hb-gallery .album-title {padding-right:78px}
-  .wedding.herbarium-edition .hb-gallery .hb-album-art {width:78px;height:100px;inset:0 -4px auto auto}
+  .wedding.herbarium-edition .hb-gallery .album-title {padding-right:100px}
+  .wedding.herbarium-edition .hb-gallery .hb-album-art {width:115px;height:120px;inset:0 -4px auto auto}
 }
